@@ -1,27 +1,11 @@
-body,
-html {
-  height: 100%;
-  font-weight: normal;
-  font-family: 'Roboto', sans-serif;
-  color: black;
-  background-color: #f0f0ee;
-  margin: 0px;
-  padding: 0;
-}
-
 html::-webkit-scrollbar {
-  /* display: none; Chrome, Safari, Opera*/
+  display: none;
 }
 
 .cube{
   position: relative;
-  opacity: 0.3;
+  opacity: 1;
 }
-
-/* #placeholder1 {
-  height: 100vh;
-  background-color: grey;
-} */
 
 #pinContainer {
   width: 100%;
@@ -37,6 +21,8 @@ footer {
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 700;
+  height: 100px;
+  background-color: gray;
 }
 .panel {
   height: 100%;
@@ -47,11 +33,6 @@ footer {
 
 #pinMaster {
   position: relative;
-}
-
-footer {
-  height: 100px;
-  background-color: gray;
 }
 
 .spacer {
@@ -74,15 +55,10 @@ footer {
   background-color: #953543;
 }
 
-#ment0{
-  height: 1vh;
-  position: absolute;
-}
-
 .ment{
   height: 1vh;
+  top: 45vh;
   position: fixed;
-  opacity: 0;
 }
 
 .wrapper {
@@ -92,12 +68,9 @@ footer {
   z-index: 11;
   position: absolute;
 }
-.sections{
-  position: absolute;
-}
+
 .section {
-  height: 100%;
-  width: calc(100% / 5);
+  width: 100%;
   float: left;
   font-size: 18px;
   font-weight: 700;
@@ -106,59 +79,4 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-/* .section:nth-child(1) {
-  background: #03c9a9;
-}
-.section:nth-child(2) {
-  background: #22a7f0;
-}
-.section:nth-child(3) {
-  background: #f9690e;
-}
-.section:nth-child(4) {
-  background: #9b59b6;
-}
-.section:nth-child(5) {  
-  background: #262626;
-} */
-.sections {
-  width: 500%;
-  height: 100%;
-}
-.sectionTitle {
-  font-size: 30px;
-  color: #fff;
-}
-
-.imagePos1{
-  top: 100px;
-    left: 90px;
-    width: 40vh;
-    height: 24vh;
-    position: absolute;
-}
-
-.imagePos2{
-  top: 100px;
-    left: 890px;
-    width: 40vh;
-    height: 24vh;
-    position: absolute;
-}
-
-.imagePos3{
-  top: 640px;
-    left: 890px;
-    width: 40vh;
-    height: 24vh;
-    position: absolute;
-}
-
-.imagePos4{
-    top: 640px;
-    left: 90px;
-    width: 40vh;
-    height: 24vh;
-    position: absolute;
 }
