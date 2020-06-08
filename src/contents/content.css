@@ -1,13 +1,66 @@
+/* 네이버 나눔스퀘어 */
+@import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);
 .mainView{
+    min-height: 700px;
     margin: 0 auto;
     width: 1300px;
     display: flex;
     height: auto;
-    background-color: blueviolet;
     text-decoration: none;
 }
-.mainMenuList>ul>li>{
+.mainMenuList>ul>li{
+    padding: 0px 13px;
     list-style: none;
-    height: 100px;
+    height: 50px;
+    line-height: 3em;
+    
+}
+.mainMenuList{
+    background-color:#c29fcb
+    ;
+}   
+.mainMenuList>ul>li>.mainMenuListItem{
+    color: #000;
+    font-family: 'Nanum Barun Gothic', sans-serif;
+    font-weight: bold;
     text-decoration: none;
+}
+.mainMenuListActive{
+    
+}
+.MenuMainIcon{
+    fill: currentColor;
+    width: 0.9em;
+    height: 0.9em;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+}
+.mainMenuListItem>span{
+    color: #2d3639;
+    display: block;
+    padding: .625rem .75rem;
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+}
+.mainMenuListItem>span>div{
+    display: inline-block;
+    margin-left: 0.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 75%;
+    transition: all .12s
+}
+.hrLine{
+    height: 1px;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #dbdbdb;
+}
+.mainViewItem{
+    background-color:#9d5ead ;
 }

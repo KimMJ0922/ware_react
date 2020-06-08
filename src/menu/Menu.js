@@ -1,34 +1,71 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
- import './menu.css';
+import {Home, Dashboard, Face, Settings, AllInbox, Folder, Class} from '@material-ui/icons'
+import './menu.css';
 const Menu=()=>{
-    // const activeStyle={
-    //     color:'red',
-    //     backgroundColor:'#ffffcc'
-    // }
     return (
         <div className='mainMenuList'>
             <ul>
                 <li>
-                    <NavLink exact to="/home/default">Home</NavLink>
+                    
+                    <NavLink exact to="/home/default" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <span>
+                            <Home className='MenuMainIcon'/>
+                            <div>Home</div>
+                        </span>
+                    </NavLink>
+                   
                 </li>
                 <li>
-                    <NavLink exact to="/home/diagram">다이어그램 찾아보기</NavLink>
+                    <NavLink exact to="/home/diagram" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <span>
+                            <Dashboard className='MenuMainIcon'/>
+                            <div>다이어그램</div>
+                        </span>  
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink exact to="/home/friend">친구 추천</NavLink>
+                    <NavLink exact to="/home/friend" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <span>
+                            <Face className='MenuMainIcon'/>
+                            <div>친구 추천</div>
+                        </span>
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink exact to="/home/setting">설정</NavLink>
+                    <NavLink exact to="/home/setting" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <span>
+                            <Settings className='MenuMainIcon'/>
+                            <div>설정</div>
+                        </span>
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink exact to="/home/set">세트</NavLink>
+                   <div className='hrLine'> &nbsp;</div>
                 </li>
                 <li>
-                    <NavLink exact to="/home/folder">폴더</NavLink>
+                    <NavLink exact to="/home/set" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <span>
+                            <AllInbox className='MenuMainIcon'/>
+                            <div>세트</div>
+                        </span>
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink exact to="/home/guild">클래스</NavLink>
+                    <NavLink exact to="/home/folder" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <span>
+                            <Folder className='MenuMainIcon'/>
+                            <div>폴더</div>
+                        </span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink exact to="/home/guild" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <span>
+                            <Class className='MenuMainIcon'/>
+                            <div>클래스</div>
+                        </span>
+                    </NavLink>
                 </li>
             </ul> 
         </div>
