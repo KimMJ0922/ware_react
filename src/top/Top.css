@@ -1,0 +1,52 @@
+/* 네이버 나눔스퀘어 */
+@import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);
+/* 로고 폰트 */
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean'); 
+ 
+.topMenu{
+    height: 100px;
+    background-color: #c29fcb;
+}
+
+.topMenu> .topMenuList{
+    line-height: 6rem;
+    height: 100px;
+    text-align: center;
+    display: inherit;
+    color: #000;
+    text-decoration: none;
+  
+}
+.topMenu> .topMenuList>span{
+    color: #2d3639;
+    display: inline-block;
+    padding: .625rem .75rem;
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+}
+.topMenu> .topMenuList>span>div{
+    font-size: 1.4rem;
+    display: inline-block;
+    margin-left: 0.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .12s
+}
+.topMenu>.topMenuListAvtive>span{
+    background-color: #000000;
+    color: #fff;
+    font-size: 1.3em;
+}
+.topMenuListLogo{
+    font-size: 2.4em;
+    font-family: 'Black Han Sans', sans-serif;
+    line-height: 6rem;
+    height: 100px;
+    text-align: center;
+    display: inherit;
+    color: #000;
+    text-decoration: none;
+}
