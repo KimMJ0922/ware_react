@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {Home,Create,Search,Signin,Signup} from './contents';/*index.js호출*/
+import Main from './main/Main';
 import Top from './top/Top';
 // import { Grid } from '@material-ui/core';
 // import MenuTitle from './menu/MenuTitle';
@@ -34,6 +35,10 @@ const routes = [
     {
         path: "/signup",
         component: Signup
+    },
+    {
+      path:"/",
+      component: Main
     }
   ];
 

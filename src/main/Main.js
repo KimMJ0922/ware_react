@@ -1,17 +1,17 @@
 import React, { useRef, useEffect } from "react";
-import { TimelineMax, TweenMax, Linear } from "gsap/all";
+import { TimelineMax, Linear } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
-import img1 from './image/1.gif';
-import img2 from './image/2.gif';
-import img3 from './image/3.gif';
-import img4 from './image/4.gif';
-import img5 from './image/5.gif';
-import img6 from './image/6.gif';
-import img7 from './image/7.gif';
-import img8 from './image/8.gif';
-import img9 from './image/9.gif';
-import img10 from './image/10.gif';
+import img1 from '../image/1.gif';
+import img2 from '../image/2.gif';
+import img3 from '../image/3.gif';
+import img4 from '../image/4.gif';
+import img5 from '../image/5.gif';
+import img6 from '../image/6.gif';
+import img7 from '../image/7.gif';
+//import img8 from '../image/8.gif';
+import img9 from '../image/9.gif';
+//import img10 from '../image/10.gif';
 import './Main.css';
 
 const Main = () => {
@@ -134,20 +134,6 @@ const Main = () => {
   parent_obj.add(mesh);
 
   // squares8
-  /*var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img8),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(-8,8,20);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);*/
-
-  // squares9
   var square_geom = new THREE.PlaneGeometry(10, 6);
   var square_material = new THREE.MeshBasicMaterial({
     map: loader.load(img9),
@@ -160,20 +146,6 @@ const Main = () => {
   // rotate square to face target
   mesh.lookAt(sphere.position);
   parent_obj.add(mesh);
-
-  /*// squares10
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img10),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(-8,13,-25);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);*/
   
   scene.add(parent_obj);
       
@@ -278,8 +250,12 @@ const Main = () => {
       renderer.render();
 
     }
+
+    const moveTop=()=>{
+
+    }
     return (
-      <div className="main">
+      <div className="main" >
         <div id="pinMaster">
             <div id="pinContainer">
               <div className="wrapper" id="js-wrapper">
@@ -290,6 +266,7 @@ const Main = () => {
                     <span className="ment" id="ment2">나만의 학습세트를 만들어보세요!</span>
                     <span className="ment" id="ment3">외우려고 노력하지 않아도 암기를 도와드립니다!</span>
                   </section>
+                  <button type="button" onClick={moveTop} style={{display:"scroll",position:"fixed",bottom:"10px",right:"10px"}}>맨 위로</button> 
                 </div>
               </div>
             </div>
