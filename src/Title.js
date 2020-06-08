@@ -39,7 +39,6 @@ const routes = [
 
 const Title=()=>{
     return (
-      <>
         <div>
             <Top/>
             <Switch>
@@ -49,17 +48,6 @@ const Title=()=>{
                 {/* 이거 쫌짜증남 살짝 이해가 안감 */}
             </Switch>
         </div>
-        {/* <div>
-        <Grid  spacing={0} className='mainView' >
-            <Grid item xs={12} md={3}>
-                <Menu/>
-            </Grid>
-            <Grid item xs={12} md={9}>
-                <MenuTitle/>
-            </Grid>
-        </Grid> 
-        </div> */}
-        </>
     )
 }
  

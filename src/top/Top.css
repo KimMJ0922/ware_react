@@ -6,7 +6,7 @@
  
 .topMenu{
     height: 100px;
-    background-color: #fafafa;
+    background-color: #c29fcb;
 }
 
 .topMenu> .topMenuList{
@@ -18,11 +18,27 @@
     text-decoration: none;
   
 }
-.topMenu>.active{
+.topMenu> .topMenuList>span{
+    color: #2d3639;
+    display: inline-block;
+    padding: .625rem .75rem;
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+}
+.topMenu> .topMenuList>span>div{
+    font-size: 1.4rem;
+    display: inline-block;
+    margin-left: 0.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .12s
+}
+.topMenu>.topMenuListAvtive>span{
     background-color: #000000;
     color: #fff;
     font-size: 1.3em;
-    transition: 0.5s;
 }
 .topMenuListLogo{
     font-size: 2.4em;

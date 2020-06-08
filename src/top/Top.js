@@ -6,7 +6,8 @@ import { Search,Create} from '@material-ui/icons'
 
  
 const Top=()=>{
-    // const activeStyle={
+    // const topMenuListAvtive={
+    //     width:'1000px',
     //     color:'red',
     //     backgroundColor:'#ffffcc'
     // }
@@ -18,10 +19,19 @@ const Top=()=>{
                 <div className='topMenu'><Link exact to="/home/default" className=' topMenuListLogo' >Ware.gg</Link></div>
                 </Grid>
                 <Grid item xs={6} md={1}>
-                <div className='topMenu'><NavLink exact to="/create" className='topMenuList'><Create/> 만들기</NavLink></div>
+                    <div className='topMenu'>
+                        <NavLink exact to="/create" className='topMenuList' activeClassName='topMenuListAvtive'>
+                        {/* <NavLink exact to="/create" className='topMenuList' activeClassName={topMenuListAvtive}> */}
+                            <span><Create/> <div>만들기</div></span>
+                        </NavLink>
+                    </div>
                 </Grid>
                 <Grid item xs={6} md={1}>
-                <div className='topMenu'><NavLink exact to="/search" className='topMenuList' ><Search/>Search</NavLink></div>
+                    <div className='topMenu'>
+                        <NavLink exact to="/search" className='topMenuList' activeClassName='topMenuListAvtive' >
+                            <span><Search/><div>Search</div></span>
+                        </NavLink>
+                    </div>
                 </Grid>
                 <Grid item xs={6} md={6}>
                     <div className='topMenu' style={{display:'inherit'}}>
