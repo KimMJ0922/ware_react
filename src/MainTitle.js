@@ -1,20 +1,26 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {Home,Create,Search,Signin,Signup} from './contents';/*index.js호출*/
-import Top from './top/Top';
+import {Main} from './main';
+import MainTop from './top/MainTop';
 // import { Grid } from '@material-ui/core';
 // import MenuTitle from './menu/MenuTitle';
 // import Menu  from './menu/Menu';
 import Default from './menuDtail/Default';
+import Title from './Title';
 // import Root from './Root';
  
 const routes = [
   
   {
     // default page
-    path: "/home/default",
-    component: Home,
+    path: "/home",
+    component: Title,
   },
+    {
+      path: "/",
+      component: Main
+    },
     {
         path: "/search",
         component: Search
@@ -33,10 +39,10 @@ const routes = [
     }
   ];
 
-const Title=()=>{
+const MainTitle=()=>{
     return (
         <div>
-            <Top/>
+            
             <Switch>
                 {routes.map((route, i) => (
                     <RouteWithSubRoutes key={i} {...route} />
@@ -61,4 +67,4 @@ function RouteWithSubRoutes(route) {
     />
   );
 }
-export default Title;
+export default MainTitle;

@@ -1,17 +1,18 @@
 import React, { useRef, useEffect } from "react";
+import MainTop from '../top/MainTop';
 import { TimelineMax, TweenMax, Linear } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
-import img1 from './image/1.gif';
-import img2 from './image/2.gif';
-import img3 from './image/3.gif';
-import img4 from './image/4.gif';
-import img5 from './image/5.gif';
-import img6 from './image/6.gif';
-import img7 from './image/7.gif';
-import img8 from './image/8.gif';
-import img9 from './image/9.gif';
-import img10 from './image/10.gif';
+import img1 from '../image/1.gif';
+import img2 from '../image/2.gif';
+import img3 from '../image/3.gif';
+import img4 from '../image/4.gif';
+import img5 from '../image/5.gif';
+import img6 from '../image/6.gif';
+import img7 from '../image/7.gif';
+import img8 from '../image/8.gif';
+import img9 from '../image/9.gif';
+import img10 from '../image/10.gif';
 import './Main.css';
 
 const Main = () => {
@@ -280,6 +281,7 @@ const Main = () => {
     }
     return (
       <div className="main">
+        <MainTop/>
         <div id="pinMaster">
             <div id="pinContainer">
               <div className="wrapper" id="js-wrapper">
