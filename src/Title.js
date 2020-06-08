@@ -2,9 +2,19 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {Home,Create,Search,Signin,Signup} from './contents';/*index.js호출*/
 import Top from './top/Top';
+// import { Grid } from '@material-ui/core';
+// import MenuTitle from './menu/MenuTitle';
+// import Menu  from './menu/Menu';
+import Default from './menuDtail/Default';
 // import Root from './Root';
  
 const routes = [
+  
+  {
+    // default page
+    path: "/home/default",
+    component: Home,
+  },
     {
       path: "/home",
       component: Home,
@@ -29,6 +39,7 @@ const routes = [
 
 const Title=()=>{
     return (
+      <>
         <div>
             <Top/>
             <Switch>
@@ -38,6 +49,17 @@ const Title=()=>{
                 {/* 이거 쫌짜증남 살짝 이해가 안감 */}
             </Switch>
         </div>
+        {/* <div>
+        <Grid  spacing={0} className='mainView' >
+            <Grid item xs={12} md={3}>
+                <Menu/>
+            </Grid>
+            <Grid item xs={12} md={9}>
+                <MenuTitle/>
+            </Grid>
+        </Grid> 
+        </div> */}
+        </>
     )
 }
  

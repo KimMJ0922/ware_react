@@ -7,7 +7,7 @@ const MenuTitle=({match})=>{
         console.log(match);
     });
     return(
-        <div>
+        <div className='mainMenuDetail'>
             <Switch>
             <Route exact path="/home/default" component={Default}/>
             

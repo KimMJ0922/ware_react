@@ -15,7 +15,7 @@ const Top=()=>{
             
             <Grid container spacing={0}>
                 <Grid item xs={12} md={2}>
-                <div className='topMenu'><Link exact to="/home" className=' topMenuListLogo' >Ware.gg</Link></div>
+                <div className='topMenu'><Link exact to="/home/default" className=' topMenuListLogo' >Ware.gg</Link></div>
                 </Grid>
                 <Grid item xs={6} md={1}>
                 <div className='topMenu'><NavLink exact to="/create" className='topMenuList'><Create/> 만들기</NavLink></div>
