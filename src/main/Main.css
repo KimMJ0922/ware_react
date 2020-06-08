@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+
 html::-webkit-scrollbar {
   display: none;
 }
@@ -58,7 +61,16 @@ footer {
 .ment{
   height: 1vh;
   top: 45vh;
+  font-size: 30pt;
   position: fixed;
+  font-family: 'Hi Melody', cursive;
+}
+.logo{
+  height: 1vh;
+  font-size: 45pt;
+  top: 35vh;
+  position: fixed;
+  font-family: 'Black Han Sans', sans-serif;
 }
 
 .wrapper {

@@ -219,6 +219,18 @@ const Main = () => {
             { yPercent: -100, opacity:0, ease: Linear.easeNone },
             "+=1"
         );
+        tl.to(
+          ".logo",
+          1,
+          { yPercent: -100, opacity:0, ease: Linear.easeNone },
+          "+=1"
+        );
+        tl.to(
+          "#pinMaster",
+          1,
+          { opacity:0, ease: Linear.easeOut },
+          "+=1"
+        );
         const sc = new ScrollMagic.Scene({
           triggerElement: "#pinMaster",
           triggerHook: "onLeave",
@@ -256,23 +268,24 @@ const Main = () => {
     }
     return (
       <div className="main" >
+        <button type="button" onClick={moveTop} style={{display:"scroll",position:"fixed",bottom:"10px",right:"10px"}}>맨 위로</button>
         <div id="pinMaster">
             <div id="pinContainer">
               <div className="wrapper" id="js-wrapper">
                 <div className="cube" onWheel={onWheel} ref={mount}>
                   <section className="section">
-                    <span className="ment" id="ment0">Ware.gg<br/>Scroll -></span>
+                    <span className="logo">Ware.gg</span>
+                    <span className="ment" id="ment0">Scroll -></span>
                     <span className="ment" id="ment1">나만의 암기법을 공유하세요!</span>
                     <span className="ment" id="ment2">나만의 학습세트를 만들어보세요!</span>
                     <span className="ment" id="ment3">외우려고 노력하지 않아도 암기를 도와드립니다!</span>
                   </section>
-                  <button type="button" onClick={moveTop} style={{display:"scroll",position:"fixed",bottom:"10px",right:"10px"}}>맨 위로</button> 
                 </div>
               </div>
             </div>
-            <section className="spacer">Content</section>
-            <footer>Footer</footer>
         </div>
+        <section className="spacer">Content</section>
+        <footer>Footer</footer>
       </div>
     );
 };
