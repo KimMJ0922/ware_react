@@ -1,0 +1,13 @@
+.mainView{
+    margin: 0 auto;
+    width: 1300px;
+    display: flex;
+    height: auto;
+    background-color: blueviolet;
+    text-decoration: none;
+}
+.mainMenuList>ul>li>{
+    list-style: none;
+    height: 100px;
+    text-decoration: none;
+}
