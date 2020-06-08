@@ -1,0 +1,42 @@
+/*Set.js*/
+.sq_body div{
+    box-shadow: none;
+    background: none;
+    background-color: beige;
+    padding: 0;
+    margin: 0;
+}
+.sq_proimg{
+    margin-left: 30px;
+    width:140px;
+    height:140px;
+    border-radius:100%;
+}
+.sq_id{
+    font-size: 2.375rem;
+    font-weight: bold;
+    margin-left: 40px;
+}
+.sq_btn{
+width: 120px;
+height:40px;
+border:none;
+background: none;
+}
+
+.sq_btn:nth-child(1){
+    margin-left:20px;
+}
+
+.sq_btn:hover{
+   color: aqua;
+
+    }
+
+.sq_btn:active{
+    background-color: aquamarine;
+}
+
+.sq_btn:focus{
+    background-color: rgb(5, 19, 14);
+}
