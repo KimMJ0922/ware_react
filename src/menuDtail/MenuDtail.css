@@ -1,4 +1,8 @@
 /*Set.js*/
+/*
+지정:nth-child(1){순번 결정하기
+}
+*/
 .sq_body div{
     box-shadow: none;
     background: none;
@@ -17,6 +21,7 @@
     font-weight: bold;
     margin-left: 40px;
 }
+
 .sq_btn{
 width: 120px;
 height:40px;
@@ -24,14 +29,9 @@ border:none;
 background: none;
 }
 
-.sq_btn:nth-child(1){
-    margin-left:20px;
-}
-
 .sq_btn:hover{
    color: aqua;
-
-    }
+}
 
 .sq_btn:active{
     background-color: aquamarine;
@@ -40,3 +40,68 @@ background: none;
 .sq_btn:focus{
     background-color: rgb(5, 19, 14);
 }
+
+.sq_btn_box{
+    border-radius:7px;
+    width:360px;
+}
+
+.sq_content_off{
+ width: 100%;
+ text-align: center;
+}
+
+.sq_content_font1_off{
+    font-size: 30px;
+    display: block;
+    margin-bottom: 30px;   
+    margin-top: 30px;
+}
+
+.sq_content_font2_off{
+    font-size: 15px;
+    display: block;   
+    margin-bottom: 15px;
+}
+
+.sq_content_btn_off{
+    width: 140px;
+    height: 50px;
+    background-color: none;
+    border-radius: 5px;
+}
+
+.sq_timeset{
+    display: flex;
+	flex-basis: 100%;
+}
+
+.sq_timeset::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+    margin-top:10px ;
+    margin-left: 10px;
+}
+
+.sq_on_cnt{
+    width: 90%;
+    height:100px;
+}
+
+.sq_on_txt1{
+    font-size:14px;
+    display: flex;
+}
+    
+.sq_on_txt2{
+    display: flex;
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
