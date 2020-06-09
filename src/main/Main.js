@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import MainTop from '../top/MainTop';
 import { TimelineMax, TweenMax, Linear } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
@@ -269,10 +268,6 @@ const Main = () => {
       renderer.setSize( window.innerWidth, window.innerHeight );
 
       renderer.render();
-
-    }
-
-    const moveTop=()=>{
 
     }
     return (
