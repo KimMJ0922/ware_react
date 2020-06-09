@@ -15,7 +15,7 @@ const Top=()=>{
             
             <Grid container spacing={0}>
                 <Grid item xs={12} md={2}>
-                <div className='topMenu'><Link exact to="/home/default" className=' topMenuListLogo' >Ware.gg</Link></div>
+                <div className='topMenu'><Link exact to="/home/default" className=' topMenuListLogo' >Ware.gggg</Link></div>
                 </Grid>
                 <Grid item xs={6} md={1}>
                     <div className='topMenu'>

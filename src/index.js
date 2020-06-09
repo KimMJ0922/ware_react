@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Root from './Root'
 import * as serviceWorker from './serviceWorker';
+import Main from './main/Main';
+import MainTop from './top/MainTop';
 
 ReactDOM.render(
   <React.StrictMode>
-   <Root/>
+
+    {/* <MainTop style={{position:'fixed', backgroundColor:'#fff'}}/>
+    <Main/> */}
+    <Root/>
   </React.StrictMode>,
   document.getElementById('root')
 );
