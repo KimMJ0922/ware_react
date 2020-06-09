@@ -2,7 +2,7 @@ import React from 'react';
 const Guild=()=>{
     return(
         <div>
-            길드ㅎㅇ   ㅁㄴㅇㅁ
+            길드ㅎㅇㅁㄴㅇㅁ
         </div>
     )
 }
