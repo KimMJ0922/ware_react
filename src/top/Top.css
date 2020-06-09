@@ -9,7 +9,16 @@
     background-color: #c29fcb;
 }
 
-.topMenu> .topMenuList{
+#topMainFirst{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+#topMainFirst>.topMenuFirst{
+    background-color: rgba(255,255,255,0);
+}
+
+.topMenuFirst,.topMenu> .topMenuList{
     line-height: 6rem;
     height: 100px;
     text-align: center;

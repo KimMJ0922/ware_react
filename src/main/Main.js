@@ -13,6 +13,7 @@ import img7 from '../image/7.gif';
 import img9 from '../image/9.gif';
 //import img10 from '../image/10.gif';
 import './Main.css';
+import { GpsFixed } from "@material-ui/icons";
 
 const Main = () => {
   /*three애니메이션*/
@@ -166,7 +167,7 @@ const Main = () => {
   };
     
     useEffect(() => {
-
+        
         /*three애니메이션*/
         mount.current.appendChild(renderer.domElement);
         animate();
@@ -231,6 +232,13 @@ const Main = () => {
           { opacity:0, ease: Linear.easeOut },
           "+=1"
         );
+        tl.fromTo(
+          ".Container",
+          1,
+          { yPercent: 0, opacity:0 },
+          { opacity:1, position:"fixed", ease: Linear.easeNone },
+          "+=1"
+        );
         const sc = new ScrollMagic.Scene({
           triggerElement: "#pinMaster",
           triggerHook: "onLeave",
@@ -284,8 +292,9 @@ const Main = () => {
               </div>
             </div>
         </div>
-        <section className="spacer">Content</section>
-        <footer>Footer</footer>
+        <div className="Container">
+          enter the email
+        </div>
       </div>
     );
 };
