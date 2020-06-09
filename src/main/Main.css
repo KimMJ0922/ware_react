@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+
 html::-webkit-scrollbar {
-  display: none;
+  /*display: none;*/
 }
 
 .cube{
@@ -10,7 +13,6 @@ html::-webkit-scrollbar {
 #pinContainer {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   position: relative;
 }
 
@@ -58,7 +60,16 @@ footer {
 .ment{
   height: 1vh;
   top: 45vh;
+  font-size: 30pt;
   position: fixed;
+  font-family: 'Hi Melody', cursive;
+}
+.logo{
+  height: 1vh;
+  font-size: 45pt;
+  top: 35vh;
+  position: fixed;
+  font-family: 'Black Han Sans', sans-serif;
 }
 
 .wrapper {
@@ -79,4 +90,11 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.Container {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  background-color: #38ced7;
 }

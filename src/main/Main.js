@@ -10,10 +10,11 @@ import img4 from '../image/4.gif';
 import img5 from '../image/5.gif';
 import img6 from '../image/6.gif';
 import img7 from '../image/7.gif';
-import img8 from '../image/8.gif';
+//import img8 from '../image/8.gif';
 import img9 from '../image/9.gif';
-import img10 from '../image/10.gif';
+//import img10 from '../image/10.gif';
 import './Main.css';
+import { GpsFixed } from "@material-ui/icons";
 
 const Main = () => {
   /*three애니메이션*/
@@ -135,20 +136,6 @@ const Main = () => {
   parent_obj.add(mesh);
 
   // squares8
-  /*var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img8),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(-8,8,20);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);*/
-
-  // squares9
   var square_geom = new THREE.PlaneGeometry(10, 6);
   var square_material = new THREE.MeshBasicMaterial({
     map: loader.load(img9),
@@ -161,20 +148,6 @@ const Main = () => {
   // rotate square to face target
   mesh.lookAt(sphere.position);
   parent_obj.add(mesh);
-
-  /*// squares10
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img10),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(-8,13,-25);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);*/
   
   scene.add(parent_obj);
       
@@ -195,7 +168,7 @@ const Main = () => {
   };
     
     useEffect(() => {
-
+        
         /*three애니메이션*/
         mount.current.appendChild(renderer.domElement);
         animate();
@@ -248,6 +221,25 @@ const Main = () => {
             { yPercent: -100, opacity:0, ease: Linear.easeNone },
             "+=1"
         );
+        tl.to(
+          ".logo",
+          1,
+          { yPercent: -100, opacity:0, ease: Linear.easeNone },
+          "+=1"
+        );
+        tl.to(
+          "#pinMaster",
+          1,
+          { opacity:0, ease: Linear.easeOut },
+          "+=1"
+        );
+        tl.fromTo(
+          ".Container",
+          1,
+          { yPercent: 0, opacity:0 },
+          { opacity:1, position:"fixed", ease: Linear.easeNone },
+          "+=1"
+        );
         const sc = new ScrollMagic.Scene({
           triggerElement: "#pinMaster",
           triggerHook: "onLeave",
@@ -279,15 +271,19 @@ const Main = () => {
       renderer.render();
 
     }
+
+    const moveTop=()=>{
+
+    }
     return (
       <div className="main">
-        <MainTop/>
         <div id="pinMaster">
             <div id="pinContainer">
               <div className="wrapper" id="js-wrapper">
                 <div className="cube" onWheel={onWheel} ref={mount}>
                   <section className="section">
-                    <span className="ment" id="ment0">Ware.gg<br/>Scroll -></span>
+                    <span className="logo">Ware.gg</span>
+                    <span className="ment" id="ment0">Scroll -></span>
                     <span className="ment" id="ment1">나만의 암기법을 공유하세요!</span>
                     <span className="ment" id="ment2">나만의 학습세트를 만들어보세요!</span>
                     <span className="ment" id="ment3">외우려고 노력하지 않아도 암기를 도와드립니다!</span>
@@ -295,8 +291,9 @@ const Main = () => {
                 </div>
               </div>
             </div>
-            <section className="spacer">Content</section>
-            <footer>Footer</footer>
+        </div>
+        <div className="Container">
+          enter the email
         </div>
       </div>
     );

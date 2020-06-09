@@ -8,15 +8,17 @@
     height: 100px;
     background-color: #c29fcb;
 }
-.topMainfirst{
+
+#topMainFirst{
     position: fixed;
     z-index: 1000;
     width: 100%;
 }
-.topMainfirst>.topMenu{
+#topMainFirst>.topMenuFirst{
     background-color: rgba(255,255,255,0);
 }
-.topMenu> .topMenuList{
+
+.topMenuFirst,.topMenu> .topMenuList{
     line-height: 6rem;
     height: 100px;
     text-align: center;
