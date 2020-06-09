@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { TimelineMax, TweenMax, Linear } from "gsap/all";
+import { TimelineMax, Linear } from "gsap/all";
+import { gsap } from "gsap";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
 import img1 from '../image/1.gif';
@@ -13,11 +14,11 @@ import img7 from '../image/7.gif';
 import img9 from '../image/9.gif';
 //import img10 from '../image/10.gif';
 import './Main.css';
-import { GpsFixed } from "@material-ui/icons";
 
 const Main = () => {
   /*three애니메이션*/
   const mount = useRef(null);
+  const ment1 = useRef(null);
   var scene = new THREE.Scene();
   scene.background = new THREE.Color( 0xffffff );
   var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
@@ -166,132 +167,152 @@ const Main = () => {
       renderer.render(scene, camera);
   };
     
-    useEffect(() => {
-        
-        /*three애니메이션*/
-        mount.current.appendChild(renderer.domElement);
-        animate();
+  useEffect(() => {
+      
+    /*three애니메이션*/
+    mount.current.appendChild(renderer.domElement);
+    animate();
 
-        var controller = new ScrollMagic.Controller();
-        var tl = new TimelineMax();
-        tl.fromTo(
-          "#ment0",
-          1,
-          { yPercent: 0, opacity:1 },
-          { yPercent: -100, opacity:0, ease: Linear.easeNone },
-          "+=1"
-        );
-        tl.fromTo(
-          "#ment1",
-          1,
-          { yPercent: 100, opacity:0 },
-          { yPercent: 0, opacity:1, ease: Linear.easeNone },
-          "+=1"
-        );
-        tl.to(
-            "#ment1",
-            1,
-            { yPercent: -100, opacity:0, ease: Linear.easeNone },
-            "+=1"
-        );
-        tl.fromTo(
-          "#ment2",
-          1,
-          { yPercent: 100, opacity:0 },
-          { yPercent: 0, opacity:1, ease: Linear.easeNone },
-          "+=1"
-        );
-        tl.to(
-            "#ment2",
-            1,
-            { yPercent: -100, opacity:0, ease: Linear.easeNone },
-            "+=1"
-        );
-        tl.fromTo(
-            "#ment3",
-            1,
-            { yPercent: 100, opacity:0 },
-            { yPercent: 0, opacity:1, ease: Linear.easeNone },
-            "+=1"
-        );
-        tl.to(
-            "#ment3",
-            1,
-            { yPercent: -100, opacity:0, ease: Linear.easeNone },
-            "+=1"
-        );
-        tl.to(
-          ".logo",
-          1,
-          { yPercent: -100, opacity:0, ease: Linear.easeNone },
-          "+=1"
-        );
-        tl.to(
-          "#pinMaster",
-          1,
-          { opacity:0, ease: Linear.easeOut },
-          "+=1"
-        );
-        tl.fromTo(
-          ".Container",
-          1,
-          { yPercent: 0, opacity:0 },
-          { opacity:1, position:"fixed", ease: Linear.easeNone },
-          "+=1"
-        );
-        const sc = new ScrollMagic.Scene({
-          triggerElement: "#pinMaster",
-          triggerHook: "onLeave",
-          duration: "700%"
-        });
-        sc.setPin("#pinMaster")
-          .setTween(tl)
-          .addTo(controller);
+    var ment_1 = ment1.current.innerText;
+    var controller = new ScrollMagic.Controller();
+    var tl = new TimelineMax();
+    tl.fromTo(
+      "#ment0",
+      1,
+      { yPercent: 0, opacity:1 },
+      { yPercent: -100, opacity:0, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.fromTo(
+      "#ment1",
+      1,
+      { yPercent: 100, opacity:0 },
+      { yPercent: 0, opacity:1, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.to(
+        "#ment1",
+        1,
+        { yPercent: -100, opacity:0, ease: Linear.easeNone },
+        "+=1"
+    );
+    tl.fromTo(
+      "#ment2",
+      1,
+      { yPercent: 100, opacity:0 },
+      { yPercent: 0, opacity:1, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.to(
+        "#ment2",
+        1,
+        { yPercent: -100, opacity:0, ease: Linear.easeNone },
+        "+=1"
+    );
+    tl.fromTo(
+        "#ment3",
+        1,
+        { yPercent: 100, opacity:0 },
+        { yPercent: 0, opacity:1, ease: Linear.easeNone },
+        "+=1"
+    );
+    tl.to(
+        "#ment3",
+        1,
+        { yPercent: -100, opacity:0, ease: Linear.easeNone },
+        "+=1"
+    );
+    tl.to(
+      ".logo",
+      1,
+      { yPercent: -100, opacity:0, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.to(
+      "#pinContainer",
+      1,
+      { opacity:0, ease: Linear.easeOut },
+      "+=1"
+    );
+    tl.fromTo(
+      ".Container",
+      1,
+      { opacity:0 },
+      { opacity:1, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.fromTo(
+      ".FloatContainer",
+      1,
+      { yPercent: 100, opacity:0 },
+      { yPercent: -20, opacity:1, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.fromTo(
+      ".FloatForm",
+      1,
+      { yPercent: 100, opacity:0 },
+      { yPercent: 0, opacity:1, ease: Linear.easeNone },
+      "+=1"
+    );
+    const sc = new ScrollMagic.Scene({
+      triggerElement: "#pinMaster",
+      triggerHook: "onLeave",
+      duration: "700%"
+    });
+    sc.setPin("#pinMaster").setTween(tl).addTo(controller);
 
-          window.addEventListener('resize', onResize);
+    window.addEventListener('resize', onResize);
 
-          // clean up function
-          return () => {
-            // remove resize listener
-            window.removeEventListener('resize', onResize);
-          }
-    }, []);
-    const onWheel=(e)=> {
-      cancelAnimationFrame(animate);
-      update(e.deltaY);
-    };
-
-    const onResize=()=> {
-
-      camera.aspect = window.innerWidth / window.innerHeight;
-
-      renderer.setSize( window.innerWidth, window.innerHeight );
-
-      renderer.render();
-
+    // clean up function
+    return () => {
+      // remove resize listener
+      window.removeEventListener('resize', onResize);
     }
-    return (
-      <div className="main">
-        <div id="pinMaster">
-            <div id="pinContainer">
-              <div className="wrapper" id="js-wrapper">
-                <div className="cube" onWheel={onWheel} ref={mount}>
-                  <section className="section">
-                    <span className="logo">Ware.gg</span>
-                    <span className="ment" id="ment0">Scroll -></span>
-                    <span className="ment" id="ment1">나만의 암기법을 공유하세요!</span>
-                    <span className="ment" id="ment2">나만의 학습세트를 만들어보세요!</span>
-                    <span className="ment" id="ment3">외우려고 노력하지 않아도 암기를 도와드립니다!</span>
-                  </section>
-                </div>
-              </div>
+  }, []);
+  const onWheel=(e)=> {
+    cancelAnimationFrame(animate);
+    update(e.deltaY);
+  };
+
+  const onResize=()=> {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    renderer.render();
+
+  }
+  return (
+    <div className="main">
+      <div id="pinMaster">
+        <div id="pinContainer">
+          <div className="wrapper" id="js-wrapper">
+            <div className="cube" onWheel={onWheel} ref={mount}>
+              <section className="section">
+                <span className="logo">Ware.gg</span>
+                <span className="ment" id="ment0">Scroll -></span>
+                <span className="ment" id="ment1" ref={ment1}>나만의 암기법을 공유하세요!</span>
+                <span className="ment" id="ment2">나만의 학습세트를 만들어보세요!</span>
+                <span className="ment" id="ment3">외우려고 노력하지 않아도 암기를 도와드립니다!</span>
+              </section>
             </div>
+          </div>
         </div>
         <div className="Container">
-          enter the email
+          <div className="FloatContainer"></div>
+          <div className="FloatForm">
+            <span className="Formment">지금 바로 회원가입 하세요!</span>
+            <span className="Formment">Ware.gg를 사용하는 학생의 90%가 높은 점수를 받았다고 합니다.</span>
+          </div>
+        </div>
+        <div className="content">
+          content
         </div>
       </div>
-    );
+    </div>
+  );
 };
   
   export default Main;
