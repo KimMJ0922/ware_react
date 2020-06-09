@@ -32,7 +32,6 @@ const CreateCardSet = () => {
     const changeComment = (e) => {
         setComment(e.target.value)
     }
-
     
     // 추가
     const addRow = () => {
