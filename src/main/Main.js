@@ -308,7 +308,7 @@ const Main = () => {
           </div>
         </div>
         <div className="content">
-          content
+          contentasdsd
         </div>
       </div>
     </div>
