@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { TimelineMax, Linear } from "gsap/all";
-import { gsap } from "gsap";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
+
+import Content from './Content';
+
 import img1 from '../image/1.gif';
 import img2 from '../image/2.gif';
 import img3 from '../image/3.gif';
@@ -13,7 +15,13 @@ import img7 from '../image/7.gif';
 //import img8 from '../image/8.gif';
 import img9 from '../image/9.gif';
 //import img10 from '../image/10.gif';
+
 import './Main.css';
+
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 
 const Main = () => {
   /*three애니메이션*/
@@ -284,6 +292,21 @@ const Main = () => {
     renderer.render();
 
   }
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(2),
+        width: '45ch',
+      },
+    },
+    button: {
+      margin: theme.spacing(2),
+      width: '15ch',
+      height: '7ch',
+    },
+  }));
+  const classes = useStyles();
   return (
     <div className="main">
       <div id="pinMaster">
@@ -305,11 +328,14 @@ const Main = () => {
           <div className="FloatForm">
             <span className="Formment">지금 바로 회원가입 하세요!</span>
             <span className="Formment">Ware.gg를 사용하는 학생의 90%가 높은 점수를 받았다고 합니다.</span>
+            <form className={classes.root} noValidate autoComplete="off">
+              <TextField id="standard-basic" label="이메일" variant="outlined"/>
+              <TextField id="standard-basic" label="전화번호" variant="outlined"/>
+              <Button variant="contained" color="primary" className={classes.button}>시작하기</Button>
+            </form>
           </div>
         </div>
-        <div className="content">
-          contentasdsd
-        </div>
+        <Content />
       </div>
     </div>
   );
