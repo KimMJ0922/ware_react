@@ -123,13 +123,17 @@ footer {
   font-size: 25pt;
   font-family: 'Hi Melody', cursive;
 }
-.content{
-  height: 100vh;
+#content{
+  height: 400vh;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   font-size: 50pt;
   font-weight: bold;
-  background-color: chartreuse;
+}
+
+.trigger0{
+  width: 30vh;
+  height: 30vh;
+  border: 2px solid black;
 }

@@ -1,9 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { TimelineMax, Linear } from "gsap/all";
+import { TimelineMax, Linear, TimelineLite } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
-
-import Content from './Content';
 
 import img1 from '../image/1.gif';
 import img2 from '../image/2.gif';
@@ -263,12 +261,24 @@ const Main = () => {
       { yPercent: 0, opacity:1, ease: Linear.easeNone },
       "+=1"
     );
-    const sc = new ScrollMagic.Scene({
+    let sc = new ScrollMagic.Scene({
       triggerElement: "#pinMaster",
-      triggerHook: "onLeave",
+      triggerHook: 0,
       duration: "700%"
     });
     sc.setPin("#pinMaster").setTween(tl).addTo(controller);
+
+    let t2 =  new TimelineLite();
+
+    t2
+    .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=0.5")
+
+    let contentScene = new ScrollMagic.Scene({
+        triggerElement: '#content',
+        triggerHook: 0.3,
+        duration: "400%"
+    })
+    contentScene.setPin(".trigger0").setTween(t2).addTo(controller);
 
     window.addEventListener('resize', onResize);
 
@@ -335,7 +345,9 @@ const Main = () => {
             </form>
           </div>
         </div>
-        <Content />
+      </div>
+      <div id="content">
+        <div className="trigger0"></div>
       </div>
     </div>
   );
