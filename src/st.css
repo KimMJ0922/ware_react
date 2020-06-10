@@ -1,12 +1,11 @@
 @media(min-width: 551px){
-.a1{
-    height: 10em;
-    border-radius: 100%;
-    background-color: blue;
-}}
+
+}
 
 @media(max-width: 550px){
-.a1{
-    height: 15em;
-    background-color:red;
-}}
+
+}
+
+@media(max-width: 375px){
+
+}

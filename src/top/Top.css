@@ -4,89 +4,306 @@
 @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean'); 
  
-.topMain>.topMenu{
-    height: 100px;
-    background-color: #c29fcb;
-}
-.topMenu> .topMenuList{
-    line-height: 6rem;
-    height: 100px;
-    text-align: center;
-    display: inherit;
-    color: #000;
-    text-decoration: none;
-  
-}
-.topMenu> .topMenuList>span{
-    color: #2d3639;
-    display: inline-block;
-    padding: .625rem .75rem;
-    font-weight: 600;
-    font-size: .875rem;
-    line-height: 1.285714285714286;
-    transition: all .12s cubic-bezier(.47,0,.745,.715);
-}
-.topMenu> .topMenuList>span>div{
-    font-size: 1.4rem;
-    display: inline-block;
-    margin-left: 0.3rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: all .12s
-}
-.topMenu>.topMenuListAvtive>span{
-    background-color: #000000;
-    color: #fff;
-    font-size: 1.3em;
-}
-.topMenuListLogo{
-    font-size: 2.4em;
-    font-family: 'Black Han Sans', sans-serif;
-    line-height: 6rem;
-    height: 100px;
-    text-align: center;
-    display: inherit;
-    color: #000;
-    text-decoration: none;
+
+@media(min-width: 551px){
+    /* *{
+        transition: all 0.3s;
+    } */
+    #topMain{
+        height: 100px;
+        background-color: #c29fcb;
+    }
+    .topMenu> .topMenuList{
+        line-height: 7rem;
+        height: 100px;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+    }
+    #profilename{
+        color: #2d3639;
+        width: 100%;
+        height: 100px;
+        text-align: left;
+    }
+    .topMenu>.topMenuList>span{
+        color: #2d3639;
+        display: inline-block;
+        padding: .625rem .75rem;
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
+    }
+    .topMenu> .topMenuList>span>div{
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .12s
+    }
+    #profilename>.topMenuProfileImg{
+        width: 80px;
+        margin-left: 30px;
+        margin-top: 11px;
+        border-radius: 40px;
+    }
+    #profilename>span{
+        color: currentcolor;
+        max-width: 200px;
+        display: inline-block;
+        width: max-content;
+        position: relative;
+        top: -25px;
+        height: 99px;
+        font-weight: 600;
+        left: 9px;
+        font-size: 1.4em;
+    }
+    .topMenu>.topMenuListAvtive>span{
+        background-color: #000000;
+        color: #fff;
+        font-size: 1.3em;
+    }
+    .topMenuListLogo{
+        font-size: 2.4rem;
+        font-family: 'Black Han Sans', sans-serif;
+        line-height: 6rem;
+        height: 100px;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+    }
+    
+    
+    #topMainFirst{
+        position: fixed;
+        z-index: 1000;
+        width: 100%;
+    }
+    #topMainFirst>.topMenuFirst{
+        background-color: rgba(255,255,255,0);
+    }
+    .topMenuFirst>.topMenuList{
+        line-height: 6rem;
+        height: 100px;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+      
+    }
+    .topMenuFirst>.topMenuList>span{
+        color: #2d3639;
+        display: inline-block;
+        padding: .625rem .75rem;
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
+    }
+    .topMenuFirst>.topMenuList>span>div{
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .12s
+    }
+    .topMenuFirst>.topMenuListAvtive>span{
+        background-color: #000000;
+        color: #fff;
+        font-size: 1.3em;
+    }
+    .topMenuList>span>div>.topMenuProfileImg{
+        width: 75px;
+        border-radius: 35px;
+    }
+   
 }
 
+@media(max-width: 550px){
+    #topMain{
+        height: 70px;
+        background-color: #c29fcb;
+    }
+    .topMenu> .topMenuList{
+        line-height: 5rem;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+      
+    }
+    .topMenu> .topMenuList>span{
+        color: #2d3639;
+        display: inline-block;
+        /* padding: .625rem .75rem; */
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
+    }
+    .topMenu> .topMenuList>span>div{
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .12s
+    }
+    .topMenu>.topMenuListAvtive>span{
+        background-color: #000000;
+        color: #fff;
+        font-size: 1.3em;
+    }
+    .topMenuListLogo{
+        font-size: 1.4rem;
+        font-family: 'Black Han Sans', sans-serif;
+        line-height: 4.4rem;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+    }
+    
+    
+    #topMainFirst{
+        position: fixed;
+        z-index: 1000;
+        width: 100%;
+    }
+    #topMainFirst>.topMenuFirst{
+        background-color: rgba(255,255,255,0);
+    }
+    .topMenuFirst>.topMenuList{
+        line-height: 6rem;
+        height: 100px;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+      
+    }
+    .topMenuFirst>.topMenuList>span{
+        color: #2d3639;
+        display: inline-block;
+        padding: .625rem .75rem;
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
+    }
+    .topMenuFirst>.topMenuList>span>div{
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .12s
+    }
+    .topMenuFirst>.topMenuListAvtive>span{
+        background-color: #000000;
+        color: #fff;
+        font-size: 1.3em;
+    }
+    .topMenuList>span>div>.topMenuProfileImg{
+        width: 33.6px;
+        margin-top: 0.9rem;
+        border-radius: 40px;
+    }
 
-#topMainFirst{
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
 }
-#topMainFirst>.topMenuFirst{
-    background-color: rgba(255,255,255,0);
+
+@media(max-width: 375px){
+    #topMain{
+        height: 60px;
+        background-color: #c29fcb;
+    }
+    .topMenu> .topMenuList{
+        line-height: 4.5rem;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+    }  
+    .topMenu> .topMenuList>span{
+        color: #2d3639;
+        display: inline-block;
+        /* padding: .625rem .75rem; */
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
+    }
+    .topMenu> .topMenuList>span>div{
+        font-size: 1.4rem;
+        display: inline-block;
+        /* margin-left: 0.3rem; */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .12s
+    }
+    .topMenu>.topMenuListAvtive>span{
+        background-color: #000000;
+        color: #fff;
+        font-size: 1.3em;
+    }
+    .topMenuListLogo{
+        height: 60px;
+        font-size: 1rem;
+        font-family: 'Black Han Sans', sans-serif;
+        text-align: center;
+        line-height: 3.8rem;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+    }
+    #topMainFirst{
+        position: fixed;
+        z-index: 1000;
+        width: 100%;
+    }
+    #topMainFirst>.topMenuFirst{
+        background-color: rgba(255,255,255,0);
+    }
+    .topMenuFirst>.topMenuList{
+        line-height: 6rem;
+        text-align: center;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+      
+    }
+    .topMenuFirst>.topMenuList>span{
+        color: #2d3639;
+        display: inline-block;
+        padding: .625rem .75rem;
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
+    }
+    .topMenuFirst>.topMenuList>span>div{
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .12s
+    }
+    .topMenuFirst>.topMenuListAvtive>span{
+        background-color: #000000;
+        color: #fff;
+        font-size: 1.3em;
+    }
+    .topMenuList>span>div>.topMenuProfileImg{
+        width: 33.6px;
+        margin-top: 0.9rem;
+        border-radius: 40px;
+    }
 }
-.topMenuFirst>.topMenuList{
-    line-height: 6rem;
-    height: 100px;
-    text-align: center;
-    display: inherit;
-    color: #000;
-    text-decoration: none;
-  
-}
-.topMenuFirst>.topMenuList>span{
-    color: #2d3639;
-    display: inline-block;
-    padding: .625rem .75rem;
-    font-weight: 600;
-    font-size: .875rem;
-    line-height: 1.285714285714286;
-    transition: all .12s cubic-bezier(.47,0,.745,.715);
-}
-.topMenuFirst>.topMenuList>span>div{
-    font-size: 1.4rem;
-    display: inline-block;
-    margin-left: 0.3rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: all .12s
-}
-.topMenuFirst>.topMenuListAvtive>span{
-    background-color: #000000;
-    color: #fff;
-    font-size: 1.3em;
-}
+

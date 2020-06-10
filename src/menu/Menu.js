@@ -2,8 +2,10 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {Home, Dashboard, Face, Settings, AllInbox, Folder, Class} from '@material-ui/icons'
 import './menu.css';
+
 const Menu=()=>{
     return (
+        
         <div className='mainMenuList'>
             <div>
                 <NavLink exact to="/home/default" className='mainMenuListItem' activeClassName='mainMenuListActive'>
@@ -63,6 +65,7 @@ const Menu=()=>{
                 </NavLink>
             </div>
         </div>
+        
     )
 }
  
