@@ -124,7 +124,7 @@ footer {
   font-family: 'Hi Melody', cursive;
 }
 #content{
-  height: 400vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -135,5 +135,13 @@ footer {
 .trigger0{
   width: 30vh;
   height: 30vh;
+  border: 2px solid black;
+}
+
+.Sumimage{
+  width: 80vh;
+  height: 20vh;
+  position: fixed;
+  top: 35vh;
   border: 2px solid black;
 }

@@ -10,9 +10,10 @@ import img4 from '../image/4.gif';
 import img5 from '../image/5.gif';
 import img6 from '../image/6.gif';
 import img7 from '../image/7.gif';
-//import img8 from '../image/8.gif';
-import img9 from '../image/9.gif';
-//import img10 from '../image/10.gif';
+import img8 from '../image/8.gif';
+
+import img9 from '../image/1.JPG';
+import img10 from '../image/2.JPG';
 
 import './Main.css';
 
@@ -144,7 +145,7 @@ const Main = () => {
   // squares8
   var square_geom = new THREE.PlaneGeometry(10, 6);
   var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img9),
+    map: loader.load(img8),
     side: THREE.DoubleSide,
     transparent: true
   });
@@ -271,8 +272,27 @@ const Main = () => {
     let t2 =  new TimelineLite();
 
     t2
-    .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=0.5")
+    .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=1");
 
+    t2
+    .fromTo(".n1", 1, { xPercent:100, opacity:0 }, { xPercent:70, opacity:1, ease: Linear.easeOut },"+=1");
+    t2.to(".n1", 1, { xPercent:50, opacity:0, ease: Linear.easeOut },"+=1");
+    t2
+    .fromTo(".n2", 1, { xPercent:-100, opacity:0 }, { xPercent:-70, opacity:1, ease: Linear.easeOut },"+=1");
+    t2.to(".n2", 1, { xPercent:-50, opacity:0, ease: Linear.easeOut },"+=1");
+    t2
+    .fromTo(".n3", 1, { xPercent:100, opacity:0 }, { xPercent:70, opacity:1, ease: Linear.easeOut },"+=1");
+    t2.to(".n3", 1, { xPercent:50, opacity:0, ease: Linear.easeOut },"+=1");
+    t2
+    .fromTo(".n4", 1, { xPercent:-100, opacity:0 }, { xPercent:-70, opacity:1, ease: Linear.easeOut },"+=1");
+    t2.to(".n4", 1, { xPercent:-50, opacity:0, ease: Linear.easeOut },"+=1");
+    t2
+    .fromTo(".n5", 1, { xPercent:100, opacity:0 }, { xPercent:70, opacity:1, ease: Linear.easeOut },"+=1");
+    t2.to(".n5", 1, { xPercent:50, opacity:0, ease: Linear.easeOut },"+=1");
+    t2
+    .fromTo(".n6", 1, { xPercent:-100, opacity:0 }, { xPercent:-70, opacity:1, ease: Linear.easeOut },"+=1");
+    t2.to(".n6", 1, { xPercent:-50, opacity:0, ease: Linear.easeOut },"+=1");
+    
     let contentScene = new ScrollMagic.Scene({
         triggerElement: '#content',
         triggerHook: 0.3,
@@ -348,6 +368,12 @@ const Main = () => {
       </div>
       <div id="content">
         <div className="trigger0"></div>
+        <div className="Sumimage n1"></div>
+        <div className="Sumimage n2"></div>
+        <div className="Sumimage n3"></div>
+        <div className="Sumimage n4"></div>
+        <div className="Sumimage n5"></div>
+        <div className="Sumimage n6"></div>
       </div>
     </div>
   );
