@@ -1,12 +1,17 @@
-#board{
+a{
+    text-decoration: none;
+}
+
+.board{
     width: 100%;
-    height: 150vh;
+    height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     position: absolute;
     margin-top: 10px;
+    border: 1px solid black;
 }
 .BoardTop{
     width: 80%;
@@ -30,22 +35,6 @@
     width: 95%;
     height: 10%;
     border: 1px solid black;
-}
-
-.cardFront, .cardBack
-{
-  position:absolute;
-  width:250px;
-  height:400px;
-  background:url('https://s.cdpn.io/33073/lorempixel.jpg');
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-}
-.cardBack
-{
-  background:url('https://s.cdpn.io/33073/lorempixe1l.jpg');
 }
 
 .BoardBottom{
@@ -81,4 +70,14 @@
     width: 80%;
     height: 5%;
     border: 1px solid black;    
+}
+
+.InsertTitle{
+    width: 80%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    border: 1px solid black;
 }
