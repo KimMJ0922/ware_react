@@ -21,16 +21,66 @@
         color: #000;
         text-decoration: none;
     }
+    
+    .topMenu> .topMenuListSearch{
+        line-height: 7rem;
+        height: 100px;
+        text-align: left;
+        display: inherit;
+        color: #000;
+        text-decoration: none;
+    }
+    .topMenu>.topMenuListSearch>span{
+        color: #2d3639;
+        display: inline-block;
+        padding: .625rem .75rem;
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.285714285714286;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
+    }
+    .topMenu> .topMenuListSearch>span>div{
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .12s
+    }
+    .topMenuListSearch>span>div>input {
+        width: 100px;
+        font-size: 1.4rem;
+        position: absolute;
+        z-index: 10;
+        border: 0;
+        background-color: #c29fcb;
+        margin-bottom: -0.5em;
+        top: 36px;
+        cursor: pointer;
+        transition:  cubic-bezier(0.47, 0, 0.745, 0.715) 1s;
+    }
+    .topMenu> .topMenuListSearch>span>div>input::placeholder{
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color:#2d3639
+    }
+    .topMenuListSearch>span>div>input:hover{
+        width: 700px;
+        border: 1px solid gray;
+        
+    }
+    .topMenuListSearch>span>div>input:focus{
+        outline: none;
+    }
+    
     #profilename{
         color: #2d3639;
         width: 100%;
-        height: 100px;
+        margin-top: 20px;
         text-align: left;
-    }
-    .topMenuListSearchAvtive{
-        background-color: darkblue;
-        width: 900px;
-        transition: all 0.5s;
     }
     .topMenu>.topMenuList>span{
         color: #2d3639;
@@ -49,10 +99,35 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
+    .userLogout{
+        text-align: center;
+        text-decoration: none;
+        position: relative;
+        top: -28px;
+        left: 81px;
+        color: currentColor;
+        background-color: #c29fcb;
+        border: 1px solid #583961;
+        border-radius: 5px;
+        width: 83px;
+        display: inline-block;
+        transition: all 0.4s;
+    }
+    .userLogout:hover{
+        background-color: #583961;
+        border: 1px solid #583961;
+        border-radius: 10px;
+        color: #fff;
+    }
+    .topMenuFirst>.MainLogout>span{
+        text-decoration: none;
+        text-align: center;
+    }
+    
     #profilename>.topMenuProfileImg{
         width: 60px;
-        margin-left: 30px;
-        margin-top: 22px;
+        margin-left: 11px;
+        margin-top: 4px;
         border-radius: 40px;
     }
     #profilename>span{
@@ -61,17 +136,16 @@
         display: inline-block;
         width: max-content;
         position: relative;
-        top: -23px;
-        height: 99px;
+        top: -40px;
         font-weight: 600;
-        left: 11px;
+        left: 9px;
         font-size: 1.2em;
     }
-    .topMenu>.topMenuListAvtive>span{
+    /* .topMenu>.topMenuListAvtive>span{ */
         /* background-color: #000000;
         color: #fff;
         font-size: 1.3em; */
-    }
+    /* } */
     .topMenuListLogo{
         font-size: 2.4rem;
         font-family: 'Black Han Sans', sans-serif;
@@ -101,6 +175,14 @@
         text-decoration: none;
       
     }
+    .topMenuFirst>.loginController>span>.MainSign{
+        margin-top: 1.7em;
+        margin-left: 2.7em;
+        font-size: 1.2em;
+        text-decoration: none;
+        display: inline-block;
+        color: #000;
+    }
     .topMenuFirst>.topMenuList>span{
         color: #2d3639;
         display: inline-block;
@@ -118,14 +200,16 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    .topMenuFirst>.topMenuListAvtive>span{
+    /* .topMenuFirst>.topMenuListAvtive>span{ */
         /* background-color: #000000;
         color: #fff;
         font-size: 1.3em; */
-    }
-    .topMenuList>span>div>.topMenuProfileImg{
-        width: 75px;
-        border-radius: 35px;
+    /* } */
+      #profilename>.topMenuProfileImg{
+        width: 60px;
+        margin-left: 11px;
+        margin-top: 4px;
+        border-radius: 40px;
     }
    
 }
@@ -152,6 +236,14 @@
         line-height: 1.285714285714286;
         transition: all .12s cubic-bezier(.47,0,.745,.715);
     }
+    .topMenuFirst>.loginController>span>.MainSign {
+        margin-top: 0.6em;
+        margin-left: 1em;
+        font-size: 1em;
+        text-decoration: none;
+        display: inline-block;
+        color: #000;
+    }
     .topMenu> .topMenuList>span>div{
         font-size: 1.4rem;
         display: inline-block;
@@ -160,11 +252,11 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    .topMenu>.topMenuListAvtive>span{
+    /* .topMenu>.topMenuListAvtive>span{ */
         /* background-color: #000000;
         color: #fff;
         font-size: 1.3em; */
-    }
+    /* } */
     .topMenuListLogo{
         font-size: 1.4rem;
         font-family: 'Black Han Sans', sans-serif;
@@ -210,14 +302,15 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    .topMenuFirst>.topMenuListAvtive>span{
+    /* .topMenuFirst>.topMenuListAvtive>span{ */
         /* background-color: #000000;
         color: #fff;
         font-size: 1.3em; */
-    }
-    .topMenuList>span>div>.topMenuProfileImg{
-        width: 33.6px;
-        margin-top: 0.9rem;
+    /* } */
+    #profilename>.topMenuProfileImg{
+        margin-top: 1em;
+        width: 38px;
+        margin-left: 11px;
         border-radius: 40px;
     }
 
@@ -244,6 +337,14 @@
         line-height: 1.285714285714286;
         transition: all .12s cubic-bezier(.47,0,.745,.715);
     }
+    .topMenuFirst>.loginController>span>.MainSign {
+        margin-top: 0.5em;
+        font-size: 0.9em;
+        margin-left: 1em;
+        text-decoration: none;
+        display: inline-block;
+        color: #000;
+    }
     .topMenu> .topMenuList>span>div{
         font-size: 1.4rem;
         display: inline-block;
@@ -252,11 +353,11 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    .topMenu>.topMenuListAvtive>span{
+    /* .topMenu>.topMenuListAvtive>span{ */
         /* background-color: #000000;
         color: #fff;
         font-size: 1.3em; */
-    }
+    /* } */
     .topMenuListLogo{
         height: 60px;
         font-size: 1rem;
@@ -300,14 +401,15 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    .topMenuFirst>.topMenuListAvtive>span{
+    /* .topMenuFirst>.topMenuListAvtive>span{ */
         /* background-color: #000000;
         color: #fff;
         font-size: 1.3em; */
-    }
-    .topMenuList>span>div>.topMenuProfileImg{
-        width: 33.6px;
-        margin-top: 0.9rem;
+    /* } */
+    #profilename>.topMenuProfileImg{
+        width: 30px;
+        margin-left: 11px;
+        margin-top: 1em;
         border-radius: 40px;
     }
 }
