@@ -3,48 +3,62 @@
 지정:nth-child(1){순번 결정하기
 }
 */
+
+/* 세트 - media 일반 사이즈 */
+@media(min-width:501px){
+.sq_body{
+    width:100%;
+    font-size: 16px;
+}    
 .sq_body div{
     box-shadow: none;
     background: none;
-    background-color: beige;
-    padding: 0;
-    margin: 0;
+    background-color:white;
 }
-.sq_proimg{
+/* 공통부분 */
+.proimg{
     margin-left: 30px;
     width:140px;
     height:140px;
     border-radius:100%;
 }
-.sq_id{
+.id_box{
+    text-align: left;
+}
+.id{
     font-size: 2.375rem;
     font-weight: bold;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
-.sq_btn{
+.btn{
 width: 120px;
 height:40px;
 border:none;
 background: none;
+font-size: 0.9rem;
+
 }
 
-.sq_btn:hover{
+.btn:hover{
    color: aqua;
 }
 
-.sq_btn:active{
+.btn:active{
     background-color: aquamarine;
 }
 
-.sq_btn:focus{
+.btn:focus{
     background-color: rgb(5, 19, 14);
 }
 
-.sq_btn_box{
+.btn_box{
     border-radius:7px;
     width:360px;
+    margin-left: 30px;
 }
+
+/* 공통부분 끝 */
 
 .sq_content_off{
  width: 100%;
@@ -52,14 +66,14 @@ background: none;
 }
 
 .sq_content_font1_off{
-    font-size: 30px;
+    font-size: 1.975rem;
     display: block;
     margin-bottom: 30px;   
     margin-top: 30px;
 }
 
 .sq_content_font2_off{
-    font-size: 15px;
+    font-size: 0.975rem;
     display: block;   
     margin-bottom: 15px;
 }
@@ -69,6 +83,7 @@ background: none;
     height: 50px;
     background-color: none;
     border-radius: 5px;
+    font-size: 0.875rem;
 }
 
 .sq_timeset{
@@ -90,18 +105,336 @@ background: none;
 .sq_on_cnt{
     width: 90%;
     height:100px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
-
+.sq_on_cnt:hover{
+  
+}
 .sq_on_txt1{
-    font-size:14px;
+    font-size:0.825rem;
     display: flex;
 }
     
 .sq_on_txt2{
     display: flex;
     margin-top: 4px;
-    font-size: 20px;
+    font-size: 1.3erm;
     font-weight: 900;
 }
 
+}
 
+
+/* 세트 - media 웹 최소 사이즈 */
+@media(max-width:500px){
+    .sq_body{
+        width:500px;
+        font-size: 16px;
+    }
+    .sq_body div{    
+        box-shadow: none;
+        background: none;
+        background-color: beige;
+      
+        
+    }
+    .proimg{
+        margin-top: 10px;
+        margin-left: 10px;
+        width:100px;
+        height:100px;
+        border-radius:100%;
+    }
+    .id{
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-left: 1rem;
+      
+    }
+    
+    .btn{
+    width: 33%;
+    height:40px;
+    border:none;
+    background: none;
+    font-size: 0.745rem;
+    
+    }
+    
+    .btn:hover{
+       color: aqua;
+    }
+    
+    .btn:active{
+        background-color: aquamarine;
+    }
+    
+    .btn:focus{
+        background-color: rgb(5, 19, 14);
+    }
+    
+    .btn_box{
+        border-radius:7px;
+        width:200px;
+        margin-top: 1.2rem;
+    }
+    
+    .sq_content_off{
+     width: 100%;
+     text-align: center;
+    }
+    
+    .sq_content_font1_off{
+        font-size: 1.275rem;
+        display: block;
+        margin-bottom: 30px;   
+        margin-top: 30px;
+    }
+    
+    .sq_content_font2_off{
+        font-size: 0.875rem;
+        display: block;   
+        margin-bottom: 15px;
+    }
+    
+    .sq_content_btn_off{
+        width: 100px;
+        height: 50px;
+        background-color: none;
+        border-radius: 10px;
+        font-size: 0.725rem;
+    }
+    
+    .sq_timeset{
+        display: flex;
+        flex-basis: 100%;
+        font-size: 0.7rem;
+    }
+    
+    .sq_timeset::after {
+        content: "";
+        flex-grow: 1;
+        background: rgba(0, 0, 0, 0.35);
+        height: 1px;
+        font-size: 0px;
+        line-height: 0px;
+        margin-top:10px ;
+        margin-left: 10px;
+    }
+    
+    .sq_on_cnt{
+        width: 90%;
+        height:50px;
+        padding-left: 10px;
+        padding-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+    
+    .sq_on_txt1{
+        font-size:0.825rem;
+        display: flex;
+    }
+        
+    .sq_on_txt2{
+        display: flex;
+        margin-top: 4px;
+        font-size: 1.1erm;
+        font-weight: 900;
+    }
+}
+    
+
+/* 세트 - media 모바일 사이즈 */
+@media(max-width:375px){
+    .sq_body{
+        width:375px;
+        font-size: 16px;
+    }
+    .sq_body div{    
+        box-shadow: none;
+        background: none;
+        background-color: beige;    
+    }
+    .proimg{
+        margin-top: 10px;
+        margin-left: 10px;
+        width:100px;
+        height:100px;
+        border-radius:100%;
+    }
+    .id{
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-left: 1rem;
+      
+    }
+    
+    .btn{
+    width: 33%;
+    height:40px;
+    border:none;
+    background: none;
+    font-size: 0.745rem;
+    
+    }
+    
+    .btn:hover{
+       color: aqua;
+    }
+    
+    .btn:active{
+        background-color: aquamarine;
+    }
+    
+    .btn:focus{
+        background-color: rgb(5, 19, 14);
+    }
+    
+    .btn_box{
+        border-radius:7px;
+        width:200px;
+        margin-top: 1.2rem;
+    }
+    
+    .sq_content_off{
+     width: 100%;
+     text-align: center;
+    }
+    
+    .sq_content_font1_off{
+        font-size: 1.275rem;
+        display: block;
+        margin-bottom: 30px;   
+        margin-top: 30px;
+    }
+    
+    .sq_content_font2_off{
+        font-size: 0.875rem;
+        display: block;   
+        margin-bottom: 15px;
+    }
+    
+    .sq_content_btn_off{
+        width: 100px;
+        height: 50px;
+        background-color: none;
+        border-radius: 10px;
+        font-size: 0.725rem;
+    }
+    
+    .sq_timeset{
+        display: flex;
+        flex-basis: 100%;
+        font-size: 0.7rem;
+    }
+    
+    .sq_timeset::after {
+        content: "";
+        flex-grow: 1;
+        background: rgba(0, 0, 0, 0.35);
+        height: 1px;
+        font-size: 0px;
+        line-height: 0px;
+        margin-top:10px ;
+        margin-left: 10px;
+    }
+    
+    .sq_on_cnt{
+        width: 90%;
+        height:50px;
+        padding-left: 10px;
+        padding-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+    
+    .sq_on_txt1{
+        font-size:0.825rem;
+        display: flex;
+    }
+        
+    .sq_on_txt2{
+        display: flex;
+        margin-top: 4px;
+        font-size: 1.1erm;
+        font-weight: 900;
+    }
+}
+    
+/* 폴더 - media 모바일 사이즈 */
+@media(max-width:375px){
+.fdr_body{
+    width:375px;
+    height: 100%;
+    font-size: 16px;
+    
+}    
+.fdr_body div{
+    background: none;
+    background-color:white;
+    box-shadow: none;
+}
+.fdr_no_box{
+    margin-top: 20px;
+    width:340px;
+    height:200px;
+    margin-left: 17.5px;
+    text-align: center;
+}
+.fdr_no_font1{
+    font-size:0.9rem;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.fdr_no_font2{
+    font-size: 1.3rem;
+    display: inline-block;
+    margin-top: 20px;
+}
+.fdr_no_btn{
+    margin-top: 20px;
+    width: 150px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.fdr_on_modal{
+    margin-top: 100px;
+    width:340px;
+    height:400px;
+    margin-left: 17.5px;
+    background-color: white;
+}
+
+.fdr_on_modal_top{
+ text-align: center;
+ width: 100%;
+ height:50px;
+ background-color: violet;
+ padding-top: 30px;
+ font-size:1.675rem;
+}
+
+.fdr_on_modal_input{
+    width: 80%;  
+    height:60px;
+    margin-bottom: 10px;
+    border:none;
+    border-bottom: 5px solid black;
+    font-size:0.975rem;
+}
+
+.fdr_on_modal_input:hover{
+    border-bottom: 5px solid chartreuse;
+}
+
+.fdr_on_submit{
+    width: 80%;
+    height:60px;
+    border-radius: 5px;
+
+}
+}
