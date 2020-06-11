@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect,useState } from "react";
 import { TimelineMax, Linear, TimelineLite } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
@@ -23,6 +23,9 @@ import Button from '@material-ui/core/Button';
 
 
 const Main = () => {
+  useEffect(()=>{
+    console.log("이름 = "+ window.sessionStorage.getItem('name'));
+  });
   /*three애니메이션*/
   const mount = useRef(null);
   const ment1 = useRef(null);

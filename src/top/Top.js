@@ -1,34 +1,60 @@
-import React from 'react';
-import {NavLink, Link} from 'react-router-dom';
+import React,{useState, useEffect} from 'react';
+import {NavLink, Link, useHistory} from 'react-router-dom';
 import './Top.css';
 import { Grid, Hidden } from '@material-ui/core';
 import { Search,Create,Menu} from '@material-ui/icons';
+
 // 프로필 예시 사진
 import img2 from './iu.jpg';
 
 const Top = ({path}) =>{
+    const [email, setEmail] = useState(window.sessionStorage.getItem('email'));
     // const topMenuListAvtive={
     //     width:'1000px',
     //     color:'red',
     //     backgroundColor:'#ffffcc'
     // }
+
+    const history = useHistory();
+    const logout = () => {
+        window.sessionStorage.clear();
+        history.push('/');
+        setEmail(null);
+    }
+
+
+
+    useEffect(()=>{
+        setEmail(window.sessionStorage.getItem('email'));
+    });
+    
     if(path === "/"){
         return (
             <div id='topMainFirst'>
                 <Grid container spacing={0}>
-                <Grid item xs={5} md={5}>
+                    <Grid item xs={2} md={2}>
+                        <div className='topMenuFirst'>
+                            <Link exact to={email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
+                        </div>
+                    </Grid>
+                    <Grid item xs={6} md={6}>
                         <div className='topMenuFirst' style={{display:'inherit'}}>
                             {/* 공백채우기용 */} 
                             &nbsp;
                         </div>
                     </Grid>
                     <Grid item xs={2} md={2}>
-                    <div className='topMenuFirst'><Link exact to="/home/default" className=' topMenuListLogo' >Ware.gg</Link></div>
-                    </Grid>
-                    <Grid item xs={5} md={5}>
                         <div className='topMenuFirst' style={{display:'inherit'}}>
-                            {/* 공백채우기용 */} 
+                            {
+                                email === null ? <Link to="signin">로그인</Link> : <Link onClick={logout}>로그아웃</Link>
+                            }
                             &nbsp;
+                        </div>
+                    </Grid>
+                    <Grid item xs={2} md={2}>
+                        <div className='topMenuFirst' style={{display:'inherit'}}>
+                            <Link to="signup">회원가입 </Link>
+                           &nbsp;
                         </div>
                     </Grid>
                 </Grid>
@@ -43,7 +69,9 @@ const Top = ({path}) =>{
                     {/* 웹 */}
                     <Hidden only={['xs','sm']}>
                     <Grid item xs={2} md={2}>
-                    <div className='topMenu'><Link exact to="/" className=' topMenuListLogo' >Ware.gg</Link></div>
+                    <div className='topMenu'>
+                        <Link exact to={email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
+                    </div>
                     </Grid>
                     <Grid item xs={1} md={1}>
                         <div className='topMenu'>
@@ -67,6 +95,9 @@ const Top = ({path}) =>{
                     </Grid>
                     <Grid item xs={2} md={2}>
                         <div className='topMenu'>
+                            {
+                                email === null ? <Link exact to="../signin">로그인</Link> : <Link onClick={logout}>로그아웃</Link>
+                            }
                             <Link exact to="/signup" className='topMenuList'>
                                     <div id='profilename'>
                                         <img src={img2} alt='경로오류' className='topMenuProfileImg' />
