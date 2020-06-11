@@ -32,7 +32,7 @@ const Signin=()=>{
                 console.log('이메일  = ' + window.sessionStorage.getItem('email'));
                 console.log('이름  = ' +window.sessionStorage.getItem('name'));
 
-                history.replace('/home/default')
+                history.replace('/home/default');
             }
         }).catch((err) => {
             console.log(err);
