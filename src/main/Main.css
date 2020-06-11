@@ -111,7 +111,6 @@ footer {
   position: relative;
 }
 .FloatForm{
-  border: 3px solid black;
   width: 80%;
   height: 45%;
   display: flex;
@@ -124,7 +123,18 @@ footer {
   font-size: 25pt;
   font-family: 'Hi Melody', cursive;
 }
-.content{
-  height: 100vh;
+#content{
+  height: 150vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 50pt;
+  font-weight: bold;
+}
+
+.trigger0{
+  width: 50vh;
+  height: 35vh;
+  background-image: url(../image/1.JPG);
+  background-repeat: no-repeat;
 }

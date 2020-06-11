@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react";
-import { TimelineMax, Linear } from "gsap/all";
-import { gsap } from "gsap";
+import { TimelineMax, Linear, TimelineLite } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
+
 import img1 from '../image/1.gif';
 import img2 from '../image/2.gif';
 import img3 from '../image/3.gif';
@@ -10,10 +10,17 @@ import img4 from '../image/4.gif';
 import img5 from '../image/5.gif';
 import img6 from '../image/6.gif';
 import img7 from '../image/7.gif';
-//import img8 from '../image/8.gif';
-import img9 from '../image/9.gif';
-//import img10 from '../image/10.gif';
+import img8 from '../image/8.gif';
+
+import img9 from '../image/1.JPG';
+import img10 from '../image/2.JPG';
+
 import './Main.css';
+
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 
 const Main = () => {
   /*three애니메이션*/
@@ -138,7 +145,7 @@ const Main = () => {
   // squares8
   var square_geom = new THREE.PlaneGeometry(10, 6);
   var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img9),
+    map: loader.load(img8),
     side: THREE.DoubleSide,
     transparent: true
   });
@@ -255,12 +262,24 @@ const Main = () => {
       { yPercent: 0, opacity:1, ease: Linear.easeNone },
       "+=1"
     );
-    const sc = new ScrollMagic.Scene({
+    let sc = new ScrollMagic.Scene({
       triggerElement: "#pinMaster",
-      triggerHook: "onLeave",
+      triggerHook: 0,
       duration: "700%"
     });
     sc.setPin("#pinMaster").setTween(tl).addTo(controller);
+
+    let t2 =  new TimelineLite();
+
+    t2
+    .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=1");
+    
+    let contentScene = new ScrollMagic.Scene({
+        triggerElement: '#content',
+        triggerHook: 0.32,
+        duration: "600%"
+    })
+    contentScene.setPin(".trigger0").setTween(t2).addTo(controller);
 
     window.addEventListener('resize', onResize);
 
@@ -284,6 +303,21 @@ const Main = () => {
     renderer.render();
 
   }
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(2),
+        width: '45ch',
+      },
+    },
+    button: {
+      margin: theme.spacing(2),
+      width: '15ch',
+      height: '7ch',
+    },
+  }));
+  const classes = useStyles();
   return (
     <div className="main">
       <div id="pinMaster">
@@ -305,11 +339,16 @@ const Main = () => {
           <div className="FloatForm">
             <span className="Formment">지금 바로 회원가입 하세요!</span>
             <span className="Formment">Ware.gg를 사용하는 학생의 90%가 높은 점수를 받았다고 합니다.</span>
+            <form className={classes.root} noValidate autoComplete="off">
+              <TextField id="standard-basic" label="이메일" variant="outlined"/>
+              <TextField id="standard-basic" label="전화번호" variant="outlined"/>
+              <Button variant="contained" color="primary" className={classes.button}>시작하기</Button>
+            </form>
           </div>
         </div>
-        <div className="content">
-          contentasdsd
-        </div>
+      </div>
+      <div id="content">
+        <div className="trigger0"></div>
       </div>
     </div>
   );
