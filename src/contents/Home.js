@@ -5,11 +5,11 @@ import './content.css'
 import {Grid} from '@material-ui/core'
  const Home=()=>{
     return(
-        <Grid  spacing={0} className='mainView' >
-            <Grid item md={2} className='mainViewItem'>
+        <Grid  spacing={0} className='mainView'>
+            <Grid item xs={12} ms={2} md={2} className='mainViewItem'>
                 <Menu/>
             </Grid>
-            <Grid item md={10}>
+            <Grid item xs={12} ms={10} md={10}>
                 <MenuTitle/>
             </Grid>
         </Grid> 

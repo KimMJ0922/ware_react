@@ -65,7 +65,6 @@ const Menu=()=>{
                 </NavLink>
             </div>
         </div>
-        </Hidden>
     )
 }
  

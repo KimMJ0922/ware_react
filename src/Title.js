@@ -8,6 +8,7 @@ import Top from './top/Top';
 // import Menu  from './menu/Menu';
 import Default from './menuDtail/Default';
 // import Root from './Root';
+
 const Title = () => {
   const routes = [
     {
@@ -43,9 +44,9 @@ const Title = () => {
     const [nowPath, setPath] = useState('');
     return (
 
-        <div>
-            <Top path={nowPath}/>
-            <Switch >
+        <div style={{fontSize: '16px'}}>
+            <Top path={nowPath} />
+            <Switch > 
               {/*<Route exact path="/" component={Main}></Route>
               <Route exact path="/home/default" component={Home}></Route>
               <Route exact path="/home/default" component={Home}></Route>*/}
