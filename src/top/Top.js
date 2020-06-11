@@ -54,7 +54,7 @@ const Top = ({path}) =>{
                     </Grid>
                     <Grid item xs={1} md={1}>
                         <div className='topMenu'>
-                            <NavLink exact to="/search" className='topMenuList' activeClassName='topMenuListAvtive' >
+                            <NavLink exact to="/search" className='topMenuList' activeClassName='topMenuListSearchAvtive' >
                                 <span><Search/><div>Search</div></span>
                             </NavLink>
                         </div>

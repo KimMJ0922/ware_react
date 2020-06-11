@@ -27,6 +27,11 @@
         height: 100px;
         text-align: left;
     }
+    .topMenuListSearchAvtive{
+        background-color: darkblue;
+        width: 900px;
+        transition: all 0.5s;
+    }
     .topMenu>.topMenuList>span{
         color: #2d3639;
         display: inline-block;
@@ -45,9 +50,9 @@
         transition: all .12s
     }
     #profilename>.topMenuProfileImg{
-        width: 80px;
+        width: 60px;
         margin-left: 30px;
-        margin-top: 11px;
+        margin-top: 22px;
         border-radius: 40px;
     }
     #profilename>span{
@@ -56,16 +61,16 @@
         display: inline-block;
         width: max-content;
         position: relative;
-        top: -25px;
+        top: -23px;
         height: 99px;
         font-weight: 600;
-        left: 9px;
-        font-size: 1.4em;
+        left: 11px;
+        font-size: 1.2em;
     }
     .topMenu>.topMenuListAvtive>span{
-        background-color: #000000;
+        /* background-color: #000000;
         color: #fff;
-        font-size: 1.3em;
+        font-size: 1.3em; */
     }
     .topMenuListLogo{
         font-size: 2.4rem;
@@ -114,9 +119,9 @@
         transition: all .12s
     }
     .topMenuFirst>.topMenuListAvtive>span{
-        background-color: #000000;
+        /* background-color: #000000;
         color: #fff;
-        font-size: 1.3em;
+        font-size: 1.3em; */
     }
     .topMenuList>span>div>.topMenuProfileImg{
         width: 75px;
@@ -156,9 +161,9 @@
         transition: all .12s
     }
     .topMenu>.topMenuListAvtive>span{
-        background-color: #000000;
+        /* background-color: #000000;
         color: #fff;
-        font-size: 1.3em;
+        font-size: 1.3em; */
     }
     .topMenuListLogo{
         font-size: 1.4rem;
@@ -206,9 +211,9 @@
         transition: all .12s
     }
     .topMenuFirst>.topMenuListAvtive>span{
-        background-color: #000000;
+        /* background-color: #000000;
         color: #fff;
-        font-size: 1.3em;
+        font-size: 1.3em; */
     }
     .topMenuList>span>div>.topMenuProfileImg{
         width: 33.6px;
@@ -248,9 +253,9 @@
         transition: all .12s
     }
     .topMenu>.topMenuListAvtive>span{
-        background-color: #000000;
+        /* background-color: #000000;
         color: #fff;
-        font-size: 1.3em;
+        font-size: 1.3em; */
     }
     .topMenuListLogo{
         height: 60px;
@@ -296,9 +301,9 @@
         transition: all .12s
     }
     .topMenuFirst>.topMenuListAvtive>span{
-        background-color: #000000;
+        /* background-color: #000000;
         color: #fff;
-        font-size: 1.3em;
+        font-size: 1.3em; */
     }
     .topMenuList>span>div>.topMenuProfileImg{
         width: 33.6px;
