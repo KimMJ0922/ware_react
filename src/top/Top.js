@@ -9,6 +9,10 @@ import img2 from './iu.jpg';
 
 const Top = ({path}) =>{
     const [email, setEmail] = useState(window.sessionStorage.getItem('email'));
+    const [name, setName] = useState(window.sessionStorage.getItem('name'));
+    const [profile, setProfile] = useState(window.sessionStorage.getItem('profile'));
+    const [point, setPoint] = useState(window.sessionStorage.getItem('point'));
+    const [admin, setAdmin] = useState(window.sessionStorage.getItem('admin'));
     // const topMenuListAvtive={
     //     width:'1000px',
     //     color:'red',
@@ -19,13 +23,19 @@ const Top = ({path}) =>{
     const logout = () => {
         window.sessionStorage.clear();
         history.push('/');
-        setEmail(null);
     }
 
 
 
     useEffect(()=>{
         setEmail(window.sessionStorage.getItem('email'));
+        setName(window.sessionStorage.getItem('name'))
+        setProfile(window.sessionStorage.getItem('profile'))
+        setPoint(window.sessionStorage.getItem('point'))
+        setAdmin(window.sessionStorage.getItem('admin'))
+        // if(email === null){
+        //     history.push('/');
+        // }
     });
     
     if(path === "/"){
@@ -106,9 +116,8 @@ const Top = ({path}) =>{
                                 <div>
                                     <Link exact to="/profile" className='topMenuList'>
                                     <div id='profilename'>
-                                        {/* 사용자 프로필과 아이디 출력 */}
-                                        <img src={img2} alt='경로오류' className='topMenuProfileImg' />
-                                        <span >I_U_jiyumi</span>
+                                        <img src={profile} alt='경로오류' className='topMenuProfileImg' />
+                                        <span>{name}</span>
                                     </div>
                                     </Link>
                                     <Link onClick={logout} className='userLogout'><span >로그아웃</span></Link>
