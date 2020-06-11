@@ -127,9 +127,8 @@ font-size: 0.9rem;
 }
 
 /* 세트 - media 웹 최소 사이즈 */
-@media(max-width:500px){
+@media(min-width:500px){
     .sq_body{
-        width:500px;
         font-size: 16px;
     }
     .sq_body div{    
@@ -377,9 +376,10 @@ font-size: 0.9rem;
 }
 .fdr_no_box{
     margin-top: 20px;
+    margin-bottom:10px;
+    margin-left: 17.5px;
     width:340px;
     height:200px;
-    margin-left: 17.5px;
     text-align: center;
 }
 .fdr_no_font1{
@@ -412,7 +412,7 @@ font-size: 0.9rem;
  text-align: center;
  width: 100%;
  height:50px;
- background-color: violet;
+ background-color: #c29fcb;
  padding-top: 30px;
  font-size:1.675rem;
 }
@@ -437,14 +437,50 @@ font-size: 0.9rem;
 }
 
 .fdr_on_font1{
-    font-size: 2.535rem;
+    font-size: 1.635rem;
+    margin-left: 10px;
     }
+
+.fdr_icon_box{
+    padding-top: 10px;
+    padding-right: 30px;
+    text-align: right;
+}
+
+.fdr_set_box{
+    margin-top:10%;
+    margin-left:10%;
+    margin-bottom: 10%;
+    width:80%;
+    height:150px;
+    box-shadow:5px black;
+}
+
+.fdr_set_box_subject{
+    margin: 0;
+    padding-top:10px;
+    padding-left: 10px;
+    font-size: 1.165rem;
+    font-weight: bold;
+}
+.fdr_set_box_count{
+    margin: 0;
+    padding-left: 10px;
+    padding-top:10px;
+}
+.fdr_set_box_id{
+    margin: 0;
+    padding-left: 10px;
+    padding-top:50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 }
 
 /* 폴더 - media 웹 최소 사이즈 */
 @media(min-width:500px){
     .fdr_body{
-        width:500px;
         height: 100%;
         font-size: 16px;   
     }    
@@ -456,9 +492,10 @@ font-size: 0.9rem;
     }
     .fdr_no_box{
         margin-top: 20px;
+        margin-left: 10px;
+        margin-bottom: 10px;
         width:460px;
         height:200px;
-        margin-left: 10px;
         text-align: center;
     }
     .fdr_no_font1{
@@ -516,9 +553,54 @@ font-size: 0.9rem;
     }
     
     .fdr_on_font1{
-        font-size: 2.535rem;
-        }
+        font-size: 2.0rem;
     }
+
+    .fdr_icon_box{
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: right;
+    }
+    
+    .fdr_icon_box svg{
+        font-size: 2rem;
+    }
+
+    .fdr_icon_box{
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: right;
+    }
+    
+    .fdr_set_box{
+        margin-top:10%;
+        margin-left:10%;
+        margin-bottom: 10%;
+        width:80%;
+        height:150px;
+        box-shadow:5px black;
+    }
+    
+    .fdr_set_box_subject{
+        margin: 0;
+        padding-top:10px;
+        padding-left: 10px;
+        font-size: 1.165rem;
+        font-weight: bold;
+    }
+    .fdr_set_box_count{
+        margin: 0;
+        padding-left: 10px;
+        padding-top:10px;
+    }
+    .fdr_set_box_id{
+        margin: 0;
+        padding-left: 10px;
+        padding-top:50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+}
 
 /* 폴더 - media 일반 사이즈 */
 @media(min-width:501px){
@@ -534,10 +616,11 @@ font-size: 0.9rem;
         box-shadow: none;
     }
     .fdr_no_box{
-        margin-top: 30px;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-bottom: 10px;
         width:100%;
         height:300px;
-        margin-left: 10px;
         text-align: center;
     }
     .fdr_no_font1{
@@ -602,86 +685,48 @@ font-size: 0.9rem;
     }
     
     .fdr_on_font1{
-        font-size: 2.535rem;
-        }
+        font-size: 2.165rem;
     }
 
-/* 클래스 - media 모바일 사이즈 */
-@media(max-width:375px){
-    .fdr_body{
-        width:375px;
-        height: 100%;
-        font-size: 16px;
-        
-    }    
-    .fdr_body div{
-        background: none;
-        background-color:white;
-        box-shadow: none;
-    }
-    .fdr_no_box{
-        margin-top: 20px;
-        width:340px;
-        height:200px;
-        margin-left: 17.5px;
-        text-align: center;
-    }
-    .fdr_no_font1{
-        font-size:0.9rem;
-        display: inline-block;
-        margin-top: 20px;
+    .fdr_icon_box{
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: right;
     }
     
-    .fdr_no_font2{
-        font-size: 1.3rem;
-        display: inline-block;
-        margin-top: 20px;
+    .fdr_icon_box svg{
+        font-size: 2.525rem;
     }
-    .fdr_no_btn{
-        margin-top: 20px;
-        width: 150px;
-        height: 60px;
-        border-radius: 5px;
-    }
-    
-    .fdr_on_modal{
-        margin-top: 100px;
-        width:340px;
-        height:400px;
-        margin-left: 17.5px;
-        background-color: white;
+    .fdr_set_box{
+        margin-top:30px;
+        margin-left:30px;
+        margin-bottom: 30px;
+        width:80%;
+        height:150px;
+        box-shadow:5px black;
     }
     
-    .fdr_on_modal_top{
-     text-align: center;
-     width: 100%;
-     height:50px;
-     background-color: violet;
-     padding-top: 30px;
-     font-size:1.675rem;
+    .fdr_set_box_subject{
+        margin: 0;
+        padding-top:10px;
+        padding-left: 10px;
+        font-size: 1.165rem;
+        font-weight: bold;
     }
-    
-    .fdr_on_modal_input{
-        width: 80%;  
-        height:60px;
-        margin-bottom: 10px;
-        border:none;
-        border-bottom: 5px solid black;
-        font-size:0.975rem;
+    .fdr_set_box_count{
+        margin: 0;
+        padding-left: 10px;
+        padding-top:10px;
     }
-    
-    .fdr_on_modal_input:hover{
-        border-bottom: 5px solid chartreuse;
+    .fdr_set_box_id{
+        margin: 0;
+        padding-left: 10px;
+        padding-top:50px;
+        font-size: 0.9rem;
+        font-weight: 600;
     }
-    
-    .fdr_on_submit{
-        width: 80%;
-        height:60px;
-        border-radius: 5px;
-    }
-    
-    .fdr_on_font1{
-        font-size: 2.535rem;
-        }
-    }
+
+}
+
+
     
