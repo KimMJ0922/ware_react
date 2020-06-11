@@ -156,7 +156,6 @@ const Top = ({path}) =>{
                     </Grid>
                     <Grid item xs={1} md={2}>
                         <div className='topMenu'>
-
                             {
                                 email === null ? <Link exact to="../signin">
                                                     <span className='userLogin'><Face/></span>
