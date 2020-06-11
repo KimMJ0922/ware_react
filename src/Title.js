@@ -16,31 +16,31 @@ const Title = () => {
       path: "/home/default",
       component: Home,
     },
-      {
-        path: "/home",
-        component: Home,
-      },
-      {
-          path: "/search",
-          component: Search
-      },
-      {
-          path: "/create",
-          component: Create
-      },
-      {
-          path: "/signin",
-          component: Signin
-      },
-      {
-          path: "/signup",
-          component: Signup
-      },
-      {
-        path:"/",
-        component: Main
-      }
-    ];
+    {
+      path: "/home",
+      component: Home,
+    },
+    {
+        path: "/search",
+        component: Search
+    },
+    {
+        path: "/create",
+        component: Create
+    },
+    {
+        path: "/signin",
+        component: Signin
+    },
+    {
+        path: "/signup",
+        component: Signup
+    },
+    {
+      path:"/",
+      component: Main
+    }
+  ];
     const [nowPath, setPath] = useState('');
     return (
 
