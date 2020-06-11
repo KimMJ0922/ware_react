@@ -27,6 +27,7 @@ const CreateCardSet = () => {
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
         setTitle(e.target.value);
+        
     }
 
     const changeComment = (e) => {
