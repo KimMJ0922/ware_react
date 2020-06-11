@@ -23,6 +23,7 @@ const Signin=()=>{
                 alert("이메일 인증을 해주세요");
             }else{
                 //인증 됐으면 세션
+                
             }
         }).catch((err) => {
             console.log(err);
