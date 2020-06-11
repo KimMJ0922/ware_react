@@ -17,10 +17,25 @@ const Top = ({path}) =>{
     //     width:'1000px',
     //     color:'red',
     //     backgroundColor:'#ffffcc'
-    // }
+    // }    
 
     const history = useHistory();
     const logout = () => {
+        //회원 탈퇴에 쓸 예정
+        // window.Kakao.API.request({
+        //     url: '/v1/user/unlink',
+        //     success: function(response) {
+        //         console.log(response);
+        //     },
+        //     fail: function(error) {
+        //         console.log(error);
+        //     },
+        // });
+
+        // window.Kakao.Auth.logout(() => {
+        //     console.log(window.Kakao.Auth.getAccessToken());
+        // });
+        
         window.sessionStorage.clear();
         history.push('/');
     }

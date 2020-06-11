@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './content.css'
 import axios from 'axios';
 const Signup=()=>{
@@ -6,7 +6,7 @@ const Signup=()=>{
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [birth, setBirth] = useState('');
-
+    const [visible, setVisible] =useState(false);
     const formSubmit = (e) => {
         e.preventDefault();
         let url = "http://localhost:9000/signup";
@@ -21,16 +21,32 @@ const Signup=()=>{
             console.log(err);
         })
     }
+
+    const emailOverlapCheck = (e) => {
+        setEmail(e.target.value);        
+    }
+
+    useEffect(()=>{
+        if(email === null || email === ''){
+            setVisible(false);
+            
+        }else{
+            let url = "http://localhost:9000/emailoverlap";
+            axios.post(url,email)
+            .then((res) => {
+                setVisible(res.data.check);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    },[email])
     return(
         <div>
             <form onSubmit={formSubmit}>
                 <div>
                     <label for="email">이메일</label>
-                    <input type="text" id="email" name="email" value={email} 
-                        onChange={
-                            ({target : {value} }) => setEmail(value)
-                        }
-                    />
+                    <input type="text" id="email" name="email" onChange={emailOverlapCheck}/>
+                    <span style={!visible?{display:'none'}:{display:'block'}}>중복된 이메일 입니다.</span>
                 </div>
                 <div>
                     <label for="password">비밀번호</label>
