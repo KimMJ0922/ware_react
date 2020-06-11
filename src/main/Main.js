@@ -273,30 +273,11 @@ const Main = () => {
 
     t2
     .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=1");
-
-    t2
-    .fromTo(".n1", 1, { xPercent:100, opacity:0 }, { xPercent:70, opacity:1, ease: Linear.easeOut },"+=1");
-    t2.to(".n1", 1, { xPercent:50, opacity:0, ease: Linear.easeOut },"+=1");
-    t2
-    .fromTo(".n2", 1, { xPercent:-100, opacity:0 }, { xPercent:-70, opacity:1, ease: Linear.easeOut },"+=1");
-    t2.to(".n2", 1, { xPercent:-50, opacity:0, ease: Linear.easeOut },"+=1");
-    t2
-    .fromTo(".n3", 1, { xPercent:100, opacity:0 }, { xPercent:70, opacity:1, ease: Linear.easeOut },"+=1");
-    t2.to(".n3", 1, { xPercent:50, opacity:0, ease: Linear.easeOut },"+=1");
-    t2
-    .fromTo(".n4", 1, { xPercent:-100, opacity:0 }, { xPercent:-70, opacity:1, ease: Linear.easeOut },"+=1");
-    t2.to(".n4", 1, { xPercent:-50, opacity:0, ease: Linear.easeOut },"+=1");
-    t2
-    .fromTo(".n5", 1, { xPercent:100, opacity:0 }, { xPercent:70, opacity:1, ease: Linear.easeOut },"+=1");
-    t2.to(".n5", 1, { xPercent:50, opacity:0, ease: Linear.easeOut },"+=1");
-    t2
-    .fromTo(".n6", 1, { xPercent:-100, opacity:0 }, { xPercent:-70, opacity:1, ease: Linear.easeOut },"+=1");
-    t2.to(".n6", 1, { xPercent:-50, opacity:0, ease: Linear.easeOut },"+=1");
     
     let contentScene = new ScrollMagic.Scene({
         triggerElement: '#content',
-        triggerHook: 0.3,
-        duration: "400%"
+        triggerHook: 0.32,
+        duration: "600%"
     })
     contentScene.setPin(".trigger0").setTween(t2).addTo(controller);
 
@@ -368,12 +349,6 @@ const Main = () => {
       </div>
       <div id="content">
         <div className="trigger0"></div>
-        <div className="Sumimage n1"></div>
-        <div className="Sumimage n2"></div>
-        <div className="Sumimage n3"></div>
-        <div className="Sumimage n4"></div>
-        <div className="Sumimage n5"></div>
-        <div className="Sumimage n6"></div>
       </div>
     </div>
   );
