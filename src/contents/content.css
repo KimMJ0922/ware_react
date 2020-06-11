@@ -1,6 +1,6 @@
 /* 네이버 나눔스퀘어 */
 @import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);
-@media(min-width: 551px){
+@media(min-width: 501px){
     .mainView{
         
         min-height: 869px;
@@ -70,7 +70,7 @@
 
 }
     
-@media(max-width: 550px){
+@media(max-width: 500px){
 
     .mainView{
         min-height: 869px;
@@ -140,6 +140,7 @@
 }
 @media(max-width: 375px){
     .mainView{
+        width:375px;
         min-height: 869px;
         height: a;
         margin: 0 auto;
