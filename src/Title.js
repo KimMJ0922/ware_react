@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {Home,Create,Search,Signin,Signup} from './contents';/*index.js호출*/
+import BoardList from './board/BoardList';
 import Main from './main/Main';
 import Top from './top/Top';
 // import { Grid } from '@material-ui/core';
@@ -16,31 +17,35 @@ const Title = () => {
       path: "/home/default",
       component: Home,
     },
-    {
-      path: "/home",
-      component: Home,
-    },
-    {
-        path: "/search",
-        component: Search
-    },
-    {
-        path: "/create",
-        component: Create
-    },
-    {
-        path: "/signin",
-        component: Signin
-    },
-    {
-        path: "/signup",
-        component: Signup
-    },
-    {
-      path:"/",
-      component: Main
-    }
-  ];
+      {
+        path: "/home",
+        component: Home,
+      },
+      {
+          path: "/search",
+          component: Search
+      },
+      {
+          path: "/create",
+          component: Create
+      },
+      {
+          path: "/signin",
+          component: Signin
+      },
+      {
+          path: "/signup",
+          component: Signup
+      },
+      {
+        path: "/board",
+        component: BoardList
+      },
+      {
+        path:"/",
+        component: Main
+      }
+    ];
     const [nowPath, setPath] = useState('');
     return (
 
