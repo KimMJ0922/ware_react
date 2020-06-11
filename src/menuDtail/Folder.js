@@ -32,28 +32,30 @@ const Folder=()=>{
                     </Paper>
                 </Grid> 
 
-                <Grid item xs={12} md={2} >
+                <Grid item xs={12} md={12} >
                         <Paper>
                             <div>
                                 <p>(0)세트 | (아이디) 만듦</p>
                         
                           </div>
                         </Paper>
-                    </Grid>
-                    <Grid item xs={4} md={10}>
+                </Grid>
+
+                <Grid item xs={4} md={1}>
                     <Paper>
-                    <FolderIcon style={{fontSize:'4rem'}}/>
+                    <FolderIcon style={{fontSize:'4rem',marginLeft:'20px'}}/>
                     </Paper> 
                 </Grid>
-                <Grid item xs={8} md={10}>
+
+                <Grid item xs={8} md={11}>
                     <Paper>
-                    <span>폴더 제목</span>
+                    <span className="fdr_on_font1">폴더 제목</span>
                     </Paper> 
                 </Grid>
 
                 <Grid item xs={12} md={10}>
                     <Paper>
-                    <span>설명 좌르르르륵좌르르르륵좌르르르륵좌르르르륵좌르르르륵좌르르르륵좌르르르륵</span>
+                    <span>설명 : 폴더가 있을 때 설명입니다</span>
                     </Paper> 
                 </Grid>
             </Grid>
