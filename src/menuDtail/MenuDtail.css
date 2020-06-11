@@ -18,6 +18,7 @@
 /* 공통부분 */
 .proimg{
     margin-left: 30px;
+    margin-top:10px;
     width:140px;
     height:140px;
     border-radius:100%;
@@ -125,7 +126,6 @@ font-size: 0.9rem;
 
 }
 
-
 /* 세트 - media 웹 최소 사이즈 */
 @media(max-width:500px){
     .sq_body{
@@ -176,7 +176,7 @@ font-size: 0.9rem;
     
     .btn_box{
         border-radius:7px;
-        width:200px;
+        width:300px;
         margin-top: 1.2rem;
     }
     
@@ -245,7 +245,6 @@ font-size: 0.9rem;
     }
 }
     
-
 /* 세트 - media 모바일 사이즈 */
 @media(max-width:375px){
     .sq_body{
@@ -435,6 +434,254 @@ font-size: 0.9rem;
     width: 80%;
     height:60px;
     border-radius: 5px;
+}
 
+.fdr_on_font1{
+    font-size: 2.535rem;
+    }
 }
-}
+
+/* 폴더 - media 웹 최소 사이즈 */
+@media(min-width:500px){
+    .fdr_body{
+        width:500px;
+        height: 100%;
+        font-size: 16px;   
+    }    
+    
+    .fdr_body div{
+        background: none;
+        background-color:white;
+        box-shadow: none;
+    }
+    .fdr_no_box{
+        margin-top: 20px;
+        width:460px;
+        height:200px;
+        margin-left: 10px;
+        text-align: center;
+    }
+    .fdr_no_font1{
+        font-size:0.9rem;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    
+    .fdr_no_font2{
+        font-size: 1.3rem;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .fdr_no_btn{
+        margin-top: 20px;
+        width: 150px;
+        height: 60px;
+        border-radius: 5px;
+    }
+    
+    .fdr_on_modal{
+        margin-top: 100px;
+        width:470px;
+        height:400px;
+        margin-left: 10px;
+        background-color: white;
+    }
+    
+    .fdr_on_modal_top{
+     text-align: center;
+     width: 100%;
+     height:50px;
+     background-color: #c29fcb;
+     padding-top: 30px;
+     font-size:1.675rem;
+    }
+    
+    .fdr_on_modal_input{
+        width: 80%;  
+        height:60px;
+        margin-bottom: 10px;
+        border:none;
+        border-bottom: 5px solid black;
+        font-size:0.975rem;
+    }
+    
+    .fdr_on_modal_input:hover{
+        border-bottom: 5px solid chartreuse;
+    }
+    
+    .fdr_on_submit{
+        width: 80%;
+        height:60px;
+        border-radius: 5px;
+    }
+    
+    .fdr_on_font1{
+        font-size: 2.535rem;
+        }
+    }
+
+/* 폴더 - media 일반 사이즈 */
+@media(min-width:501px){
+    .fdr_body{
+        width:100%;
+        height: 100%;
+        font-size: 16px;   
+    }    
+    
+    .fdr_body div{
+        background: none;
+        background-color:white;
+        box-shadow: none;
+    }
+    .fdr_no_box{
+        margin-top: 30px;
+        width:100%;
+        height:300px;
+        margin-left: 10px;
+        text-align: center;
+    }
+    .fdr_no_font1{
+        font-size:1.4rem;
+        display: inline-block;
+        margin-top: 60px;
+    }
+    
+    .fdr_no_font2{
+        font-size: 2.1rem;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .fdr_no_btn{
+        margin-top: 20px;
+        width: 150px;
+        height: 60px;
+        border-radius: 5px;
+    }
+    
+    .fdr_on_modal{
+        margin-top: 100px;
+        width:66%;
+        margin-left:18%;
+        height:600px;
+        background-color: white;
+    }
+    
+    .fdr_on_modal_top{
+     text-align: center;
+     width: 100%;
+     height:50px;
+     background-color: #c29fcb;
+     padding-top: 30px;
+     font-size:1.675rem;
+    }
+    
+    .fdr_on_modal_input{
+        width: 80%;  
+        height:60px;
+        margin-bottom: 90px;
+        border:none;
+        border-bottom: 5px solid black;
+        font-size:1.2rem;
+    }
+    
+    .fdr_on_modal_input:hover{
+       
+        border-bottom: 5px solid chartreuse;
+    }
+
+    .fdr_on_modal_input:active{
+        border:none;
+        border-bottom: 5px solid black;
+    }
+    
+    .fdr_on_submit{
+        width: 80%;
+        height:60px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+    }
+    
+    .fdr_on_font1{
+        font-size: 2.535rem;
+        }
+    }
+
+/* 클래스 - media 모바일 사이즈 */
+@media(max-width:375px){
+    .fdr_body{
+        width:375px;
+        height: 100%;
+        font-size: 16px;
+        
+    }    
+    .fdr_body div{
+        background: none;
+        background-color:white;
+        box-shadow: none;
+    }
+    .fdr_no_box{
+        margin-top: 20px;
+        width:340px;
+        height:200px;
+        margin-left: 17.5px;
+        text-align: center;
+    }
+    .fdr_no_font1{
+        font-size:0.9rem;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    
+    .fdr_no_font2{
+        font-size: 1.3rem;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .fdr_no_btn{
+        margin-top: 20px;
+        width: 150px;
+        height: 60px;
+        border-radius: 5px;
+    }
+    
+    .fdr_on_modal{
+        margin-top: 100px;
+        width:340px;
+        height:400px;
+        margin-left: 17.5px;
+        background-color: white;
+    }
+    
+    .fdr_on_modal_top{
+     text-align: center;
+     width: 100%;
+     height:50px;
+     background-color: violet;
+     padding-top: 30px;
+     font-size:1.675rem;
+    }
+    
+    .fdr_on_modal_input{
+        width: 80%;  
+        height:60px;
+        margin-bottom: 10px;
+        border:none;
+        border-bottom: 5px solid black;
+        font-size:0.975rem;
+    }
+    
+    .fdr_on_modal_input:hover{
+        border-bottom: 5px solid chartreuse;
+    }
+    
+    .fdr_on_submit{
+        width: 80%;
+        height:60px;
+        border-radius: 5px;
+    }
+    
+    .fdr_on_font1{
+        font-size: 2.535rem;
+        }
+    }
+    
