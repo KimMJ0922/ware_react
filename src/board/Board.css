@@ -34,7 +34,17 @@ a{
 .BoardItem{
     width: 95%;
     height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
     border: 1px solid black;
+}
+
+.BoardProImage{
+    border-radius: 50px;
+    width: 4%;
+    height: 80%;
 }
 
 .BoardBottom{
@@ -69,6 +79,9 @@ a{
 .BoardPagination{
     width: 80%;
     height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;    
 }
 
