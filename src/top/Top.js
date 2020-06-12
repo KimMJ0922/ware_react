@@ -11,8 +11,12 @@ const Top = ({path}) =>{
     const [email, setEmail] = useState(window.sessionStorage.getItem('email'));
     const [name, setName] = useState(window.sessionStorage.getItem('name'));
     const [profile, setProfile] = useState(window.sessionStorage.getItem('profile'));
-    const [point, setPoint] = useState(window.sessionStorage.getItem('point'));
-    const [admin, setAdmin] = useState(window.sessionStorage.getItem('admin'));
+    const [userInfo, setUserInfo] = useState({
+        email : window.sessionStorage.getItem('email'),
+        name : window.sessionStorage.getItem('name'),
+        profile : window.sessionStorage.getItem('profile')
+    });
+
     // const topMenuListAvtive={
     //     width:'1000px',
     //     color:'red',
@@ -37,21 +41,22 @@ const Top = ({path}) =>{
         // });
         
         window.sessionStorage.clear();
+        localStorage.removeItem('autoLogin');
         history.push('/');
     }
 
 
 
     useEffect(()=>{
-        setEmail(window.sessionStorage.getItem('email'));
-        setName(window.sessionStorage.getItem('name'))
-        setProfile(window.sessionStorage.getItem('profile'))
-        setPoint(window.sessionStorage.getItem('point'))
-        setAdmin(window.sessionStorage.getItem('admin'))
-        // if(email === null){
-        //     history.push('/');
-        // }
-    });
+        setUserInfo({
+            email : window.sessionStorage.getItem('email'),
+            name : window.sessionStorage.getItem('name'),
+            profile : window.sessionStorage.getItem('profile')
+        })
+
+        console.log(userInfo);
+        
+    },[]);
     
     if(path === "/"){
         return (

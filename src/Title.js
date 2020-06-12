@@ -4,11 +4,7 @@ import {Home,Create,Search,Signin,Signup} from './contents';/*index.js호출*/
 import Board from './board/Board';
 import Main from './main/Main';
 import Top from './top/Top';
-// import { Grid } from '@material-ui/core';
-// import MenuTitle from './menu/MenuTitle';
-// import Menu  from './menu/Menu';
 import Default from './menuDtail/Default';
-// import Root from './Root';
 
 const Title = () => {
   const routes = [
@@ -50,22 +46,22 @@ const Title = () => {
     return (
 
         <div style={{fontSize: '16px'}}>
-            <Top path={nowPath} />
-            <Switch > 
-              {/*<Route exact path="/" component={Main}></Route>
-              <Route exact path="/home/default" component={Home}></Route>
-              <Route exact path="/home/default" component={Home}></Route>*/}
-                {
-                  routes.map((route, i) => {
-                    return (
-                      <RouteWithSubRoutes key={i} {...route} />
-                      
-                    )
-                  })
-                }
-              
-                {/* 이거 쫌짜증남 살짝 이해가 안감 */}
-            </Switch>
+          <Top path={nowPath} />
+          <Switch > 
+            {/*<Route exact path="/" component={Main}></Route>
+            <Route exact path="/home/default" component={Home}></Route>
+            <Route exact path="/home/default" component={Home}></Route>*/}
+              {
+                routes.map((route, i) => {
+                  return (
+                    <RouteWithSubRoutes key={i} {...route} />
+                    
+                  )
+                })
+              }
+            
+              {/* 이거 쫌짜증남 살짝 이해가 안감 */}
+          </Switch>
         </div>
     )
   
