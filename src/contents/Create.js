@@ -1,6 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 import './Create.css';
+import { Paper } from '@material-ui/core';
+import DelIcon from '@material-ui/icons/DeleteForever';
+import ImgIcon from '@material-ui/icons/ImageSearch';
 
 const CreateCardSet = () => {
     const [num, setNum] = useState(2);
@@ -17,12 +21,30 @@ const CreateCardSet = () => {
             }
         ]
     );
-
+    
     const [openPassword, setOpenPassword] = useState('');
     const [openPasswordVisible, setOpenPasswordVisible] = useState(false);
 
     const [updatePassword, setUpdatePassword] = useState('');
     const [updatePasswordVisible, setUpdatePasswordVisible] = useState(false);
+    
+    const testimg=[
+        "/iu04.jpg",
+        "/hung.png",
+        "/iu04.jpg",
+        "/hung.png",
+        "/iu04.jpg",
+        "/hung.png",
+        "/iu04.jpg",
+        "/hung.png",
+        "/iu04.jpg",
+        "/hung.png",
+        "/iu04.jpg",
+        "/hung.png",
+        "/iu04.jpg",
+        "/hung.png"
+        
+    ];
 
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
@@ -162,86 +184,126 @@ const CreateCardSet = () => {
     }
 
     return(
-        <div>
+        <div className="crt_body">
             <form onSubmit={onSubmit}>
+                <Grid container>
+                        <Grid xs={6} md={10}>
+                            <div class="crt_top">세트 만들기</div>
+                        </Grid>
+                        <Grid xs={6} md={2}>
+                            <button type="button" className="create_btn1" >만들기</button>
+                        </Grid>
                 {/* 제목, 설명 */}
-                <div style={{width:'800px',height:'200px',border:'2px solid black',marginBottom:'20px'}}>
-                    <label for="title">제목</label><br/>
-                    <input type="text" name="title" id="title" className="title" placeholder="제목을 입력하세요." onChange={changeTitle}/><br/>
-                    <label for="comment">설명</label><br/>
-                    <input type="text" name="comment" id="comment" className="title" placeholder="설명을 입력하세요." onChange={changeComment}/>
+                <Grid xs={12} md={12}>
+                <div className="crt_top_input_box">
+                    <label for="title" className="crt_input_font">제목</label><br/>
+                    <input type="text" name="title" id="title" className="crt_title inputTop" placeholder="제목을 입력하세요." onChange={changeTitle}/><br/>
+                    <label for="comment" className="crt_input_font">설명</label><br/>
+                    <input type="text" name="comment" id="comment" className="crt_title inputTop" placeholder="설명을 입력하세요." onChange={changeComment}/><br/>
+                    
                 </div>
+                </Grid>
                 {/* 공개범위 */}
-                <div style={{width:'800px',height:'100px',border:'2px solid black',marginBottom:'20px'}}>
-                    <div className="scope">
-                        공개<br/>
-                        <select id="openScope" onChange={passwordVisible}>
+                
+                    <Grid xs={6} md={6}>
+                       
+                        <span className="crt_input_font">공개</span><br/>
+                        <select id="openScope" onChange={passwordVisible} className="crt_slt_bar">
                             <option value="public" selected>모두</option>
                             <option value="password">비밀번호를 아는 사람</option>
                             <option value="private">나만</option>
                         </select><br/>
                         {/* 공개 비밀번호 */}
-                        <input type="password" id="openPassword" name="openPassword" style={{visibility : openPasswordVisible?"visible":"hidden"}}
+                        <input type="password" id="openPassword" name="openPassword" style={{visibility : openPasswordVisible?"visible":"hidden"} }
                                onChange={changePassword}/>
-                    </div>
-                    <div className="scope">
-                        수정<br/>
-                        <select id="updateScope" onChange={passwordVisible}>
+                        
+                    </Grid>
+
+                    <Grid xs={6} md={6}>
+                    <span className="crt_input_font">수정</span><br/>
+                        <select id="updateScope" onChange={passwordVisible}  className="crt_slt_bar">
                             <option value="password">비밀번호를 아는 사람</option>
                             <option value="private" selected>나만</option>
                         </select><br/>
                         {/* 수정 비밀번호 */}
                         <input type="password" id="updatePassword" name="updatePassword" style={{visibility : updatePasswordVisible?"visible":"hidden"}}
                                onChange={changePassword}/>
-                    </div>
-                </div>
-                <div style={{width:'800px',height:'auto',border:'2px solid black',marginBottom:'20px'}}>
+                    </Grid>
+               
+               
                     {
                         rows.map((row,i)=>{
                             let rowNum = row.id;
                             return (
+                                <Grid xs={12} md={12}>
+                                <Paper className="crt_add_content_paper">
                                 <div key={i} className="card">
                                     {/* 번호 */}
-                                    <div className="cardMenu">
-                                        {i+1}
-                                        <button type="button" onClick={deleteRow(rowNum)}>삭제</button>
-                                    </div>
+                                    
+                                    <span className="crt_input_font2">{i+1}번 카드</span>
+                                    <DelIcon onClick={deleteRow(rowNum)}/>
+                                        
+                                    
                                     {/* 문제, 답, 이미지 */}
-                                    <div className="cardInfo">
-                                        <div className="que">
-                                            <input type="text" className="inputTag" name="question" onChange={inputChange(rowNum)} value={row.question}/><br/>
-                                            <span>문제</span>
-                                        </div>
-                                        <div className="que">
-                                            <input type="text" className="inputTag" name="answer" onChange={inputChange(rowNum)} value={row.answer}/><br/>
-                                            <span>답</span>
-                                        </div>
-                                        <div className="que">
-                                            <button type="button" className="btn btn-info" onClick={changeDisplay(rowNum)}>이미지 추가</button>
-                                        </div>
-                                    </div>
-                                    {/* 이미지 */}
-                                    <div className={row.visible? "imgDivVisible" : "imgDivInVisible"}>
-                                        <div>
-
-                                        </div>
+                                    
+                                        <Grid container>
+                                        <Grid xs={9} md={9}>
+                                            <Grid item xs={12} md={12}>
+                                            <input type="text" className="crt_slt_mun" name="question" onChange={inputChange(rowNum)} value={row.question} placeholder="문제를 입력하세요"/><br/>
+                                            <span className="crt_input_font">문제</span>
+                                            </Grid>
+                                            
+                                            <Grid item xs={12} md={12}>
+                                            <input type="text" className="crt_slt_mun" name="answer" onChange={inputChange(rowNum)} value={row.answer}  placeholder="답을 입력하세요"/><br/>
+                                            <span className="crt_input_font">답</span>
+                                            </Grid>
+                                            </Grid>
+                                            <Grid item xs={3} md={3}>
+                                                <ImgIcon style={{fontSize:'4.5rem'}} onClick={changeDisplay(rowNum)}/>
+                                                <p><span className="crt_input_font3">이미지 등록</span></p>
+                                            </Grid>
+                                        </Grid>
+                                         {/* 이미지 */}
+                                 
+                                    
+                                    </div>      
+                                </Paper>
+                                <Grid>
+                                            <Paper className={row.visible? "imgPaperVisible" : "imgPaperinVisible"}>
+                                    
                                         {/* 파일 */}
-                                        <div>
-                                            <input type="file" name="imgFile" onChange={changeFile(rowNum)}/>
-                                        </div>
-                                    </div>
-                                </div>
+                                        
+                                            <div class="file_add">
+                                                 <label for="ex_file">직접 업로드 하기</label>
+                                                  <input type="file" onChange={changeFile(rowNum)} name="imgFile"  id="ex_file"/>
+                                                  <div className="scroll_x">
+                                                  {testimg.map(src => (
+                                                            <img className="scroll_img" key={src} src={window.location.origin +src}  alt="경로 오류"/>
+                                                            ))}
+                                                  </div>
+                                            </div>
+                                       
+                                        </Paper>
+                                    </Grid>
+                             </Grid>
+                             
                             )
                         })
                     }
-                </div>
-                <div>
-                    <br/>
-                    <button type="button" onClick={addRow} className="btn btn-info addBtn">추가</button>
-                </div>
-                <div>
-                    <button type="submit" className="btn btn-success" >만들기</button>
-                </div>
+               
+
+                <Grid xs={12} md={12}>
+                    <Paper className="crt_add_card_paper">
+                    <button type="button" onClick={addRow} className="crt_add_card">+ 카드 추가</button>
+                    </Paper>
+                </Grid>
+                <Grid xs={12} md={12}>
+                    <div className="crt_create_btn_box">
+                    <button type="submit" className="crt_create_btn" >만들기</button>
+                    </div>
+                </Grid>
+                {/* 컨테이너 그리드 */}
+                </Grid>
             </form>
         </div>
     );
