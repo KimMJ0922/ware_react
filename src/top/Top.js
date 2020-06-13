@@ -8,9 +8,6 @@ import { Search,Create,Menu, Face} from '@material-ui/icons';
 import img2 from './iu.jpg';
 
 const Top = ({path}) =>{
-    const [email, setEmail] = useState(window.sessionStorage.getItem('email'));
-    const [name, setName] = useState(window.sessionStorage.getItem('name'));
-    const [profile, setProfile] = useState(window.sessionStorage.getItem('profile'));
     const [userInfo, setUserInfo] = useState({
         email : window.sessionStorage.getItem('email'),
         name : window.sessionStorage.getItem('name'),
@@ -42,29 +39,16 @@ const Top = ({path}) =>{
         
         window.sessionStorage.clear();
         localStorage.removeItem('autoLogin');
-        history.push('/');
+        window.location.replace('/')
     }
 
-
-
-    useEffect(()=>{
-        setUserInfo({
-            email : window.sessionStorage.getItem('email'),
-            name : window.sessionStorage.getItem('name'),
-            profile : window.sessionStorage.getItem('profile')
-        })
-
-        console.log(userInfo);
-        
-    },[]);
-    
     if(path === "/"){
         return (
             <div id='topMainFirst'>
                 <Grid container spacing={0}>
                     <Grid item xs={3} md={2}>
                         <div className='topMenuFirst'>
-                            <Link exact to={email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
+                            <Link exact to={userInfo.email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
                         </div>
                     </Grid>
                     <Grid item xs={4} md={8}>
@@ -73,22 +57,14 @@ const Top = ({path}) =>{
                             &nbsp;
                         </div>
                     </Grid>
-                        { email === null ? 
-                            <Grid item xs={5} md={2}>
-                                <div className='topMenuFirst' style={{display:'inherit'}}>
-                                    <p className='loginController'>
-                                        <span> <Link to="signin" className='MainSign'>로그인</Link></span> 
-                                        <span> <Link to="signup" className='MainSign'>회원가입 </Link></span>
-                                    </p> 
-                                </div>
-                            </Grid>
-                            : 
-                            <Grid item xs={5} md={2}>
-                                <div className='topMenuFirst' style={{display:'inherit'}}>
-                                    <Link onClick={logout} className='MainLogout'><span>로그아웃</span></Link>
-                                </div>  
-                            </Grid>
-                        }
+                        <Grid item xs={5} md={2}>
+                            <div className='topMenuFirst' style={{display:'inherit'}}>
+                                <p className='loginController'>
+                                    <span> <Link to="signin" className='MainSign'>로그인</Link></span> 
+                                    <span> <Link to="signup" className='MainSign'>회원가입 </Link></span>
+                                </p> 
+                            </div>
+                        </Grid>
                 </Grid>
             </div>
         )
@@ -96,14 +72,12 @@ const Top = ({path}) =>{
         return (
             <div id='topMain'>
                 <Grid container>
-                    
-
                     {/* 웹 */}
                     <Hidden only={['xs','sm']}>
                     <Grid item xs={2} md={2}>
-                    <div className='topMenu'>
-                        <Link exact to={email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
-                    </div>
+                        <div className='topMenu'>
+                            <Link exact to={userInfo.email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
+                        </div>
                     </Grid>
                     <Grid item xs={1} md={1}>
                         <div className='topMenu'>
@@ -121,29 +95,21 @@ const Top = ({path}) =>{
                     </Grid>
                     <Grid item xs={6} md={2}>
                         <div className='topMenu' style={{display:'inherit'}}>
-                        {/* 공백채우기용 */} 
-                        &nbsp;
+                            {/* 공백채우기용 */} 
+                            &nbsp;
                         </div>
                     </Grid>
                     <Grid item xs={2} md={2}>
                         <div className='topMenu'>
-
-                            {
-                                email === null ? <Link exact to="../signin">
-                                                    <span className='userLogin'>로그인</span>
-                                                </Link> 
-                                :
-                                <div>
-                                    <Link exact to="/profile" className='topMenuList'>
+                            <div>
+                                <Link exact to="/profile" className='topMenuList'>
                                     <div id='profilename'>
-                                        <img src={profile} alt='경로오류' className='topMenuProfileImg' />
-                                        <span>{name}</span>
+                                        <img src={userInfo.profile} alt='경로오류' className='topMenuProfileImg' />
+                                        <span>{userInfo.name}</span>
                                     </div>
-                                    </Link>
-                                    <Link onClick={logout} className='userLogout'><span >로그아웃</span></Link>
-                                </div>
-                            }
-                            
+                                </Link>
+                                <Link onClick={logout} className='userLogout'><span >로그아웃</span></Link>
+                            </div>
                         </div>
                     </Grid>
                     </Hidden>
@@ -177,7 +143,7 @@ const Top = ({path}) =>{
                     <Grid item xs={1} md={2}>
                         <div className='topMenu'>
                             {
-                                email === null ? <Link exact to="../signin">
+                                userInfo.email === null ? <Link exact to="../signin">
                                                     <span className='userLogin'><Face/></span>
                                                 </Link> 
                                 :

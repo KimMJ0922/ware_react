@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Home,Create,Search,Signin,Signup} from './contents';/*index.js호출*/
+import {Home,Create,Search,Signin,Signup,ChangePassword} from './contents';/*index.js호출*/
 import Board from './board/Board';
 import Main from './main/Main';
 import Top from './top/Top';
@@ -36,6 +36,10 @@ const Title = () => {
       {
         path: "/board",
         component: Board
+      },
+      {
+        path:"/forgotten",
+        component: ChangePassword
       },
       {
         path:"/",

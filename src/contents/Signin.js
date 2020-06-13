@@ -67,6 +67,16 @@ const Signin=()=>{
             email,
             password
         }).then((res) => {
+            if(res.data.login === 'n'){
+                alert('아이디 또는 비밀번호를 확인해주세요');
+                return false;
+            }
+
+            if(res.data.emailcheck === 'n'){
+                alert('해당 이메일의 인증을 해주세요');
+                return false;
+            }
+            console.log(res.data.dto);
             window.sessionStorage.setItem('email',res.data.dto.email);
             window.sessionStorage.setItem('name',res.data.dto.name);
             window.sessionStorage.setItem('profile',res.data.dto.profile);
@@ -92,12 +102,10 @@ const Signin=()=>{
                     })
                 );
             }
-            
+            window.location.replace('/home/default');
         }).catch((err) => {
             console.log(err);
         });
-
-        history.replace('/home/default');
     }
 
     const responseKakao = (res) => {
@@ -154,7 +162,8 @@ const Signin=()=>{
                 <input type="password" name="password" onChange={changeLoginInfo}/><br/>
                 <input type="checkbox" name="autoLogin" onChange={changeLoginOption}/>자동로그인 
                 <input type="checkbox" name="saveEmail" onChange={changeLoginOption} checked={loginOption.saveEmail} />아이디 저장<br/>
-                <Link to="signup">회원가입</Link><br/>
+                <Link to="signup">회원가입</Link>
+                <Link to="forgotten">찾기</Link><br/>
                 <button type="submit">로그인</button>
             </form>
             <KakaoLogin 
