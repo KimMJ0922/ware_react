@@ -17,6 +17,14 @@ const Signin=()=>{
         saveEmail : false
     });
     const [dumeCheck, setDumeCheck] = useState(false);
+
+    //소셜 로그인 변수
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [profile, setProfile] = useState('');
+    const [provider, setProvider] = useState('');
+
+
     const changeLoginInfo = (e) => {
         setLoginInfo({
             ...loginInfo,
@@ -108,41 +116,50 @@ const Signin=()=>{
         });
     }
 
-    const responseKakao = (res) => {
+    const socialLogin = (res) => {
+        let id = res.googleId;
         let url = "http://localhost:9000/sociallogin";
-        axios.post(url,{
-            email : res.profile.id,
-            name : res.profile.properties.nickname,
-            profile : res.profile.properties.profile_image,
-            provider : 'kakao'
-        }).then((res) => {
-            window.sessionStorage.setItem('email',res.data.dto.email);
-            window.sessionStorage.setItem('name',res.data.dto.name);
-            window.sessionStorage.setItem('profile',res.data.dto.profile);
-            window.sessionStorage.setItem('provider','kakao');
-            history.replace('/home/default');
-        }).catch((err) => {
-            console.log(err);
-        });
+        let data = {};
+        //카카오 로그인
+        //카카오에서 가져온 값은 변수에 담을수가 없다.
+        //그래서 어쩔수 없이 직접 명시해줘야한다.
+        if(id === undefined){
+            axios.post(url,{
+                email : res.profile.id,
+                name : res.profile.properties.nickname,
+                profile : res.profile.properties.profile_image,
+                provider : 'kakao',
+            }).then((res) => {
+                window.sessionStorage.setItem('email',res.data.dto.email);
+                window.sessionStorage.setItem('name',res.data.dto.name);
+                window.sessionStorage.setItem('profile',res.data.dto.profile);
+                window.sessionStorage.setItem('provider',res.data.dto.provider);
+                window.location.replace('/home/default');
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+        //구글 로그인
+        else{
+            axios.post(url,{
+                email : res.googleId,
+                name : res.profileObj.name,
+                profile : res.profileObj.imageUrl,
+                provider : 'google',
+            }).then((res) => {
+                window.sessionStorage.setItem('email',res.data.dto.email);
+                window.sessionStorage.setItem('name',res.data.dto.name);
+                window.sessionStorage.setItem('profile',res.data.dto.profile);
+                window.sessionStorage.setItem('provider',res.data.dto.provider);
+                window.location.replace('/home/default');
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+        console.log(data);
+        
     }
 
-    const responseGoogle = (res) => {
-        let url = "http://localhost:9000/sociallogin";
-        axios.post(url,{
-            email : res.googleId,
-            name : res.profileObj.name,
-            profile : res.profileObj.imageUrl,
-            provider : 'google'
-        }).then((res) => {
-            window.sessionStorage.setItem('email',res.data.dto.email);
-            window.sessionStorage.setItem('name',res.data.dto.name);
-            window.sessionStorage.setItem('profile',res.data.dto.profile);
-            window.sessionStorage.setItem('provider','google');
-            history.replace('/home/default');
-        }).catch((err) => {
-            console.log(err);
-        });
-    }
 
     const responseFail = (err) => {
         console.log(err);
@@ -168,13 +185,13 @@ const Signin=()=>{
             </form>
             <KakaoLogin 
                 jsKey={'b1851ca9c6bcb21f4986200374e15d27'}
-                onSuccess={responseKakao}
+                onSuccess={socialLogin}
                 onFailure={responseFail}
                 getProfile="true"
             />
             <GoogleLogin
                 clientId = {'66532483242-gcnjkf02hb70f0m31i7f2esed4vqahkq.apps.googleusercontent.com'}
-                onSuccess = {responseGoogle}
+                onSuccess = {socialLogin}
                 onFailure={responseFail}
             />
         </div>
