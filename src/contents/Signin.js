@@ -119,7 +119,7 @@ const Signin=()=>{
     const socialLogin = (res) => {
         let id = res.googleId;
         let url = "http://localhost:9000/sociallogin";
-        let data = {};
+
         //카카오 로그인
         //카카오에서 가져온 값은 변수에 담을수가 없다.
         //그래서 어쩔수 없이 직접 명시해줘야한다.
@@ -155,9 +155,7 @@ const Signin=()=>{
             }).catch((err) => {
                 console.log(err);
             });
-        }
-        console.log(data);
-        
+        }       
     }
 
 

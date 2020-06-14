@@ -13,14 +13,13 @@ const Top = ({path}) =>{
         name : window.sessionStorage.getItem('name'),
         profile : window.sessionStorage.getItem('profile')
     });
-
+    const [cnt, setCnt] = useState(0);
     // const topMenuListAvtive={
     //     width:'1000px',
     //     color:'red',
     //     backgroundColor:'#ffffcc'
     // }    
 
-    const history = useHistory();
     const logout = () => {
         //회원 탈퇴에 쓸 예정
         // window.Kakao.API.request({
@@ -39,9 +38,10 @@ const Top = ({path}) =>{
         
         window.sessionStorage.clear();
         localStorage.removeItem('autoLogin');
-        window.location.replace('/')
+        window.location.replace('/');
     }
 
+   
     if(path === "/"){
         return (
             <div id='topMainFirst'>

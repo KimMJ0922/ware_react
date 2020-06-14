@@ -47,6 +47,24 @@ const Title = () => {
       }
     ];
     const [nowPath, setPath] = useState('');
+    
+    useEffect(() => {
+      let email = window.sessionStorage.getItem('email');
+      let page = ['/','/signin','/signup'];
+      //로그인 안한 상태에서 메인을 제외한 페이지로 강제 이동시
+      //메인 페이지로 이동
+      if(nowPath!==''){
+        if(page.indexOf(nowPath) === -1 && email === null){
+          window.location.replace('/')
+        }
+        //로그인 한 상태에서 메인으로 강제로 가면 
+        //전 페이지로 이동
+        else if(email !== null && page.indexOf(nowPath) !== -1){
+          window.history.back();
+        }
+      }
+    },[nowPath]);
+
     return (
 
         <div style={{fontSize: '16px'}}>
