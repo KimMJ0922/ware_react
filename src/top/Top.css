@@ -141,11 +141,6 @@
         left: 9px;
         font-size: 1.2em;
     }
-    /* .topMenu>.topMenuListAvtive>span{ */
-        /* background-color: #000000;
-        color: #fff;
-        font-size: 1.3em; */
-    /* } */
     .topMenuListLogo{
         font-size: 2.4rem;
         font-family: 'Black Han Sans', sans-serif;
@@ -200,11 +195,6 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    /* .topMenuFirst>.topMenuListAvtive>span{ */
-        /* background-color: #000000;
-        color: #fff;
-        font-size: 1.3em; */
-    /* } */
       #profilename>.topMenuProfileImg{
         width: 60px;
         margin-left: 11px;
@@ -264,11 +254,6 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    /* .topMenu>.topMenuListAvtive>span{ */
-        /* background-color: #000000;
-        color: #fff;
-        font-size: 1.3em; */
-    /* } */
     .topMenuListLogo{
         font-size: 1.4rem;
         font-family: 'Black Han Sans', sans-serif;
@@ -314,11 +299,6 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    /* .topMenuFirst>.topMenuListAvtive>span{ */
-        /* background-color: #000000;
-        color: #fff;
-        font-size: 1.3em; */
-    /* } */
     #profilename>.topMenuProfileImg{
         margin-top: 1em;
         width: 38px;
@@ -360,16 +340,10 @@
     .topMenu> .topMenuList>span>div{
         font-size: 1.4rem;
         display: inline-block;
-        /* margin-left: 0.3rem; */
         overflow: hidden;
         text-overflow: ellipsis;
         transition: all .12s
     }
-    /* .topMenu>.topMenuListAvtive>span{ */
-        /* background-color: #000000;
-        color: #fff;
-        font-size: 1.3em; */
-    /* } */
     .topMenuListLogo{
         height: 60px;
         font-size: 1rem;
@@ -413,11 +387,6 @@
         text-overflow: ellipsis;
         transition: all .12s
     }
-    /* .topMenuFirst>.topMenuListAvtive>span{ */
-        /* background-color: #000000;
-        color: #fff;
-        font-size: 1.3em; */
-    /* } */
     #profilename>.topMenuProfileImg{
         width: 30px;
         margin-left: 11px;

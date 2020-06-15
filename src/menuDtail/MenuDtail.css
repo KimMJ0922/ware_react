@@ -730,19 +730,20 @@ font-size: 0.9rem;
 
 /* default - media 일반 사이즈 */
 @media(min-width: 551px){
+    .defaultTitle{
+        display: inline-block;
+        margin: 1rem 2rem;
+        font-size: 2rem;
+        color: rgb(95, 94, 94);
+    }
     .mycardList>*{
         font-family: 'Nanum Barun Gothic', sans-serif;
     }
-    
-
-}
-/* default - media 웹 최소 사이즈 */
-@media(max-width: 550px){
-.mycardList{
-        padding: 0 1rem;
+    .mycardList{
+        padding: 0.4rem 1rem;
         border: 0;
-        height: 180px;
-        margin: 5px auto;
+        height: 150px;
+        margin: 0.3rem 0.3rem;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
 
     }
@@ -761,13 +762,104 @@ font-size: 0.9rem;
         display: flex;
     }
     .mycardCardId>span{
-        padding-left: 10px;
+        padding-left: 0.5rem;
+        padding-top: 0.5rem;
+    }
+    .cardProfileImg{
+        background-color:#0de30d;
+        border-radius:40px;
+        width:40px;
+        height:40px;
+    }
+    .defaultPageFind{
+        text-align: center;
+    }
+    .defaultPageFind>.defaultPageFindButton{
+        color: #fff;
+        width: 177px;
+        font-size: 1.3rem;
+        height: 58px;
+        border-radius: 5px;
+        border: 0;
+        background-color: mediumpurple;
+        transition: 0.3s;
+    }
+    .defaultPageFind>span{
+        display: block;
+        font-size: 1.6rem;
+        color: #757373;
+        font-weight: 400;
+        padding: 1rem;
+    }
+    .defaultPageFind>.defaultPageFindButton:active{
+        background-color: purple;
+    }
+    .defaultPageFind>.defaultPageFindButton:focus{
+        outline: none;    
+    }
+
+}
+/* default - media 웹 최소 사이즈 */
+@media(max-width: 550px){
+    .defaultTitle{
+        display: inline-block;
+        margin: 1rem;
+        font-size: 1.5rem;
+        color: rgb(95, 94, 94);
+    }
+    .mycardList{
+        padding: 0 1rem;
+        border: 0;
+        height: 150px;
+        margin: 0.3rem 0.3rem;
+        box-shadow: 0px 3px 15px -4px #BDBDBD;
+
+    }
+    .mycardList>.mycardSubject{
+        height: 30%;
+        font-size: 1.5em;
+
+    }
+    .mycardList>.mycardCount{
+        font-size: 1em;
+        color: #8a8a8a;
+        height: 40%;
+    }
+    .mycardList>.mycardCardId{
+        height: 30%;
+        display: flex;
+    }
+    .mycardCardId>span{
+        padding-left: 0.5rem;
+        padding-top: 0.5rem;
     }
     .cardProfileImg{
         background-color:red;
         border-radius:40px;
         width:40px;
         height:40px;
+    }
+    .defaultPageFind{
+        
+    }
+    .defaultPageFind>.defaultPageFindButton{
+        color: #fff;
+        position: fixed;
+        right: 1rem;
+        z-index: 100;
+        bottom: 1rem;
+        width: 70px;
+        border-radius: 40px;
+        height: 70px;
+        border: 0;
+        background-color: mediumpurple;
+        transition: 0.3s;
+    }
+    .defaultPageFind>.defaultPageFindButton:active{
+        background-color: purple;
+    }
+    .defaultPageFind>.defaultPageFindButton:focus{
+        outline: none;    
     }
 }
 /* default - media 모바일 사이즈 */
@@ -803,5 +895,34 @@ font-size: 0.9rem;
         width:30px;
         height:30px;
     }
+    .defaultTitle{
+        display: inline-block;
+        margin: 0.3rem 1rem;
+        font-size: 1.2rem;
+        color: rgb(95, 94, 94);
+    }
+    .defaultPageFind{
+        width: auto;
+    }
+    .defaultPageFind>.defaultPageFindButton{
+        color: #fff;
+        position: fixed;
+        right: 1rem;
+        z-index: 100;
+        bottom: 1rem;
+        width: 70px;
+        border-radius: 40px;
+        height: 70px;
+        border: navajowhite;
+        background-color: mediumpurple;
+        transition: 0.3s;
+    }
+    .defaultPageFind>.defaultPageFindButton:active{
+        background-color: purple;
+    }
+    .defaultPageFind>.defaultPageFindButton:focus{
+        outline: none;    
+    }
+    
 }
     

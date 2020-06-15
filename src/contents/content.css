@@ -48,6 +48,7 @@
     .mainMenuListItem>span>div{
         display: inline-block;
         margin-left: 0.3rem;
+        padding-bottom: 0.2rem;
         overflow: hidden;
         text-overflow: ellipsis;
         width: 75%;

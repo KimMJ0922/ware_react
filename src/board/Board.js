@@ -10,10 +10,10 @@ import './Board.css';
 const Board=()=>{
     return (
         <Router>
-            <Route exact path="/board" component={BoardList} />
-            <Route exact path="/board/insert" component={BoardInsert} />
-            <Route exact path="/board/update" component={BoardUpdate} />
-            <Route exact path="/board/item/:board_no" component={BoardItem} />
+            <Route exact path="/home/board" component={BoardList} />
+            <Route exact path="/home/board/insert" component={BoardInsert} />
+            <Route exact path="/home/board/update" component={BoardUpdate} />
+            <Route exact path="/home/board/item/:board_no" component={BoardItem} />
         </Router>
     )
 }
