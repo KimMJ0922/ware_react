@@ -5,7 +5,6 @@ import './Create.css';
 import { Paper } from '@material-ui/core';
 import DelIcon from '@material-ui/icons/DeleteForever';
 import ImgIcon from '@material-ui/icons/ImageSearch';
-
 const CreateCardSet = () => {
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
@@ -187,12 +186,14 @@ const CreateCardSet = () => {
         <div className="crt_body">
             <form onSubmit={onSubmit}>
                 <Grid container>
+                    <Grid container style={{marginBottom:'50px'}}>
                         <Grid xs={6} md={10}>
                             <div class="crt_top">세트 만들기</div>
                         </Grid>
                         <Grid xs={6} md={2}>
                             <button type="button" className="create_btn1" >만들기</button>
                         </Grid>
+                    </Grid>
                 {/* 제목, 설명 */}
                 <Grid xs={12} md={12}>
                 <div className="crt_top_input_box">
@@ -207,7 +208,7 @@ const CreateCardSet = () => {
                 
                     <Grid xs={6} md={6}>
                        
-                        <span className="crt_input_font">공개</span><br/>
+                        <span className="crt_input_font web">공개</span><br/>
                         <select id="openScope" onChange={passwordVisible} className="crt_slt_bar">
                             <option value="public" selected>모두</option>
                             <option value="password">비밀번호를 아는 사람</option>
@@ -220,7 +221,7 @@ const CreateCardSet = () => {
                     </Grid>
 
                     <Grid xs={6} md={6}>
-                    <span className="crt_input_font">수정</span><br/>
+                    <span className="crt_input_font web">수정</span><br/>
                         <select id="updateScope" onChange={passwordVisible}  className="crt_slt_bar">
                             <option value="password">비밀번호를 아는 사람</option>
                             <option value="private" selected>나만</option>
