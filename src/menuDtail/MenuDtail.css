@@ -728,5 +728,80 @@ font-size: 0.9rem;
 
 }
 
+/* default - media 일반 사이즈 */
+@media(min-width: 551px){
+    .mycardList>*{
+        font-family: 'Nanum Barun Gothic', sans-serif;
+    }
+    
 
+}
+/* default - media 웹 최소 사이즈 */
+@media(max-width: 550px){
+.mycardList{
+        padding: 0 1rem;
+        border: 0;
+        height: 180px;
+        margin: 5px auto;
+        box-shadow: 0px 3px 15px -4px #BDBDBD;
+
+    }
+    .mycardList>.mycardSubject{
+        height: 30%;
+        font-size: 1.5em;
+
+    }
+    .mycardList>.mycardCount{
+        font-size: 1em;
+        color: #8a8a8a;
+        height: 40%;
+    }
+    .mycardList>.mycardCardId{
+        height: 30%;
+        display: flex;
+    }
+    .mycardCardId>span{
+        padding-left: 10px;
+    }
+    .cardProfileImg{
+        background-color:red;
+        border-radius:40px;
+        width:40px;
+        height:40px;
+    }
+}
+/* default - media 모바일 사이즈 */
+@media(max-width: 375px){
+    .mycardList{
+        padding: 0 1rem;
+        border: 0;
+        height: 180px;
+        margin: 5px auto;
+        box-shadow: 0px 3px 15px -4px #BDBDBD;
+
+    }
+    .mycardList>.mycardSubject{
+        height: 30%;
+        font-size: 1.5em;
+
+    }
+    .mycardList>.mycardCount{
+        font-size: 1.3em;
+        color: #8a8a8a;
+        height: 40%;
+    }
+    .mycardList>.mycardCardId{
+        height: 30%;
+        display: flex;
+    }
+    .mycardCardId>span{
+        padding-left: 10px;
+    }
+    .cardProfileImg{
+        background-color:red;
+        border-radius:40px;
+        width:30px;
+        height:30px;
+    }
+}
     

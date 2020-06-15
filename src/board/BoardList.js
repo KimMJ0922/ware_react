@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { MemoryRouter, Route, Router } from 'react-router';
+import { MemoryRouter, Route } from 'react-router';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import BoardItems from './BoardItems';
