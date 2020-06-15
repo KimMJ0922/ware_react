@@ -44,9 +44,14 @@ const Title = () => {
       {
         path:"/",
         component: Main
+      },
+      {
+        path:'/upload',
+
       }
     ];
     const [nowPath, setPath] = useState('');
+    const [pro, setPro] = useState(window.sessionStorage.getItem('profile'));
     useEffect(() => {
       let email = window.sessionStorage.getItem('email');
       let page = ['/','/signin','/signup','/forgotten'];

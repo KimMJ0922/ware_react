@@ -126,6 +126,7 @@ const Signin=()=>{
         //카카오에서 가져온 값은 변수에 담을수가 없다.
         //그래서 어쩔수 없이 직접 명시해줘야한다.
         if(id === undefined){
+            console.log(res.profile,res.profile.properties);
             axios.post(url,{
                 email : res.profile.id,
                 name : res.profile.properties.nickname,
@@ -136,7 +137,7 @@ const Signin=()=>{
                 window.sessionStorage.setItem('name',res.data.dto.name);
                 window.sessionStorage.setItem('profile',res.data.dto.profile);
                 window.sessionStorage.setItem('provider',res.data.dto.provider);
-                window.location.replace('/home/default');
+                // window.location.replace('/home/default');
             }).catch((err) => {
                 console.log(err);
             });
