@@ -1,8 +1,11 @@
 import React from 'react';
+import { Grid } from '@material-ui/core';
 const Diagram=()=>{
     return(
         <div>
-            default Page
+            <Grid container>
+                
+            </Grid>
         </div>
     )
 }

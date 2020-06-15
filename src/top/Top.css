@@ -57,7 +57,7 @@
         margin-bottom: -0.5em;
         top: 36px;
         cursor: pointer;
-        transition:  cubic-bezier(0.47, 0, 0.745, 0.715) 1s;
+        transition:  cubic-bezier(0.47, 0, 0.745, 0.715) 0.7s;
     }
     .topMenu> .topMenuListSearch>span>div>input::placeholder{
         font-size: 1.4rem;
@@ -210,6 +210,18 @@
         margin-left: 11px;
         margin-top: 4px;
         border-radius: 40px;
+    }
+    .userLogin{
+        width: 100%;
+        line-height: 6.5rem;
+        text-align: center;
+        text-decoration: none;
+        height: 100px;
+        color: #2d3639;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 1.4rem;
+        transition: all .12s cubic-bezier(.47,0,.745,.715);
     }
    
 }
@@ -412,5 +424,6 @@
         margin-top: 1em;
         border-radius: 40px;
     }
+    
 }
 
