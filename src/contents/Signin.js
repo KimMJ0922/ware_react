@@ -1,10 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import {Link,useHistory} from 'react-router-dom';
-import './content.css'
 import KakaoLogin from 'react-kakao-login';
 import {GoogleLogin} from'react-google-login';
 import axios from 'axios';
-
+import './Login.css';
+import Kakao from './img/kakao_login.png';
 const Signin=()=>{
     const history = useHistory();
     const [loginInfo, setLoginInfo] = useState({
@@ -174,15 +174,17 @@ const Signin=()=>{
     return(
         <div>
             <form onSubmit={login}>
-                <input type="text" name="email" onChange={changeLoginInfo} value={loginInfo.email}/><br/>
-                <input type="password" name="password" onChange={changeLoginInfo}/><br/>
-                <input type="checkbox" name="autoLogin" onChange={changeLoginOption}/>자동로그인 
-                <input type="checkbox" name="saveEmail" onChange={changeLoginOption} checked={loginOption.saveEmail} />아이디 저장<br/>
-                <Link to="signup">회원가입</Link>
-                <Link to="forgotten">찾기</Link><br/>
-                <button type="submit">로그인</button>
+                <div className="login_top">Login</div>
+                <input type="text" className="login_input margin_b_30" name="email" onChange={changeLoginInfo} value={loginInfo.email} placeholder='이메일'/><br/>
+                <input type="password" className="login_input" name="password" onChange={changeLoginInfo} placeholder="비밀번호"/><br/>
+                <p className="login_sup_sch_box"><Link to="signup"><span className="text_left">회원가입 </span></Link><Link to="forgotten"><span>비밀번호 찾기</span></Link><br/></p>
+                <p className="login_check_box"> <span>자동로그인</span>  <input type="checkbox" name="autoLogin" onChange={changeLoginOption}/></p>
+                <p className="login_check_box"><span>아이디 저장</span> <input type="checkbox" name="saveEmail" onChange={changeLoginOption} checked={loginOption.saveEmail} /></p>
+                
+                
+                <button type="submit" className="login_login_btn">로그인</button>
             </form>
-            <KakaoLogin 
+            <KakaoLogin className="login_kakao_box"
                 jsKey={'b1851ca9c6bcb21f4986200374e15d27'}
                 onSuccess={socialLogin}
                 onFailure={responseFail}

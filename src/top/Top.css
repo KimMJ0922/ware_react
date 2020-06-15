@@ -177,11 +177,12 @@
     }
     .topMenuFirst>.loginController>span>.MainSign{
         margin-top: 1.7em;
-        margin-left: 2.7em;
         font-size: 1.2em;
         text-decoration: none;
         display: inline-block;
         color: #000;
+        border:none;
+        background:none;
     }
     .topMenuFirst>.topMenuList>span{
         color: #2d3639;
@@ -255,6 +256,8 @@
         text-decoration: none;
         display: inline-block;
         color: #000;
+        border:none;
+        background:none;
     }
     .topMenu> .topMenuList>span>div{
         font-size: 1.4rem;
@@ -356,6 +359,8 @@
         text-decoration: none;
         display: inline-block;
         color: #000;
+        border:none;
+        background:none;
     }
     .topMenu> .topMenuList>span>div{
         font-size: 1.4rem;
@@ -427,3 +432,45 @@
     
 }
 
+
+/* Login modal 모바일 */
+@media(max-width: 375px){
+    .Login_modal_div{
+        width:300px;
+        height: 500px;
+        margin-top: 80px;
+        margin-left: 10%;
+        text-align: center;
+        background:white;
+        border-radius: 10px;
+        opacity: 0.9;
+    }
+}
+
+/* Login modal 최소 */
+@media(min-width: 500px){
+    .Login_modal_div{
+        width:400px;
+        height: 500px;
+        margin-top: 80px;
+        margin-left: 10%;
+        text-align: center;
+        background:white;
+        border-radius: 10px;
+        opacity: 0.9;
+    }
+}
+
+/* Login modal 일반 */
+@media(min-width: 501px){
+    .Login_modal_div{
+        width:40%;
+        height: 700px;
+        margin-top: 80px;
+        margin-left: 30%;
+        text-align: center;
+        background:white;
+        border-radius: 10px;
+        opacity: 0.9;
+    }
+}

@@ -1,0 +1,85 @@
+@media(max-width: 375px){
+    .signUp_label_box{
+        text-align: left;
+        margin-left: 20%;
+    }
+    label{
+        margin:0 auto;
+        padding:0;
+        font-size: 0.9rem;
+        
+    }
+    input{
+        border: none;
+        background: none;
+        width: 180px;
+        height:30px;
+        border-bottom: 1px solid dimgrey;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+    }
+    button{
+        border:none;
+        background: dimgrey;
+        width:180px;
+        height: 40px;
+        border-radius: 5px;
+    }
+}
+@media(min-width: 500px){
+    .signUp_label_box{
+        text-align: left;
+        margin-left: 20%;
+    }
+    label{
+        margin:0 auto;
+        padding:0;
+        font-size: 0.9rem;
+        
+    }
+    input{
+        border: none;
+        background: none;
+        width: 180px;
+        height:30px;
+        border-bottom: 1px solid dimgrey;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+    }
+    button{
+        border:none;
+        background: dimgrey;
+        width:180px;
+        height: 40px;
+        border-radius: 5px;
+    }
+}
+@media(min-width: 551px){
+    .signUp_label_box{
+        text-align: left;
+        margin-left: 25%;
+    }
+    label{
+        margin:0 auto;
+        padding:0;
+        font-size: 1rem;
+        
+    }
+    input{
+        border: none;
+        background: none;
+        width: 400px;
+        height:60px;
+        border-bottom: 1px solid dimgrey;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        
+    }
+    button{
+        border:none;
+        background: dimgrey;
+        width:180px;
+        height: 40px;
+        border-radius: 5px;
+    }
+}

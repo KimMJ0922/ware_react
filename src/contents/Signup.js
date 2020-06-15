@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
-import './content.css'
 import axios from 'axios';
+import './SignUp.css';
 const Signup=()=>{
     const [userInfo, setUserInfo] = useState({
         email : '',
@@ -265,20 +265,21 @@ const Signup=()=>{
 
     return(
         <div>
+            <div className="login_top">SingUp</div>
             <form onSubmit={formSubmit}>
-                <div>
+                <div className="signUp_label_box">
                     <label for="email">{eff.emailEff}</label><br/>
                     <input type="text" id="email" name="email" onChange={updateValue} placeholder="email@domain.com"/>
                 </div>
-                <div>
+                <div className="signUp_label_box">
                     <label for="password">{eff.passEff}</label><br/>
                     <input type="password" id="password" name="password" onChange={updateValue} placeholder="●●●●●●●"/>
                 </div>
-                <div>
+                <div className="signUp_label_box">
                     <label for="name">{eff.nameEff}</label><br/>
                     <input type="text" id="name" name="name" onChange={updateValue} placeholder="이름1234"/>
                 </div>
-                <div>
+                <div className="signUp_label_box">
                     <label for="birth">{eff.birthEff}</label><br/>
                     <input type="text" id="birth" name="birth" onChange={updateValue} placeholder="19000101"/>
                 </div>

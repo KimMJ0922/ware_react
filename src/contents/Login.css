@@ -1,0 +1,246 @@
+/* Login modal 모바일 */
+@media(max-width: 375px){
+  .login_top{
+      background-color: dimgrey;
+      width:100%;
+      height:50px;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-radius: 10px 10px 0 0;
+      padding-top: 20px;
+      border:none;
+      
+  }
+
+  .login_input{
+    border:1px solid gray;
+    height:40px;
+    width:250px;
+    border-radius: 5px;
+    opacity: 0.8;
+  }
+
+  .margin_b_30{
+    margin-bottom: 30px;
+  }
+
+  .login_kakao_box{
+    border:none;
+    background:url('./img/kakao_login.png');
+    background-repeat: no-repeat;
+    font-size: 0;
+    width: 195px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .login_check_box{
+      text-align: right;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 5px;
+      margin-right: 20px;
+
+  }
+
+  .login_check_box>span{
+      font-size: 0.8rem;
+      
+  }
+
+  .login_sup_sch_box{
+      margin:0;
+      font-size: 0.8rem;
+      text-align: right;
+      margin-right: 20px;
+      margin-bottom: 10px;  
+  }
+  .login_sup_sch_box a:visited{
+      color:red;
+  }
+
+  .login_sup_sch_box a:link{
+    color:black;
+    }
+
+  .login_login_btn{
+    border:none;
+    background: none;
+    width:180px;
+    height:40px;
+    border-radius: 5px;
+    background-color: dimgrey;
+}
+
+
+}
+
+/* Login modal 최소 */
+@media(min-width: 500px){
+    .login_top{
+        background-color: dimgrey;
+        width:100%;
+        height:50px;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        border-radius: 10px 10px 0 0;
+        padding-top: 20px;
+        border:none;
+        
+    }
+  
+    .login_input{
+      border:1px solid gray;
+      height:40px;
+      width:250px;
+      border-radius: 5px;
+      opacity: 0.8;
+    }
+  
+    .margin_b_30{
+      margin-bottom: 30px;
+    }
+  
+    .login_kakao_box{
+      border:none;
+      background:url('./img/kakao_login.png');
+      background-repeat: no-repeat;
+      font-size: 0;
+      width: 205px;
+      height: 50px;
+      margin-left: 25px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .login_check_box{
+        text-align: right;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 20px;
+        padding-left: 40px;
+        margin-right: 35px;
+        display: unset;
+
+  
+    }
+  
+    .login_check_box>span{
+        font-size: 0.8rem;
+        
+    }
+  
+    .login_sup_sch_box{
+        margin:0;
+        font-size: 0.8rem;
+        text-align: right;
+        margin-right: 20px;
+        margin-bottom: 10px;  
+    }
+    .login_sup_sch_box a:visited{
+        color:red;
+    }
+  
+    .login_sup_sch_box a:link{
+      color:black;
+      }
+  
+    .login_login_btn{
+      border:none;
+      background: none;
+      width:180px;
+      height:40px;
+      border-radius: 5px;
+      background-color: dimgrey;
+      margin-top: 30px;
+  }
+}
+
+/* Login modal 일반 */
+@media(min-width: 550px){
+    .login_top{
+        background-color: dimgrey;
+        width:100%;
+        height:70px;
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        border-radius: 10px 10px 0 0;
+        padding-top: 20px;
+        border:none;
+        
+    }
+  
+    .login_input{
+      border:1px solid gray;
+      height:40px;
+      width:400px;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      opacity: 0.8;
+
+    }
+  
+    .margin_b_30{
+      margin-bottom: 30px;
+    }
+  
+    .login_kakao_box{
+      border:none;
+      background:url('./img/kakao_login.png');
+      background-repeat: no-repeat;
+      font-size: 0;
+      width: 205px;
+      height: 50px;
+      margin-left: 293px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: block;
+    }
+  
+    .login_check_box{
+        text-align: right;
+        margin: 0;
+        padding: 0;
+        margin-right: 370px;
+        display: block;
+
+  
+    }
+  
+    .login_check_box>span{
+        font-size: 0.8rem;
+        
+    }
+  
+    .login_sup_sch_box{
+        margin:0;
+        font-size: 0.8rem;
+        text-align: right;
+        margin-right: 370px;
+        margin-top: 10px;
+        margin-bottom: 10px;  
+      
+    }
+    .login_sup_sch_box a:visited{
+        color:red;
+    }
+  
+    .login_sup_sch_box a:link{
+      color:black;
+      }
+  
+    .login_login_btn{
+      border:none;
+      background: none;
+      width:180px;
+      height:40px;
+      border-radius: 5px;
+      background-color: dimgrey;
+      margin-top: 50px;
+  }
+}
