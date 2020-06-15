@@ -117,6 +117,7 @@ const Signin=()=>{
         });
     }
 
+    
     const socialLogin = (res) => {
         let id = res.googleId;
         let url = "http://localhost:9000/sociallogin";
