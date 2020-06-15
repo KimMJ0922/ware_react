@@ -47,7 +47,6 @@ const Title = () => {
       }
     ];
     const [nowPath, setPath] = useState('');
-    
     useEffect(() => {
       let email = window.sessionStorage.getItem('email');
       let page = ['/','/signin','/signup','/forgotten'];

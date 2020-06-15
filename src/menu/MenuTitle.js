@@ -1,11 +1,17 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import {Diagram,Folder,Friend,Guild,Set,Setting,Default} from '../menuDtail';/*index.js호출*/
 import { Route, Switch } from 'react-router-dom';
 import './menu.css';
 const MenuTitle=({match})=>{
+    const [nowProfileImg, setProfileImg] = useState(window.sessionStorage.getItem('profile'));
+
     useEffect(()=>{
         console.log(match);
     });
+
+    useEffect(()=>{
+        console.log('프로필 바뀜');
+      },[nowProfileImg]);
     return(
         <div className='mainMenuDetail'>
             <Switch>

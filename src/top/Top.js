@@ -104,7 +104,7 @@ const Top = ({path}) =>{
                             <div>
                                 <Link exact to="/profile" className='topMenuList'>
                                     <div id='profilename'>
-                                        <img src={userInfo.profile} alt='경로오류' className='topMenuProfileImg' />
+                                        <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
                                         <span>{userInfo.name}</span>
                                     </div>
                                 </Link>
@@ -151,7 +151,7 @@ const Top = ({path}) =>{
                                     <Link exact to="/profile" className='topMenuList'>
                                     <div id='profilename'>
                                         {/* 사용자 프로필 출력 */}
-                                        <img src={img2} alt='경로오류' className='topMenuProfileImg' />
+                                        <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
                                     </div>
                                     </Link>
                                     {/* 프로필 클릭시 나오는화면 */}
