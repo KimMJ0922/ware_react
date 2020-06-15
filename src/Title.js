@@ -50,7 +50,7 @@ const Title = () => {
     
     useEffect(() => {
       let email = window.sessionStorage.getItem('email');
-      let page = ['/','/signin','/signup'];
+      let page = ['/','/signin','/signup','/forgotten'];
       //로그인 안한 상태에서 메인을 제외한 페이지로 강제 이동시
       //메인 페이지로 이동
       if(nowPath!==''){

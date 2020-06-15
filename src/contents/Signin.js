@@ -84,10 +84,11 @@ const Signin=()=>{
                 alert('해당 이메일의 인증을 해주세요');
                 return false;
             }
-            console.log(res.data.dto);
+
             window.sessionStorage.setItem('email',res.data.dto.email);
             window.sessionStorage.setItem('name',res.data.dto.name);
             window.sessionStorage.setItem('profile',res.data.dto.profile);
+
             //아이디 저장
             if(saveEmail === true){
                 localStorage.setItem(
@@ -158,7 +159,6 @@ const Signin=()=>{
         }       
     }
 
-
     const responseFail = (err) => {
         console.log(err);
     }
@@ -170,6 +170,7 @@ const Signin=()=>{
             [e.target.name] : e.target.checked
         });
     }
+    
     return(
         <div>
             <form onSubmit={login}>
