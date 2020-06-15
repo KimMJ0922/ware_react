@@ -8,43 +8,47 @@ import { Search,Create,Menu, Face} from '@material-ui/icons';
 import img2 from './iu.jpg';
 
 const Top = ({path}) =>{
-    const [email, setEmail] = useState(window.sessionStorage.getItem('email'));
-    const [name, setName] = useState(window.sessionStorage.getItem('name'));
-    const [profile, setProfile] = useState(window.sessionStorage.getItem('profile'));
-    const [point, setPoint] = useState(window.sessionStorage.getItem('point'));
-    const [admin, setAdmin] = useState(window.sessionStorage.getItem('admin'));
+    const [userInfo, setUserInfo] = useState({
+        email : window.sessionStorage.getItem('email'),
+        name : window.sessionStorage.getItem('name'),
+        profile : window.sessionStorage.getItem('profile')
+    });
+    const [cnt, setCnt] = useState(0);
     // const topMenuListAvtive={
     //     width:'1000px',
     //     color:'red',
     //     backgroundColor:'#ffffcc'
-    // }
+    // }    
 
-    const history = useHistory();
     const logout = () => {
+        //회원 탈퇴에 쓸 예정
+        // window.Kakao.API.request({
+        //     url: '/v1/user/unlink',
+        //     success: function(response) {
+        //         console.log(response);
+        //     },
+        //     fail: function(error) {
+        //         console.log(error);
+        //     },
+        // });
+
+        // window.Kakao.Auth.logout(() => {
+        //     console.log(window.Kakao.Auth.getAccessToken());
+        // });
+        
         window.sessionStorage.clear();
-        history.push('/');
+        localStorage.removeItem('autoLogin');
+        window.location.replace('/');
     }
 
-
-
-    useEffect(()=>{
-        setEmail(window.sessionStorage.getItem('email'));
-        setName(window.sessionStorage.getItem('name'))
-        setProfile(window.sessionStorage.getItem('profile'))
-        setPoint(window.sessionStorage.getItem('point'))
-        setAdmin(window.sessionStorage.getItem('admin'))
-        // if(email === null){
-        //     history.push('/');
-        // }
-    });
-    
+   
     if(path === "/"){
         return (
             <div id='topMainFirst'>
                 <Grid container spacing={0}>
                     <Grid item xs={3} md={2}>
                         <div className='topMenuFirst'>
-                            <Link exact to={email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
+                            <Link exact to={userInfo.email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
                         </div>
                     </Grid>
                     <Grid item xs={4} md={8}>
@@ -53,22 +57,14 @@ const Top = ({path}) =>{
                             &nbsp;
                         </div>
                     </Grid>
-                        { email === null ? 
-                            <Grid item xs={5} md={2}>
-                                <div className='topMenuFirst' style={{display:'inherit'}}>
-                                    <p className='loginController'>
-                                        <span> <Link to="signin" className='MainSign'>로그인</Link></span> 
-                                        <span> <Link to="signup" className='MainSign'>회원가입 </Link></span>
-                                    </p> 
-                                </div>
-                            </Grid>
-                            : 
-                            <Grid item xs={5} md={2}>
-                                <div className='topMenuFirst' style={{display:'inherit'}}>
-                                    <Link onClick={logout} className='MainLogout'><span>로그아웃</span></Link>
-                                </div>  
-                            </Grid>
-                        }
+                        <Grid item xs={5} md={2}>
+                            <div className='topMenuFirst' style={{display:'inherit'}}>
+                                <p className='loginController'>
+                                    <span> <Link to="signin" className='MainSign'>로그인</Link></span> 
+                                    <span> <Link to="signup" className='MainSign'>회원가입 </Link></span>
+                                </p> 
+                            </div>
+                        </Grid>
                 </Grid>
             </div>
         )
@@ -76,14 +72,12 @@ const Top = ({path}) =>{
         return (
             <div id='topMain'>
                 <Grid container>
-                    
-
                     {/* 웹 */}
                     <Hidden only={['xs','sm']}>
                     <Grid item xs={2} md={2}>
-                    <div className='topMenu'>
-                        <Link exact to={email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
-                    </div>
+                        <div className='topMenu'>
+                            <Link exact to={userInfo.email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
+                        </div>
                     </Grid>
                     <Grid item xs={1} md={1}>
                         <div className='topMenu'>
@@ -101,29 +95,21 @@ const Top = ({path}) =>{
                     </Grid>
                     <Grid item xs={6} md={2}>
                         <div className='topMenu' style={{display:'inherit'}}>
-                        {/* 공백채우기용 */} 
-                        &nbsp;
+                            {/* 공백채우기용 */} 
+                            &nbsp;
                         </div>
                     </Grid>
                     <Grid item xs={2} md={2}>
                         <div className='topMenu'>
-
-                            {
-                                email === null ? <Link exact to="../signin">
-                                                    <span className='userLogin'>로그인</span>
-                                                </Link> 
-                                :
-                                <div>
-                                    <Link exact to="/profile" className='topMenuList'>
+                            <div>
+                                <Link exact to="/profile" className='topMenuList'>
                                     <div id='profilename'>
-                                        <img src={profile} alt='경로오류' className='topMenuProfileImg' />
-                                        <span>{name}</span>
+                                        <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
+                                        <span>{userInfo.name}</span>
                                     </div>
-                                    </Link>
-                                    <Link onClick={logout} className='userLogout'><span >로그아웃</span></Link>
-                                </div>
-                            }
-                            
+                                </Link>
+                                <Link onClick={logout} className='userLogout'><span >로그아웃</span></Link>
+                            </div>
                         </div>
                     </Grid>
                     </Hidden>
@@ -156,9 +142,8 @@ const Top = ({path}) =>{
                     </Grid>
                     <Grid item xs={1} md={2}>
                         <div className='topMenu'>
-
                             {
-                                email === null ? <Link exact to="../signin" className='topMenuList'>
+                                userInfo.email === null ? <Link exact to="../signin">
                                                     <span className='userLogin'><Face/></span>
                                                 </Link> 
                                 :
@@ -166,7 +151,7 @@ const Top = ({path}) =>{
                                     <Link exact to="/profile" className='topMenuList'>
                                     <div id='profilename'>
                                         {/* 사용자 프로필 출력 */}
-                                        <img src={img2} alt='경로오류' className='topMenuProfileImg' />
+                                        <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
                                     </div>
                                     </Link>
                                     {/* 프로필 클릭시 나오는화면 */}

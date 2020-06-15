@@ -1,14 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Home,Create,Search,Signin,Signup} from './contents';/*index.js호출*/
+import {Home,Create,Search,Signin,Signup,ChangePassword} from './contents';/*index.js호출*/
 import Board from './board/Board';
 import Main from './main/Main';
 import Top from './top/Top';
-// import { Grid } from '@material-ui/core';
-// import MenuTitle from './menu/MenuTitle';
-// import Menu  from './menu/Menu';
 import Default from './menuDtail/Default';
-// import Root from './Root';
 
 const Title = () => {
   const routes = [
@@ -42,30 +38,51 @@ const Title = () => {
         component: Board
       },
       {
+        path:"/forgotten",
+        component: ChangePassword
+      },
+      {
         path:"/",
         component: Main
       }
     ];
     const [nowPath, setPath] = useState('');
+    useEffect(() => {
+      let email = window.sessionStorage.getItem('email');
+      let page = ['/','/signin','/signup','/forgotten'];
+      //로그인 안한 상태에서 메인을 제외한 페이지로 강제 이동시
+      //메인 페이지로 이동
+      if(nowPath!==''){
+        if(page.indexOf(nowPath) === -1 && email === null){
+          window.location.replace('/')
+        }
+        //로그인 한 상태에서 메인으로 강제로 가면 
+        //전 페이지로 이동
+        else if(email !== null && page.indexOf(nowPath) !== -1){
+          window.history.back();
+        }
+      }
+    },[nowPath]);
+
     return (
 
         <div style={{fontSize: '16px'}}>
-            <Top path={nowPath} />
-            <Switch > 
-              {/*<Route exact path="/" component={Main}></Route>
-              <Route exact path="/home/default" component={Home}></Route>
-              <Route exact path="/home/default" component={Home}></Route>*/}
-                {
-                  routes.map((route, i) => {
-                    return (
-                      <RouteWithSubRoutes key={i} {...route} />
-                      
-                    )
-                  })
-                }
-              
-                {/* 이거 쫌짜증남 살짝 이해가 안감 */}
-            </Switch>
+          <Top path={nowPath} />
+          <Switch > 
+            {/*<Route exact path="/" component={Main}></Route>
+            <Route exact path="/home/default" component={Home}></Route>
+            <Route exact path="/home/default" component={Home}></Route>*/}
+              {
+                routes.map((route, i) => {
+                  return (
+                    <RouteWithSubRoutes key={i} {...route} />
+                    
+                  )
+                })
+              }
+            
+              {/* 이거 쫌짜증남 살짝 이해가 안감 */}
+          </Switch>
         </div>
     )
   
