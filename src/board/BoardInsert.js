@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +10,8 @@ const BoardInsert=()=> {
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
+    const [point,setPoint] = useState('');
+    const [email, setEamil] = useState(window.sessionStorage.getItem('email'));
     const [rows,setRows] = useState(
         [
             {
@@ -29,6 +31,10 @@ const BoardInsert=()=> {
 
     const changeComment = (e) => {
         setComment(e.target.value)
+    }
+
+    const changePoint = (e) => {
+        setPoint(e.target.value)
     }
     
     // 추가
@@ -109,12 +115,14 @@ const BoardInsert=()=> {
     const onSubmit = (e) => {
         console.log("1");
         e.preventDefault();
-        let url = "http://localhost:9000/bminsert";
+        let url = "http://localhost:9000/board/insert";
         axios.post(url,
             {
                 rows,
+                email,
                 title,
-                comment
+                comment,
+                point
             }
         ).then((res)=>{
             console.log(rows);
@@ -131,6 +139,8 @@ const BoardInsert=()=> {
                     <input type="text" name="title" id="title" className="title" placeholder="제목을 입력하세요." onChange={changeTitle}/><br/>
                     <label for="comment">설명</label><br/>
                     <input type="text" name="comment" id="comment" className="title" placeholder="설명을 입력하세요." onChange={changeComment}/>
+                    <label for="comment">포인트</label><br/>
+                    <input type="text" name="requirepoint" id="requirepoint" className="title" placeholder="포인트를 입력하세요." onChange={changePoint}/>
                 </div>
                 <div style={{width:'800px',height:'auto',border:'2px solid black',marginBottom:'20px'}}>
                     {
@@ -177,7 +187,10 @@ const BoardInsert=()=> {
                     <button type="button" onClick={addRow} className="btn btn-info addBtn">추가</button>
                 </div>
                 <div>
-                    <button type="submit" className="btn btn-success" >만들기</button>
+                    <Link to="/board">
+                        <button type="button" className="btn btn-success">리스트</button>
+                    </Link>
+                    <button type="submit" className="btn btn-success">만들기</button>
                 </div>
             </form>
         </div>

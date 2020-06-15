@@ -1,9 +1,14 @@
 import React from 'react';
 
-const BoardItem=()=> {
+const BoardItem=({match})=> {
+    console.log(match.params);
+
     return ( 
         <div>
-            게시물 조회 페이지
+            제목 : 
+            내용 : 
+            문제 : 
+            
         </div>
     );
 }
