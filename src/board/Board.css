@@ -4,6 +4,7 @@ a{
 
 .boardTableSubject{
     margin-top: 1rem;
+    border: 1px solid #000;
 }
 .boardTableTitle{
     text-align: center;
@@ -16,16 +17,30 @@ text-align: center;
 }
 .boardSearchBar>.MuiInputBase-root>input{
     width: 300px;
-    height: 80px;
+    height: 40px;
+    border: 1px solid #bdbdbd;
+    
 }
-/* .BoardItem{
-    border: 1px solid black;
-}
-
 .BoardProImage{
     border-radius: 50px;
-    height: 80%;
+    height: 30px;
 }
+.BoardItem{
+    border-radius: 10px;
+    color: #000;
+    padding: 10px;
+    height: 140px;
+    margin: 1rem;
+    border: 1px solid #dbdbdb;
+    box-shadow: 3px 1px 10px -3px #afafaf;
+}
+.BoardPagination{
+    padding-left: 40px;
+    text-align: center;
+}
+/* 
+
+
 
 .BoardBottom{
     height: 10%;
@@ -40,9 +55,7 @@ text-align: center;
     border: 1px solid black;
 }
 
-.BoardPagination{
-    border: 1px solid black;    
-}
+
 
 .InsertTitle{
     border: 1px solid black;

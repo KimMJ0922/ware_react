@@ -1,22 +1,29 @@
 import React,{useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
-import Axios from 'axios';
+// import Axios from 'axios';
 import defaultImage from './default.png';
+import { Grid } from '@material-ui/core';
 
 const BoardItems=props=> {
     console.log(props);
     return ( 
-        <Link to={`/board/item/${props.row.board_no}`}>
-            <div className="BoardItem">
-                <span style={{width:"5%"}}>{props.row.board_no}</span>
-                <img src={defaultImage} className="BoardProImage"></img>
-                <span style={{width:"20%"}}>{props.row.writer}</span>
-                <span style={{width:"45%"}}>{props.row.subject}</span>
-                <span style={{width:"10%"}}>{props.row.readcount}</span>
-                <span style={{width:"15%"}}>{props.row.writeday}</span>
-            </div>
-        </Link>
+        <Grid xs={12} md={4}>
+            <Link to={`/home/board/item/${props.row.board_no}`}>
+                <div className="BoardItem">
+                    {/* <div>{props.row.board_no}</div> 일단 가리겠음 */}
+                    <Grid xs={6} md={6}> <div>{props.row.subject}</div></Grid>
+                     <Grid xs={6} md={6}><div style={{textAlign:'right'}}>{props.row.writeday}</div></Grid>
+                    <div>{props.row.readcount}</div>
+                    <div>{props.row.content}</div>
+                    <div>
+                        <img src={defaultImage} className="BoardProImage" alt=''/>
+                        <span>{props.row.writer}</span>
+                    </div>
+                    
+                </div>
+            </Link>
+        </Grid>
     );
 }
  

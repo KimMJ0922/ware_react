@@ -40,7 +40,7 @@ const BoardList=()=>{
     const getData = async () =>{
         try {
             const data = await Axios.get(
-                "http://localhost:9000/list?pageNum="+pageNum
+                "http://localhost:9000/board/list?pageNum="+pageNum
             );
             setBoardData(data.data);
         } catch (e) {
@@ -67,7 +67,7 @@ const BoardList=()=>{
     return (
         <>
         <Grid container className='boardTableSubject'> 
-            <Grid xs={12} md={12}>
+            <Grid xs={12} md={6}>
                 <div className='boardSearchForm'>
                     <form  noValidate autoComplete="off">
                         <TextField className='boardSearchBar'  type="search"  />
@@ -75,14 +75,13 @@ const BoardList=()=>{
                     </form>
                 </div> 
             </Grid>
-            <Grid xs={12} md={12}>
-            <div className="BoardInsert">
-                    <Link to="/home/board/insert">
-                        <Button variant="contained" color="primary" >게시물 작성</Button>
-                        {/* className={classes.button2} */}
-                    </Link>
+            <Grid xs={12} md={6}>
+            <div className='boardSearchForm'>
+                  
+                최신순/ 인기순 / 정확도순 
                 </div>
             </Grid>
+            
             
             
                
@@ -108,10 +107,14 @@ const BoardList=()=>{
                     <BoardItems row={row} index={index}/>
                 ))
             }   
-            
-            <Grid xs={12} md={12}>
+                  <Grid xs={4} md={4}>
+                <div>
+                   &nbsp;  
+                </div>
+            </Grid>
+            <Grid xs={4} md={4}>
             <div className="BoardPagination">
-                <MemoryRouter initialEntries={['/board']} initialIndex={0}>
+                <MemoryRouter initialEntries={['/home/board']} initialIndex={0}>
                     <Route>
                         {({ location }) => {
                         const query = new URLSearchParams(location.search);
@@ -124,7 +127,7 @@ const BoardList=()=>{
                                 renderItem={(item) => (
                                     <PaginationItem
                                         component={Link}
-                                        to={`/board${item.page === 1 ? `?page=${item.page}` : `?page=${item.page}`}`}
+                                        to={`/home/board${item.page === 1 ? `?page=${item.page}` : `?page=${item.page}`}`}
                                         {...item}
                                     />
                             )}
@@ -134,13 +137,21 @@ const BoardList=()=>{
                     </Route>
                 </MemoryRouter>
             </div>
-            <div className="BoardBottom">
-                <div className="BoardSearch">
-                    
-                </div>
-               
-            </div>
             </Grid>
+            <Grid xs={4} md={4}>
+                <div>
+                   &nbsp; 
+                </div>
+            </Grid>
+            <Grid xs={12} md={12}>
+            <div className="BoardInsert">
+                    <Link to="/home/board/insert">
+                        <Button variant="contained" color="primary" >게시물 작성</Button>
+                        {/* className={classes.button2} */}
+                    </Link>
+                </div>
+            </Grid>
+           
         </Grid>
         
         </>

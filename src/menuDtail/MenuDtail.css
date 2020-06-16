@@ -738,8 +738,10 @@ font-size: 0.9rem;
     }
     .mycardList>*{
         font-family: 'Nanum Barun Gothic', sans-serif;
+        
     }
     .mycardList{
+        border-radius: 17px;
         padding: 0.4rem 1rem;
         border: 0;
         height: 150px;
@@ -838,9 +840,6 @@ font-size: 0.9rem;
         border-radius:40px;
         width:40px;
         height:40px;
-    }
-    .defaultPageFind{
-        
     }
     .defaultPageFind>.defaultPageFindButton{
         color: #fff;

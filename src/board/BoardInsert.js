@@ -187,7 +187,7 @@ const BoardInsert=()=> {
                     <button type="button" onClick={addRow} className="btn btn-info addBtn">추가</button>
                 </div>
                 <div>
-                    <Link to="/board">
+                    <Link to="/home/board">
                         <button type="button" className="btn btn-success">리스트</button>
                     </Link>
                     <button type="submit" className="btn btn-success">만들기</button>
