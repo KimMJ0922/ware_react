@@ -84,10 +84,11 @@ const Signin=()=>{
                 alert('해당 이메일의 인증을 해주세요');
                 return false;
             }
-
+            window.sessionStorage.setItem('no',res.data.dto.no);
             window.sessionStorage.setItem('email',res.data.dto.email);
             window.sessionStorage.setItem('name',res.data.dto.name);
             window.sessionStorage.setItem('profile',res.data.dto.profile);
+            window.sessionStorage.setItem('provider',res.data.dto.provider);
 
             //아이디 저장
             if(saveEmail === true){
@@ -105,6 +106,7 @@ const Signin=()=>{
                 localStorage.setItem(
                     "autoLogin",
                     JSON.stringify({
+                        no : res.data.dto.no,
                         email: res.data.dto.email,
                         name : res.data.dto.name,
                         profile : res.data.dto.profile
@@ -126,13 +128,14 @@ const Signin=()=>{
         //카카오에서 가져온 값은 변수에 담을수가 없다.
         //그래서 어쩔수 없이 직접 명시해줘야한다.
         if(id === undefined){
-            console.log(res.profile,res.profile.properties);
+            window.sessionStorage.setItem('socialProfile',res.profile.properties.profile_image);
             axios.post(url,{
                 email : res.profile.id,
                 name : res.profile.properties.nickname,
                 profile : res.profile.properties.profile_image,
                 provider : 'kakao',
             }).then((res) => {
+                window.sessionStorage.setItem('no',res.data.dto.no);
                 window.sessionStorage.setItem('email',res.data.dto.email);
                 window.sessionStorage.setItem('name',res.data.dto.name);
                 window.sessionStorage.setItem('profile',res.data.dto.profile);
@@ -144,12 +147,14 @@ const Signin=()=>{
         }
         //구글 로그인
         else{
+            window.sessionStorage.setItem('socialProfile',res.profileObj.imageUrl);
             axios.post(url,{
                 email : res.googleId,
                 name : res.profileObj.name,
                 profile : res.profileObj.imageUrl,
                 provider : 'google',
             }).then((res) => {
+                window.sessionStorage.setItem('no',res.data.dto.no);
                 window.sessionStorage.setItem('email',res.data.dto.email);
                 window.sessionStorage.setItem('name',res.data.dto.name);
                 window.sessionStorage.setItem('profile',res.data.dto.profile);

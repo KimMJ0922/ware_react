@@ -50,7 +50,7 @@ const Signup=()=>{
         axios.post(url,{
             userInfo
         }).then((res) => {
-            console.log(res);
+            alert("회원가입이 완료 되었습니다. 메일 인증을 하면 서비스를 이용할 수 있습니다.");
         }).catch((err) => {
             console.log(err);
         })
@@ -135,6 +135,15 @@ const Signup=()=>{
                 ...check,
                 password : false
             });
+        }else if(password.length !== 0 && password.length > 20) {
+            setEff({
+                ...eff,
+                passEff : '비밀번호가 깁니다.'
+            });
+            setCheck({
+                ...check,
+                password : false
+            });
         }else{
             setEff({
                 ...eff,
@@ -174,36 +183,46 @@ const Signup=()=>{
                 name : false
             });
         }else{
-            //이름 중복 체크
-            let url = "http://localhost:9000/nameoverlap";
-            axios.post(url,{name})
-            .then((res) => {
-                console.log(res.data.check);
-                //중복된 이름이면 
-                if(res.data.check){
-                    setEff({
-                        ...eff,
-                        nameEff : '중복된 이름입니다.'
-                    });
-                    setCheck({
-                        ...check,
-                        name : false
-                    });
-                }else{
-                    setEff({
-                        ...eff,
-                        nameEff : '이름'
-                    });
-                    setCheck({
-                        ...check,
-                        name : true
-                    });
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
+            if(name.length >=2 && name.length <=10){
+                //이름 중복 체크
+                let url = "http://localhost:9000/nameoverlap";
+                axios.post(url,{name})
+                .then((res) => {
+                    console.log(res.data.check);
+                    //중복된 이름이면 
+                    if(res.data.check){
+                        setEff({
+                            ...eff,
+                            nameEff : '중복된 이름입니다.'
+                        });
+                        setCheck({
+                            ...check,
+                            name : false
+                        });
+                    }else{
+                        setEff({
+                            ...eff,
+                            nameEff : '이름'
+                        });
+                        setCheck({
+                            ...check,
+                            name : true
+                        });
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }else{
+                setEff({
+                    ...eff,
+                    nameEff : '이름은 2~10자로 적어주세요.'
+                });
+                setCheck({
+                    ...check,
+                    name : false
+                });
+            }
         }
-
     },[userInfo.name]);
 
     //생년월일 
