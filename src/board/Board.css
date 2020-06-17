@@ -48,8 +48,9 @@ a{
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    .BoardItemWriteDay{
+    .BoardItemWriteDay{   
         color: #9a9a9a;
+        
     }
     .BoardItemReadCount{
         text-align: right;
