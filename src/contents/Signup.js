@@ -23,7 +23,6 @@ const Signup=()=>{
     });
     const [alert, setAlert] = useState('');
 
-
     const formSubmit = (e) => {
         e.preventDefault();
         if(check.email === false){
@@ -50,7 +49,7 @@ const Signup=()=>{
         axios.post(url,{
             userInfo
         }).then((res) => {
-            alert("회원가입이 완료 되었습니다. 메일 인증을 하면 서비스를 이용할 수 있습니다.");
+            alert('회원가입이 완료 되었습니다. 메일 인증을 하면 서비스를 이용할 수 있습니다.');
         }).catch((err) => {
             console.log(err);
         })
@@ -227,6 +226,7 @@ const Signup=()=>{
 
     //생년월일 
     useEffect(() => {
+        
         const birth = userInfo.birth;
         //생년월일 양식이 안맞을 때
         if(birth.length !== 0 && birth.length !== 8){
@@ -281,7 +281,6 @@ const Signup=()=>{
             
         }
     },[userInfo.birth]);
-
     return(
         <div>
             <div className="login_top">SingUp</div>
@@ -301,6 +300,7 @@ const Signup=()=>{
                 <div className="signUp_label_box">
                     <label for="birth" className="signup_label">{eff.birthEff}</label><br/>
                     <input type="text" className="signup_input" id="birth" name="birth" onChange={updateValue} placeholder="19000101"/>
+                    
                 </div>
                 <div style={{height:'20px'}}>
                     <span>{alert}</span>
