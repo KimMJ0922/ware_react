@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {Home, Dashboard, Face, Settings, AllInbox, Folder, Class} from '@material-ui/icons'
+import {Home, Dashboard, Storefront, Settings, AllInbox, Folder, Class} from '@material-ui/icons'
 import './menu.css';
 const Menu=()=>{
     return (
@@ -22,10 +22,10 @@ const Menu=()=>{
                 </NavLink>
             </div>
             <div>
-                <NavLink exact to="/home/friend" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                <NavLink exact to="/home/board" className='mainMenuListItem' activeClassName='mainMenuListActive'>
                     <span>
-                        <Face className='MenuMainIcon'/>
-                        <div>친구 추천</div>
+                        <Storefront className='MenuMainIcon'/>
+                        <div>장터</div>
                     </span>
                 </NavLink>
             </div>

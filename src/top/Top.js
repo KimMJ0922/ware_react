@@ -81,14 +81,14 @@ const Top = ({path}) =>{
                     </Grid>
                     <Grid item xs={1} md={1}>
                         <div className='topMenu'>
-                            <NavLink exact to="/create" className='topMenuList' activeClassName='topMenuListAvtive'>
+                            <NavLink exact to="/create" className='topMenuList'>
                                 <span><Create/> <div>만들기</div></span>
                             </NavLink>
                         </div>
                     </Grid>
                     <Grid item xs={1} md={5}>
                         <div className='topMenu'>
-                            <NavLink exact to="/search" className='topMenuListSearch' activeClassName='topMenuListSearchAvtive' >
+                            <NavLink exact to="/search" className='topMenuListSearch' >
                                 <span><Search/><div><input type='text' placeholder='Search'/></div></span>
                             </NavLink>
                         </div>

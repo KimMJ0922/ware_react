@@ -2,9 +2,9 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+// import TextField from '@material-ui/core/TextField';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Button from '@material-ui/core/Button';
 
 const BoardInsert=()=> {
     const [num, setNum] = useState(2);
@@ -187,7 +187,7 @@ const BoardInsert=()=> {
                     <button type="button" onClick={addRow} className="btn btn-info addBtn">추가</button>
                 </div>
                 <div>
-                    <Link to="/board">
+                    <Link to="/home/board">
                         <button type="button" className="btn btn-success">리스트</button>
                     </Link>
                     <button type="submit" className="btn btn-success">만들기</button>
