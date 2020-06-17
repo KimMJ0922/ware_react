@@ -151,7 +151,6 @@
         height:40px;
     }
 }
-
 /* 만들기 웹 최소 사이즈*/
 @media(min-width:500px){
     .crt_body{

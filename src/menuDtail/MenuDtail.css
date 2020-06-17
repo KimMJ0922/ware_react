@@ -7,6 +7,10 @@
     a{
         cursor: pointer;
     }
+
+    *:focus{
+        outline: none;
+    }
 }
 
 /* 세트 - media 일반 사이즈 */
@@ -100,6 +104,7 @@ font-size: 0.9rem;
 
 .sq_timeset{
     display: flex;
+    width:975px;
     flex-basis: 100%;
     margin-left: 10px;
 }
@@ -956,7 +961,7 @@ border: none;
     
 }
     
-/* 클래스(길드) - media 모바일 사이즈 */
+/* 클래스(메인) - media 모바일 사이즈 */
 @media(max-width:375px){
     .gld_body{
         width:375px;
@@ -994,69 +999,390 @@ border: none;
     .gld_no_btn:hover{
         color:red;
     }
-    .gld_on_modal_top{
-        width: 100%;
-        height: 50px;
-        background:#c29fcb;
+    
+    .gld_on_box{
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
         text-align: center;
-        padding-top: 20px;
-        border-radius: 10px 10px 0 0;
+        height: 70px;
     }
 
-    .gld_on_modal{
-        width:300px;
-        height: 500px;
-        background:white;
-        opacity: 0.9;
-        margin-left: 10%;
-        border-radius: 10px;
-  
-
-    }
-    .gld_on_modal_input{
-        border:none;
-        border-bottom: 1px solid gray;
-        display: flex;
-        margin-left: 22%;
-        margin-bottom: 20px;
-        height: 40px;
+    .gld_on_box_top{
+        text-align: left;
+        margin-left: 10px;
     }
 
-    .gld_on_submit{
-        border:none;
-        width: 180px;
-        height: 50px;
-        border-radius: 5px;
-        background: gray;
+    .gld_on_box_butm{
+        text-align: left;
+        margin-left: 10px;
     }
 
-    .gld_sch_in_box{
-        margin-top: 20px;
-        font-size: 0.7rem;
+    .gld_on_box_butm>img{
+        background: red;
+        width:80px;
+        height:80px;
+        border-radius: 100%;
+    }
+
+
+    }
+/* 클래스(메인) - media 웹 최소 사이즈 */
+@media(min-width:500px){
+        .gld_body{
+            width:500px;
+            height: 100%;
+            font-size: 16px;
+        }    
+
+        .gld_body div{
+            background: none;
+            background-color:white;
+            box-shadow: none;
+        }
+         
+        .gld_no_box{
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 10px;
+            text-align: center;
+            line-height: 2;
+        }
+    
+        .gld_no_font1{
+            font-size: 0.8rem;
+            
+        }
+    
+        .gld_no_font2{
+            font-size: 1.2rem;
+        }
+    
+        .gld_no_btn{
+            color:#00498c;
+        }
+    
+        .gld_no_btn:hover{
+            color:red;
+        }
+        
+        .gld_on_box{
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+            height: 70px;
+        }
+    
+        .gld_on_box_top{
+            text-align: left;
+            margin-left: 10px;
+        }
+    
+        .gld_on_box_butm{
+            text-align: left;
+            margin-left: 10px;
+        }
+    
+        .gld_on_box_butm>img{
+            background: red;
+            width:80px;
+            height:80px;
+            border-radius: 100%;
+        }
+    
+    
+        }
+/* 클래스(메인) - media 일반 사이즈 */
+@media(min-width:501px){
+            .gld_body{
+                width:100%;
+                height: 100%;
+                font-size: 16px;
+            }    
+            
+            .gld_body div{
+                background: none;
+                background-color:white;
+                box-shadow: none;
+            }
+             
+            .gld_no_box{
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                padding: 10px;
+                text-align: center;
+                line-height: 2;
+            }
+        
+            .gld_no_font1{
+                font-size: 1rem;
+                
+            }
+        
+            .gld_no_font2{
+                font-size: 1.4rem;
+            }
+        
+            .gld_no_btn{
+                color:#00498c;
+            }
+        
+            .gld_no_btn:hover{
+                color:red;
+            }
+            
+            .gld_on_box{
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                text-align: center;
+                height: 70px;
+            }
+        
+            .gld_on_box_top{
+                text-align: left;
+                margin-left: 10px;
+            }
+        
+            .gld_on_box_butm{
+                text-align: left;
+                margin-left: 10px;
+            }
+        
+            .gld_on_box_butm>img{
+                background: red;
+                width:80px;
+                height:80px;
+                border-radius: 100%;
+            }
+        
+        
+            }
+
+/* 클래스(검색 만들기) - media 모바일 사이즈 */
+@media(max-width:375px){
+    .gld_sch_body{
+        width: 375px;
+        font-size: 16px;
+    }
+    .gld_sch_box{
+        text-align: left;
+        padding-left: 10px;
         height: 100%;
     }
-    .gld_sch_font{
 
+    .gld_sch_font1{
+        font-size: 1.4rem;
     }
+
     .gld_sch_input{
-        display: flex;
-        margin-left: 20%;
-        font-size: 0.5rem;
+        border:none;
+        background: none;
+        border-bottom: 1px solid gray;
+        width: 230px;
+        font-size: 1rem;
+        height: 50px;
+    }
+
+    .gld_sch_add_btn{
+        color:lightblue;
+        font-size: 0.8rem;
+    }
+
+    .gld_sch_modal{
+        width:275px;
+        height:400px;
+        margin-left: 13%;
+        margin-top: 30%;
+        background: white;
+        opacity: 0.8;
+        border-radius: 10px;
+    }
+
+    
+    .gld_sch_modal:focus{
+        outline: none;
+    }
+    .gld_sch_mo_font1{
+        background: #c29fcb;
+        border-radius: 10px 10px 0 0;
+        height: 50px;
         text-align: center;
-        width:180px;
+        font-size: 1.2rem;
+        padding-top: 20px;
+    }
+
+    .gld_sch_input_box{
+        padding-left: 10px;
+    }
+    .gld_sch_input_box>p{
+        font-size: 0.8rem;
+    }
+    .gld_sch_mo_input{
         border:none;
         border-bottom: 1px solid gray;
-        height:50px;
+        font-size: 0.475rem;
+        height:40px;
+        width:220px;
     }
 
-    .gld_sch_box{
-        background: red;
-        height:70px;
-        width:180px;
-        margin-left: 20%;
-        margin-top: 20px;
+    .gld_sch_mo_sbm_btn{
+        margin-left: 20px;
+        width:220px;
+        height:40px;
+        margin-top: 30px;
+        border:none;
         border-radius: 5px;
-  
+    }
+}
+
+/* 클래스(검색 만들기) - media 웹 최소 사이즈 */
+@media(min-width:500px){
+    .gld_sch_body{
+        width: 500px;
+        font-size: 16px;
+    }
+    .gld_sch_box{
+        text-align: left;
+        padding-left: 10px;
+        width: 100%;
+        height: 100%;
     }
 
+    .gld_sch_font1{
+        font-size: 1.6rem;
     }
+
+    .gld_sch_input{
+        border:none;
+        background: none;
+        border-bottom: 1px solid gray;
+        width: 380px;
+        font-size: 1rem;
+        height: 50px;
+    }
+
+    .gld_sch_add_btn{
+        color:lightblue;
+        font-size: 1rem;
+    }
+
+    .gld_sch_modal{
+        width:400px;
+        height:500px;
+        margin-left: 8%;
+        margin-top: 30%;
+        background: white;
+        opacity: 0.8;
+        border-radius: 10px;
+    }
+
+    .gld_sch_mo_font1{
+        background: #c29fcb;
+        border-radius: 10px 10px 0 0;
+        height: 50px;
+        text-align: center;
+        font-size: 1.4rem;
+        padding-top: 20px;
+    }
+
+    .gld_sch_input_box{
+        padding-left: 40px;
+    }
+    .gld_sch_input_box>p{
+        font-size: 1.2rem;
+    }
+    .gld_sch_mo_input{
+        border:none;
+        border-bottom: 1px solid gray;
+        font-size: 0.775rem;
+        height:40px;
+        width:300px;
+    }
+
+    .gld_sch_mo_sbm_btn{
+        margin-left: 40px;
+        width:300px;
+        height:40px;
+        margin-top: 30px;
+        border:none;
+        border-radius: 5px;
+    }
+}
+
+/* 클래스(검색 만들기) - media 웹 최소 사이즈 */
+@media(min-width:550px){
+    .gld_sch_body{
+        width: 100%;
+        font-size: 16px;
+    }
+    .gld_sch_box{
+        text-align: left;
+        padding-left: 10px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .gld_sch_font1{
+        font-size: 1.8rem;
+    }
+
+    .gld_sch_input{
+        border:none;
+        background: none;
+        border-bottom: 1px solid gray;
+        width: 400px;
+        font-size: 1.2rem;
+        height: 50px;
+    }
+
+    .gld_sch_add_btn{
+        color:lightblue;
+        font-size: 1rem;
+    }
+
+    .gld_sch_modal{
+        width:1000px;
+        height:600px;
+        margin-left: 25%;
+        margin-top: 10%;
+        background: white;
+        opacity: 0.8;
+        border-radius: 10px;
+    }
+
+    .gld_sch_mo_font1{
+        background: #c29fcb;
+        border-radius: 10px 10px 0 0;
+        height: 80px;
+        text-align: center;
+        font-size: 1.6rem;
+        padding-top: 40px;
+    }
+
+    .gld_sch_input_box{
+        padding-left: 25%;
+    }
+    .gld_sch_input_box>p{
+        font-size: 1.5rem;
+    }
+    .gld_sch_mo_input{
+        border:none;
+        border-bottom: 1px solid gray;
+        font-size: 0.875rem;
+        height:60px;
+        width:500px;
+    }
+
+    .gld_sch_mo_sbm_btn{
+        margin-left: 25%;
+        width:500px;
+        height:45px;
+        margin-top: 30px;
+        border:none;
+        border-radius: 5px;
+    }
+}

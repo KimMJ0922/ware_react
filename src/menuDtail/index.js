@@ -5,3 +5,4 @@ export {default as Friend} from './Friend';
 export {default as Guild} from './Guild';
 export {default as Set} from './Set';
 export {default as Setting} from './Setting';
+export {default as Guild_sch} from './Guild_sch';

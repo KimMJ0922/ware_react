@@ -189,3 +189,530 @@ a{
         right: 11vh;
     }
 }
+
+/* borad insert 사이즈 */
+@media(max-width:375px){
+    .board_ist_body{
+        width: 375px;
+        height: 100%;
+        font-size: 16px;
+    }
+
+    .board_ist_top{
+        
+        font-size: 1.425rem;
+        margin-top:10px;
+    }
+
+    .create_btn1{
+        margin-top:10px;
+        background-color: none;
+        border:1px solid gray;
+        border-radius: 5px;
+        width: 100px;
+        height:40px;
+        margin-bottom: 20px;
+        margin-left: 80px;
+    }
+    .board_ist_input_font{
+        margin-left: 10px;
+        font-size: 0.675rem;
+        color:#737373;
+    }
+    
+    .board_ist_title{
+        border:none;
+        font-size: 1.1rem;
+        width: 250px;
+        height:40px;
+        border-bottom: 2px solid #494949;
+        margin-left: 10px;
+    }
+    .board_input_Top{
+        margin-top: 5px;
+        margin-bottom: 10px;
+        background: none;
+    }
+    .board_ist_slt_bar{
+        border: none;
+        border-bottom: 1px solid #232323;
+        width: 150px;
+        height: 40px;
+        margin-left: 10px;
+    }
+    .board_ist_add_content_paper{
+        margin-top: 20px;
+        margin-left: 15px;
+        width: 340px;
+        height: 180px;
+    }
+
+    .board_ist_add_card_paper{
+        margin-top: 20px;
+        margin-left: 15px;
+        width: 90%;
+        text-align: center;
+        height: 60px;
+        
+    }
+
+    .board_ist_add_card{
+        border: none;
+        border-bottom: 2px solid #232323;
+        background: none;
+        width: 100px;
+        height:50px;
+    }
+    .add_icon{
+        font-size:0.8rem;
+    }
+
+    .board_ist_slt_mun{
+        border: none;
+        border-bottom: 1px solid #232323;
+        width: 200px;
+        margin-top: 10px;
+        margin-left: 10px;
+        height:20px;
+    }
+    .imgPaperVisible_b{
+        display: flex;
+        margin-top: 10px;
+        margin-left: 15px;
+        height: 100px;
+        width: 340px;
+    }
+    .imgPaperinVisible{
+        display: none;
+    }
+
+    .file_add label {
+        display: inline-block;
+        padding: .5em .75em;
+        font-size: 0.7rem;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #c29fcb;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        width: 100px;
+    }
+    .file_add input[type="file"] {
+         /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+    }
+
+    ::-webkit-scrollbar {
+      width: 375px;
+      }
+
+    .scroll_x{
+        margin-top: 10px;
+        display: flex;
+        overflow-x: scroll;
+        width: 320px;
+    }
+
+    .scroll_img{
+        flex-shrink: 0;
+        width:50px;
+        height:50px;
+        margin-left: 10px;
+    }
+
+    .board_ist_create_btn_box{
+        text-align: right;
+    }
+
+    .board_ist_create_btn{
+        margin-top: 20px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border:1px solid #232323;
+        background: #c29fcb;
+        width: 100px;
+        height:40px;
+    }
+}
+/* borad insert 웹 최소 사이즈*/
+@media(min-width:500px){
+    .board_ist_body{
+        width: 500px;
+        height: 100%;
+        font-size: 16px;
+    }
+
+    .board_ist_top{
+        width:80%;
+        font-size: 1.425rem;
+        margin-top:10px;
+        margin-left: 10px;
+    }
+
+    .create_btn1{
+        margin-top:10px;
+        background-color: none;
+        border:1px solid gray;
+        border-radius: 5px;
+        width: 100px;
+        height:40px;
+        margin-bottom: 20px;
+        margin-left: 130px;
+    }
+    .board_ist_input_font{
+        margin-left: 10px;
+        font-size: 0.975rem;
+        color:#737373;
+    }
+
+    .board_ist_input_font2{
+        margin-left: 10px;
+        font-size: 1.275rem;
+        color:#737373;
+    }
+
+    .board_ist_input_font3{
+        font-size: 1.275rem;
+        color:#737373;
+    }
+    
+    .board_ist_title{
+        border:none;
+        font-size: 1.1rem;
+        width:470px;
+        height:40px;
+        border-bottom: 2px solid #494949;
+        margin-left: 10px;
+    }
+    .board_input_Top{
+        margin-top: 5px;
+        margin-bottom: 10px;
+        background: none;
+    }
+    .board_ist_slt_bar{
+        border: none;
+        border-bottom: 1px solid #232323;
+        width: 200px;
+        height: 40px;
+        margin-left: 10px;
+    }
+    .board_ist_add_content_paper{
+        margin-top: 20px;
+        margin-left: 15px;
+        width: 465px;
+        height: 270px;
+    }
+
+    .board_ist_add_card_paper{
+        margin-top: 20px;
+        margin-left: 15px;
+        width: 465px;
+        text-align: center;
+        height: 60px;
+        
+    }
+
+    .board_ist_add_card{
+        border: none;
+        border-bottom: 2px solid #232323;
+        background: none;
+        width: 100px;
+        height:50px;
+    }
+    .add_icon{
+        font-size:0.8rem;
+    }
+
+    .board_ist_slt_mun{
+        border: none;
+        border-bottom: 1px solid #232323;
+        width: 300px;
+        margin-top: 10px;
+        margin-left: 10px;
+        height:60px;
+        font-size: 1.2rem;
+    }
+    .board_ist_image_icon{
+        font-size: 5rem;
+    }
+
+    .imgPaperVisible_b{
+        display: flex;
+        margin-top: 10px;
+        margin-left: 15px;
+        height: 200px;
+        width: 465px;
+    }
+    .imgPaperinVisible{
+        display: none;
+    }
+
+    .file_add label {
+        display: inline-block;
+        padding: .5em .75em;
+        font-size: 0.9rem;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #c29fcb;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        width: 120px;
+        height: 30px;
+        margin-bottom: 10px;
+        float: right;
+    }
+    .file_add input[type="file"] {
+         /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+    }
+
+    .scroll_x::-webkit-scrollbar {
+        width:0px;
+      }
+
+    .scroll_x::-webkit-scrollbar-thumb{
+          background-color:#c29fcb;
+          
+      }
+
+    .scroll_x{
+        margin-top: 10px;
+        display: flex;
+        overflow-x: scroll;
+        width: 450px;
+    }
+
+    .scroll_img{
+        flex-shrink: 0;
+        width:100px;
+        height:100px;
+        margin-left: 10px;
+    }
+
+    .board_ist_create_btn_box{
+        text-align: right;
+    }
+
+    .board_ist_create_btn{
+        margin-top: 20px;
+        margin-right: 30px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border:1px solid #232323;
+        background: #c29fcb;
+        width: 100px;
+        height:40px;
+    }
+}
+/* borad insert 일반 웹 사이즈*/
+@media(min-width:501px){
+    .board_ist_body{
+        width:100%;
+        height: 100%;
+        font-size: 16px;
+    }
+
+    .board_ist_top{
+        font-size: 2rem;
+        margin-top:10px;
+        margin-left: 100px;
+    }
+
+    .create_btn1{
+        margin-top:10px;
+        background-color: none;
+        border:1px solid gray;
+        border-radius: 5px;
+        width: 155px;
+        height:40px;
+        margin-bottom: 20px;
+        margin-left: 60px;
+        
+    }
+
+    .board_ist_top_input_box{
+        width: 90%;
+        margin-left: 5%;
+    }
+  
+    .board_ist_input_font{
+        margin-left: 10px;
+        font-size: 1rem;
+        color:#737373;
+        
+    }
+
+    .web{
+        margin-left:10%;
+    }
+
+    .board_ist_input_font2{
+        margin-left: 10px;
+        font-size: 1.1rem;
+        color:#737373;
+    }
+
+    .board_ist_input_font3{
+        font-size: 1.275rem;
+        color:#737373;
+    }
+    
+    .board_ist_title{
+        border:none;
+        font-size: 1.3rem;
+        width:45%;
+        height:70px;
+        border-bottom: 2px solid #494949;
+        margin-left: 10px;
+    }
+
+    .board_input_Top{
+        margin-top: 5px;
+        margin-bottom: 30px;
+        background: none;
+    }
+
+    .board_ist_slt_bar{
+        border: none;
+        border-bottom: 1px solid #232323;
+        width: 80%;
+        height: 50px;
+        margin-left: 10%;
+    }
+    .board_ist_add_content_paper{
+        margin-top: 20px;
+        margin-left: 5%;
+        width: 70%;
+        height: 270px;
+    }
+
+    .board_ist_add_card_paper{
+        margin-top: 20px;
+        margin-left: 5%;
+        width: 90%;
+        text-align: center;
+        height: 80px;
+        
+    }
+
+    .board_ist_add_card{
+        border: none;
+        border-bottom: 2px solid #232323;
+        background: none;
+        width: 100px;
+        height:50px;
+    }
+    .add_icon{
+        font-size:0.8rem;
+    }
+
+    .board_ist_slt_mun{
+        border: none;
+        border-bottom: 1px solid #232323;
+        width: 300px;
+        margin-top: 10px;
+        margin-left: 10px;
+        height:60px;
+        font-size: 0.9rem;
+    }
+    .board_ist_image_icon{
+        font-size: 5rem;
+    }
+
+    .imgPaperVisible_b{
+        display: flex;
+        margin-top: 10px;
+        margin-left: 5%;
+        height: 400px;
+        width: 70%;
+    }
+    .imgPaperinVisible{
+        display: none;
+    }
+
+    .file_add label {
+        display: inline-block;
+        padding: .5em .75em;
+        font-size: 0.9rem;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #c29fcb;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        width: 120px;
+        height: 30px;
+        margin-bottom: 10px;
+        float: right;
+    }
+    .file_add input[type="file"] {
+         /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+    }
+
+    .scroll_x::-webkit-scrollbar {
+        width:0px;
+      }
+
+    .scroll_x::-webkit-scrollbar-thumb{
+          background-color:#c29fcb;
+          
+      }
+
+    .scroll_x{
+        margin-top: 10px;
+        display: flex;
+        overflow-x: scroll;
+        width: 1600px;
+    }
+
+    .scroll_img{
+        flex-shrink: 0;
+        width:150px;
+        height:150px;
+        margin-left: 10px;
+    }
+
+    .board_ist_create_btn_box{
+        text-align: right;
+    }
+
+    .board_ist_create_btn{
+        margin-top: 20px;
+        margin-right: 100px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border:1px solid #232323;
+        background: #c29fcb;
+        width: 155px;
+        height:40px;
+    }
+}
+
