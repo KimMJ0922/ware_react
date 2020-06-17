@@ -89,7 +89,7 @@ const CreateCardSet = () => {
     //불일치 하는 값을 가지고 새 배열을 만듬.
     const deleteRow = (id) => () => {
         console.log(id);
-        if(rows.length>2){
+        if(rows.length>1){
             let tempRows = rows.filter(row => {
             return row.id !== id ;
             });
@@ -243,7 +243,6 @@ const CreateCardSet = () => {
                                     
                                     <span className="crt_input_font2">{i+1}번 카드</span>
                                     <DelIcon onClick={deleteRow(rowNum)}/>
-                                        
                                     
                                     {/* 문제, 답, 이미지 */}
                                     
@@ -265,27 +264,28 @@ const CreateCardSet = () => {
                                             </Grid>
                                         </Grid>
                                          {/* 이미지 */}
-                                 
-                                    
                                     </div>      
                                 </Paper>
                                 <Grid>
-                                            <Paper className={row.visible? "imgPaperVisible" : "imgPaperinVisible"}>
-                                    
+                                    <Paper className={row.visible? "imgPaperVisible" : "imgPaperinVisible"}>
                                         {/* 파일 */}
-                                        
-                                            <div class="file_add">
-                                                 <label for="ex_file">직접 업로드 하기</label>
-                                                  <input type="file" onChange={changeFile(rowNum)} name="imgFile"  id="ex_file"/>
-                                                  <div className="scroll_x">
-                                                  {testimg.map(src => (
-                                                            <img className="scroll_img" key={src} src={window.location.origin +src}  alt="경로 오류"/>
-                                                            ))}
-                                                  </div>
+                                        <div class="file_add">
+                                            <div>
+                                                <h3>검색</h3>
+                                                <input type="text" name="searchImg"/>
+                                                <label for="ex_file">직접 업로드 하기</label>
+                                                <input type="file" onChange={changeFile(rowNum)} name="imgFile"  id="ex_file"/>
                                             </div>
-                                       
-                                        </Paper>
-                                    </Grid>
+                                            <div className="scroll_x">
+                                                {
+                                                    testimg.map(src => (
+                                                        <img className="scroll_img" key={src} src={window.location.origin +src}  alt="경로 오류"/>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                    </Paper>
+                                </Grid>
                              </Grid>
                              
                             )

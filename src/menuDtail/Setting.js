@@ -24,14 +24,13 @@ const Setting = () => {
                 let list = await axios.post(url,{no : window.sessionStorage.getItem('no')});
                 let listData = list.data;
                 setDefaultImg(listData);
-
             }catch(e){
                 console.log(e);
             }
         }
 
         defaultProfileImg();
-    },[])
+    },[]);
 
     //프로필 이미지 직접 올리기
     const profileImg = (e) => {
@@ -44,19 +43,24 @@ const Setting = () => {
             alert("5MB까지 가능합니다.");
             return false;
         }
+
+        //파일 확장자 추출
         let fileExtension = filename.substring(filename.lastIndexOf('.'),filename.length);
         fileExtension = fileExtension.toUpperCase();
         
         let passExtension = ['.JPG','.PNG','JPEG','.GIF'];
+        
+        //이미지 파일이 아니면 빠꾸
         if(passExtension.indexOf(fileExtension) === -1){
             alert("사진 파일만 업로드 가능합니다.");
             return false;
         }
+
+        //폼 생성 후 비동기 통신
         const profile = new FormData();
         profile.append('uploadFile',uploadFile);
         profile.append('no',window.sessionStorage.getItem('no'));
         profile.append('email',window.sessionStorage.getItem('email'));
-
         axios(
             {
                 method : 'post',
@@ -66,6 +70,7 @@ const Setting = () => {
             }
         ).then(
             (res) => {
+                //자동 로그인 설정이 되어있으면 로컬스토리지 값 변경
                 let auto = localStorage.getItem('autoLogin');
                 if(auto !== null){
                     localStorage.setItem(
@@ -120,6 +125,7 @@ const Setting = () => {
             
         })
     }
+
     //이름 변경 버튼 눌렀을 때
     const nameChangeButton = () => {
         let RegExp = /^[가-힣a-zA-Z0-9_]+$/;
@@ -217,6 +223,7 @@ const Setting = () => {
     const changeOutText = (e) =>{
         setOutText(e.target.value);
     }
+
     //회원탈퇴
     const signOut = () => {
         let text = outText;
@@ -250,7 +257,8 @@ const Setting = () => {
                     <input type="file" onChange={profileImg}></input>
                 </div>
                 <div>
-                    { provider !== "default" &&
+                    { 
+                        provider !== "default" &&
                         <img src={window.sessionStorage.getItem('socialProfile')} alt="" 
                              onClick={socialProfileImgClick} className="profileImgList"/>
                     }
@@ -259,7 +267,7 @@ const Setting = () => {
                             return <img src={data} alt="" key={idx}
                                         onClick={profileImgClick} className="profileImgList"/>
                         })
-                   }
+                    }
                 </div>
             </div>
             <div>
@@ -267,15 +275,15 @@ const Setting = () => {
                 <input type="text" id="name" name="name" onChange={changeName} value={newName}/>
                 <button type="button" onClick={nameChangeButton}>변경</button>
             </div>
-            {
-                provider === "default" &&
-                <div>
-                    <h2>비밀번호 변경 </h2>
-                    <input type="password" id="password" name="password" placeholder="●●●●●●●"
-                           onChange={changePassword} value={newPassword}/>
-                    <button type="button" onClick={passwordChangeButton}>변경</button>
-                </div>
-            }
+                {
+                    provider === "default" &&
+                    <div>
+                        <h2>비밀번호 변경 </h2>
+                        <input type="password" id="password" name="password" placeholder="●●●●●●●"
+                            onChange={changePassword} value={newPassword}/>
+                        <button type="button" onClick={passwordChangeButton}>변경</button>
+                    </div>
+                }
             <div>
                 <h2>회원 탈퇴</h2>
                 
