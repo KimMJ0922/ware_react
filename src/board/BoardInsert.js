@@ -11,7 +11,7 @@ const BoardInsert=()=> {
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
     const [point,setPoint] = useState('');
-    const [email, setEamil] = useState(window.sessionStorage.getItem('email'));
+    const [no, setNo] = useState(window.sessionStorage.getItem('no'));
     const [rows,setRows] = useState(
         [
             {
@@ -119,13 +119,13 @@ const BoardInsert=()=> {
         axios.post(url,
             {
                 rows,
-                email,
+                no,
                 title,
                 comment,
                 point
             }
         ).then((res)=>{
-            console.log(rows);
+            //window.location.replace("/board/item/75")
         }).catch((error)=>{
             console.log("error"+error);
         });
