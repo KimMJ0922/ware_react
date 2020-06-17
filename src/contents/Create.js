@@ -276,6 +276,7 @@ const CreateCardSet = () => {
                                                 <label for="ex_file">직접 업로드 하기</label>
                                                 <input type="file" onChange={changeFile(rowNum)} name="imgFile"  id="ex_file"/>
                                             </div>
+                                            
                                             <div className="scroll_x">
                                                 {
                                                     testimg.map(src => (
