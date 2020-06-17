@@ -17,49 +17,28 @@ const BoardList=()=>{
     const [countNum, setCountNum] = useState(0);
     const [pageNum, setPageNum] = useState(0);
 
-    // const useStyles = makeStyles((theme) => ({
-    //     root: {
-    //       '& > *': {
-    //         margin: theme.spacing(2),
-    //         width: '50ch',
-    //       },
-    //     },
-    //     button1: {
-    //       margin: theme.spacing(2),
-    //       width: '5ch',
-    //       height: '7ch',
-    //     },
-    //     button2: {
-    //         margin: theme.spacing(2),
-    //         width: '15ch',
-    //         height: '7ch',
-    //     },
-    // }));
-    // const classes = useStyles();
-
-    const getData = async () =>{
-        try {
-            const data = await Axios.get(
-                "http://localhost:9000/board/list?pageNum="+pageNum
-            );
-            setBoardData(data.data);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    const BoardCount = async () =>{
-        try {
-            const data = await Axios.get(
-                "http://localhost:9000/board/count"
-            );
-            setCountNum(data.data);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
     useEffect(()=>{
+        const getData = async () =>{
+            try {
+                const data = await Axios.get(
+                    "http://localhost:9000/board/list?pageNum="+pageNum
+                );
+                setBoardData(data.data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    
+        const BoardCount = async () =>{
+            try {
+                const data = await Axios.get(
+                    "http://localhost:9000/board/count"
+                );
+                setCountNum(data.data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
         getData();
         BoardCount();
     },[pageNum])
@@ -82,9 +61,6 @@ const BoardList=()=>{
                 </div>
             </Grid>
             
-            
-            
-               
                     {/* <Grid xs={1} md={1}>
                         <div className='boardTableTitle'> 번호</div>
                     </Grid>
@@ -123,7 +99,7 @@ const BoardList=()=>{
                         return (
                             <Pagination
                                 page={page}
-                                count={Math.ceil(countNum/6)}
+                                count={Math.ceil(countNum/9)}
                                 renderItem={(item) => (
                                     <PaginationItem
                                         component={Link}
