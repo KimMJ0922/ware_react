@@ -3,13 +3,14 @@
         text-align: left;
         margin-left: 20%;
     }
-    label{
+
+    .signup_label{
         margin:0 auto;
         padding:0;
-        font-size: 0.9rem;
-        
+        font-size: 0.9rem;       
     }
-    input{
+
+    .signup_input{
         border: none;
         background: none;
         width: 180px;
@@ -18,7 +19,7 @@
         margin-bottom: 15px;
         font-size: 0.9rem;
     }
-    button{
+    .signup_submit{
         border:none;
         background: dimgrey;
         width:180px;
@@ -31,13 +32,13 @@
         text-align: left;
         margin-left: 20%;
     }
-    label{
+    .signup_label{
         margin:0 auto;
         padding:0;
         font-size: 0.9rem;
         
     }
-    input{
+    .signup_input{
         border: none;
         background: none;
         width: 180px;
@@ -46,7 +47,7 @@
         margin-bottom: 15px;
         font-size: 0.9rem;
     }
-    button{
+    .signup_submit{
         border:none;
         background: dimgrey;
         width:180px;
@@ -59,13 +60,13 @@
         text-align: left;
         margin-left: 25%;
     }
-    label{
+    .signup_label{
         margin:0 auto;
         padding:0;
         font-size: 1rem;
         
     }
-    input{
+    .signup_input{
         border: none;
         background: none;
         width: 400px;
@@ -73,9 +74,8 @@
         border-bottom: 1px solid dimgrey;
         margin-bottom: 15px;
         font-size: 0.9rem;
-        
     }
-    button{
+    .signup_submit{
         border:none;
         background: dimgrey;
         width:180px;
