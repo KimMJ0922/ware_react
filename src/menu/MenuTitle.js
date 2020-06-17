@@ -5,13 +5,6 @@ import './menu.css';
 const MenuTitle=({match})=>{
     const [nowProfileImg, setProfileImg] = useState(window.sessionStorage.getItem('profile'));
 
-    useEffect(()=>{
-        console.log(match);
-    });
-
-    useEffect(()=>{
-        console.log('프로필 바뀜');
-      },[nowProfileImg]);
     return(
         <div className='mainMenuDetail'>
             <Switch>
