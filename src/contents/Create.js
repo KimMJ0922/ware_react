@@ -213,6 +213,7 @@ const CreateCardSet = () => {
                 });
                 //map을 다시 돌리기 위해 setter에 저장
                 setRows([...rows]);
+                
             }
         ).catch(
             (error)=>{
