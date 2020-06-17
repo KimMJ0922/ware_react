@@ -17,7 +17,8 @@ const CreateCardSet = () => {
                 answer:'',
                 visible : false,
                 img : '',
-                imgSrc : ''
+                imgSrc : '',
+                searchText : ''
             }
         ]
     );
@@ -30,6 +31,8 @@ const CreateCardSet = () => {
     const [updatePassword, setUpdatePassword] = useState('');
     const [updatePasswordVisible, setUpdatePasswordVisible] = useState(false);
 
+    const [searchImgList, setSearchImgList] = useState([]);
+    const [resdata, setResdata] =useState([]);
     const testimg=[
         // "/iu04.jpg",
         // "/hung.png",
@@ -66,10 +69,13 @@ const CreateCardSet = () => {
             answer:'',
             visible : false,
             img : '',
-            imgSrc : ''
+            imgSrc : '',
+            searchText : ''
         };
         setRows(rows.concat(data));
         setNum(num+1);
+
+        console.log(rows);
     };
 
     //텍스트 입력
@@ -159,6 +165,14 @@ const CreateCardSet = () => {
         }
     }
 
+    //검색 텍스트 바꾸기
+    const changeSearchText = (rowNum) => (e) => {
+        rows.map((row,idx) => {
+            if(rowNum == row.id){
+                row["searchText"] = e.target.value
+            }
+        });
+    }
 
     //문제 이미지 추가
     const changeFile = (id) => (e) =>{
@@ -260,7 +274,7 @@ const CreateCardSet = () => {
                 }
             }
         })
-        
+
         if(check === false){
             return false;
         }
@@ -284,9 +298,42 @@ const CreateCardSet = () => {
         });
     }
 
-    useEffect(() => {
+    const searchImg = (e) => {
+        let num = parseInt(e.target.name);
+        let search = '';
 
-    });
+        rows.map((row,idx)=>{
+            if(row.id === num){
+                search = row.searchText;
+            }
+        });
+
+        if(search.length === 0){
+            return false;
+        }
+
+        let url = "http://localhost:9000/searchimg";
+        axios.post(url,{
+            search
+        }).then((res) => {
+            
+            let src = res.data
+            if(src.length !== 0){
+                setResdata(res.data);
+            }
+        }).catch((err) => {
+
+        });
+    }
+    useEffect(()=>{
+        resdata.map((res) => {
+            console.log(res);
+            setSearchImgList([...searchImgList,{src : res}]);
+
+            console.log(searchImgList);
+        })
+        
+    },[resdata])
     return(
         <div className="crt_body">
             <form onSubmit={onSubmit}>
@@ -367,16 +414,19 @@ const CreateCardSet = () => {
                                             <div class="file_add">
                                                 <div>
                                                     <h3>검색</h3>
-                                                    <input type="text" name="searchImg"/>
-                                                    <button type="button">검색</button>
+                                                    <div>
+                                                        <input type="text" name="searchImg" onChange={changeSearchText(rowNum)}/>
+                                                        <button type="button" onClick={searchImg} name={rowNum}>검색</button>
+                                                    </div>
                                                     <label for={"ex_file"+rowNum}>직접 업로드 하기</label>
                                                     <input type="file" onChange={changeFile(row.id)} name={row.id}  id={"ex_file"+rowNum}/>
                                                 </div>
-                                                <div className="scroll_x">
+                                                <div className="scroll_x">   
                                                     {
                                                         row.imgSrc !== "" &&
                                                             <img className="scroll_img" key={rowNum} src={row.imgSrc}  alt=""/>
                                                     }
+                                                    
                                                 </div>
                                             </div>
                                         </Paper>

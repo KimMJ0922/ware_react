@@ -152,7 +152,18 @@ const Top = ({path}) =>{
                                 <Link exact to="/profile" className='topMenuList'>
                                     <div id='profilename'>
                                         <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
-                                        <span>{userInfo.name}</span>
+                                        <span>
+                                            {
+                                                window.sessionStorage.getItem('provider') === 'kakao' && 
+                                                    <img src="/profile/kakao.png" alt="" style={{width:'20px', height:'20px'}}/> 
+                                                || window.sessionStorage.getItem('provider') === 'google' && 
+                                                    <img src="/profile/google.png" alt="" style={{width:'20px', height:'20px'}}/>
+                                                ||  window.sessionStorage.getItem('provider') === 'default' && 
+                                                    <img src="/profile/ware.png" alt="" style={{width:'20px', height:'20px'}}/>
+                                            }
+                                            {userInfo.name}
+                                            
+                                        </span>
                                     </div>
                                 </Link>
                                 <Link onClick={logout} className='userLogout'><span >로그아웃</span></Link>
