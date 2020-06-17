@@ -17,26 +17,6 @@ const BoardList=()=>{
     const [countNum, setCountNum] = useState(0);
     const [pageNum, setPageNum] = useState(0);
 
-    // const useStyles = makeStyles((theme) => ({
-    //     root: {
-    //       '& > *': {
-    //         margin: theme.spacing(2),
-    //         width: '50ch',
-    //       },
-    //     },
-    //     button1: {
-    //       margin: theme.spacing(2),
-    //       width: '5ch',
-    //       height: '7ch',
-    //     },
-    //     button2: {
-    //         margin: theme.spacing(2),
-    //         width: '15ch',
-    //         height: '7ch',
-    //     },
-    // }));
-    // const classes = useStyles();
-
     const getData = async () =>{
         try {
             const data = await Axios.get(
@@ -76,84 +56,63 @@ const BoardList=()=>{
                 </div> 
             </Grid>
             <Grid xs={12} md={6}>
-            <div className='boardSearchForm'>
-                  
+                <div className='boardSearchForm'>
                  최신순/ 인기순 / 정확도순 
                 </div>
             </Grid>
-            
-            
-            
-               
-                    {/* <Grid xs={1} md={1}>
-                        <div className='boardTableTitle'> 번호</div>
-                    </Grid>
-                    <Grid xs={2} md={2}>
-                        <div className='boardTableTitle'>작성자</div>
-                    </Grid>
-                    <Grid xs={6} md={6}>
-                        <div className='boardTableTitle'>제목</div>
-                    </Grid>
-                    <Grid xs={1} md={1}>
-                        <div className='boardTableTitle'>조회수</div>
-                    </Grid>
-                    <Grid xs={2} md={2}>
-                        <div className='boardTableTitle'>작성일</div>
-                    </Grid> */}
-                
-        
             {
                 boardData.map((row,index) => (
                     <BoardItems row={row} index={index}/>
                 ))
             }   
-                  <Grid xs={4} md={4}>
+            {/* 여백채우기용 */}
+            <Grid xs={1} md={4}>
                 <div>
                    &nbsp;  
                 </div>
             </Grid>
-            <Grid xs={4} md={4}>
-            <div className="BoardPagination">
-                <MemoryRouter initialEntries={['/home/board']} initialIndex={0}>
-                    <Route>
-                        {({ location }) => {
-                        const query = new URLSearchParams(location.search);
-                        const page = parseInt(query.get('page') || '1', 10);
-                        setPageNum(page);
-                        return (
-                            <Pagination
-                                page={page}
-                                count={Math.ceil(countNum/9)}
-                                renderItem={(item) => (
-                                    <PaginationItem
-                                        component={Link}
-                                        to={`/home/board${item.page === 1 ? `?page=${item.page}` : `?page=${item.page}`}`}
-                                        {...item}
-                                    />
-                            )}
-                            />
-                        );
-                        }}
-                    </Route>
-                </MemoryRouter>
-            </div>
+            <Grid xs={10} md={4}>
+                <div className="BoardPagination">
+                    <MemoryRouter initialEntries={['/home/board']} initialIndex={0}>
+                        <Route>
+                            {({ location }) => {
+                            const query = new URLSearchParams(location.search);
+                            const page = parseInt(query.get('page') || '1', 10);
+                            setPageNum(page);
+                            return (
+                                <Pagination
+                                    page={page}
+                                    count={Math.ceil(countNum/9)}
+                                    renderItem={(item) => (
+                                        <PaginationItem
+                                            component={Link}
+                                            to={`/home/board${item.page === 1 ? `?page=${item.page}` : `?page=${item.page}`}`}
+                                            {...item}
+                                        />
+                                )}
+                                />
+                            );
+                            }}
+                        </Route>
+                    </MemoryRouter>
+                </div>
             </Grid>
-            <Grid xs={4} md={4}>
+
+            {/* 여백채우기용 */}
+            <Grid xs={1} md={4}>
                 <div>
                    &nbsp; 
                 </div>
             </Grid>
+            
             <Grid xs={12} md={12}>
             <div className="BoardInsert">
                     <Link to="/home/board/insert">
-                        <Button variant="contained" color="primary" >게시물 작성</Button>
-                        {/* className={classes.button2} */}
+                        <Button id='BoardInsertBtn'  variant="contained" color="primary" >게시물 작성</Button>
                     </Link>
                 </div>
             </Grid>
-           
         </Grid>
-        
         </>
     )
 }

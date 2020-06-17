@@ -125,9 +125,10 @@ a{
         text-align: center;
     }
     .boardSearchForm{
-    text-align: center;
+        text-align: center;
     }
     .BoardInsert{
+        margin-top: 7vh;
         text-align: center;
     }
     .boardSearchBar>.MuiInputBase-root>input{
@@ -179,5 +180,12 @@ a{
         line-height: 2.5rem;
         font-size: 1.3rem;
         width: 100%;
+    }
+    #BoardInsertBtn{
+        border-radius: 50px;
+        position: fixed;
+        bottom: 1vh;
+        width: 13rem;
+        right: 11vh;
     }
 }
