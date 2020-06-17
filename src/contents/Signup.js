@@ -49,8 +49,8 @@ const Signup=()=>{
         axios.post(url,{
             userInfo
         }).then((res) => {
-            alert('회원가입이 완료 되었습니다. 메일 인증을 하면 서비스를 이용할 수 있습니다.');
-        }).catch((err) => {
+            alert("회원가입이 완료 되었습니다. 메일 인증을 하면 서비스를 이용할 수 있습니다.");
+        }).catch((err) => { 
             console.log(err);
         })
     }

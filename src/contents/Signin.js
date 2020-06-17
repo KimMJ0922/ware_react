@@ -39,9 +39,11 @@ const Signin=()=>{
         //자동로그인
         if(auto !== null){
             let data = JSON.parse(localStorage.getItem("autoLogin"));
+            window.sessionStorage.setItem('no',data.no);
             window.sessionStorage.setItem('email',data.email);
             window.sessionStorage.setItem('name',data.name);
             window.sessionStorage.setItem('profile',data.profile);
+            window.sessionStorage.setItem('provider',data.provider);
             history.replace('/home/default');
         }
         //아이디 저장
@@ -109,7 +111,8 @@ const Signin=()=>{
                         no : res.data.dto.no,
                         email: res.data.dto.email,
                         name : res.data.dto.name,
-                        profile : res.data.dto.profile
+                        profile : res.data.dto.profile,
+                        provider : 'default'
                     })
                 );
             }
