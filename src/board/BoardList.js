@@ -10,12 +10,19 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-import { Grid } from '@material-ui/core';
+import { Grid, Radio } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
 
 const BoardList=()=>{ 
     const [boardData, setBoardData] = useState([]);
     const [countNum, setCountNum] = useState(0);
     const [pageNum, setPageNum] = useState(0);
+
+    // radio 값바꾸기
+    const [selectedValue, setSelectedValue] = React.useState("최신순");
+    const selectChange = event => {
+        setSelectedValue(event.target.value);
+      };
 
     useEffect(()=>{
         const getData = async () =>{
@@ -50,48 +57,51 @@ const BoardList=()=>{
                 <div className='boardSearchForm'>
                     <form  noValidate autoComplete="off">
                         <TextField className='boardSearchBar'  type="search"  />
-                        <Button className='boardSearchBtn' >검색</Button>
+                        <Button id='boardSearchBtn' ><Search/></Button>
                     </form>
                 </div> 
             </Grid>
             <Grid xs={12} md={6}>
                 <div className='boardSearchForm'>
-                 최신순/ 인기순 / 정확도순 
-                </div>
-            </Grid>
-            
-            
-            
-               
-                    {/* <Grid xs={1} md={1}>
-                        <div className='boardTableTitle'> 번호</div>
-                    </Grid>
-                    <Grid xs={2} md={2}>
-                        <div className='boardTableTitle'>작성자</div>
-                    </Grid>
-                    <Grid xs={6} md={6}>
-                        <div className='boardTableTitle'>제목</div>
-                    </Grid>
-                    <Grid xs={1} md={1}>
-                        <div className='boardTableTitle'>조회수</div>
-                    </Grid>
-                    <Grid xs={2} md={2}>
-                        <div className='boardTableTitle'>작성일</div>
-                    </Grid> */}
+                <Radio
+                    checked={selectedValue === "최신순"}
+                    onChange={selectChange}
+                    value="최신순"
+                    name="radio-button-demo"
+                    className="boardSearchRadio"
+                />최신순
                 
-        
+                <Radio
+                    checked={selectedValue === "조회순"}
+                    onChange={selectChange}
+                    value="조회순"
+                />조회순
+                <Radio
+                    checked={selectedValue === "최소가격"}
+                    onChange={selectChange}
+                    value="최소가격"
+                />최소가격
+                <Radio
+                    checked={selectedValue === "최대가격"}
+                    onChange={selectChange}
+                    value="최대가격"
+                />최대가격
+                </div>
+                
+            </Grid>
             {
                 boardData.map((row,index) => (
                     <BoardItems row={row} index={index}/>
                 ))
             }   
             {/* 여백채우기용 */}
-            <Grid xs={1} md={4}>
+            <Grid xs={12} md={12}>
                 <div>
                    &nbsp;  
                 </div>
             </Grid>
-            <Grid xs={4} md={4}>
+           
+            <Grid xs={12} md={12}>
             <div className="BoardPagination">
                 <MemoryRouter initialEntries={['/home/board']} initialIndex={0}>
                     <Route>
@@ -100,9 +110,10 @@ const BoardList=()=>{
                         const page = parseInt(query.get('page') || '1', 10);
                         setPageNum(page);
                         return (
+                            <div>
                             <Pagination
                                 page={page}
-                                count={Math.ceil(countNum/6)}
+                                count={Math.ceil(countNum/9)}
                                 renderItem={(item) => (
                                     <PaginationItem
                                         component={Link}
@@ -111,6 +122,7 @@ const BoardList=()=>{
                                     />
                             )}
                             />
+                            </div>
                         );
                         }}
                     </Route>
@@ -119,16 +131,16 @@ const BoardList=()=>{
             </Grid>
 
             {/* 여백채우기용 */}
-            <Grid xs={1} md={4}>
+            <Grid xs={12} md={12}>
                 <div>
-                   &nbsp; 
+                   &nbsp;  
                 </div>
             </Grid>
             
             <Grid xs={12} md={12}>
             <div className="BoardInsert">
                     <Link to="/home/board/insert">
-                        <Button id='BoardInsertBtn'  variant="contained" color="primary" >게시물 작성</Button>
+                        <Button id='BoardInsertBtn'  variant="contained" color="primary" >장터에 올리기</Button>
                     </Link>
                 </div>
             </Grid>
