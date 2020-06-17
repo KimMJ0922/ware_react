@@ -37,7 +37,7 @@ const BoardItems=props=> {
                      <Grid xs={6} md={6}> <div className="BoardItemRequirePoint">{props.row.requirepoint}  Point</div></Grid>
                      <Grid xs={6} md={6}> <div className="BoardItemReadCount" style={{textAlign:'right'}}>{props.row.readcount}View</div></Grid>
                      <Grid xs={12} md={12}> <div className="BoardItemContent">{props.row.content}</div></Grid>
-                     <Grid xs={2} md={3}> <img src={defaultImage} className="BoardProImage" alt=''/></Grid>
+                     <Grid xs={2} md={3}> <img className="BoardProImage" alt=''/></Grid>
                      <Grid xs={10} md={9}>   <div className="BoardItemWriter">{props.row.writer}</div></Grid>
                     
                     </Grid>

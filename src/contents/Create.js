@@ -213,7 +213,7 @@ const CreateCardSet = () => {
                 });
                 //map을 다시 돌리기 위해 setter에 저장
                 setRows([...rows]);
-                
+
             }
         ).catch(
             (error)=>{
@@ -246,24 +246,29 @@ const CreateCardSet = () => {
             alert("수정 비밀번호를 입력해주세요");
             return false;
         }
-
+        let check = true;
         rows.map((data,idx) => {
             if(data.id === 1){
                 if(data.question.length === 0 || data.answer.length === 0){
                     alert("첫번째 문제는 필수로 입력해야합니다.");
-                    return false;
+                    return check = false;
                 }
             }else{
                 if(data.question.length === 0 || data.answer.length === 0){
                     alert("문제와 답을 작성해주세요");
-                    return false;
+                    return check = false;
                 }
             }
         })
+        
+        if(check === false){
+            return false;
+        }
 
         let url = "http://localhost:9000/insert";
         axios.post(url,
             {
+                no : window.sessionStorage.getItem('no'),
                 rows,
                 title,
                 comment,
