@@ -27,20 +27,20 @@ const BoardItems=props=> {
         getIp();
     },[]);
     return ( 
-        <Grid xs={12} md={4}>
-            <Link to={`/home/board/item/${props.row.board_no}`}>
+        <Grid item xs={12} md={4}>
+            <Link to={`/home/board/item/${props.row.board_no}`} className='BoardItemBox'>
                 <div className="BoardItem">
                     {/* <div>{props.row.board_no}</div> 일단 가리겠음 */}
-                    <Grid xs={6} md={6}> <div>{props.row.subject}</div></Grid>
-                    <Grid xs={6} md={6}><div style={{textAlign:'right'}}>{props.row.writeday}</div></Grid>
-                    <div>{props.row.readcount}</div>
-                    <div>{props.row.content}</div>
-                    <div>
-                        {props.row.requirepoint}
-                        <img src={props.row.provider=="default"?ip+"profile/default/"+props.row.profile:props.row.profile} className="BoardProImage" alt=''/>
-                        <span>{props.row.name}</span>
-                    </div>
+                    <Grid container>
+                    <Grid xs={6} md={6}> <div className="BoardItemSubject">{props.row.subject}</div></Grid>
+                     <Grid xs={6} md={6}> <div className="BoardItemWriteDay" style={{textAlign:'right'}}>{props.row.writeday}</div></Grid>
+                     <Grid xs={6} md={6}> <div className="BoardItemRequirePoint">{props.row.requirepoint}  Point</div></Grid>
+                     <Grid xs={6} md={6}> <div className="BoardItemReadCount" style={{textAlign:'right'}}>{props.row.readcount}View</div></Grid>
+                     <Grid xs={12} md={12}> <div className="BoardItemContent">{props.row.content}</div></Grid>
+                     <Grid xs={2} md={3}> <img src={defaultImage} className="BoardProImage" alt=''/></Grid>
+                     <Grid xs={10} md={9}>   <div className="BoardItemWriter">{props.row.writer}</div></Grid>
                     
+                    </Grid>
                 </div>
             </Link>
         </Grid>

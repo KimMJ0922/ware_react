@@ -55,12 +55,14 @@ const BoardList=()=>{
                 </div> 
             </Grid>
             <Grid xs={12} md={6}>
-            <div className='boardSearchForm'>
-                  
-                최신순/ 인기순 / 정확도순 
+                <div className='boardSearchForm'>
+                 최신순/ 인기순 / 정확도순 
                 </div>
             </Grid>
             
+            
+            
+               
                     {/* <Grid xs={1} md={1}>
                         <div className='boardTableTitle'> 번호</div>
                     </Grid>
@@ -83,7 +85,8 @@ const BoardList=()=>{
                     <BoardItems row={row} index={index}/>
                 ))
             }   
-                  <Grid xs={4} md={4}>
+            {/* 여백채우기용 */}
+            <Grid xs={1} md={4}>
                 <div>
                    &nbsp;  
                 </div>
@@ -99,7 +102,7 @@ const BoardList=()=>{
                         return (
                             <Pagination
                                 page={page}
-                                count={Math.ceil(countNum/9)}
+                                count={Math.ceil(countNum/6)}
                                 renderItem={(item) => (
                                     <PaginationItem
                                         component={Link}
@@ -114,22 +117,22 @@ const BoardList=()=>{
                 </MemoryRouter>
             </div>
             </Grid>
-            <Grid xs={4} md={4}>
+
+            {/* 여백채우기용 */}
+            <Grid xs={1} md={4}>
                 <div>
                    &nbsp; 
                 </div>
             </Grid>
+            
             <Grid xs={12} md={12}>
             <div className="BoardInsert">
                     <Link to="/home/board/insert">
-                        <Button variant="contained" color="primary" >게시물 작성</Button>
-                        {/* className={classes.button2} */}
+                        <Button id='BoardInsertBtn'  variant="contained" color="primary" >게시물 작성</Button>
                     </Link>
                 </div>
             </Grid>
-           
         </Grid>
-        
         </>
     )
 }

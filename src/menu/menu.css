@@ -1,7 +1,24 @@
 /* 네이버 나눔스퀘어 */
 @import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);
 
-.mainMenuDetail{
-    background-color: #FAFAFA;
-    min-height: 794px;
+
+@media(min-width: 551px){
+    .mainMenuDetail{
+        background-color: #FAFAFA;
+        min-height: 794px;
+    }
+}
+
+@media(max-width: 550px){
+    .mainMenuDetail{
+        background-color: #FAFAFA;
+        min-height: 794px;
+    }
+}
+
+@media(max-width: 375px){
+    .mainMenuDetail{
+        background-color: #FAFAFA;
+        min-height: 0px;
+    }
 }
