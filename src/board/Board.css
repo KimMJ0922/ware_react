@@ -1,70 +1,183 @@
 a{
     text-decoration: none;
 }
+@media(min-width: 551px){
 
-.boardTableSubject{
-    margin-top: 1rem;
-    border: 1px solid #000;
-}
-.boardTableTitle{
+    .boardTableSubject{
+        margin-top: 1rem;
+        border: 1px solid #000;
+    }
+    .boardTableTitle{
+        text-align: center;
+    }
+    .boardSearchForm{
     text-align: center;
-}
-.boardSearchForm{
-text-align: center;
-}
-
-.BoardItem{
-    width: 95%;
-    height: 10%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    border: 1px solid black;
-    color: black;
-}
-.boardSearchBar>.MuiInputBase-root>input{
-    width: 300px;
-    height: 40px;
-    border: 1px solid #bdbdbd;
+    }
+    .BoardInsert{
+        text-align: center;
+    }
+    .boardSearchBar>.MuiInputBase-root>input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid #bdbdbd;
+        
+    }
+    .BoardProImage{
+        border-radius: 50px;
+        height: 30px;
+    }
+    .BoardItem{
+        color: #000;
+        padding: 10px;
+        margin: 1rem;
+        border-radius: 17px;
+        border: 0;
+        height: 150px;
+        box-shadow: 0px 3px 15px -4px #BDBDBD;
+    }
+    .BoardPagination{
+        padding-left: 40px;
+        text-align: center;
+    }
+    .BoardItemSubject{
     
+    }
+    .BoardItemWriteDay{
+    
+    }
+    .BoardItemRequirePoint{
+    
+    }
+    .BoardItemReadCount{
+    }
+    .BoardItemContent{
+    
+    }
+    .BoardItemWriter{
+    
+    }
 }
-.BoardProImage{
-    border-radius: 50px;
-    height: 30px;
-}
-.BoardItem{
-    border-radius: 10px;
-    color: #000;
-    padding: 10px;
-    height: 140px;
-    margin: 1rem;
-    border: 1px solid #dbdbdb;
-    box-shadow: 3px 1px 10px -3px #afafaf;
-}
-.BoardPagination{
-    padding-left: 40px;
+
+@media(max-width: 550px){
+
+    .boardTableSubject{
+        margin-top: 1rem;
+        border: 1px solid #000;
+    }
+    .boardTableTitle{
+        text-align: center;
+    }
+    .boardSearchForm{
     text-align: center;
+    }
+    .BoardInsert{
+        text-align: center;
+    }
+    .boardSearchBar>.MuiInputBase-root>input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid #bdbdbd;
+        
+    }
+    .BoardProImage{
+        border-radius: 50px;
+        height: 30px;
+    }
+    .BoardItem{
+        color: #000;
+        padding: 10px;
+        margin: 1rem;
+        border-radius: 17px;
+        border: 0;
+        height: 150px;
+        box-shadow: 0px 3px 15px -4px #BDBDBD;
+    }
+    .BoardPagination{
+        padding-left: 40px;
+        text-align: center;
+    }
+    .BoardItemSubject{
+    
+    }
+    .BoardItemWriteDay{
+    
+    }
+    .BoardItemRequirePoint{
+    
+    }
+    .BoardItemReadCount{
+    }
+    .BoardItemContent{
+    
+    }
+    .BoardItemWriter{
+    
+    }
 }
-/* 
 
+@media(max-width: 375px){
 
-
-.BoardBottom{
-    height: 10%;
-    border: 1px solid black;
+    .boardTableSubject{
+        margin-top: 0.1rem;
+        border: 0;
+    }
+    .boardTableTitle{
+        text-align: center;
+    }
+    .boardSearchForm{
+    text-align: center;
+    }
+    .BoardInsert{
+        text-align: center;
+    }
+    .boardSearchBar>.MuiInputBase-root>input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid #bdbdbd;
+        
+    }
+    
+    .BoardItem{
+        color: #000;
+        padding: 10px;
+        margin: 1rem;
+        border-radius: 17px;
+        border: 0;
+        height: 150px;
+        box-shadow: 0px 3px 15px -4px #BDBDBD;
+    }
+    .BoardPagination{
+        padding-left: 40px;
+        text-align: center;
+    }
+    .BoardItemSubject{
+        font-size: 1.3rem;
+    }
+    .BoardItemWriteDay{
+        color: #9a9a9a;
+    }
+    .BoardItemRequirePoint{
+    
+    }
+    .BoardItemReadCount{
+        text-align: right;
+        color: #9a9a9a;
+    }
+    .BoardItemContent{
+        height: 3rem;
+        border-top: 2px solid #e6e4e4;
+        margin-top: 0.3rem;
+    }
+    .BoardProImage{
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        margin-left: 0.5rem;
+    }
+    .BoardItemWriter{
+        text-align: left;
+        line-height: 2.5rem;
+        font-size: 1.3rem;
+        width: 100%;
+    }
 }
-
-.BoardSearch{
-    border: 1px solid black;
-}
-
-.BoardInsert{
-    border: 1px solid black;
-}
-
-
-
-.InsertTitle{
-    border: 1px solid black;
-} */

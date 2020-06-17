@@ -78,7 +78,7 @@ const BoardList=()=>{
             <Grid xs={12} md={6}>
             <div className='boardSearchForm'>
                   
-                최신순/ 인기순 / 정확도순 
+                 최신순/ 인기순 / 정확도순 
                 </div>
             </Grid>
             
@@ -123,7 +123,7 @@ const BoardList=()=>{
                         return (
                             <Pagination
                                 page={page}
-                                count={Math.ceil(countNum/6)}
+                                count={Math.ceil(countNum/9)}
                                 renderItem={(item) => (
                                     <PaginationItem
                                         component={Link}
