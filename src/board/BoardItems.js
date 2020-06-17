@@ -16,7 +16,7 @@ const BoardItems=props=> {
                      <Grid xs={6} md={6}><div style={{textAlign:'right'}}>{props.row.writeday}</div></Grid>
                     <div>{props.row.readcount}</div>
                     <div>{props.row.content}</div>
-                    <div>
+                    <div>{props.row.requirepoint}
                         <img src={defaultImage} className="BoardProImage" alt=''/>
                         <span>{props.row.writer}</span>
                     </div>

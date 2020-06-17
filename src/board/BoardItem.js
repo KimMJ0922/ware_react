@@ -5,7 +5,7 @@ const BoardItem=({match})=> {
 
     return ( 
         <div>
-            제목 : 
+            제목 :
             내용 : 
             문제 : 
             
