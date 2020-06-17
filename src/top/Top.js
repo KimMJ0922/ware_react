@@ -1,8 +1,11 @@
 import React,{useState, useEffect} from 'react';
 import {NavLink, Link, useHistory} from 'react-router-dom';
+import Modal from '@material-ui/core/Modal';
 import './Top.css';
 import { Grid, Hidden } from '@material-ui/core';
 import { Search,Create,Menu, Face} from '@material-ui/icons';
+import Signin from '../contents/Signin';
+import Signup from '../contents/Signup';
 
 // 프로필 예시 사진
 import img2 from './iu.jpg';
@@ -40,6 +43,24 @@ const Top = ({path}) =>{
         localStorage.removeItem('autoLogin');
         window.location.replace('/');
     }
+    const [open, setOpen] = React.useState(false);
+    const [open2, setOpen2] = React.useState(false);
+    const LoginModalOpen = () => {
+        setOpen(true);
+      };
+    
+      const LoginModalClose = () => {
+        setOpen(false);
+      };
+
+      const SingupModalOpen = () => {
+        setOpen2(true);
+      };
+    
+      const SingupModalClose = () => {
+        setOpen2(false);
+      };
+      
 
    
     if(path === "/"){
@@ -60,13 +81,39 @@ const Top = ({path}) =>{
                         <Grid item xs={5} md={2}>
                             <div className='topMenuFirst' style={{display:'inherit'}}>
                                 <p className='loginController'>
-                                    <span> <Link to="signin" className='MainSign'>로그인</Link></span> 
-                                    <span> <Link to="signup" className='MainSign'>회원가입 </Link></span>
+                                    <span> <button onClick={LoginModalOpen} className='MainSign'>로그인</button></span> 
+                                    <span> <button onClick={SingupModalOpen} className='MainSign'>회원가입 </button></span>
                                 </p> 
                             </div>
                         </Grid>
                 </Grid>
+            <Modal
+            open={open}
+            onClose={LoginModalClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            >
+             
+                 <div className="Login_modal_div">
+                  <Signin/>
+                 </div>      
+            </Modal> 
+
+            <Modal
+            open={open2}
+            onClose={SingupModalClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            >
+                 <div className="Login_modal_div">
+                  <Signup/>
+                 </div>      
+            </Modal>  
+
+
             </div>
+
+            
         )
     }else{
         return (

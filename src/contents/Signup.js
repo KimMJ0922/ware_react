@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
-import './content.css'
 import axios from 'axios';
+import './SignUp.css';
 const Signup=()=>{
     const [userInfo, setUserInfo] = useState({
         email : '',
@@ -284,28 +284,29 @@ const Signup=()=>{
 
     return(
         <div>
+            <div className="login_top">SingUp</div>
             <form onSubmit={formSubmit}>
-                <div>
-                    <label for="email">{eff.emailEff}</label><br/>
-                    <input type="text" id="email" name="email" onChange={updateValue} placeholder="email@domain.com"/>
+                <div className="signUp_label_box">
+                    <label for="email" className="signup_label">{eff.emailEff}</label><br/>
+                    <input type="text" className="signup_input" id="email" name="email" onChange={updateValue} placeholder="email@domain.com"/>
                 </div>
-                <div>
-                    <label for="password">{eff.passEff}</label><br/>
-                    <input type="password" id="password" name="password" onChange={updateValue} placeholder="●●●●●●●"/>
+                <div className="signUp_label_box">
+                    <label for="password" className="signup_label">{eff.passEff}</label><br/>
+                    <input type="password" className="signup_input" id="password" name="password" onChange={updateValue} placeholder="●●●●●●●"/>
                 </div>
-                <div>
-                    <label for="name">{eff.nameEff}</label><br/>
-                    <input type="text" id="name" name="name" onChange={updateValue} placeholder="이름1234"/>
+                <div className="signUp_label_box">
+                    <label for="name" className="signup_label">{eff.nameEff}</label><br/>
+                    <input type="text" className="signup_input" id="name" name="name" onChange={updateValue} placeholder="이름1234"/>
                 </div>
-                <div>
-                    <label for="birth">{eff.birthEff}</label><br/>
-                    <input type="text" id="birth" name="birth" onChange={updateValue} placeholder="19000101"/>
+                <div className="signUp_label_box">
+                    <label for="birth" className="signup_label">{eff.birthEff}</label><br/>
+                    <input type="text" className="signup_input" id="birth" name="birth" onChange={updateValue} placeholder="19000101"/>
                 </div>
                 <div style={{height:'20px'}}>
                     <span>{alert}</span>
                 </div>
                 <div>
-                    <button type="submit">작성 완료</button>
+                    <button type="submit" className="signup_submit">작성 완료</button>
                 </div>
             </form>
         </div>
