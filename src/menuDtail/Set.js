@@ -19,7 +19,8 @@ const Set=()=>{
             comment : item.comment,
             open_scope : item.open_scope,
             update_scope : item.update_scope,
-            createday : item.createday
+            createday : item.createday,
+            cnt : item.cnt
           });
           console.log(cardSet);
         });
@@ -32,6 +33,9 @@ const Set=()=>{
     getList();
   },[])
 
+  const goCreateCardSet = () => {
+    window.location.href="/create";
+  }
   var date = "";
   var count = 0;
   var text = "";
@@ -48,7 +52,7 @@ const Set=()=>{
           <span className="sq_content_font1_off">데이터가 없을때</span>
             <span className="sq_content_font1_off">아직 세트를 생성하지 않았습니다.</span>
             <span className="sq_content_font2_off">학습 세트를 만들어 원하시는 주제를 학습해 보세요.</span>
-            <button type="button" className="sq_content_btn_off">세트 만들기</button>
+            <button type="button" className="sq_content_btn_off" onClick={goCreateCardSet}>세트 만들기</button>
           </div>
         </Paper>
       </Grid>
@@ -87,8 +91,9 @@ const Set=()=>{
                     }
                     <div className="sq_on_cnt" style={{backgroundColor:'white',
                         boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}}>
-                      <sapn className="sq_on_txt1">단어수</sapn>
-                      <sapn className="sq_on_txt2">세트 제목: {item.title}</sapn>         
+                      <sapn className="sq_on_txt1">{item.cnt}</sapn>
+                      <sapn className="sq_on_txt2">{item.title}</sapn>
+                      <sapn className="sq_on_txt1">{item.comment}</sapn>           
                     </div>
                   </div>
                 )
