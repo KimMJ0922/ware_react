@@ -33,6 +33,7 @@ const CreateCardSet = () => {
     const [searchImgList, setSearchImgList] = useState([]);
     const [rowId,setRowId] = useState('');
     const [resdata,setResdata] = useState([]);
+    
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
         setTitle(e.target.value);
