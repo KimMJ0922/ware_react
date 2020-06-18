@@ -312,7 +312,7 @@ const CreateCardSet = () => {
                 updateScope
             }
         ).then((res)=>{
-            console.log(rows);
+            window.location.replace("/home/set");
         }).catch((error)=>{
             console.log("error"+error);
         });
@@ -346,7 +346,6 @@ const CreateCardSet = () => {
             let src = res.data.list
             if(src.length !== 0){
                 setResdata(src);
-
             }
         }).catch((err) => {
 
