@@ -3,20 +3,22 @@ a{
 }
 @media(min-width: 551px){
 
-    .boardTableSubject{
+    /* .boardTableSubject{
         margin-top: 1rem;
         border: 1px solid #000;
-    }
+    } */
     .boardTableTitle{
         text-align: center;
     }
     .boardSearchForm{
-    text-align: center;
+        padding: 0.5rem;
+        text-align: center;
     }
     .BoardInsert{
         text-align: center;
     }
     .boardSearchBar>.MuiInputBase-root>input{
+        padding: 0;
         width: 300px;
         height: 40px;
         border: 1px solid #bdbdbd;
@@ -35,54 +37,80 @@ a{
         height: 150px;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
     }
-    .BoardPagination{
-        padding-left: 40px;
-        text-align: center;
+    
+    .BoardPagination>div{
+        margin: 0 auto;
+        display: table;
     }
     .BoardItemSubject{
-    
+        font-size: 1.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
-    .BoardItemWriteDay{
-    
-    }
-    .BoardItemRequirePoint{
-    
+    .BoardItemWriteDay{   
+        color: #9a9a9a;
+        
     }
     .BoardItemReadCount{
+        text-align: right;
+        color: #9a9a9a;
     }
     .BoardItemContent{
-    
+        font-size: 1.2rem;
+        height: 3rem;
+        border-top: 2px solid #e6e4e4;
+        margin-top: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-top: 0.5rem;
+    }
+    .BoardProImage{
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        margin-left: 0.5rem;
     }
     .BoardItemWriter{
-    
+        text-align: left;
+        line-height: 2.5rem;
+        font-size: 1.3rem;
+        width: 100%;
+    }
+    #boardSearchBtn{
+        border-radius: 0;
+        color: #fff;
+        height: 42px;
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #7a378c;
     }
 }
 
 @media(max-width: 550px){
 
     .boardTableSubject{
-        margin-top: 1rem;
-        border: 1px solid #000;
+        margin-top: 0.1rem;
+        border: 0;
     }
     .boardTableTitle{
         text-align: center;
     }
     .boardSearchForm{
-    text-align: center;
-    }
-    .BoardInsert{
         text-align: center;
     }
+    .BoardInsert{
+        margin-top: 8vh;
+    }
     .boardSearchBar>.MuiInputBase-root>input{
+        padding: 0;
         width: 300px;
         height: 40px;
         border: 1px solid #bdbdbd;
         
     }
-    .BoardProImage{
-        border-radius: 50px;
-        height: 30px;
-    }
+    
     .BoardItem{
         color: #000;
         padding: 10px;
@@ -92,26 +120,61 @@ a{
         height: 150px;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
     }
-    .BoardPagination{
-        padding-left: 40px;
-        text-align: center;
+    .BoardPagination>div{
+        margin: 0 auto;
+        display: table;
     }
     .BoardItemSubject{
-    
+        font-size: 1.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .BoardItemWriteDay{
-    
+        color: #9a9a9a;
     }
-    .BoardItemRequirePoint{
-    
-    }
+
     .BoardItemReadCount{
+        text-align: right;
+        color: #9a9a9a;
     }
     .BoardItemContent{
-    
+        font-size: 1.2rem;
+        height: 3rem;
+        border-top: 2px solid #e6e4e4;
+        margin-top: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-top: 0.5rem;
+    }
+    .BoardProImage{
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        margin-left: 0.5rem;
     }
     .BoardItemWriter{
-    
+        text-align: left;
+        line-height: 2.5rem;
+        font-size: 1.3rem;
+        width: 100%;
+    }
+    #BoardInsertBtn{
+        border-radius: 50px;
+        position: fixed;
+        bottom: 1vh;
+        width: 13rem;
+        right: 27%;
+        height: 5vh;
+    }
+    #boardSearchBtn{
+        border-radius: 0;
+        color: #fff;
+        height: 42px;
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #7a378c;
     }
 }
 
@@ -125,6 +188,7 @@ a{
         text-align: center;
     }
     .boardSearchForm{
+        font-size: 0.9rem;
         text-align: center;
     }
     .BoardInsert{
@@ -132,9 +196,11 @@ a{
         text-align: center;
     }
     .boardSearchBar>.MuiInputBase-root>input{
+        padding: 0%;
         width: 300px;
         height: 40px;
         border: 1px solid #bdbdbd;
+        font-size: 1.2rem;
         
     }
     
@@ -147,19 +213,20 @@ a{
         height: 150px;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
     }
-    .BoardPagination{
-        padding-left: 40px;
-        text-align: center;
+    .BoardPagination>div{
+        margin: 0 auto;
+        display: table;
     }
     .BoardItemSubject{
         font-size: 1.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .BoardItemWriteDay{
         color: #9a9a9a;
     }
-    .BoardItemRequirePoint{
-    
-    }
+
     .BoardItemReadCount{
         text-align: right;
         color: #9a9a9a;
@@ -168,6 +235,10 @@ a{
         height: 3rem;
         border-top: 2px solid #e6e4e4;
         margin-top: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    
     }
     .BoardProImage{
         border-radius: 50px;
@@ -187,5 +258,13 @@ a{
         bottom: 1vh;
         width: 13rem;
         right: 11vh;
+    }
+    #boardSearchBtn{
+        border-radius: 0;
+        color: #fff;
+        height: 42px;
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: #7a378c;
     }
 }
