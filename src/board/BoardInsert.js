@@ -168,7 +168,7 @@ const BoardInsert=()=> {
                                             <DelIcon onClick={deleteRow(rowNum)}/>
                                             {/* 문제, 답, 이미지 */}
                                             <Grid container>
-                                                <Grid xs={9} md={9}>
+                                                <Grid xs={9} md={6}>
                                                     <Grid item xs={12} md={12}>
                                                         <input type="text" className="board_ist_slt_mun" name="question" onChange={inputChange(rowNum)} value={row.question} placeholder="문제를 입력하세요"/><br/>
                                                         <span className="board_ist_input_font">문제</span>
@@ -178,9 +178,11 @@ const BoardInsert=()=> {
                                                         <span className="board_ist_input_font">답</span>
                                                     </Grid>
                                                 </Grid>
-                                                <Grid item xs={3} md={3}>
-                                                    <ImgIcon style={{fontSize:'4.5rem'}} onClick={changeDisplay(rowNum)}/>
-                                                    <p><span className="board_ist_input_font3">이미지 등록</span></p>
+                                                <Grid item xs={3} md={6}>
+                                                    <div className="board_img_box">
+                                                    <ImgIcon onClick={changeDisplay(rowNum)}/>
+                                                    </div>
+                                                    <p style={{textAlign:'center'}}><span className="board_ist_input_font3">이미지 등록</span></p>
                                                 </Grid>
                                             </Grid>
                                         </div>      
@@ -209,18 +211,20 @@ const BoardInsert=()=> {
                             )
                         })
                     }
-                
-                <div>
-                    <br/>
-                    <button type="button" onClick={addRow} className="btn btn-info addBtn">추가</button>
-                </div>
-                <div>
-                    <Link to="/home/board">
-                        <button type="button" className="btn btn-success">리스트</button>
-                    </Link>
-                    <button type="submit" className="btn btn-success">만들기</button>
-                </div>
+              <Grid xs={12} md={12}>
+                    <Paper className="board_add_card_paper">
+                    <button type="button" onClick={addRow} className="board_add_card">+ 추가</button>
+                    </Paper>
+                </Grid>
 
+                <Grid xs={12} md={12}>
+                    <div className="board_buttom_btn_box">
+                      <Link to="/home/board">
+                        <button type="button" className="board_btn">리스트</button>
+                      </Link>
+                      <button type="submit" className="board_btn">만들기</button>
+                    </div>
+                </Grid>
                 {/* 컨테이너 그리드 */}
                 </Grid>
             </form>

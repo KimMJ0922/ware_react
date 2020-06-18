@@ -219,6 +219,17 @@ a{
         font-size: 0.675rem;
         color:#737373;
     }
+
+    .board_ist_input_font2{
+        margin-left: 10px;
+        font-size: 0.9rem;
+        color:#737373;
+    }
+
+    .board_ist_input_font3{
+        font-size: 0.8rem;
+        color:#737373;
+    }
     
     .board_ist_title{
         border:none;
@@ -343,6 +354,51 @@ a{
         width: 100px;
         height:40px;
     }
+
+    .board_add_card{
+        border: none;
+        border-bottom: 2px solid #232323;
+        background: none;
+        width: 100px;
+        height: 50px;
+    }
+
+    .board_add_card_paper{
+        margin-top: 20px;
+        margin-left: 15px;
+        width: 90%;
+        text-align: center;
+        height: 60px;      
+    }
+
+    .board_buttom_btn_box{
+        width:90%;
+        margin-top: 20px;
+        margin-left: 15px;
+        text-align: right;
+    }
+    .board_btn{
+        margin-bottom: 10px;
+        border:none;
+        font-size: 0.7rem;
+        height: 30px;
+        width:80px;
+        border-radius: 5px;
+        background: none;   
+        background: #c29fcb;
+    }
+    .board_btn:nth-child(1){
+        margin-right: 175px;
+    }
+
+    .board_img_box{
+        width: 100%;
+        text-align: center;
+    }
+    /* 아이콘 크기 */
+    .board_img_box>.MuiSvgIcon-root{
+        font-size: 4.5rem;
+    }
 }
 /* borad insert 웹 최소 사이즈*/
 @media(min-width:500px){
@@ -382,8 +438,9 @@ a{
     }
 
     .board_ist_input_font3{
-        font-size: 1.275rem;
+        font-size: 0.8rem;
         color:#737373;
+    
     }
     
     .board_ist_title{
@@ -473,6 +530,7 @@ a{
         margin-bottom: 10px;
         float: right;
     }
+
     .file_add input[type="file"] {
          /* 파일 필드 숨기기 */
     position: absolute;
@@ -522,7 +580,51 @@ a{
         width: 100px;
         height:40px;
     }
+
+    .board_add_card{
+        border: none;
+        border-bottom: 2px solid #232323;
+        background: none;
+        width: 100px;
+        height: 50px;
+    }
+
+    .board_add_card_paper{
+        margin-top: 20px;
+        margin-left: 15px;
+        width: 93%;
+        text-align: center;
+        height: 60px;      
+    }
+
+    .board_buttom_btn_box{
+        width:480px;
+        margin-top: 20px;
+        text-align: right;
+    }
+    .board_btn{
+        margin-bottom: 10px;
+        border:none;
+        font-size: 0.9rem;
+        height: 40px;
+        width:100px;
+        border-radius: 5px;
+        background: none;   
+        background: #c29fcb;
+    }
+    .board_btn:nth-child(1){
+        margin-right: 265px;
+    }
+    .board_img_box{
+        width: 100%;
+        text-align: center;
+    }
+    /* 아이콘 크기 */
+    .board_img_box>.MuiSvgIcon-root{
+        font-size: 5rem;
+    }
 }
+
 /* borad insert 일반 웹 사이즈*/
 @media(min-width:501px){
     .board_ist_body{
@@ -603,6 +705,14 @@ a{
         margin-left: 5%;
         width: 70%;
         height: 270px;
+    }
+
+    .board_add_card_paper{
+        margin-top: 20px;
+        margin-left: 5%;
+        width: 70%;
+        text-align: center;
+        height: 60px;      
     }
 
     .board_ist_add_card_paper{
@@ -713,6 +823,42 @@ a{
         background: #c29fcb;
         width: 155px;
         height:40px;
+    }
+
+    .board_add_card{
+        border: none;
+        border-bottom: 2px solid #232323;
+        background: none;
+        width: 100px;
+        height: 50px;
+    }
+
+    .board_buttom_btn_box{
+        width:75%;
+        margin-top: 20px;
+        text-align: right;
+    }
+    .board_btn{
+        margin-bottom: 10px;
+        border:none;
+        font-size: 0.9rem;
+        height: 40px;
+        width:100px;
+        border-radius: 5px;
+        background: none;   
+        background: #c29fcb;
+    }
+    .board_btn:nth-child(1){
+        margin-right: 560px;
+    }
+
+    .board_img_box{
+        width: 100%;
+        text-align: center;
+    }
+    /* 아이콘 크기 */
+    .board_img_box>.MuiSvgIcon-root{
+        font-size: 9rem;
     }
 }
 

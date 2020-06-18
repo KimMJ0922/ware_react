@@ -22,9 +22,20 @@
         margin-bottom: 20px;
         margin-left: 80px;
     }
+
     .crt_input_font{
         margin-left: 10px;
-        font-size: 0.675rem;
+        font-size: 0.775rem;
+        color:#737373;
+    }
+    .crt_input_font2{
+        margin-left: 10px;
+        font-size: 0.9rem;
+        color:#737373;
+    }
+
+    .crt_input_font3{
+        font-size: 0.9rem;
         color:#737373;
     }
     
@@ -59,8 +70,7 @@
         margin-left: 15px;
         width: 90%;
         text-align: center;
-        height: 60px;
-        
+        height: 60px;      
     }
 
     .crt_add_card{
@@ -78,6 +88,7 @@
         border: none;
         border-bottom: 1px solid #232323;
         width: 200px;
+        font-size: 0.7rem;
         margin-top: 10px;
         margin-left: 10px;
         height:20px;
@@ -118,6 +129,14 @@
     border: 0;
     }
 
+    .crt_hidden_pass{
+        margin-top: 20px;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-left:10px;
+        width:146px;
+    }
+
     ::-webkit-scrollbar {
       width: 375px;
       }
@@ -149,6 +168,15 @@
         background: #c29fcb;
         width: 100px;
         height:40px;
+    }
+
+    .crt_img_box{
+        width: 100%;
+        text-align: center;
+    }
+    /* 아이콘 크기 */
+    .crt_img_box>.MuiSvgIcon-root{
+        font-size: 4.5rem;
     }
 }
 /* 만들기 웹 최소 사이즈*/
@@ -184,12 +212,12 @@
 
     .crt_input_font2{
         margin-left: 10px;
-        font-size: 1.275rem;
+        font-size: 1.1rem;
         color:#737373;
     }
 
     .crt_input_font3{
-        font-size: 1.275rem;
+        font-size: 0.9rem;
         color:#737373;
     }
     
@@ -242,11 +270,11 @@
     .crt_slt_mun{
         border: none;
         border-bottom: 1px solid #232323;
-        width: 300px;
+        width: 270px;
         margin-top: 10px;
         margin-left: 10px;
         height:60px;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
     .crt_image_icon{
         font-size: 5rem;
@@ -291,6 +319,15 @@
     border: 0;
     }
 
+    .crt_hidden_pass{
+        margin-top: 20px;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-left:10px;
+        width:196px;
+        height: 30px;
+    }
+
     .scroll_x::-webkit-scrollbar {
         width:0px;
       }
@@ -327,6 +364,16 @@
         background: #c29fcb;
         width: 100px;
         height:40px;
+    }
+
+    .crt_img_box{
+        margin-top: 40px;
+        width: 100%;
+        text-align: center;
+    }
+    /* 아이콘 크기 */
+    .crt_img_box>.MuiSvgIcon-root{
+        font-size: 6rem;
     }
 }
 /* 만들기 일반 웹 사이즈*/
@@ -433,11 +480,12 @@
     .crt_slt_mun{
         border: none;
         border-bottom: 1px solid #232323;
-        width: 300px;
+        width: 500px;
         margin-top: 10px;
         margin-left: 10px;
+        margin-bottom: 5px;
         height:60px;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
     .crt_image_icon{
         font-size: 5rem;
@@ -482,6 +530,15 @@
     border: 0;
     }
 
+    .crt_hidden_pass{
+        margin-top: 20px;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-left:10%;
+        width:756px;
+        height: 30px;
+    }
+
     .scroll_x::-webkit-scrollbar {
         width:0px;
       }
@@ -518,6 +575,15 @@
         background: #c29fcb;
         width: 155px;
         height:40px;
+    }
+
+    .crt_img_box{
+        width: 100%;
+        text-align: center;
+    }
+    /* 아이콘 크기 */
+    .crt_img_box>.MuiSvgIcon-root{
+        font-size: 9rem;
     }
 }
 

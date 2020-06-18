@@ -30,24 +30,6 @@ const CreateCardSet = () => {
     const [updatePassword, setUpdatePassword] = useState('');
     const [updatePasswordVisible, setUpdatePasswordVisible] = useState(false);
 
-    const testimg=[
-        // "/iu04.jpg",
-        // "/hung.png",
-        // "/iu04.jpg",
-        // "/hung.png",
-        // "/iu04.jpg",
-        // "/hung.png",
-        // "/iu04.jpg",
-        // "/hung.png",
-        // "/iu04.jpg",
-        // "/hung.png",
-        // "/iu04.jpg",
-        // "/hung.png",
-        // "/iu04.jpg",
-        // "/hung.png"
-        
-    ];
-
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
         setTitle(e.target.value);
@@ -311,9 +293,9 @@ const CreateCardSet = () => {
                             <option value="private">나만</option>
                         </select><br/>
                         {/* 공개 비밀번호 */}
-                        <input type="password" id="openPassword" name="openPassword" style={{visibility : openPasswordVisible?"visible":"hidden"} }
-                               onChange={changePassword}/>
-                        
+                        <input type="password" id="openPassword" name="openPassword" 
+                        className="crt_hidden_pass" style={{visibility : openPasswordVisible?"visible":"hidden"}}
+                        placeholder="비밀번호 입력" onChange={changePassword}/>
                     </Grid>
 
                     <Grid xs={6} md={6}>
@@ -323,8 +305,9 @@ const CreateCardSet = () => {
                             <option value="private" selected>나만</option>
                         </select><br/>
                         {/* 수정 비밀번호 */}
-                        <input type="password" id="updatePassword" name="updatePassword" style={{visibility : updatePasswordVisible?"visible":"hidden"}}
-                               onChange={changePassword}/>
+                        <input type="password" id="updatePassword" name="updatePassword"  placeholder="비밀번호 입력"
+                         className="crt_hidden_pass" style={{visibility : updatePasswordVisible?"visible":"hidden"}}
+                         onChange={changePassword}/>
                     </Grid>
                     {
                         rows.map((row,i)=>{
@@ -338,7 +321,7 @@ const CreateCardSet = () => {
                                             <DelIcon onClick={deleteRow(rowNum)}/>
                                             {/* 문제, 답, 이미지 */}
                                             <Grid container>
-                                                <Grid xs={9} md={9}>
+                                                <Grid xs={8} md={6}>
                                                     <Grid item xs={12} md={12}>
                                                         <input type="text" className="crt_slt_mun" name="question" onChange={inputChange(rowNum)} value={row.question} placeholder="문제를 입력하세요"/><br/>
                                                         <span className="crt_input_font">문제</span>
@@ -348,9 +331,11 @@ const CreateCardSet = () => {
                                                         <span className="crt_input_font">답</span>
                                                     </Grid>
                                                 </Grid>
-                                                <Grid item xs={3} md={3}>
-                                                    <ImgIcon style={{fontSize:'4.5rem'}} onClick={changeDisplay(rowNum)}/>
-                                                    <p><span className="crt_input_font3">이미지 등록</span></p>
+                                                <Grid item xs={4} md={6}>
+                                                <div className="crt_img_box" onClick={changeDisplay(rowNum)}>
+                                                    <ImgIcon/>
+                                                    </div>
+                                                    <p style={{textAlign:'center'}}><span className="crt_input_font3">이미지 등록</span></p>
                                                 </Grid>
                                             </Grid>
                                         </div>      
