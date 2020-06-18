@@ -33,6 +33,7 @@ const CreateCardSet = () => {
 
     const [searchImgList, setSearchImgList] = useState([]);
     const [resdata, setResdata] =useState([]);
+    const [rowId, setRowId] = useState(0);
     const testimg=[
         // "/iu04.jpg",
         // "/hung.png",
@@ -101,7 +102,7 @@ const CreateCardSet = () => {
 
         if(rows.length>1){
             let tempRows = rows.filter(row => {
-            return row.id !== id ;
+                return row.id !== id ;
             });
             setRows(tempRows);
         }else{
@@ -116,11 +117,30 @@ const CreateCardSet = () => {
     //setter에 안넣으면 다음 행동 했을 때 변화함
     const changeDisplay = (id) => (e) => {
        rows.map(row => {
-            if(row.id === id){             
-                row["visible"] = !row["visible"];
+            if(row.id === id){
+                //보이기 -> 안보이기로 했을 때
+                if(row["visible"] === true){
+                    row["visible"] = !row["visible"];
+                    //이미지 div에 있는 데이터 초기화
+                    row["img"] = '';
+                    row["imgSrc"] = '';
+                    row["searchText"] = '';
+
+                    let tempList = searchImgList.filter((item) => {
+                        return item.id !== id;
+                    });
+
+                    setSearchImgList([...tempList]);
+                    console.log(searchImgList);
+                }else{
+                    row["visible"] = !row["visible"];
+                }             
+                
             }
         });
         setRows([...rows]);
+
+        console.log(rows);
     }
 
     //비밀번호 설정 선택시 보이기
@@ -168,10 +188,12 @@ const CreateCardSet = () => {
     //검색 텍스트 바꾸기
     const changeSearchText = (rowNum) => (e) => {
         rows.map((row,idx) => {
-            if(rowNum == row.id){
+            if(rowNum === row.id){
                 row["searchText"] = e.target.value
             }
         });
+
+        setRowId([...rows]);
     }
 
     //문제 이미지 추가
@@ -182,10 +204,8 @@ const CreateCardSet = () => {
         
         const uploadFile = e.target.files[0];
         const filename = e.target.files[0].name;
-
-        
-
         const maxSize = 5 * 1024 * 1024 //5mb
+
         //사이즈 제한
         if(e.target.files[0].size>maxSize){
             alert("5MB까지 가능합니다.");
@@ -301,10 +321,11 @@ const CreateCardSet = () => {
     const searchImg = (e) => {
         let num = parseInt(e.target.name);
         let search = '';
-
+        setRowId(num);
         rows.map((row,idx)=>{
             if(row.id === num){
                 search = row.searchText;
+                
             }
         });
 
@@ -316,23 +337,22 @@ const CreateCardSet = () => {
         axios.post(url,{
             search
         }).then((res) => {
-            
-            let src = res.data
+            let src = res.data.list
+            console.log(res.data);
             if(src.length !== 0){
-                setResdata(res.data);
+                setResdata(src);
             }
         }).catch((err) => {
 
         });
     }
     useEffect(()=>{
-        resdata.map((res) => {
-            console.log(res);
-            setSearchImgList([...searchImgList,{src : res}]);
-
-            console.log(searchImgList);
-        })
-        
+        resdata.map((src) => {
+            if(rowId !== 0){
+                searchImgList.push({id : rowId,src});
+            }
+        });
+        setRows([...rows]);
     },[resdata])
     return(
         <div className="crt_body">
@@ -415,7 +435,7 @@ const CreateCardSet = () => {
                                                 <div>
                                                     <h3>검색</h3>
                                                     <div>
-                                                        <input type="text" name="searchImg" onChange={changeSearchText(rowNum)}/>
+                                                        <input type="text" name="searchImg" onChange={changeSearchText(rowNum)} value={row.searchText}/>
                                                         <button type="button" onClick={searchImg} name={rowNum}>검색</button>
                                                     </div>
                                                     <label for={"ex_file"+rowNum}>직접 업로드 하기</label>
@@ -426,7 +446,15 @@ const CreateCardSet = () => {
                                                         row.imgSrc !== "" &&
                                                             <img className="scroll_img" key={rowNum} src={row.imgSrc}  alt=""/>
                                                     }
-                                                    
+                                                    {
+                                                        searchImgList.map((item)=>{
+                                                            if(item.id === rowNum){
+                                                                return (
+                                                                    <img className="scroll_img" src={item.src}  alt=""/>
+                                                                )
+                                                            }
+                                                        })
+                                                    }
                                                 </div>
                                             </div>
                                         </Paper>
