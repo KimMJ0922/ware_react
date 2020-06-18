@@ -17,7 +17,8 @@ const CreateCardSet = () => {
                 answer:'',
                 visible : false,
                 img : '',
-                imgSrc : ''
+                imgSrc : '',
+                searchText : ''
             }
         ]
     );
@@ -48,10 +49,13 @@ const CreateCardSet = () => {
             answer:'',
             visible : false,
             img : '',
-            imgSrc : ''
+            imgSrc : '',
+            searchText : ''
         };
         setRows(rows.concat(data));
         setNum(num+1);
+
+        console.log(rows);
     };
 
     //텍스트 입력
@@ -77,7 +81,7 @@ const CreateCardSet = () => {
 
         if(rows.length>1){
             let tempRows = rows.filter(row => {
-            return row.id !== id ;
+                return row.id !== id ;
             });
             setRows(tempRows);
         }else{
@@ -92,11 +96,30 @@ const CreateCardSet = () => {
     //setter에 안넣으면 다음 행동 했을 때 변화함
     const changeDisplay = (id) => (e) => {
        rows.map(row => {
-            if(row.id === id){             
-                row["visible"] = !row["visible"];
+            if(row.id === id){
+                //보이기 -> 안보이기로 했을 때
+                if(row["visible"] === true){
+                    row["visible"] = !row["visible"];
+                    //이미지 div에 있는 데이터 초기화
+                    row["img"] = '';
+                    row["imgSrc"] = '';
+                    row["searchText"] = '';
+
+                    let tempList = searchImgList.filter((item) => {
+                        return item.id !== id;
+                    });
+
+                    setSearchImgList([...tempList]);
+                    console.log(searchImgList);
+                }else{
+                    row["visible"] = !row["visible"];
+                }             
+                
             }
         });
         setRows([...rows]);
+
+        console.log(rows);
     }
 
     //비밀번호 설정 선택시 보이기
@@ -141,6 +164,16 @@ const CreateCardSet = () => {
         }
     }
 
+    //검색 텍스트 바꾸기
+    const changeSearchText = (rowNum) => (e) => {
+        rows.map((row,idx) => {
+            if(rowNum === row.id){
+                row["searchText"] = e.target.value
+            }
+        });
+
+        setRowId([...rows]);
+    }
 
     //문제 이미지 추가
     const changeFile = (id) => (e) =>{
@@ -150,10 +183,8 @@ const CreateCardSet = () => {
         
         const uploadFile = e.target.files[0];
         const filename = e.target.files[0].name;
-
-        
-
         const maxSize = 5 * 1024 * 1024 //5mb
+
         //사이즈 제한
         if(e.target.files[0].size>maxSize){
             alert("5MB까지 가능합니다.");
@@ -188,13 +219,14 @@ const CreateCardSet = () => {
                 //이미지 파일 이름 저장
                 const tempRows = rows.map(row => {
                     if (row.id === id) {
-                        row["imgSrc"] = res.data;
-                        row["img"] = filename;
+                        row["imgSrc"] = res.data.imgSrc;
+                        row["img"] = res.data.img;
                     }
                     return row;
                 });
                 //map을 다시 돌리기 위해 setter에 저장
                 setRows([...rows]);
+
             }
         ).catch(
             (error)=>{
@@ -227,24 +259,29 @@ const CreateCardSet = () => {
             alert("수정 비밀번호를 입력해주세요");
             return false;
         }
-
+        let check = true;
         rows.map((data,idx) => {
             if(data.id === 1){
                 if(data.question.length === 0 || data.answer.length === 0){
                     alert("첫번째 문제는 필수로 입력해야합니다.");
-                    return false;
+                    return check = false;
                 }
             }else{
                 if(data.question.length === 0 || data.answer.length === 0){
                     alert("문제와 답을 작성해주세요");
-                    return false;
+                    return check = false;
                 }
             }
         })
 
+        if(check === false){
+            return false;
+        }
+
         let url = "http://localhost:9000/insert";
         axios.post(url,
             {
+                no : window.sessionStorage.getItem('no'),
                 rows,
                 title,
                 comment,
@@ -254,15 +291,83 @@ const CreateCardSet = () => {
                 updateScope
             }
         ).then((res)=>{
-            console.log(rows);
+            window.location.replace("/home/set");
         }).catch((error)=>{
             console.log("error"+error);
         });
     }
 
-    useEffect(() => {
+    const searchImg = (e) => {
+        let num = parseInt(e.target.name);
+        let search = '';
+        setRowId(num);
+        rows.map((row,idx)=>{
+            if(row.id === num){
+                search = row.searchText;
+                
+            }
+        });
 
-    });
+        if(search.length === 0){
+            return false;
+        }
+
+        let tempList = searchImgList.filter((item) => {
+            return item.id !== num;
+        });
+        setSearchImgList([...tempList]);
+
+        //검색한 이미지 목록 가져오기
+        let url = "http://localhost:9000/searchimg";
+        axios.post(url,{
+            search
+        }).then((res) => {
+            let src = res.data.list
+            if(src.length !== 0){
+                setResdata(src);
+            }
+        }).catch((err) => {
+
+        });
+    }
+
+    //검색한 이미지 목록을 임시 배열에 저장 후 
+    //useEffect로 실제 사용할 배열에 넣어야 바로바로 적용 됨.
+    useEffect(()=>{
+        resdata.map((src) => {
+            if(rowId !== 0){
+                searchImgList.push({id : rowId,src});
+            }
+        });
+        setRows([...rows]);
+    },[resdata]);
+
+    //검색한 이미지 클릭시
+    const searchImgClick = (id) => (e) => {
+        let src = e.target.src;
+
+        console.log(id);
+        let url = "http://localhost:9000/searchimgclick";
+        axios.post(url,{
+            no : window.sessionStorage.getItem('no'),
+            src
+        }).then((res) => {
+            console.log(res);
+            //복사한 파일명, 경로 넣기
+            rows.map((row) => {
+                if(row.id === id){
+                    row["imgSrc"] = res.data.imgSrc;
+                    row["img"] = res.data.img;
+                    return row;
+                }
+            });
+            setRows([...rows]);
+        }).catch((err) => {
+
+        });
+        //setRows([...rows]);
+    }
+
     return(
         <div className="crt_body">
             <form onSubmit={onSubmit}>
@@ -346,15 +451,28 @@ const CreateCardSet = () => {
                                             <div class="file_add">
                                                 <div>
                                                     <h3>검색</h3>
-                                                    <input type="text" name="searchImg"/>
-                                                    <button type="button">검색</button>
+                                                    <div>
+                                                        <input type="text" name="searchImg" onChange={changeSearchText(rowNum)} value={row.searchText}/>
+                                                        <button type="button" onClick={searchImg} name={rowNum}>검색</button>
+                                                    </div>
                                                     <label for={"ex_file"+rowNum}>직접 업로드 하기</label>
                                                     <input type="file" onChange={changeFile(row.id)} name={row.id}  id={"ex_file"+rowNum}/>
                                                 </div>
-                                                <div className="scroll_x">
+                                                <div className="scroll_x">   
+                                                    {/* 업로드나 선택한 이미지 */}
                                                     {
                                                         row.imgSrc !== "" &&
-                                                            <img className="scroll_img" key={rowNum} src={row.imgSrc}  alt=""/>
+                                                            <img className="scroll_img" key={rowNum} src={row.imgSrc} alt=""/>
+                                                    }
+                                                    {/* 검색 했을 때 보이는 이미지 */}
+                                                    {
+                                                        searchImgList.map((item)=>{
+                                                            if(item.id === rowNum){
+                                                                return (
+                                                                    <img className="scroll_img" src={item.src} onClick={searchImgClick(rowNum)} alt=""/>
+                                                                )
+                                                            }
+                                                        })
                                                     }
                                                 </div>
                                             </div>

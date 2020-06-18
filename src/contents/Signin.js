@@ -143,7 +143,7 @@ const Signin=()=>{
                 window.sessionStorage.setItem('name',res.data.dto.name);
                 window.sessionStorage.setItem('profile',res.data.dto.profile);
                 window.sessionStorage.setItem('provider',res.data.dto.provider);
-                // window.location.replace('/home/default');
+                window.location.replace('/home/default');
             }).catch((err) => {
                 console.log(err);
             });
