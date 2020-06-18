@@ -57,7 +57,6 @@ const Set=()=>{
       <Grid item md={12} xs={12}>
         <Paper>
           <div className="sq_content_on" style={{height:'100%'}}>    
-                  
             {
               cardSet.length !== 0 &&
               cardSet.map((item,idx) =>{
