@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Home,Create,Search,Signin,Signup,ChangePassword} from './contents';/*index.js호출*/
+import {Home,Create,Search,Signin,Signup,ChangePassword,Study} from './contents';/*index.js호출*/
 import Board from './board/Board';
 import Main from './main/Main';
 import Top from './top/Top';
@@ -9,47 +9,48 @@ import Default from './menuDtail/Default';
 const Title = () => {
   const routes = [
     {
+      path:'/study/:no',
+      component : Study
+    },
+    {
       // default page
       path: "/home/default",
       component: Home,
     },
-      {
-        path: "/home",
-        component: Home,
-      },
-      {
-          path: "/search",
-          component: Search
-      },
-      {
-          path: "/create",
-          component: Create
-      },
-      {
-          path: "/signin",
-          component: Signin
-      },
-      {
-          path: "/signup",
-          component: Signup
-      },
-      {
-        path: "/board",
-        component: Board
-      },
-      {
-        path:"/forgotten",
-        component: ChangePassword
-      },
-      {
-        path:"/",
-        component: Main
-      },
-      {
-        path:'/upload',
-
-      }
-    ];
+    {
+      path: "/home",
+      component: Home,
+    },
+    {
+        path: "/search",
+        component: Search
+    },
+    {
+        path: "/create",
+        component: Create
+    },
+    {
+        path: "/signin",
+        component: Signin
+    },
+    {
+        path: "/signup",
+        component: Signup
+    },
+    {
+      path: "/board",
+      component: Board
+    },
+    {
+      path:"/forgotten",
+      component: ChangePassword
+    },
+    {
+      path:"/",
+      component: Main
+    }
+      
+  ];
     const [nowPath, setPath] = useState('');
     const [pro, setPro] = useState(window.sessionStorage.getItem('profile'));
     useEffect(() => {
@@ -64,7 +65,9 @@ const Title = () => {
         //로그인 한 상태에서 메인으로 강제로 가면 
         //전 페이지로 이동
         else if(email !== null && page.indexOf(nowPath) !== -1){
-          window.history.back();
+          if(nowPath === '/'){
+            window.history.back();
+          }
         }
       }
     },[nowPath]);
