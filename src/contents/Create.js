@@ -5,6 +5,7 @@ import './Create.css';
 import { Paper } from '@material-ui/core';
 import DelIcon from '@material-ui/icons/DeleteForever';
 import ImgIcon from '@material-ui/icons/ImageSearch';
+import SearchIcon from '@material-ui/icons/Search';
 const CreateCardSet = () => {
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
@@ -306,7 +307,6 @@ const CreateCardSet = () => {
         rows.map((row,idx)=>{
             if(row.id === num){
                 search = row.searchText;
-                
             }
         });
 
@@ -375,11 +375,8 @@ const CreateCardSet = () => {
             <form onSubmit={onSubmit}>
                 <Grid container>
                     <Grid container style={{marginBottom:'50px'}}>
-                        <Grid xs={6} md={10}>
+                        <Grid xs={12} md={12}>
                             <div class="crt_top">세트 만들기</div>
-                        </Grid>
-                        <Grid xs={6} md={2}>
-                            <button type="button" className="create_btn1" >만들기</button>
                         </Grid>
                     </Grid>
                     {/* 제목, 설명 */}
@@ -450,21 +447,26 @@ const CreateCardSet = () => {
                                     <Grid>
                                         <Paper className={row.visible? "imgPaperVisible" : "imgPaperinVisible"}>
                                             {/* 파일 */}
-                                            <div class="file_add">
+                                            <div className="file_add">
                                                 <div>
-                                                    <h3>검색</h3>
+                                                    <h3>이미지 검색</h3>
                                                     <div>
-                                                        <input type="text" name="searchImg" onChange={changeSearchText(rowNum)} value={row.searchText}/>
-                                                        <button type="button" onClick={searchImg} name={rowNum}>검색</button>
+                                                        <input type="text" name="searchImg" className="crt_img_sch_input" onChange={changeSearchText(rowNum)} value={row.searchText}/>
+                                                        <button type="button" className="crt_sch_btn" onClick={searchImg} name={rowNum}>검색</button>
+                                                        <label for={"ex_file"+rowNum}>직접 업로드 하기</label>
+                                                        <input type="file" onChange={changeFile(row.id)} name={row.id}  id={"ex_file"+rowNum}/>
                                                     </div>
-                                                    <label for={"ex_file"+rowNum}>직접 업로드 하기</label>
-                                                    <input type="file" onChange={changeFile(row.id)} name={row.id}  id={"ex_file"+rowNum}/>
+                                                    
                                                 </div>
+                                                
                                                 <div className="scroll_x">   
                                                     {/* 업로드나 선택한 이미지 */}
                                                     {
                                                         row.imgSrc !== "" &&
-                                                            <img className="scroll_img" key={rowNum} src={row.imgSrc} alt=""/>
+                                                        <div className="crt_img_select_box">
+                                                            <img className="scroll_img_select" key={rowNum} src={row.imgSrc} alt=""/>
+                                                            <p style={{textAlign:'center'}}>선택된 이미지</p>
+                                                        </div>
                                                     }
                                                     {/* 검색 했을 때 보이는 이미지 */}
                                                     {
@@ -493,7 +495,7 @@ const CreateCardSet = () => {
                 </Grid>
                 <Grid xs={12} md={12}>
                     <div className="crt_create_btn_box">
-                    <button type="submit" className="crt_create_btn" >만들기</button>
+                    <button type="submit" className="crt_create_btn">만들기</button>
                     </div>
                 </Grid>
                 {/* 컨테이너 그리드 */}
