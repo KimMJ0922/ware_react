@@ -1385,4 +1385,16 @@ border: none;
         border:none;
         border-radius: 5px;
     }
+/* 클래스(검색 만들기) - media 일반 사이즈 */
+    @media(min-width: 551px){
+
+    }
+/* 클래스(검색 만들기) - media 웹최소 사이즈 */
+    @media(max-width: 550px){
+
+    }
+/* 클래스(검색 만들기) - media 모바일 사이즈 */
+    @media(max-width: 375px){
+
+    }
 }
