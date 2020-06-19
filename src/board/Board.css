@@ -1,6 +1,14 @@
 a{
     text-decoration: none;
 }
+@media(min-width:1px){
+    *:focus{
+        text-decoration: none;
+    }
+    input:focus{
+        background-color: none;
+    }
+}
 @media(min-width: 551px){
 
     /* .boardTableSubject{
@@ -269,36 +277,27 @@ a{
     }
 }
 
-/* borad insert 사이즈 */
+/* 만들기 모바일 사이즈 */
 @media(max-width:375px){
-    .board_ist_body{
+    .board_body{
         width: 375px;
         height: 100%;
         font-size: 16px;
     }
 
-    .board_ist_top{
-        
+    .board_top{ 
         font-size: 1.425rem;
         margin-top:10px;
     }
 
-    .create_btn1{
-        margin-top:10px;
-        background-color: none;
-        border:1px solid gray;
-        border-radius: 5px;
-        width: 100px;
-        height:40px;
-        margin-bottom: 20px;
-        margin-left: 80px;
+    .board_top_input_box{
+        margin-left: 10px;
     }
     .board_ist_input_font{
         margin-left: 10px;
-        font-size: 0.675rem;
+        font-size: 0.775rem;
         color:#737373;
     }
-
     .board_ist_input_font2{
         margin-left: 10px;
         font-size: 0.9rem;
@@ -306,7 +305,7 @@ a{
     }
 
     .board_ist_input_font3{
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color:#737373;
     }
     
@@ -318,35 +317,41 @@ a{
         border-bottom: 2px solid #494949;
         margin-left: 10px;
     }
-    .board_input_Top{
+    .inputTop{
         margin-top: 5px;
         margin-bottom: 10px;
         background: none;
+        font-size: 0.7rem;
     }
-    .board_ist_slt_bar{
+    .board_slt_bar{
         border: none;
         border-bottom: 1px solid #232323;
         width: 150px;
         height: 40px;
         margin-left: 10px;
     }
-    .board_ist_add_content_paper{
+    .board_add_content_paper{
         margin-top: 20px;
         margin-left: 15px;
         width: 340px;
         height: 180px;
     }
 
-    .board_ist_add_card_paper{
+    .board_add_card_paper{
         margin-top: 20px;
         margin-left: 15px;
         width: 90%;
         text-align: center;
-        height: 60px;
-        
+        height: 60px;      
+    }
+    .crt_sch_btn{
+        border:none;
+        width:50px;
+        height:40px;
+        border-radius: 5px;
     }
 
-    .board_ist_add_card{
+    .board_add_card{
         border: none;
         border-bottom: 2px solid #232323;
         background: none;
@@ -357,19 +362,20 @@ a{
         font-size:0.8rem;
     }
 
-    .board_ist_slt_mun{
+    .board_slt_mun{
         border: none;
         border-bottom: 1px solid #232323;
         width: 200px;
+        font-size: 0.7rem;
         margin-top: 10px;
         margin-left: 10px;
         height:20px;
     }
-    .imgPaperVisible_b{
+    .imgPaperVisible{
         display: flex;
         margin-top: 10px;
         margin-left: 15px;
-        height: 100px;
+        height: 250px;
         width: 340px;
     }
     .imgPaperinVisible{
@@ -379,15 +385,18 @@ a{
     .file_add label {
         display: inline-block;
         padding: .5em .75em;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         line-height: normal;
         vertical-align: middle;
         background-color: #c29fcb;
         cursor: pointer;
         border: 1px solid #ebebeb;
         border-bottom-color: #e2e2e2;
-        border-radius: .25em;
-        width: 100px;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        margin-left: 60px;
     }
     .file_add input[type="file"] {
          /* 파일 필드 숨기기 */
@@ -399,6 +408,14 @@ a{
     overflow: hidden;
     clip:rect(0,0,0,0);
     border: 0;
+    }
+
+    .board_hidden_pass{
+        margin-top: 20px;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-left:10px;
+        width:146px;
     }
 
     ::-webkit-scrollbar {
@@ -414,60 +431,44 @@ a{
 
     .scroll_img{
         flex-shrink: 0;
-        width:50px;
-        height:50px;
-        margin-left: 10px;
+        width:80px;
+        height:80px;
+        border-radius: 5px;
     }
 
-    .board_ist_create_btn_box{
+    .scroll_img_select{
+        flex-shrink: 0;
+        width:65px;
+        height:65px;
+        margin-right: 10px;
+        margin-left: 20px;
+        border-radius: 5px;
+    }
+
+    .board_img_sch_input{
+        background: none;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-right: 5px;
+        margin-left: 10px;
+        height: 30px;
+        width: 120px;
+        font-size: 0.7rem;
+    }
+
+    .board_create_btn_box{
         text-align: right;
     }
 
-    .board_ist_create_btn{
+    .board_create_btn{
         margin-top: 20px;
-        margin-right: 10px;
+        margin-right: 25px;
         margin-bottom: 10px;
         border-radius: 5px;
-        border:1px solid #232323;
+        border:none;
         background: #c29fcb;
         width: 100px;
         height:40px;
-    }
-
-    .board_add_card{
-        border: none;
-        border-bottom: 2px solid #232323;
-        background: none;
-        width: 100px;
-        height: 50px;
-    }
-
-    .board_add_card_paper{
-        margin-top: 20px;
-        margin-left: 15px;
-        width: 90%;
-        text-align: center;
-        height: 60px;      
-    }
-
-    .board_buttom_btn_box{
-        width:90%;
-        margin-top: 20px;
-        margin-left: 15px;
-        text-align: right;
-    }
-    .board_btn{
-        margin-bottom: 10px;
-        border:none;
-        font-size: 0.7rem;
-        height: 30px;
-        width:80px;
-        border-radius: 5px;
-        background: none;   
-        background: #c29fcb;
-    }
-    .board_btn:nth-child(1){
-        margin-right: 175px;
     }
 
     .board_img_box{
@@ -478,31 +479,28 @@ a{
     .board_img_box>.MuiSvgIcon-root{
         font-size: 4.5rem;
     }
+
+    .board_img_select_box>p{
+        font-size: 0.4rem;
+    }
 }
-/* borad insert 웹 최소 사이즈*/
+/* 만들기 웹 최소 사이즈*/
 @media(min-width:500px){
-    .board_ist_body{
+    .board_body{
         width: 500px;
         height: 100%;
         font-size: 16px;
     }
 
-    .board_ist_top{
+    .board_top_input_box{
+        margin-left: 5px;
+    }
+
+    .board_top{
         width:80%;
         font-size: 1.425rem;
         margin-top:10px;
         margin-left: 10px;
-    }
-
-    .create_btn1{
-        margin-top:10px;
-        background-color: none;
-        border:1px solid gray;
-        border-radius: 5px;
-        width: 100px;
-        height:40px;
-        margin-bottom: 20px;
-        margin-left: 130px;
     }
     .board_ist_input_font{
         margin-left: 10px;
@@ -512,44 +510,44 @@ a{
 
     .board_ist_input_font2{
         margin-left: 10px;
-        font-size: 1.275rem;
+        font-size: 1.1rem;
         color:#737373;
     }
 
     .board_ist_input_font3{
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color:#737373;
-    
     }
     
     .board_ist_title{
         border:none;
-        font-size: 1.1rem;
-        width:470px;
+        font-size: 0.8rem;
+        margin-left: 10px;
+        width:450px;
         height:40px;
         border-bottom: 2px solid #494949;
-        margin-left: 10px;
+        
     }
-    .board_input_Top{
+    .inputTop{
         margin-top: 5px;
         margin-bottom: 10px;
         background: none;
     }
-    .board_ist_slt_bar{
+    .board_slt_bar{
         border: none;
         border-bottom: 1px solid #232323;
         width: 200px;
         height: 40px;
         margin-left: 10px;
     }
-    .board_ist_add_content_paper{
+    .board_add_content_paper{
         margin-top: 20px;
         margin-left: 15px;
         width: 465px;
         height: 270px;
     }
 
-    .board_ist_add_card_paper{
+    .board_add_card_paper{
         margin-top: 20px;
         margin-left: 15px;
         width: 465px;
@@ -558,7 +556,7 @@ a{
         
     }
 
-    .board_ist_add_card{
+    .board_add_card{
         border: none;
         border-bottom: 2px solid #232323;
         background: none;
@@ -569,47 +567,49 @@ a{
         font-size:0.8rem;
     }
 
-    .board_ist_slt_mun{
+    .board_slt_mun{
         border: none;
         border-bottom: 1px solid #232323;
-        width: 300px;
+        width: 270px;
         margin-top: 10px;
         margin-left: 10px;
         height:60px;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
-    .board_ist_image_icon{
+    .board_image_icon{
         font-size: 5rem;
     }
 
-    .imgPaperVisible_b{
+    .imgPaperVisible{
         display: flex;
         margin-top: 10px;
         margin-left: 15px;
-        height: 200px;
+        height: 300px;
         width: 465px;
     }
+
     .imgPaperinVisible{
         display: none;
     }
 
+
     .file_add label {
         display: inline-block;
         padding: .5em .75em;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         line-height: normal;
         vertical-align: middle;
         background-color: #c29fcb;
         cursor: pointer;
         border: 1px solid #ebebeb;
         border-bottom-color: #e2e2e2;
-        border-radius: .25em;
-        width: 120px;
-        height: 30px;
+        border-radius: 5px;
+        width: 100px;
+        height: 20px;
         margin-bottom: 10px;
+        text-align: center;
         float: right;
     }
-
     .file_add input[type="file"] {
          /* 파일 필드 숨기기 */
     position: absolute;
@@ -620,6 +620,24 @@ a{
     overflow: hidden;
     clip:rect(0,0,0,0);
     border: 0;
+    }
+    .board_img_sch_input{
+        background: none;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-right: 5px;
+        margin-left: 10px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .board_hidden_pass{
+        margin-top: 20px;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-left:10px;
+        width:196px;
+        height: 30px;
     }
 
     .scroll_x::-webkit-scrollbar {
@@ -636,6 +654,7 @@ a{
         display: flex;
         overflow-x: scroll;
         width: 450px;
+        height: 130px;
     }
 
     .scroll_img{
@@ -643,103 +662,81 @@ a{
         width:100px;
         height:100px;
         margin-left: 10px;
+        border-radius: 5px;
+    }
+    .scroll_img_select{
+        flex-shrink: 0;
+        width:80px;
+        height:80px;
+        margin-right: 10px;
+        margin-left: 20px;
+        border-radius: 5px;
     }
 
-    .board_ist_create_btn_box{
+    .crt_sch_btn{
+        border:none;
+        width:50px;
+        height:40px;
+        border-radius: 5px;
+    }
+
+    .board_create_btn_box{
         text-align: right;
     }
 
-    .board_ist_create_btn{
+    .board_create_btn{
         margin-top: 20px;
         margin-right: 30px;
         margin-bottom: 10px;
         border-radius: 5px;
-        border:1px solid #232323;
-        background: #c29fcb;
-        width: 100px;
-        height:40px;
-    }
-
-    .board_add_card{
-        border: none;
-        border-bottom: 2px solid #232323;
-        background: none;
-        width: 100px;
-        height: 50px;
-    }
-
-    .board_add_card_paper{
-        margin-top: 20px;
-        margin-left: 15px;
-        width: 93%;
-        text-align: center;
-        height: 60px;      
-    }
-
-    .board_buttom_btn_box{
-        width:480px;
-        margin-top: 20px;
-        text-align: right;
-    }
-    .board_btn{
-        margin-bottom: 10px;
         border:none;
-        font-size: 0.9rem;
-        height: 40px;
-        width:100px;
-        border-radius: 5px;
-        background: none;   
         background: #c29fcb;
+        width: 110px;
+        height:50px;
     }
-    .board_btn:nth-child(1){
-        margin-right: 265px;
-    }
+
     .board_img_box{
+        margin-top: 40px;
         width: 100%;
         text-align: center;
     }
     /* 아이콘 크기 */
     .board_img_box>.MuiSvgIcon-root{
-        font-size: 5rem;
+        font-size: 6rem;
+    }
+
+    .board_img_select_box{
+        width:120px;
+        height: 120px;
+    }
+    .board_img_select_box>p{
+        font-size: 0.6rem;
     }
 }
 
-/* borad insert 일반 웹 사이즈*/
+/* 만들기 일반 웹 사이즈*/
 @media(min-width:501px){
-    .board_ist_body{
+    .board_body{
         width:100%;
         height: 100%;
-        font-size: 16px;
+        font-size: 16px;  
     }
 
-    .board_ist_top{
+    .board_top{
         font-size: 2rem;
         margin-top:10px;
         margin-left: 100px;
     }
 
-    .create_btn1{
-        margin-top:10px;
-        background-color: none;
-        border:1px solid gray;
-        border-radius: 5px;
-        width: 155px;
-        height:40px;
-        margin-bottom: 20px;
-        margin-left: 60px;
-        
-    }
-
-    .board_ist_top_input_box{
+    .board_top_input_box{
         width: 90%;
-        margin-left: 5%;
+        margin-left: 10px;
     }
   
     .board_ist_input_font{
         margin-left: 10px;
-        font-size: 1rem;
+        font-size: 1.175rem;
         color:#737373;
-        
     }
 
     .web{
@@ -748,62 +745,51 @@ a{
 
     .board_ist_input_font2{
         margin-left: 10px;
-        font-size: 1.1rem;
+        font-size: 1.275rem;
         color:#737373;
     }
 
     .board_ist_input_font3{
-        font-size: 1.275rem;
+        font-size: 1rem;
         color:#737373;
+        margin-right: 10px;
     }
     
     .board_ist_title{
         border:none;
-        font-size: 1.3rem;
+        font-size: 1rem;
         width:45%;
-        height:70px;
+        height:100px;
         border-bottom: 2px solid #494949;
-        margin-left: 10px;
     }
 
-    .board_input_Top{
+    .inputTop{
         margin-top: 5px;
         margin-bottom: 30px;
         background: none;
     }
 
-    .board_ist_slt_bar{
+    .board_slt_bar{
         border: none;
         border-bottom: 1px solid #232323;
         width: 80%;
         height: 50px;
         margin-left: 10%;
     }
-    .board_ist_add_content_paper{
+    .board_add_content_paper{
         margin-top: 20px;
-        margin-left: 5%;
-        width: 70%;
-        height: 270px;
+        width: 90%;
+        height: 300px;
     }
 
     .board_add_card_paper{
         margin-top: 20px;
-        margin-left: 5%;
-        width: 70%;
-        text-align: center;
-        height: 60px;      
-    }
-
-    .board_ist_add_card_paper{
-        margin-top: 20px;
-        margin-left: 5%;
         width: 90%;
         text-align: center;
-        height: 80px;
-        
+        height: 80px;     
     }
 
-    .board_ist_add_card{
+    .board_add_card{
         border: none;
         border-bottom: 2px solid #232323;
         background: none;
@@ -814,44 +800,43 @@ a{
         font-size:0.8rem;
     }
 
-    .board_ist_slt_mun{
+    .board_slt_mun{
         border: none;
         border-bottom: 1px solid #232323;
-        width: 300px;
+        width: 500px;
         margin-top: 10px;
         margin-left: 10px;
+        margin-bottom: 5px;
         height:60px;
         font-size: 0.9rem;
     }
-    .board_ist_image_icon{
-        font-size: 5rem;
-    }
-
-    .imgPaperVisible_b{
+    .imgPaperVisible{
         display: flex;
         margin-top: 10px;
         margin-left: 5%;
         height: 400px;
-        width: 70%;
+        width: 90%;
     }
     .imgPaperinVisible{
         display: none;
     }
-
+    .file_add{
+        width:100%
+        
+    }
     .file_add label {
-        display: inline-block;
-        padding: .5em .75em;
-        font-size: 0.9rem;
-        line-height: normal;
-        vertical-align: middle;
+        font-size: 0.725rem;
         background-color: #c29fcb;
         cursor: pointer;
         border: 1px solid #ebebeb;
         border-bottom-color: #e2e2e2;
-        border-radius: .25em;
+        border-radius: 5px;
         width: 120px;
-        height: 30px;
+        text-align: center;
+        height: 40px;
+        line-height: 3;
         margin-bottom: 10px;
+        margin-right: 20px;
         float: right;
     }
     .file_add input[type="file"] {
@@ -864,6 +849,14 @@ a{
     overflow: hidden;
     clip:rect(0,0,0,0);
     border: 0;
+    }
+    .board_img_sch_input{
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-right: 20px;
+        margin-left: 10px;
+        height: 40px;
+        font-size: 0.9rem;
     }
 
     .scroll_x::-webkit-scrollbar {
@@ -878,57 +871,41 @@ a{
     .scroll_x{
         margin-top: 10px;
         display: flex;
-        overflow-x: scroll;
-        width: 1600px;
+        overflow-x: auto;
+        width: 1150px;
+        height:250px;
     }
 
     .scroll_img{
         flex-shrink: 0;
-        width:150px;
-        height:150px;
+        width:200px;
+        height:200px;
+        margin-bottom: 10px;
         margin-left: 10px;
+        border-radius: 5px;
+    }
+    .scroll_img_select{
+        flex-shrink: 0;
+        width:160px;
+        height:160px;
+        margin-right: 10px;
+        margin-left: 20px;
+        border-radius: 5px;
     }
 
-    .board_ist_create_btn_box{
+    .board_create_btn_box{
         text-align: right;
     }
 
-    .board_ist_create_btn{
+    .board_create_btn{
         margin-top: 20px;
-        margin-right: 100px;
+        margin-right: 93px;
         margin-bottom: 10px;
         border-radius: 5px;
-        border:1px solid #232323;
-        background: #c29fcb;
-        width: 155px;
-        height:40px;
-    }
-
-    .board_add_card{
-        border: none;
-        border-bottom: 2px solid #232323;
-        background: none;
-        width: 100px;
-        height: 50px;
-    }
-
-    .board_buttom_btn_box{
-        width:75%;
-        margin-top: 20px;
-        text-align: right;
-    }
-    .board_btn{
-        margin-bottom: 10px;
         border:none;
-        font-size: 0.9rem;
-        height: 40px;
-        width:100px;
-        border-radius: 5px;
-        background: none;   
         background: #c29fcb;
-    }
-    .board_btn:nth-child(1){
-        margin-right: 560px;
+        width: 180px;
+        height:60px;
     }
 
     .board_img_box{
@@ -938,6 +915,21 @@ a{
     /* 아이콘 크기 */
     .board_img_box>.MuiSvgIcon-root{
         font-size: 9rem;
+    }
+
+    .crt_sch_btn{
+        border:none;
+        width:100px;
+        height:50px;
+        border-radius: 5px;
+    }
+
+    .board_img_select_box{
+        width:200px;
+        height: 200px;
+    }
+    .board_img_select_box>p{
+        font-size: 0.9rem;
     }
 }
 
