@@ -39,6 +39,16 @@ const BoardItem=({match})=> {
                 console.log(e);
             }
         }
+        const updateReadcount = async () => {
+            try {
+                const data = await Axios.get(
+                    "http://localhost:9000/board/updateReadcount?board_no="+board_no
+                )
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        updateReadcount();
         getData1();
     },[])
 
