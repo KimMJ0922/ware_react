@@ -37,7 +37,6 @@ const MenuTitle=({match})=>{
             <Route exact path="/home/Boardlist" component={BoardList}/>
 
             <Route exact path="/home/boardupdate" component={BoardUpdate}/>
-
             </Switch>
         </div>
     )

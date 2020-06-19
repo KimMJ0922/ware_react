@@ -1,8 +1,24 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
 import {NavLink} from 'react-router-dom';
 import {Home, Dashboard, Storefront, Settings, AllInbox, Folder, Class} from '@material-ui/icons'
 import './menu.css';
 const Menu=()=>{
+    const[setCnt, setSetCnt] = useState(0);
+
+    useEffect(() => {
+        const getSetCount = async() => {
+            let url = "http://localhost:9000/getsetcount";
+            try{
+                let cnt = await axios.post(url,{no : window.sessionStorage.getItem('no')});
+                setSetCnt(cnt.data);
+            }catch(e){
+                console.log(e);
+            }
+        }
+        getSetCount();
+    },[])
+    
     return (
         <div className='mainMenuList'>
             <div>
@@ -42,7 +58,7 @@ const Menu=()=>{
                 <NavLink exact to="/home/set" className='mainMenuListItem' activeClassName='mainMenuListActive'>
                     <span>
                         <AllInbox className='MenuMainIcon'/>
-                        <div>세트</div>
+                        <div>세트{setCnt !== 0 && '('+setCnt+')'}</div>
                     </span>
                 </NavLink>
             </div>

@@ -17,11 +17,7 @@ const Top = ({path}) =>{
         profile : window.sessionStorage.getItem('profile')
     });
     const [cnt, setCnt] = useState(0);
-    // const topMenuListAvtive={
-    //     width:'1000px',
-    //     color:'red',
-    //     backgroundColor:'#ffffcc'
-    // }    
+
 
     const logout = () => {
         //회원 탈퇴에 쓸 예정
@@ -149,7 +145,7 @@ const Top = ({path}) =>{
                     <Grid item xs={2} md={2}>
                         <div className='topMenu'>
                             <div>
-                                <Link exact to="/profile" className='topMenuList'>
+                                <Link exact to="/home/setting" className='topMenuList'>
                                     <div id='profilename'>
                                         <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
                                         <span>
@@ -175,7 +171,7 @@ const Top = ({path}) =>{
                     {/* 모바일 */}
                     <Hidden only={['md','lg','xl']}>
                     <Grid item xs={3} md={2}>
-                    <div className='topMenu'><Link exact to="/" className=' topMenuListLogo' >Ware.gg</Link></div>
+                    <div className='topMenu'><Link exact to="/home/default" className='topMenuListLogo' >Ware.gg</Link></div>
                     </Grid>
                     <Grid item xs={4} md={4}>
                         <div className='topMenu' style={{display:'inherit'}}>
@@ -206,11 +202,11 @@ const Top = ({path}) =>{
                                                 </Link> 
                                 :
                                 <div>
-                                    <Link exact to="/profile" className='topMenuList'>
-                                    <div id='profilename'>
-                                        {/* 사용자 프로필 출력 */}
-                                        <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
-                                    </div>
+                                    <Link exact to="/home/setting" className='topMenuList'>
+                                        <div id='profilename'>
+                                            {/* 사용자 프로필 출력 */}
+                                            <img src={window.sessionStorage.getItem('profile')} alt='경로오류' className='topMenuProfileImg' />
+                                        </div>
                                     </Link>
                                     {/* 프로필 클릭시 나오는화면 */}
                                     {/* <Link onClick={logout}><span className='userLogout'>로그아웃</span></Link> */}

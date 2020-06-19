@@ -4,3 +4,4 @@ export {default as Search} from './Search';
 export {default as Signin} from './Signin';
 export {default as Signup} from './Signup';
 export {default as ChangePassword} from './ChangePassword';
+export {default as Study} from './Study';
