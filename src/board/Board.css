@@ -371,7 +371,7 @@ a{
         margin-left: 10px;
         height:20px;
     }
-    .imgPaperVisible{
+    .imgPaperVisible_board{
         display: flex;
         margin-top: 10px;
         margin-left: 15px;
@@ -580,7 +580,7 @@ a{
         font-size: 5rem;
     }
 
-    .imgPaperVisible{
+    .imgPaperVisible_board{
         display: flex;
         margin-top: 10px;
         margin-left: 15px;
@@ -810,10 +810,9 @@ a{
         height:60px;
         font-size: 0.9rem;
     }
-    .imgPaperVisible{
+    .imgPaperVisible_board{
         display: flex;
         margin-top: 10px;
-        margin-left: 5%;
         height: 400px;
         width: 90%;
     }

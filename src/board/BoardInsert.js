@@ -7,7 +7,8 @@ import ImgIcon from '@material-ui/icons/ImageSearch';
 import SearchIcon from '@material-ui/icons/Search';
 import './Board.css';
 
-const BoardInsert2 = () => {
+const BoardInsert = () => {
+    const no= window.sessionStorage.getItem('no');
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
@@ -26,13 +27,6 @@ const BoardInsert2 = () => {
         ]
     );
     
-    const [openScope, setOpenScope] = useState('public');
-    const [openPassword, setOpenPassword] = useState('');
-    const [openPasswordVisible, setOpenPasswordVisible] = useState(false);
-
-    const [updateScope, setUpdateScope] = useState('private');
-    const [updatePassword, setUpdatePassword] = useState('');
-    const [updatePasswordVisible, setUpdatePasswordVisible] = useState(false);
     const [searchImgList, setSearchImgList] = useState([]);
     const [rowId,setRowId] = useState('');
     const [resdata,setResdata] = useState([]);
@@ -131,48 +125,6 @@ const BoardInsert2 = () => {
         console.log(rows);
     }
 
-    //비밀번호 설정 선택시 보이기
-    const passwordVisible = (e) => {
-        if(e.target.id==="openScope"){
-            //공개 범위 저장
-            setOpenScope(e.target.value);
-
-            //공개 범위가 비밀번호 아는 사람이면
-            if(e.target.value==="member"){
-                setOpenPasswordVisible(!openPasswordVisible);
-                setOpenPassword('');
-            }else{
-                setOpenPasswordVisible(!openPasswordVisible);
-                setOpenPassword('');
-            }
-        }else{
-            //수정 범위 저장
-            setUpdateScope(e.target.value);
-
-            //수정 범위가 비밀번호 아는 사람이면
-            if(e.target.value==="member"){
-                setUpdatePasswordVisible(!updatePasswordVisible);
-                setUpdatePassword('');
-            }else{
-                setUpdatePasswordVisible(!updatePasswordVisible);
-                setUpdatePassword('');
-            }
-        }
-
-        console.log(openScope,updateScope);
-    }
-
-    //비밀번호 입력시 변수에 넣기
-    const changePassword = (e) => {
-        let id = e.target.id;
-
-        if(id === "openPassword"){
-            setOpenPassword(e.target.value);
-        }else{
-            setUpdatePassword(e.target.value);
-        }
-    }
-
     //검색 텍스트 바꾸기
     const changeSearchText = (rowNum) => (e) => {
         rows.map((row,idx) => {
@@ -220,7 +172,7 @@ const BoardInsert2 = () => {
             {
                 method : 'post',
                 data : profile,
-                url : "http://localhost:9000/uploadquestionimgupload",
+                url : "http://localhost:9000/questionimgupload",
                 headers : {'Content-Type' : 'multipart/form-data'}
             }
         ).then(
@@ -259,15 +211,6 @@ const BoardInsert2 = () => {
             return false;
         }
 
-        if(openPasswordVisible === true && openPassword.length === 0){
-            alert("공개 비밀번호를 입력해주세요");
-            return false;
-        }
-
-        if(updatePasswordVisible === true && updatePassword.length === 0){
-            alert("수정 비밀번호를 입력해주세요");
-            return false;
-        }
         let check = true;
         rows.map((data,idx) => {
             if(data.id === 1){
@@ -287,20 +230,17 @@ const BoardInsert2 = () => {
             return false;
         }
 
-        let url = "http://localhost:9000/insert";
+        let url = "http://localhost:9000/board/insert";
         axios.post(url,
             {
-                no : window.sessionStorage.getItem('no'),
                 rows,
+                no,
                 title,
                 comment,
-                openPassword,
-                updatePassword,
-                openScope,
-                updateScope
+                point
             }
         ).then((res)=>{
-            window.location.replace("/home/set");
+            //window.location.replace("/home/set");
         }).catch((error)=>{
             console.log("error"+error);
         });
@@ -326,7 +266,7 @@ const BoardInsert2 = () => {
         setSearchImgList([...tempList]);
 
         //검색한 이미지 목록 가져오기
-        let url = "http://localhost:9000/searchimg";
+        let url = "http://localhost:9000/boardsearchimg";
         axios.post(url,{
             search
         }).then((res) => {
@@ -355,7 +295,7 @@ const BoardInsert2 = () => {
         let src = e.target.src;
 
         console.log(id);
-        let url = "http://localhost:9000/searchimgclick";
+        let url = "http://localhost:9000/boardsearchimgclick";
         axios.post(url,{
             no : window.sessionStorage.getItem('no'),
             src
@@ -428,7 +368,7 @@ const BoardInsert2 = () => {
                                         </div>      
                                     </Paper>
                                     <Grid>
-                                        <Paper className={row.visible? "imgPaperVisible" : "imgPaperinVisible"}>
+                                        <Paper className={row.visible? "imgPaperVisible_board" : "imgPaperinVisible"}>
                                             {/* 파일 */}
                                             <div className="file_add">
                                                 <div>
@@ -487,4 +427,4 @@ const BoardInsert2 = () => {
         </div>
     );
 }
-export default BoardInsert2;
+export default BoardInsert;
