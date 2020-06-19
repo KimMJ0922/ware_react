@@ -1,7 +1,186 @@
-.profileImgList{
-    width : 50px;
-    height: 50px;
-    border: 3px solid black;
-    border-radius: 50px;
-    margin: 0 5px 0 5px;
+/* 세팅 모바일 */
+@media(max-width:375px){
+    .set_body{
+        width:375px;
+        font-size: 16px;
+    }
+
+    .set_prof_box_top{
+        text-align: center; 
+        width:340px;
+        padding-top: 20px;
+        margin-left: 17.5px; 
+        height: 170px;    
+    }
+    .set_befor_img{
+        border-radius: 100%;
+        width:100px;
+        height: 100px;
+    }
+
+   
+    .set_prof_box_mid{
+        width:330px;
+        padding-top: 20px;
+        padding-left: 10px;
+        margin-left: 17.5px; 
+        height: 220px;    
+    }
+
+    .set_basic_img{
+        border-radius: 100%;
+        width:50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .set_top_font1{
+        font-size:1.5rem;
+    }
+
+    .set_title_font{
+        font-size:1.2rem
+    }
+
+    .set_file_box label { 
+        display: inline-block;
+        padding: .5em .75em;
+        color: #999;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #fdfdfd;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        margin-top: 10px;
+    }
+    .set_file_box input[type="file"] {
+        position: absolute;
+        width: 1px; 
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0; 
+    }
+
+    .set_mid_font2{
+        font-size:0.7rem;
+    }
+
+    .set_name_box{
+        width:330px;
+        height: 300px;
+        margin-left: 20px;
+        margin-top:20px;
+    }
+
+ 
+
+    .set_name_font{
+        font-size: 1.2rem;
+    }
+
+    .set_name_input{
+        margin-left: 50px;
+        border: none;
+        background: none;
+        border-bottom: 1px solid gray;
+        height: 30px;
+    }
+
+    .set_name_btn{
+        border:none;
+        background: #c29fcb;
+        margin-left: 10px;
+        width:70px;
+        height:40px;
+        border-radius: 5px;
+    }
+    
+        
+    .set_exit_box{
+   
+    }
+
+    .set_exit_text_box{
+        width: 305px;
+        height:350px;
+        margin-left: 15px;
+        margin-bottom: 10px;
+        padding:15px;
+        font-size: 1rem;
+    }
+    .set_exit_text_box>p{
+        text-align: center;
+    }
+    .set_exit_text_box>p>font{
+        font-size: 2rem;
+    }
+    .set_exit_input{
+        border:none;
+        border-bottom: 1px solid gray;
+        font-size: 0.8rem;
+        text-align: center;
+        width:140px;
+        height:40px;
+        margin-left: 75px;
+
+    }
+    .set_exit_btn{
+        border:none;
+        background: #d9534f;
+        display: block;
+        margin-top: 10px;
+        margin-left: 80px;
+        width:140px;
+        height:60px;
+        border-radius: 5px;     
+    }
+
+    .set_title_font3{
+        text-align: center;
+        font-size: 1.4rem;
+        margin: 0;
+        margin-top: 30px;
+        padding-left: 13px;
+    }
+
+    /* 아이콘 */
+    .set_icon_box{
+        text-align: center;
+        padding-left: 13px;
+    }
+    .set_icon_box>.MuiSvgIcon-root{
+        font-size: 10rem;
+        color:red;
+    }
+
+    .set_icon_box_1{
+        text-align: center;
+        padding-left: 13px;
+    }
+
+    .set_icon_box_1>.MuiSvgIcon-root{
+        font-size: 10rem;
+    }
+}
+
+/* 세팅 웹 최소화 */
+@media(min-width:500px){
+    .set_body{
+        width:500px;
+    }
+    
+}
+
+/* 세팅 웹 최대 */
+@media(min-width:501px){
+    .set_body{
+        width:100%;
+    }
+    
 }
