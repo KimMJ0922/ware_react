@@ -26,42 +26,46 @@ const Study=({location})=>{
     //카드 세트의 번호 가져오기
     var no = url.substring(url.lastIndexOf('/')+1,url.length);
     url = "http://localhost:9000/getcardlist"
-    
-    // const getCard = async() =>{
-    //   try{
-    //     let list = await axios.post(url,{no});
-    //     let mem = list.data.mdto
-    //     let cardSet = list.data.csdto;
-    //     setMemberInfo({mem});
-    //     setCardSetInfo({cardSet});
-    //     // setCardSetInfo(list.data.csdto);
-    //     // let cList = list.data.cList;
-    //     // cList.map((item) => {
-    //     //   setCardList(cardList.concat(item));
-    //     // })
-    //     setMemberInfoChange(true);
-    //   }catch(e){
-    //     console.log(e);
-    //   }
-    // }
-    const getCard = () => {
-      axios.post(url,{no})
-      .then((res)=>{
-        console.log(res.data);
-      }).catch((err)=>{
-        console.log(err);
-      })
+
+    const getCard = async() =>{
+      try{
+        let list = await axios.post(url,{no});
+        let mem = list.data.mdto
+        let cardSet = list.data.csdto;
+        setMemberInfo({mem});
+        setCardSetInfo({cardSet});
+        setMemberInfoChange(true);
+        // setCardSetInfo(list.data.csdto);
+        // let cList = list.data.cList;
+        // cList.map((item) => {
+        //   setCardList(cardList.concat(item));
+        // })
+      }catch(e){
+        console.log(e);
+      }
     }
+    // const getCard = () => {
+    //   axios.post(url,{no})
+    //   .then((res)=>{
+    //     console.log(res.data);
+    //   }).catch((err)=>{
+    //     console.log(err);
+    //   })
+    // }
     getCard();
     setMemberInfo(memberInfo);
     
+    
   },[]);
 
-
+  useEffect(()=>{
+    setMemberInfo(memberInfo.mem);
+    console.log(memberInfo);
+  },[memberInfoChange]);
 
   return(
       <div>
-        
+        {}
       </div>
   )
 }
