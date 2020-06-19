@@ -26,6 +26,7 @@ const Study=({location})=>{
     //카드 세트의 번호 가져오기
     var no = url.substring(url.lastIndexOf('/')+1,url.length);
     url = "http://localhost:9000/getcardlist"
+    
     // const getCard = async() =>{
     //   try{
     //     let list = await axios.post(url,{no});
