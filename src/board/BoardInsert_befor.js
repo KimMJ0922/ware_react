@@ -11,12 +11,12 @@ import './Board.css';
 // import { makeStyles } from '@material-ui/core/styles';
 // import Button from '@material-ui/core/Button';
 
-const BoardInsert=()=> {
+const BoardInsert2=()=> {
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
     const [point,setPoint] = useState('');
-    const [no, setNo] = useState(window.sessionStorage.getItem('no'));
+    const no= window.sessionStorage.getItem('no');
     const [rows,setRows] = useState(
         [
             {
@@ -234,4 +234,4 @@ const BoardInsert=()=> {
     );
 }
  
-export default BoardInsert;
+export default BoardInsert2;

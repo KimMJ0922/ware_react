@@ -6,7 +6,6 @@ import { Grid } from '@material-ui/core';
 import Axios from 'axios';
 
 const BoardItems=props=> {
-    console.log(props);
     const [ip,setIp]=useState('');
     var rte='';
     const imagearray=[
