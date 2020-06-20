@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import './Setting.css';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
+import ReportIcon from '@material-ui/icons/Report';
+import { Grid, Paper } from '@material-ui/core';
 
 const Setting = () => {
     const [provider, setProvider] = useState(window.sessionStorage.getItem('provider'));
@@ -249,32 +252,60 @@ const Setting = () => {
     }
 
     return(
-        <div>
-            <div>
-                <div>
-                    <h2>프로필 이미지 변경</h2>
-                    <h3>파일은 이미지 파일만 가능하며 5MB까지 가능합니다.</h3>
-                    <input type="file" onChange={profileImg}></input>
-                </div>
-                <div>
+        <>
+        <div className="set_body">
+            {/* 프로필 이미지 변경 */}
+        <Grid container>
+            <Grid item xs={12} md={4}>
+            <p className="set_top_font1">프로필 이미지 변경</p>              
+                <Paper className="set_prof_box_top">
                     { 
-                        provider !== "default" &&
-                        <img src={window.sessionStorage.getItem('socialProfile')} alt="" 
-                             onClick={socialProfileImgClick} className="profileImgList"/>
+                        provider !== "default" &&                      
+                        <img src={window.sessionStorage.getItem('socialProfile')} alt=""
+                         onClick={socialProfileImgClick} className="set_befor_img"/>                                  
                     }
-                    {
+                     <p className="set_top_font2">현재 프로필</p>
+                     </Paper>             
+            </Grid>
+            <Grid itme xs={12} md={8}>
+            <p className="set_title_font">프로필 이미지 고르기</p>
+                <Paper className="set_prof_box_mid">
+                { 
+                        provider !== "default" &&                      
+                        <img src={window.sessionStorage.getItem('socialProfile')} alt=""
+                         onClick={socialProfileImgClick} className="set_basic_img"/>                                  
+                }
+                {
                         defaultImg.map((data,idx)=>{
                             return <img src={data} alt="" key={idx}
-                                        onClick={profileImgClick} className="profileImgList"/>
+                                        onClick={profileImgClick} className="set_basic_img"/>
                         })
                     }
-                </div>
-            </div>
-            <div>
-                <h2>이름 변경</h2>
-                <input type="text" id="name" name="name" onChange={changeName} value={newName}/>
-                <button type="button" onClick={nameChangeButton}>변경</button>
-            </div>
+                    <div className="set_file_box">
+                    <label for="set_file">직접 업로드</label>
+                    <input type="file" onChange={profileImg} id="set_file" className="set_file_input"/>
+                    </div>
+                    <p className="set_mid_font2">이미지 파일만 가능하며 5MB까지 가능합니다</p>
+                    </Paper>
+            </Grid>
+        </Grid>
+            {/* 프로필 이미지 변경 끝 */}
+
+            <Grid container>
+                <div className="set_name_box">
+                <Grid item xs={12} md={4}>
+                <p className="set_title_font3">이름 변경</p>
+                    <div className="set_icon_box_1">
+                        <HowToRegIcon/>
+                    </div> 
+                </Grid>
+                <Grid item xs={12} md={8}>
+                     <input type="text" id="name" name="name" className="set_name_input" onChange={changeName} value={newName}/>
+                    <button type="button" onClick={nameChangeButton} className="set_name_btn">변경</button>             
+                </Grid>  
+                </div>           
+            </Grid>  
+                            
                 {
                     provider === "default" &&
                     <div>
@@ -284,18 +315,37 @@ const Setting = () => {
                         <button type="button" onClick={passwordChangeButton}>변경</button>
                     </div>
                 }
-            <div>
-                <h2>회원 탈퇴</h2>
+              <Grid container>
+              <div className="set_exit_box">
+                <Grid item xs={12} md={4}>
+                <p className="set_title_font3">회원 탈퇴</p>
+                    <div className="set_icon_box">
+                        <ReportIcon/>
+                    </div>
+                     
+                </Grid>
+
+                <Grid item xs={12} md={8}>
+                  
+                    <Paper className="set_exit_text_box">
+                        <p>회원 탈퇴 시</p>
+                        <p>해당 계정의 정보는 모두 지워집니다.</p>
+                        <p> 회원 탈퇴를 원하시면</p>
+                        <p><font style={{color:'red'}}>" 회원탈퇴 "</font></p>
+                        <p>를 작성 후 버튼을 눌러주세요.</p>
+                        <input type="text" name="out" placeholder="텍스트를 입력하세요" className="set_exit_input" onChange={changeOutText}/>  
+                        <button type="button" onClick={signOut} className="set_exit_btn">회원 탈퇴</button>
+                    </Paper>
+                  
+                      
+                </Grid>
+                </div>
+              </Grid>
+
                 
-                <h3>
-                    회원 탈퇴 시, 해당 계정의 정보는 모두 지워집니다.<br/>
-                    회원 탈퇴를 원하시면 "<font style={{color:'red'}}>회원탈퇴</font>"라고 작성 후 버튼을 눌러주세요.
-                </h3>
                 
-                <input type="text" name="out" placeholder="회원탈퇴" onChange={changeOutText}/>
-                <button type="button" onClick={signOut}>회원 탈퇴</button>
-            </div>
-        </div>
+                </div>
+        </>
     )
 }
 export default Setting;

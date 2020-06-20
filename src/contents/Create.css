@@ -5,6 +5,15 @@
     input:focus{
         background-color: none;
     }
+    button{
+        cursor: pointer;
+    }
+    a{
+        cursor: pointer;
+    }
+    .MuiSvgIcon-root{
+        cursor: pointer;
+    }
 }
 /* 만들기 모바일 사이즈 */
 @media(max-width:375px){
@@ -118,8 +127,8 @@
         border: 1px solid #ebebeb;
         border-bottom-color: #e2e2e2;
         border-radius: 100%;
-        width: 50px;
-        height: 50px;
+        width: 35px;
+        height: 35px;
         text-align: center;
         margin-left: 60px;
     }
@@ -447,7 +456,7 @@
     .crt_top{
         font-size: 2rem;
         margin-top:10px;
-        margin-left: 100px;
+        margin-left: 60px;
     }
 
     .crt_top_input_box{
@@ -592,7 +601,7 @@
         border:none;
         border-bottom: 1px solid gray;
         margin-left:10%;
-        width:756px;
+        width:530px;
         height: 30px;
     }
 

@@ -454,7 +454,7 @@ const CreateCardSet = () => {
                                                     <div>
                                                         <input type="text" name="searchImg" className="crt_img_sch_input" onChange={changeSearchText(rowNum)} value={row.searchText}/>
                                                         <button type="button" className="crt_sch_btn" onClick={searchImg} name={rowNum}>검색</button>
-                                                        <label for={"ex_file"+rowNum}>직접 업로드 하기</label>
+                                                        <label for={"ex_file"+rowNum}>첨부 파일</label>
                                                         <input type="file" onChange={changeFile(row.id)} name={row.id}  id={"ex_file"+rowNum}/>
                                                     </div>
                                                     
