@@ -1,6 +1,7 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, useReducer} from 'react';
 import axios from 'axios';
 import { AudioAnalyser } from 'three';
+import { relativeTimeRounding } from 'moment';
 
 const Study=({location})=>{
   const [memberInfo, setMemberInfo] = useState({
@@ -19,12 +20,15 @@ const Study=({location})=>{
   const [cardList, setCardList] = useState([]);
   const [email, setEmail] = useState('');
   const [cnt, setCnt] = useState(0);
-
   //false면 문제, true면 답
   const [cardState, setCardState] = useState(false);
+  //수동 자동 상태 확인용
+  const [settingCheck, setSettingCheck] = useState(false);
+  //자동 했을 때 시간
+  const [timer, setTimer] = useState(0)
+  const [saveTimer,setSaveTimer] = useState(0);
   //페이지가 불러와지면 처음 실행
   useEffect(()=>{
-    
     let url = location.pathname;
     //카드 세트의 번호 가져오기
     var no = url.substring(url.lastIndexOf('/')+1,url.length);
@@ -72,34 +76,32 @@ const Study=({location})=>{
     //소셜 아이디
     else{
       let emailPre = email.substr(0,parseInt(email.length/2));
-      console.log(emailPre);
       emailPre = emailPre.replace(emailPre.substr(parseInt(emailPre.length/2),emailPre.length),'*****');
-      console.log(emailPre);
       emailText = emailPre;
     }
-
     setMemberInfo({...memberInfo,email : emailText});
   },[email]);
 
   //다음 버튼
   const cntUp = () => {
     let maxLength = cardList.length-1;
+    setCardState(false);
     if(cnt >= maxLength){
       setCnt(0)
     }else{
       setCnt(cnt+1);
     }
-    
   }
+
   //이전 버튼
   const cntDown = () => {
     let maxLength = cardList.length-1;
+    setCardState(false);
     if(cnt <= 0){
       setCnt(maxLength);
     }else{
       setCnt(cnt-1);
     }
-    
   }
 
   //카드 클릭시
@@ -108,8 +110,52 @@ const Study=({location})=>{
       cntUp();
     }
     setCardState(!cardState);
-
   }
+
+  //수동 자동 상태 변경
+  const changeSettingCheck = (e) => {
+    setSettingCheck(!settingCheck);
+    if(settingCheck === false){
+      setTimer(0);
+      setSaveTimer(5);
+    }else{
+      setTimer(saveTimer);
+    }
+    
+  }
+
+  useEffect(() => {
+    console.log('체크 타이머 : '+timer)
+  },[settingCheck]);
+
+  useEffect(() => {
+    if(settingCheck){
+      setTimeout(() => {
+        if(timer===0){
+          if(cardState){
+            setCardState(!cardState);
+            cntUp();
+          }else{
+            setCardState(!cardState);
+          }
+          setTimer(saveTimer);
+        }else{
+          setTimer(timer-1);
+        }
+        console.log(timer);
+      },1000);
+    }
+  },[timer])
+
+  //타이머 설정
+  const setTime = (e) => {
+    setTimer(0);
+    setTimer(e.target.value);
+    setSaveTimer(e.target.value);
+  }
+
+
+  var maxCard = cardList.length;
   return(
       <>
         <div>
@@ -125,11 +171,15 @@ const Study=({location})=>{
           {memberInfo["name"]}
           ({memberInfo["email"]})
         </div>
-        <div >
+        <div>
+          <button type="button">학습하기</button>
+          <button type="button">객관식</button>
+          <button type="button">주관식</button>
+        </div>
+        <div>
           <button type="button" onClick={cntDown} style={{float:'left'}}>이전</button>
           {
             cardList.map((item,i) => {
-              console.log(item);
               if(cnt === i){
                 return (
                   <>
@@ -152,6 +202,30 @@ const Study=({location})=>{
           }
           <button type="button" onClick={cntUp} style={{float:'left'}}>다음</button>
         </div>
+        <div style={{clear:'both'}}>
+          {
+            (cnt+1)+"/"+maxCard
+          }
+          {
+            settingCheck === true && <div style={{width : timer*100, height:'5px',backgroundColor:'black',transition:'0.5s'}}/>
+          }
+        </div>
+        <div style={{clear:'both'}}>
+          <h3>설정</h3>
+          <input type="radio" name="settimg" value="수동" onChange={changeSettingCheck} checked={settingCheck === false ? 'true' : ''}/>수동
+          <input type="radio" name="settimg" value="자동" onChange={changeSettingCheck} checked={settingCheck === true ? 'true' : ''}/>자동
+        </div>
+        {
+          settingCheck === true &&
+          <div>
+            <select id="timer" onChange={setTime}>
+              <option value="5">5초</option>
+              <option value="10">10초</option>
+              <option value="15">15초</option>
+              <option value="30">30초</option>
+            </select>
+          </div>
+        }
         <div style={{clear:'both'}}>
           <button type="button">수정</button>
           <button type="button">삭제</button>

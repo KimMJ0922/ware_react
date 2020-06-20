@@ -9,7 +9,7 @@ const Diagram=()=>{
     const PI = Math.PI;
 
     const [totalCount,setTotalCount] =useState(58); //총 문제 갯수 
-    const [rightCount, setRightCount] = useState(20); // 맞은갯수
+    const [rightCount, setRightCount] = useState(40); // 맞은갯수
     const [rightCountScore, setRightCountScore] = useState(rightCount/totalCount); //정답률
     const [wrongCountScore, setWrongCountScore] = useState(1-rightCountScore)  //오답률
     const [loopCnt, setLoopCnt] = useState(parseInt(rightCountScore*100));
@@ -19,33 +19,25 @@ const Diagram=()=>{
         radius: 50,
         radius0:80
     }]);
-    const [max, setMax] = useState(0);
-    const btnClick = () => {
-            console.log(max);
-            let data ={
-                angle0:0,
-                angle: -(2*PI*(max/100)),
-                radius: 50,
-                radius0:80
-            }
-            setMyGoodData([{...data}]);
-            
-        
-    }
+
     useEffect(()=>{
-        // setInterval(()=>{
-        //     setMax(i);
-        //     document.getElementById('btn').click();
-        //     if(i==loopCnt){
-        //         return false;
-        //     }
-        // 
-        // var inter = setInterval(()=>{
-        //     setMax(max+1);
-        //     document.getElementById('btn').click();
-        //     console.log(max);
-        // },1000)
-        // btnClick();
+        setTimeout(()=>{
+            for(var i=0; i<loopCnt;i++){
+                // eslint-disable-next-line no-loop-func
+                ((x) => {
+                    setTimeout(() => {
+                        let data ={
+                            angle0:0,
+                            angle: -(2*PI*(i/100)),
+                            radius: 50, 
+                            radius0:80
+                        }
+                        setMyGoodData([{...data}]);
+                        console.log(x);
+                    },x*1000)
+                })(i);
+            }
+        },1000);    
     },[]);
     
 // 웹
@@ -65,7 +57,6 @@ const Diagram=()=>{
     
     return(
         <div>
-            <button type="button" id="btn" onClick={btnClick}>버튼</button>
             <Grid container>
                  {/* 웹용 */}
                  <Hidden only={['xs','sm']}>
