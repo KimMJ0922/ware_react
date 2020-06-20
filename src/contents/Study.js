@@ -36,9 +36,7 @@ const Study=({location})=>{
         let mem = list.data.mdto
         let cardSet = list.data.csdto;
         let card = list.data.cList;
-        if(cardSet.open_scope === "member"){
-          let pass = window.prompt("비밀번호를 입력하세요");
-        }
+
         setMemberInfo({...mem});
         setCardSetInfo({...cardSet});
         card.map((item,i) => {
