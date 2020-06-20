@@ -124,6 +124,7 @@ const Set=()=>{
                             <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
                             <sapn className="sq_on_txt1" id={item.no}>{item.comment}</sapn>
                             <sapn className="sq_on_txt1" id={item.no}>
+                              
                               공개 범위 : 
                               {
                                 item.open_scope === "public" ? 
