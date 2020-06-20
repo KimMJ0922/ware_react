@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
 import ProfileView from './ProfileView';
 import { Link } from 'react-router-dom';
+import './Set.css';
 
 const Set=()=>{
   const [cardSet, setCardSet] = useState([]);
@@ -39,6 +40,25 @@ const Set=()=>{
     window.location.href="/create";
   }
   
+  const checkPass = (e) => {
+    e.preventDefault();
+    
+    let pass = window.prompt("비밀번호를 입력하세요");
+    let url = "http://localhost:9000/cardsetpasscheck";
+    let no = e.target.id
+    axios.post(url,{
+      no,
+      open_password : pass
+    }).then((res)=>{
+      if(res.data){
+        window.location.href="/study/"+no;
+      }else{
+        alert("비밀번호가 맞지 않습니다.");
+      }
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
   var date = "";
   var count = 0;
   var text = "";
@@ -94,25 +114,28 @@ const Set=()=>{
                         }
                         {/* 
                           div에 e.target이 안먹힌다.
-                          a 태그도 마찬가지
-                          
+                          a 태그도 마찬가지 
                         */}
-                        <Link to={`/study/${item.no}`} >
+                        <Link to={item.open_scope === "public" ? `/study/${item.no}` : item.open_scope === "private" ? `/study/${item.no}` : ""} 
+                              onClick={item.open_scope === "public" ? "" : item.open_scope === "private" ? "" : checkPass} name={item.no}>                       
                           <div className="sq_on_cnt" style={{backgroundColor:'white', 
-                              boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}}>
-                            <sapn className="sq_on_txt11">아이디 : {item.no} 갯수 :  {item.cnt}</sapn>
-                            <sapn className="sq_on_txt2">{item.title}</sapn>
-                            <sapn className="sq_on_txt1">{item.comment}</sapn>
-                            <sapn className="sq_on_txt1">
+                              boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>
+                            <sapn className="sq_on_txt11" id={item.no}>아이디 : {item.no} 갯수 :  {item.cnt}</sapn>
+                            <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
+                            <sapn className="sq_on_txt1" id={item.no}>{item.comment}</sapn>
+                            <sapn className="sq_on_txt1" id={item.no}>
                               공개 범위 : 
                               {
-                                item.open_scope === "public" ? "모두" : item.open_scope === "member" ? "비밀번호 아는 사람만" : "나만"
+                                item.open_scope === "public" ? 
+                                <img src="/icon/public.png" className="scopeIcon" alt=""/> : 
+                                item.open_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt=""/> : 
+                                <img src="/icon/private.png" className="scopeIcon" alt=""/>
                               }
                             </sapn>
-                            <sapn className="sq_on_txt1">
+                            <sapn className="sq_on_txt1" id={item.no}>
                               수정 범위 : 
                               {
-                                item.update_scope === "public" ? "모두" : item.update_scope === "member" ? "비밀번호 아는 사람만" : "나만"
+                                item.update_scope === "public" ? <img src="/icon/public.png" className="scopeIcon" alt=""/> : item.update_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt=""/> : <img src="/icon/private.png" className="scopeIcon" alt=""/>
                               }
                             </sapn>         
                           </div>
