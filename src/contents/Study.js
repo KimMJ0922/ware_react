@@ -12,6 +12,7 @@ const Study=({location})=>{
     provider : ''
   });
   const [cardSetInfo, setCardSetInfo] = useState({
+    no : '',
     title : '',
     comment : '',
     open_scope : '',
@@ -27,6 +28,7 @@ const Study=({location})=>{
   //자동 했을 때 시간
   const [timer, setTimer] = useState(0)
   const [saveTimer,setSaveTimer] = useState(0);
+
   //페이지가 불러와지면 처음 실행
   useEffect(()=>{
     let url = location.pathname;
@@ -91,6 +93,11 @@ const Study=({location})=>{
     }else{
       setCnt(cnt+1);
     }
+
+    if(settingCheck){
+      timerActive();
+      setTimer(saveTimer);
+    }
   }
 
   //이전 버튼
@@ -114,47 +121,64 @@ const Study=({location})=>{
 
   //수동 자동 상태 변경
   const changeSettingCheck = (e) => {
-    setSettingCheck(!settingCheck);
-    if(settingCheck === false){
-      setTimer(0);
-      setSaveTimer(5);
-    }else{
-      setTimer(saveTimer);
-    }
-    
+    setSettingCheck(!settingCheck);    
   }
 
-  useEffect(() => {
-    console.log('체크 타이머 : '+timer)
-  },[settingCheck]);
-
+  var inter = '';
   useEffect(() => {
     if(settingCheck){
-      setTimeout(() => {
-        if(timer===0){
+      setTimer(5);
+      setSaveTimer(5);
+    }
+    
+    console.log(timer);
+  },[settingCheck]);
+
+  //타이머 설정
+  const setTime = (e) => {
+    setTimer(parseInt(e.target.value));
+    setSaveTimer(parseInt(e.target.value));
+    timerActive();
+  }
+  var t = '';
+  const timerActive = () => {
+    clearTimeout(t);
+  }
+  useEffect(()=>{
+    if(settingCheck){
+      //console.log(timer);
+      t = setTimeout(() => {
+        if(timer === 0 ){
+          setTimer(saveTimer);
           if(cardState){
-            setCardState(!cardState);
             cntUp();
           }else{
             setCardState(!cardState);
           }
-          setTimer(saveTimer);
         }else{
           setTimer(timer-1);
         }
-        console.log(timer);
+        //console.log(timer);
       },1000);
+      
     }
-  },[timer])
+  },[timer]);
 
-  //타이머 설정
-  const setTime = (e) => {
-    setTimer(0);
-    setTimer(e.target.value);
-    setSaveTimer(e.target.value);
+
+  //카드 삭제
+  const deleteCardSet = () => {
+    let check = window.confirm("삭제하시겠습니까?");
+    if(!check) return false;
+ 
+    let url = "http://localhost:9000/deletecardset";
+    axios.post(url,{
+      no : cardSetInfo.no
+    }).then((res) => {
+      window.location.replace("/home/set");
+    }).catch((err) => {
+
+    })
   }
-
-
   var maxCard = cardList.length;
   return(
       <>
@@ -177,14 +201,17 @@ const Study=({location})=>{
           <button type="button">주관식</button>
         </div>
         <div>
-          <button type="button" onClick={cntDown} style={{float:'left'}}>이전</button>
+          {
+            settingCheck === false ? <button type="button" onClick={cntDown} style={{float:'left'}}>이전</button> : ''
+          }
+          
           {
             cardList.map((item,i) => {
               if(cnt === i){
                 return (
                   <>
                     {/* div 클릭시 cardState 상태를 반전 시킴 */}
-                    <div onClick={cardClick} style={{width:'400px', height:'300px', border:'1px solid gray', textAlign:'center', float:'left'}}>
+                    <div onClick={settingCheck === false ? cardClick : null} style={{width:'400px', height:'300px', border:'1px solid gray', textAlign:'center', float:'left'}}>
                       {/* 이미지가 있으면 화면에 출력 */}
                       {
                         item.imgFile !== "" && cardState === false && <img src={item.imgFile} alt="" style={{width:'150px', height:'150px'}}/>
@@ -200,14 +227,22 @@ const Study=({location})=>{
              }
             })
           }
-          <button type="button" onClick={cntUp} style={{float:'left'}}>다음</button>
+
+          {
+            settingCheck === false ? <button type="button" onClick={cntUp} style={{float:'left'}}>다음</button> : ''
+          }
+          
         </div>
         <div style={{clear:'both'}}>
           {
             (cnt+1)+"/"+maxCard
           }
           {
-            settingCheck === true && <div style={{width : timer*100, height:'5px',backgroundColor:'black',transition:'0.5s'}}/>
+            settingCheck === true && <div style={{width : 300-(timer*(300/saveTimer)), height:'5px',backgroundColor:'black',transition:'0.5s'}}/>
+          }
+          <br/>
+          {
+            settingCheck === true && timer+"초"
           }
         </div>
         <div style={{clear:'both'}}>
@@ -228,7 +263,10 @@ const Study=({location})=>{
         }
         <div style={{clear:'both'}}>
           <button type="button">수정</button>
-          <button type="button">삭제</button>
+          {/* 삭제 버튼 */}
+          {
+            parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}>삭제</button> : ""
+          }
         </div>
       </>
   )

@@ -9,11 +9,16 @@ import './Set.css';
 
 const Set=()=>{
   const [cardSet, setCardSet] = useState([]);
+  const [totalCnt, setTotalCnt] = useState(0);
+  const [start, setStart] = useState(0);
   useEffect(()=>{
     const getList = async() => {
       let url = "http://localhost:9000/getcardsetlist"
       try{
-        let list = await axios.post(url,{no : window.sessionStorage.getItem('no')});
+        let list = await axios.post(url,{
+          no : window.sessionStorage.getItem('no'),
+          start
+        });
         let listData = list.data;
         listData.map((item,idx)=>{
           cardSet.push({
@@ -25,15 +30,27 @@ const Set=()=>{
             createday : item.createday,
             cnt : item.cnt,
           });
-          console.log(cardSet);
         });
       }catch(e){
           console.log(e);
       }
+      setStart(start+5);
       setCardSet([...cardSet]);
     }
 
+    //총 갯수 구하기
+    const getCnt = async() => {
+      let url = "http://localhost:9000/getsetcount"
+      try{
+        let cnt = await axios.post(url,{no : window.sessionStorage.getItem('no')});
+        setTotalCnt(cnt.data);
+      }catch(e){
+          console.log(e);
+      }
+    }
+
     getList();
+    getCnt();
   },[])
 
   const goCreateCardSet = () => {
@@ -59,6 +76,37 @@ const Set=()=>{
       console.log(err);
     })
   }
+
+  const moreCardSetList = () => {
+    if(start>totalCnt){
+      return false;
+    }
+    setStart(start+5);
+    
+    let url = "http://localhost:9000/getcardsetlist"
+    axios.post(url,{
+      no : window.sessionStorage.getItem('no'),
+      start
+    }).then((res) => {
+      let data = res.data;
+
+      data.map((item,idx)=>{
+        cardSet.push({
+          no : item.no,
+          title : item.title,
+          comment : item.comment,
+          open_scope : item.open_scope,
+          update_scope : item.update_scope,
+          createday : item.createday,
+          cnt : item.cnt,
+        });
+       setCardSet([...cardSet]);
+      });
+
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
   var date = "";
   var count = 0;
   var text = "";
@@ -83,6 +131,8 @@ const Set=()=>{
           {/* 세트가 있을때 */}
           <Grid item md={12} xs={12}>
             <Paper>
+              <div>
+              </div>
               <div className="sq_content_on" style={{height:'100%'}}>    
                 {
                   cardSet.length !== 0 &&
@@ -145,6 +195,7 @@ const Set=()=>{
                     )
                   })
                 }
+                <button type="button" onClick={moreCardSetList}>더보기</button>
               </div>
             </Paper>
           </Grid>
