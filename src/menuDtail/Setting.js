@@ -292,7 +292,6 @@ const Setting = () => {
             {/* 프로필 이미지 변경 끝 */}
 
             <Grid container>
-                <div className="set_name_box">
                 <Grid item xs={12} md={4}>
                 <p className="set_title_font3">이름 변경</p>
                     <div className="set_icon_box_1">
@@ -303,7 +302,6 @@ const Setting = () => {
                      <input type="text" id="name" name="name" className="set_name_input" onChange={changeName} value={newName}/>
                     <button type="button" onClick={nameChangeButton} className="set_name_btn">변경</button>             
                 </Grid>  
-                </div>           
             </Grid>  
                             
                 {
@@ -316,17 +314,13 @@ const Setting = () => {
                     </div>
                 }
               <Grid container>
-              <div className="set_exit_box">
                 <Grid item xs={12} md={4}>
                 <p className="set_title_font3">회원 탈퇴</p>
                     <div className="set_icon_box">
                         <ReportIcon/>
-                    </div>
-                     
+                    </div>                     
                 </Grid>
-
                 <Grid item xs={12} md={8}>
-                  
                     <Paper className="set_exit_text_box">
                         <p>회원 탈퇴 시</p>
                         <p>해당 계정의 정보는 모두 지워집니다.</p>
@@ -335,16 +329,10 @@ const Setting = () => {
                         <p>를 작성 후 버튼을 눌러주세요.</p>
                         <input type="text" name="out" placeholder="텍스트를 입력하세요" className="set_exit_input" onChange={changeOutText}/>  
                         <button type="button" onClick={signOut} className="set_exit_btn">회원 탈퇴</button>
-                    </Paper>
-                  
-                      
+                    </Paper>                  
                 </Grid>
-                </div>
-              </Grid>
-
-                
-                
-                </div>
+              </Grid>              
+            </div>
         </>
     )
 }

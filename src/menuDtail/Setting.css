@@ -35,11 +35,13 @@
     }
 
     .set_top_font1{
-        font-size:1.5rem;
+        font-size:1.2rem;
+        margin-left: 20px;
     }
 
     .set_title_font{
-        font-size:1.2rem
+        font-size:1rem;
+        margin-left: 20px;
     }
 
     .set_file_box label { 
@@ -99,11 +101,6 @@
         width:70px;
         height:40px;
         border-radius: 5px;
-    }
-    
-        
-    .set_exit_box{
-   
     }
 
     .set_exit_text_box{
@@ -174,6 +171,164 @@
     .set_body{
         width:500px;
     }
+
+    .set_prof_box_top{
+        text-align: center; 
+        width:440px;
+        padding-top: 20px;
+        margin-left: 20px; 
+        height: 170px;    
+    }
+    .set_befor_img{
+        border-radius: 100%;
+        width:100px;
+        height: 100px;
+    }
+
+   
+    .set_prof_box_mid{
+        width:440px;
+        padding-top: 20px;
+        padding-left: 10px;
+        margin-left: 20px; 
+        height: 250px;    
+    }
+
+    .set_basic_img{
+        border-radius: 100%;
+        width:70px;
+        height: 70px;
+        margin-right: 10px;
+    }
+
+    .set_top_font1{
+        font-size:1.2rem;
+        margin-left: 20px;
+    }
+
+    .set_title_font{
+        font-size:1rem;
+        margin-left: 20px;
+    }
+
+    .set_file_box label { 
+        display: inline-block;
+        padding: .5em .75em;
+        color: #999;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #fdfdfd;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        margin-top: 10px;
+    }
+    .set_file_box input[type="file"] {
+        position: absolute;
+        width: 1px; 
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0; 
+    }
+
+    .set_mid_font2{
+        font-size:0.9rem;
+    }
+
+    .set_name_box{
+        width:430px;
+        height: 300px;
+        margin-left: 20px;
+        margin-top:20px;
+    }
+
+    .set_name_font{
+        font-size: 1.2rem;
+    }
+
+    .set_name_input{
+        margin-left: 110px;
+        border: none;
+        background: none;
+        border-bottom: 1px solid gray;
+        height: 30px;
+    }
+
+    .set_name_btn{
+        border:none;
+        background: #c29fcb;
+        margin-left: 10px;
+        width:70px;
+        height:40px;
+        border-radius: 5px;
+    }
+
+    .set_exit_text_box{
+        width: 420px;
+        height:380px;
+        margin-left: 15px;
+        margin-bottom: 10px;
+        padding:15px;
+        font-size: 1.2rem;
+    }
+    .set_exit_text_box>p{
+        text-align: center;
+    }
+    .set_exit_text_box>p>font{
+        font-size: 2.2rem;
+    }
+    .set_exit_input{
+        border:none;
+        border-bottom: 1px solid gray;
+        font-size: 0.9rem;
+        text-align: center;
+        width:245px;
+        height:40px;
+        margin-left: 80px;
+
+    }
+    .set_exit_btn{
+        border:none;
+        background: #d9534f;
+        display: block;
+        margin-top: 10px;
+        margin-left: 78px;
+        width:250px;
+        height:60px;
+        border-radius: 5px;     
+    }
+
+    .set_title_font3{
+        text-align: center;
+        font-size: 1.8rem;
+        margin: 0;
+        margin-top: 30px;
+        margin-right: 20px;
+    }
+
+    /* 아이콘 */
+    .set_icon_box{
+        text-align: center;
+        margin-right: 20px;
+    }
+    .set_icon_box>.MuiSvgIcon-root{
+        font-size: 10rem;
+        color:red;
+    }
+
+    .set_icon_box_1{
+        text-align: center;
+        padding-left: 13px;
+    }
+
+    .set_icon_box_1>.MuiSvgIcon-root{
+        font-size: 10rem;
+    }
     
 }
 
@@ -181,6 +336,164 @@
 @media(min-width:501px){
     .set_body{
         width:100%;
+    }
+
+    .set_prof_box_top{
+        text-align: center; 
+        background: none;
+        width:300px;
+        padding-top: 20px;
+        margin-left: 20px; 
+        height: 248px;    
+    }
+    .set_befor_img{
+        border-radius: 100%;
+        width:100px;
+        height: 100px;
+    }
+
+   
+    .set_prof_box_mid{
+        width:600px;
+        padding-top: 20px;
+        padding-left: 10px;
+        margin-left: 20px; 
+        margin-top: 25px;
+        height: 250px;    
+    }
+
+    .set_basic_img{
+        border-radius: 100%;
+        width:70px;
+        height: 70px;
+        margin-right: 10px;
+    }
+
+    .set_top_font1{
+        font-size:1.2rem;
+        margin-left: 20px;
+    }
+
+    .set_title_font{
+        font-size:1rem;
+        margin-left: 20px;
+    }
+
+    .set_file_box label { 
+        display: inline-block;
+        padding: .5em .75em;
+        color: #999;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #fdfdfd;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+        margin-top: 10px;
+    }
+    .set_file_box input[type="file"] {
+        position: absolute;
+        width: 1px; 
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0; 
+    }
+
+    .set_mid_font2{
+        font-size:0.9rem;
+    }
+    .set_name_font{
+        font-size: 1.2rem;
+    }
+
+    .set_name_input{
+        margin-left: 150px;
+        margin-top: 100px;
+        width: 250px;
+        border: none;
+        background: none;
+        border-bottom: 1px solid gray;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .set_name_btn{
+        border:none;
+        background: #c29fcb;
+        margin-left: 10px;
+        width:70px;
+        height:40px;
+        border-radius: 5px;
+    }
+    
+    .set_exit_text_box{
+        width: 580px;
+        height:320px;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    .set_exit_text_box>p{
+        text-align: center;
+    }
+    .set_exit_text_box>p:nth-child(1){
+        display: inline;
+    }
+    .set_exit_text_box>p:nth-child(2){
+        display: inline;
+    }
+    .set_exit_text_box>p>font{
+        font-size: 2.2rem;
+    }
+    .set_exit_input{
+        border:none;
+        border-bottom: 1px solid gray;
+        font-size: 0.9rem;
+        text-align: center;
+        width:245px;
+        height:40px;
+        margin-left: 0px;
+    }
+    .set_exit_btn{
+        border:none;
+        background: #d9534f;
+        display: block;
+        margin-top: 10px;
+        margin-left: 166px;
+        width:250px;
+        height:60px;
+        border-radius: 5px;     
+    }
+
+    .set_title_font3{
+        text-align: center;
+        font-size: 1.8rem;
+        margin: 0;
+        margin-top: 30px;
+        margin-right: 20px;
+    }
+
+    /* 아이콘 */
+    .set_icon_box{
+        text-align: center;
+        margin-right: 20px;
+    }
+    .set_icon_box>.MuiSvgIcon-root{
+        font-size: 10rem;
+        color:red;
+    }
+
+    .set_icon_box_1{
+        text-align: center;
+        padding-left: 13px;
+    }
+
+    .set_icon_box_1>.MuiSvgIcon-root{
+        font-size: 10rem;
     }
     
 }
