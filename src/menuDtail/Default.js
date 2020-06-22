@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Grid, Hidden } from '@material-ui/core';
 import {Add } from '@material-ui/icons';
 import './MenuDtail.css';
-const Diagram=()=>{
+const Diagram=({no,setNo})=>{
+    console.log('디폴트 : '+no);
     const [row, setRows ]= useState(
         [
             //db가 없어서 임의로 만듬

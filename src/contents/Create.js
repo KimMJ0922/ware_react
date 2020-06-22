@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {useHistory} from 'react-router';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import './Create.css';
@@ -7,6 +8,7 @@ import DelIcon from '@material-ui/icons/DeleteForever';
 import ImgIcon from '@material-ui/icons/ImageSearch';
 import SearchIcon from '@material-ui/icons/Search';
 const CreateCardSet = () => {
+    var history = useHistory();
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
@@ -293,7 +295,7 @@ const CreateCardSet = () => {
                 updateScope
             }
         ).then((res)=>{
-            window.location.replace("/home/set");
+            history.replace("/home/set");
         }).catch((error)=>{
             console.log("error"+error);
         });

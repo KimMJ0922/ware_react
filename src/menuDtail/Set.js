@@ -3,11 +3,13 @@ import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
+import {useHistory} from 'react-router'
 import ProfileView from './ProfileView';
 import { Link } from 'react-router-dom';
 import './Set.css';
 
 const Set=()=>{
+  var history = useHistory();
   const [cardSet, setCardSet] = useState([]);
   const [totalCnt, setTotalCnt] = useState(0);
   const [start, setStart] = useState(0);
@@ -54,12 +56,11 @@ const Set=()=>{
   },[])
 
   const goCreateCardSet = () => {
-    window.location.href="/create";
+    history.push("/create");
   }
   
   const checkPass = (e) => {
     e.preventDefault();
-    
     let pass = window.prompt("비밀번호를 입력하세요");
     let url = "http://localhost:9000/cardsetpasscheck";
     let no = e.target.id
@@ -68,7 +69,8 @@ const Set=()=>{
       open_password : pass
     }).then((res)=>{
       if(res.data){
-        window.location.href="/study/"+no;
+        window.sessionStorage.setItem('cardset_no',no);
+        history.push('/study');
       }else{
         alert("비밀번호가 맞지 않습니다.");
       }
@@ -77,6 +79,16 @@ const Set=()=>{
     })
   }
 
+  //Root쪽에 있는 no를 변경 시키고 페이지 이동
+  //페이지 이동 할 때 window.location.href, replace로 가면 새로고침 되어
+  //useState값이 초기화 됨
+  //그러기 때문에 router에 있는 useHistory로 이동해야 유지됨.
+  const linkClick = (e) => {
+    e.preventDefault();
+    window.sessionStorage.setItem('cardset_no',e.target.id);
+    history.push('/study');
+  }
+  //더보기 버튼
   const moreCardSetList = () => {
     if(start>totalCnt){
       return false;
@@ -89,7 +101,6 @@ const Set=()=>{
       start
     }).then((res) => {
       let data = res.data;
-
       data.map((item,idx)=>{
         cardSet.push({
           no : item.no,
@@ -165,8 +176,7 @@ const Set=()=>{
                           div에 e.target이 안먹힌다.
                           a 태그도 마찬가지 
                         */}
-                        <Link to={item.open_scope === "public" ? `/study/${item.no}` : item.open_scope === "private" ? `/study/${item.no}` : ""} 
-                              onClick={item.open_scope === "public" ? "" : item.open_scope === "private" ? "" : checkPass} name={item.no}>                       
+                        <Link to="" onClick={item.open_scope === "public" ? linkClick : item.open_scope === "private" ? linkClick : checkPass}>                       
                           <div className="sq_on_cnt" style={{backgroundColor:'white', 
                               boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>
                             <sapn className="sq_on_txt11" id={item.no}>아이디 : {item.no} 갯수 :  {item.cnt}</sapn>

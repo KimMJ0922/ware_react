@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {useHistory} from 'react-router';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import './Create.css';
@@ -8,6 +9,7 @@ import ImgIcon from '@material-ui/icons/ImageSearch';
 import SearchIcon from '@material-ui/icons/Search';
 
 const ModifyCardSet = ({location}) => {
+    var history = useHistory();
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
@@ -24,10 +26,8 @@ const ModifyCardSet = ({location}) => {
     const [list, setList] = useState([]);
     const [count, setCount] = useState(0);
     useEffect(()=>{
-        let url = location.pathname;
-        //카드 세트의 번호 가져오기
-        var no = url.substring(url.lastIndexOf('/')+1,url.length);
-        url = "http://localhost:9000/getcardset";
+        var no = window.sessionStorage.getItem('cardset_no');
+        let url = "http://localhost:9000/getcardset";
         const getCardSet = async() => {
             try{
                 let cardset = await axios.post(url,{no,member_no : window.sessionStorage.getItem('no')});
@@ -35,7 +35,7 @@ const ModifyCardSet = ({location}) => {
                 let list = cardset.data.list;
                 console.log(list);
                 if(csdto.update_scope === 'private' && parseInt(window.sessionStorage.getItem('no')) !== csdto.member_no){
-                    window.location.replace('/study/'+no);
+                    history.replace('/study/'+no);
                 }
                 setTitle(csdto.title);
                 setComment(csdto.comment);
@@ -337,7 +337,7 @@ const ModifyCardSet = ({location}) => {
                 updateScope
             }
         ).then((res)=>{
-            window.location.replace("/study/"+no);
+            history.replace("/study");
         }).catch((error)=>{
             console.log("error"+error);
         });

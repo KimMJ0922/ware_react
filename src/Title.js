@@ -1,20 +1,24 @@
 import React,{useState,useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Home,Create,Search,Signin,Signup,ChangePassword,Study,ModifyCardSet} from './contents';/*index.js호출*/
+import {Home,Create,Search,Signin,Signup,ChangePassword,Study,ModifyCardSet,Subjective} from './contents';/*index.js호출*/
 import Board from './board/Board';
 import Main from './main/Main';
 import Top from './top/Top';
 import Default from './menuDtail/Default';
 
-const Title = () => {
+const Title = (props) => {
   const routes = [
     {
-      path:'/study/:no',
+      path:'/study',
       component : Study
     },
     {
-      path:'/modify/:no',
+      path:'/modify',
       component : ModifyCardSet
+    },
+    {
+      path:'/subjective',
+      component : Subjective
     },
     {
       // default page
@@ -56,7 +60,8 @@ const Title = () => {
       
   ];
     const [nowPath, setPath] = useState('');
-    const [pro, setPro] = useState(window.sessionStorage.getItem('profile'));
+    const [profile, setProfile] = useState(window.sessionStorage.getItem('profile'));
+    const [name, setName] = useState(window.sessionStorage.getItem('name'));
     useEffect(() => {
       let email = window.sessionStorage.getItem('email');
       let page = ['/','/signin','/signup','/forgotten'];
@@ -77,20 +82,14 @@ const Title = () => {
     },[nowPath]);
 
     return (
-
         <div style={{fontSize: '16px'}}>
-          <Top path={nowPath} />
+          <Top path={nowPath} profile={profile} setProfile={setProfile} name={name} setName={setName}/>
           <Switch > 
             {/*<Route exact path="/" component={Main}></Route>
             <Route exact path="/home/default" component={Home}></Route>
             <Route exact path="/home/default" component={Home}></Route>*/}
               {
-                routes.map((route, i) => {
-                  return (
-                    <RouteWithSubRoutes key={i} {...route} />
-                    
-                  )
-                })
+                routes.map((route, i) => (<RouteWithSubRoutes key={i} {...route} />))
               }
             
               {/* 이거 쫌짜증남 살짝 이해가 안감 */}
@@ -106,9 +105,10 @@ const Title = () => {
     setPath(route.path);
     return (
       <Route
-         render={props => (
+         render={prop => (
         // 중첩을 유지하기 위해 하위 경로를 전달
-          <route.component {...props} routes={route.routes} />
+        //no={route.no} setNo={route.setNo}
+          <route.component {...prop} routes={route.routes} no={props.no} setNo={props.setNo} profile={profile} setProfile={setProfile} name={name} setName={setName}/>
         )}
       />
     );

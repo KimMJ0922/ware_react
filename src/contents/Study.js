@@ -1,10 +1,12 @@
 import React,{useState,useEffect, useReducer} from 'react';
+import {useHistory} from 'react-router';
 import axios from 'axios';
 import { AudioAnalyser } from 'three';
 import { relativeTimeRounding } from 'moment';
 import { red } from '@material-ui/core/colors';
 
-const Study=({location})=>{
+const Study=()=>{
+  var routerHistory = useHistory();
   const [memberInfo, setMemberInfo] = useState({
     no : '',
     name : '',
@@ -32,12 +34,10 @@ const Study=({location})=>{
 
   //페이지가 불러와지면 처음 실행
   useEffect(()=>{
-    let url = location.pathname;
-    //카드 세트의 번호 가져오기
-    var no = url.substring(url.lastIndexOf('/')+1,url.length);
-    url = "http://localhost:9000/getcardlist"
+    let url = "http://localhost:9000/getcardlist"
 
     const getCard = async() =>{
+      let no = window.sessionStorage.getItem('cardset_no');
       try{
         let list = await axios.post(url,{no});
         let mem = list.data.mdto
@@ -175,7 +175,7 @@ const Study=({location})=>{
     axios.post(url,{
       no : cardSetInfo.no
     }).then((res) => {
-      window.location.replace("/home/set");
+      routerHistory.replace("/home/set");
     }).catch((err) => {
 
     })
@@ -183,7 +183,7 @@ const Study=({location})=>{
 
   //수정 버튼 클릭 시
   const privateUpdate = () => {
-    window.location.href="/modify/"+cardSetInfo.no;
+    routerHistory.push("/modify");
   } 
 
   const memberUpdate = () => {
@@ -196,7 +196,7 @@ const Study=({location})=>{
       update_password : pass
     }).then((res) => {
       if(res.data){
-        window.location.href="/modify/"+cardSetInfo.no;
+        routerHistory.push("/modify");
       }
     }).catch((err) => {
 
@@ -208,12 +208,16 @@ const Study=({location})=>{
     e.preventDefault();
   }
 
+  //주관식으로 이동
+  const Subjective = () => {
+    routerHistory.push('/subjective');
+  }
   const allFalse = () => {
     return false;
   }
   var maxCard = cardList.length;
   return(
-      <div oncontextmenu={allFalse} ondragstart={allFalse} onselectstart={allFalse}>
+      <div>
         <div onDoubleClick={dobuleClickDefen}>
           <h2>{cardSetInfo.title}</h2>
           <h3>{cardSetInfo.comment}</h3>
@@ -230,7 +234,7 @@ const Study=({location})=>{
         <div>
           <button type="button">학습하기</button>
           <button type="button">객관식</button>
-          <button type="button">주관식</button>
+          <button type="button" onClick={Subjective}>주관식</button>
         </div>
         <div>
           {
