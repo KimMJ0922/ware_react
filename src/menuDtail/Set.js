@@ -157,7 +157,7 @@ const Set=()=>{
                     }
                     return (
                       <div>
-                        {/* <p className="sq_timeset">{item.createday}</p> */}
+                        {/* 날짜 출력 같은 날짜면 출력 안하고 다르면 출력함 */}
                         {
                           text
                         }
@@ -173,7 +173,6 @@ const Set=()=>{
                             <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
                             <sapn className="sq_on_txt1" id={item.no}>{item.comment}</sapn>
                             <sapn className="sq_on_txt1" id={item.no}>
-                              
                               공개 범위 : 
                               {
                                 item.open_scope === "public" ? 
