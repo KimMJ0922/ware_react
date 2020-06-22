@@ -6,24 +6,22 @@ import { Paper } from '@material-ui/core';
 import DelIcon from '@material-ui/icons/DeleteForever';
 import ImgIcon from '@material-ui/icons/ImageSearch';
 import SearchIcon from '@material-ui/icons/Search';
-const CreateCardSet = () => {
+const ModifyCardSet = ({location}) => {
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
-    const [rows,setRows] = useState(
-        [
-            {
-                id: 1,
-                question: '',
-                answer:'',
-                visible : false,
-                img : '',
-                imgSrc : '',
-                searchText : ''
-            }
-        ]
-    );
-    
+    const [rows,setRows] = useState([]);
+    /*
+        {
+            id: 1,
+            question: '',
+            answer:'',
+            visible : false,
+            img : '',
+            imgSrc : '',
+            searchText : ''
+        }
+    */
     const [openScope, setOpenScope] = useState('public');
     const [openPassword, setOpenPassword] = useState('');
     const [openPasswordVisible, setOpenPasswordVisible] = useState(false);
@@ -34,7 +32,63 @@ const CreateCardSet = () => {
     const [searchImgList, setSearchImgList] = useState([]);
     const [rowId,setRowId] = useState('');
     const [resdata,setResdata] = useState([]);
-    
+    const [list, setList] = useState([]);
+    useEffect(()=>{
+        let url = location.pathname;
+        //카드 세트의 번호 가져오기
+        var no = url.substring(url.lastIndexOf('/')+1,url.length);
+        url = "http://localhost:9000/getcardset";
+        const getCardSet = async() => {
+            try{
+                let cardset = await axios.post(url,{no});
+                let csdto = cardset.data.csdto;
+                let list = cardset.data.list;
+                setTitle(csdto.title);
+                setComment(csdto.comment);
+                setOpenScope(csdto.open_scope);
+                setOpenPassword(csdto.open_password);
+                setUpdateScope(csdto.update_scope);
+                setUpdatePassword(csdto.update_password);
+                if(csdto.open_scope === 'member') setOpenPasswordVisible(true);
+                if(csdto.update_scope === 'member') setUpdatePasswordVisible(true);
+                setList(list);
+                // list.map((item,idx) => {
+                //     let data = {
+                //                     id: item.question_no,
+                //                     question: item.question,
+                //                     answer:item.answer,
+                //                     visible : false,
+                //                     img : '',
+                //                     imgSrc : '',
+                //                     searchText : ''
+                //                 }
+                //     setRows([...rows, data]);
+                //     setNum(item.question_no+1);
+                // });
+            }catch(e){
+                console.log(e);
+            }
+        }
+
+        getCardSet();
+
+    },[]);
+
+    useEffect(() => {
+        list.map((item,idx) => {
+            let data =  {
+                            id: item.question_no,
+                            question: item.question,
+                            answer:item.answer,
+                            visible : false,
+                            img : '',
+                            imgSrc : '',
+                            searchText : ''
+                        }
+            setRows(rows.push(data));
+        })
+        console.log(rows);
+    },[list])
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
         setTitle(e.target.value);
@@ -377,30 +431,31 @@ const CreateCardSet = () => {
                 <Grid container>
                     <Grid container style={{marginBottom:'50px'}}>
                         <Grid xs={12} md={12}>
-                            <div class="crt_top">세트 만들기</div>
+                            <div class="crt_top">세트 수정</div>
                         </Grid>
                     </Grid>
                     {/* 제목, 설명 */}
                     <Grid xs={12} md={12}>
                         <div className="crt_top_input_box">
                             <label for="title" className="crt_input_font">제목</label><br/>
-                            <input type="text" name="title" id="title" className="crt_title inputTop" placeholder="제목을 입력하세요." onChange={changeTitle}/><br/>
+                            <input type="text" name="title" id="title" className="crt_title inputTop" placeholder="제목을 입력하세요." onChange={changeTitle} value={title}/><br/>
                             <label for="comment" className="crt_input_font">설명</label><br/>
-                            <input type="text" name="comment" id="comment" className="crt_title inputTop" placeholder="설명을 입력하세요." onChange={changeComment}/><br/> 
+                            <input type="text" name="comment" id="comment" className="crt_title inputTop" placeholder="설명을 입력하세요." onChange={changeComment} value={comment}/><br/> 
                         </div>
                     </Grid>
                     {/* 공개범위 */}
                     <Grid xs={6} md={6}>
                         <span className="crt_input_font web">공개</span><br/>
                         <select id="openScope" onChange={passwordVisible} className="crt_slt_bar">
-                            <option value="public" selected>모두</option>
-                            <option value="member">비밀번호를 아는 사람</option>
-                            <option value="private">나만</option>
+                            {/* checked = {openScope === "public" ? "checked" : ""} */}
+                            <option value="public" selected={openScope === "public" ? "true" : ""}>모두</option>
+                            <option value="member" selected={openScope === "member" ? "true" : ""}>비밀번호를 아는 사람</option>
+                            <option value="private" selected={openScope === "private" ? "true" : ""}  >나만</option>
                         </select><br/>
                         {/* 공개 비밀번호 */}
                         {
                             openPasswordVisible ? <input type="password" id="openPassword" name="openPassword" 
-                                                className="crt_hidden_pass" placeholder="비밀번호 입력" onChange={changePassword}/> : ''
+                                                className="crt_hidden_pass" placeholder="비밀번호 입력" value={openPassword} onChange={changePassword}/> : ''
                         }
                         
                     </Grid>
@@ -408,13 +463,13 @@ const CreateCardSet = () => {
                     <Grid xs={6} md={6}>
                     <span className="crt_input_font web">수정</span><br/>
                         <select id="updateScope" onChange={passwordVisible}  className="crt_slt_bar">
-                            <option value="member">비밀번호를 아는 사람</option>
-                            <option value="private" selected>나만</option>
+                            <option value="member" selected={openScope === "member" ? "true" : ""}>비밀번호를 아는 사람</option>
+                            <option value="private" selected={openScope === "private" ? "true" : ""}>나만</option>
                         </select><br/>
                         {/* 수정 비밀번호 */}
                         {
                             updatePasswordVisible ? <input type="password" id="updatePassword" name="updatePassword"  placeholder="비밀번호 입력"
-                                                           className="crt_hidden_pass" onChange={changePassword}/> : ''
+                                                           className="crt_hidden_pass" value={updatePassword} onChange={changePassword}/> : ''
                         }
                         
                     </Grid>
@@ -509,4 +564,4 @@ const CreateCardSet = () => {
         </div>
     );
 }
-export default CreateCardSet;
+export default ModifyCardSet;
