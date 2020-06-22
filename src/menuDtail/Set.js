@@ -155,7 +155,6 @@ const Set=()=>{
                         text = '';
                       }
                     }
-                    console.log(item.createday);
                     return (
                       <div>
                         {/* <p className="sq_timeset">{item.createday}</p> */}

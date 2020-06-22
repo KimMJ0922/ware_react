@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Home,Create,Search,Signin,Signup,ChangePassword,Study} from './contents';/*index.js호출*/
+import {Home,Create,Search,Signin,Signup,ChangePassword,Study,ModifyCardSet} from './contents';/*index.js호출*/
 import Board from './board/Board';
 import Main from './main/Main';
 import Top from './top/Top';
@@ -11,6 +11,10 @@ const Title = () => {
     {
       path:'/study/:no',
       component : Study
+    },
+    {
+      path:'/modify/:no',
+      component : ModifyCardSet
     },
     {
       // default page

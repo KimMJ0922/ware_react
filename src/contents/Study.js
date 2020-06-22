@@ -2,6 +2,7 @@ import React,{useState,useEffect, useReducer} from 'react';
 import axios from 'axios';
 import { AudioAnalyser } from 'three';
 import { relativeTimeRounding } from 'moment';
+import { red } from '@material-ui/core/colors';
 
 const Study=({location})=>{
   const [memberInfo, setMemberInfo] = useState({
@@ -179,6 +180,28 @@ const Study=({location})=>{
 
     })
   }
+
+  //수정 버튼 클릭 시
+  const privateUpdate = () => {
+    window.location.href="/modify/"+cardSetInfo.no;
+  } 
+
+  const memberUpdate = () => {
+    let pass = window.prompt("수정 비밀번호를 입력해주세요");
+
+    let url = "http://localhost:9000/updatepasscheck";
+
+    axios.post(url,{
+      no : cardSetInfo.no,
+      update_password : pass
+    }).then((res) => {
+      if(res.data){
+        window.location.href="/modify/"+cardSetInfo.no;
+      }
+    }).catch((err) => {
+
+    });
+  }
   var maxCard = cardList.length;
   return(
       <>
@@ -262,7 +285,9 @@ const Study=({location})=>{
           </div>
         }
         <div style={{clear:'both'}}>
-          <button type="button">수정</button>
+          {/* 수정 버튼 */}
+           <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}>수정</button>
+
           {/* 삭제 버튼 */}
           {
             parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}>삭제</button> : ""
