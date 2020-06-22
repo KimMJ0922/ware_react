@@ -58,8 +58,6 @@ const CreateCardSet = () => {
         };
         setRows(rows.concat(data));
         setNum(num+1);
-
-        console.log(rows);
     };
 
     //텍스트 입력

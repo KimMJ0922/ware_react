@@ -52,7 +52,7 @@ const Study=({location})=>{
             question_no : item.question_no,
             question : item.question,
             answer : item.answer,
-            imgFile : item.imgFile
+            imgSrc : item.imgSrc
           }
           cardList.push(data);
         })
@@ -202,10 +202,19 @@ const Study=({location})=>{
 
     });
   }
+
+  //더블 클릭 막기
+  const dobuleClickDefen = (e) => {
+    e.preventDefault();
+  }
+
+  const allFalse = () => {
+    return false;
+  }
   var maxCard = cardList.length;
   return(
-      <>
-        <div>
+      <div oncontextmenu={allFalse} ondragstart={allFalse} onselectstart={allFalse}>
+        <div onDoubleClick={dobuleClickDefen}>
           <h2>{cardSetInfo.title}</h2>
           <h3>{cardSetInfo.comment}</h3>
         </div>
@@ -237,7 +246,7 @@ const Study=({location})=>{
                     <div onClick={settingCheck === false ? cardClick : null} style={{width:'400px', height:'300px', border:'1px solid gray', textAlign:'center', float:'left'}}>
                       {/* 이미지가 있으면 화면에 출력 */}
                       {
-                        item.imgFile !== "" && cardState === false && <img src={item.imgFile} alt="" style={{width:'150px', height:'150px'}}/>
+                        item.imgSrc !== "" && cardState === false && <img src={item.imgSrc} alt="" style={{width:'150px', height:'150px'}}/>
                       }
                       <br/>
                       {/* cardState가 false면 문제를 보여주고, cardState가 true면 답을 보여준다. */}
@@ -293,7 +302,7 @@ const Study=({location})=>{
             parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}>삭제</button> : ""
           }
         </div>
-      </>
+      </div>
   )
 }
 export default Study;

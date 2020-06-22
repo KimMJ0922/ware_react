@@ -261,7 +261,7 @@ const Setting = () => {
                 <Paper className="set_prof_box_top">
                     { 
                         provider !== "default" &&                      
-                        <img src={window.sessionStorage.getItem('socialProfile')} alt=""
+                        <img src={window.sessionStorage.getItem('profile')} alt=""
                          onClick={socialProfileImgClick} className="set_befor_img"/>                                  
                     }
                      <p className="set_top_font2">현재 프로필</p>

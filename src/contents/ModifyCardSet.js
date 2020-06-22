@@ -6,26 +6,15 @@ import { Paper } from '@material-ui/core';
 import DelIcon from '@material-ui/icons/DeleteForever';
 import ImgIcon from '@material-ui/icons/ImageSearch';
 import SearchIcon from '@material-ui/icons/Search';
+
 const ModifyCardSet = ({location}) => {
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
     const [comment,setComment] = useState('');
     const [rows,setRows] = useState([]);
-    /*
-        {
-            id: 1,
-            question: '',
-            answer:'',
-            visible : false,
-            img : '',
-            imgSrc : '',
-            searchText : ''
-        }
-    */
     const [openScope, setOpenScope] = useState('public');
     const [openPassword, setOpenPassword] = useState('');
     const [openPasswordVisible, setOpenPasswordVisible] = useState(false);
-
     const [updateScope, setUpdateScope] = useState('private');
     const [updatePassword, setUpdatePassword] = useState('');
     const [updatePasswordVisible, setUpdatePasswordVisible] = useState(false);
@@ -33,6 +22,7 @@ const ModifyCardSet = ({location}) => {
     const [rowId,setRowId] = useState('');
     const [resdata,setResdata] = useState([]);
     const [list, setList] = useState([]);
+    const [count, setCount] = useState(0);
     useEffect(()=>{
         let url = location.pathname;
         //카드 세트의 번호 가져오기
@@ -40,9 +30,13 @@ const ModifyCardSet = ({location}) => {
         url = "http://localhost:9000/getcardset";
         const getCardSet = async() => {
             try{
-                let cardset = await axios.post(url,{no});
+                let cardset = await axios.post(url,{no,member_no : window.sessionStorage.getItem('no')});
                 let csdto = cardset.data.csdto;
                 let list = cardset.data.list;
+                console.log(list);
+                if(csdto.update_scope === 'private' && parseInt(window.sessionStorage.getItem('no')) !== csdto.member_no){
+                    window.location.replace('/study/'+no);
+                }
                 setTitle(csdto.title);
                 setComment(csdto.comment);
                 setOpenScope(csdto.open_scope);
@@ -52,42 +46,31 @@ const ModifyCardSet = ({location}) => {
                 if(csdto.open_scope === 'member') setOpenPasswordVisible(true);
                 if(csdto.update_scope === 'member') setUpdatePasswordVisible(true);
                 setList(list);
-                // list.map((item,idx) => {
-                //     let data = {
-                //                     id: item.question_no,
-                //                     question: item.question,
-                //                     answer:item.answer,
-                //                     visible : false,
-                //                     img : '',
-                //                     imgSrc : '',
-                //                     searchText : ''
-                //                 }
-                //     setRows([...rows, data]);
-                //     setNum(item.question_no+1);
-                // });
             }catch(e){
                 console.log(e);
             }
-        }
-
+        }        
         getCardSet();
-
     },[]);
 
     useEffect(() => {
+        let t = [];
         list.map((item,idx) => {
-            let data =  {
-                            id: item.question_no,
-                            question: item.question,
-                            answer:item.answer,
-                            visible : false,
-                            img : '',
-                            imgSrc : '',
-                            searchText : ''
-                        }
-            setRows(rows.push(data));
+            let visible = false
+            if(item.imgFile !== "") visible = true;
+            t.push({
+                id: item.question_no,
+                question: item.question,
+                answer:item.answer,
+                visible : visible,
+                img : item.imgFile,
+                imgSrc : item.imgSrc,
+                searchText : ''
+            });
+            setNum(item.question_no+1);
         })
-        console.log(rows);
+        setRows([...t]);
+        console.log(num);
     },[list])
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
@@ -336,10 +319,15 @@ const ModifyCardSet = ({location}) => {
             return false;
         }
 
-        let url = "http://localhost:9000/insert";
+        let url = "http://localhost:9000/updatecardset";
+
+        let path = location.pathname;
+        //카드 세트의 번호 가져오기
+        var no = path.substring(path.lastIndexOf('/')+1,path.length);
         axios.post(url,
             {
-                no : window.sessionStorage.getItem('no'),
+                no,
+                member_no : window.sessionStorage.getItem('no'),
                 rows,
                 title,
                 comment,
@@ -349,7 +337,7 @@ const ModifyCardSet = ({location}) => {
                 updateScope
             }
         ).then((res)=>{
-            window.location.replace("/home/set");
+            window.location.replace("/study/"+no);
         }).catch((error)=>{
             console.log("error"+error);
         });
@@ -463,8 +451,8 @@ const ModifyCardSet = ({location}) => {
                     <Grid xs={6} md={6}>
                     <span className="crt_input_font web">수정</span><br/>
                         <select id="updateScope" onChange={passwordVisible}  className="crt_slt_bar">
-                            <option value="member" selected={openScope === "member" ? "true" : ""}>비밀번호를 아는 사람</option>
-                            <option value="private" selected={openScope === "private" ? "true" : ""}>나만</option>
+                            <option value="member" selected={updateScope === "member" ? "true" : ""}>비밀번호를 아는 사람</option>
+                            <option value="private" selected={updateScope === "private" ? "true" : ""}>나만</option>
                         </select><br/>
                         {/* 수정 비밀번호 */}
                         {
@@ -555,7 +543,7 @@ const ModifyCardSet = ({location}) => {
                 </Grid>
                 <Grid xs={12} md={12}>
                     <div className="crt_create_btn_box">
-                    <button type="submit" className="crt_create_btn">만들기</button>
+                    <button type="submit" className="crt_create_btn">수정하기</button>
                     </div>
                 </Grid>
                 {/* 컨테이너 그리드 */}
