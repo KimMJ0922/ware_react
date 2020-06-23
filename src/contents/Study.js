@@ -56,6 +56,7 @@ const Study=({location})=>{
         if(no === null || no === 'null' || no === ''){
           routerHistory.go(-1);
         }
+        
         let list = await axios.post(url,{no});
         let mem = list.data.mdto
         let cardSet = list.data.csdto;
