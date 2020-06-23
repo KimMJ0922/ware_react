@@ -56,7 +56,7 @@ const Study=({location})=>{
         if(no === null || no === 'null' || no === ''){
           routerHistory.go(-1);
         }
-        
+
         let list = await axios.post(url,{no});
         let mem = list.data.mdto
         let cardSet = list.data.csdto;
@@ -197,7 +197,7 @@ const Study=({location})=>{
 
   //수정 버튼 클릭 시
   const privateUpdate = () => {
-    routerHistory.push=("/modify");
+    routerHistory.push("/modify");
   } 
 
   const memberUpdate = () => {
@@ -221,6 +221,10 @@ const Study=({location})=>{
     routerHistory.push('/subjective');
   }
 
+  //객관식 이동
+  const Choice = () => {
+    routerHistory.push('/choice');
+  }
   var maxCard = cardList.length;
   return(
       <>
@@ -237,12 +241,12 @@ const Study=({location})=>{
             <div className="std_menu_box">
             <p>문제 풀기</p>
             <button type="button"><BookIcon/>학습하기</button>
-            <button type="button"><MouseIcon/>객관식</button>
+            <button type="button" onClick={Choice}><MouseIcon/>객관식</button>
             <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
             <button type="button"><TestIcon/>테스트</button>
             <p>설정</p>   
              {/* 수정 버튼 */}
-           <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
+            <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
               {/* 삭제 버튼 */}
               {
                 parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}><DeleteIcon/>삭제</button> : ""

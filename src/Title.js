@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {useHistory} from 'react-router';
 import {Route, Switch} from 'react-router-dom';
-import {Home,Create,Search,Signin,Signup,ChangePassword,Study,ModifyCardSet,Subjective} from './contents';/*index.js호출*/
+import {Home,Create,Search,Signin,Signup,ChangePassword,Study,ModifyCardSet,Subjective,Choice} from './contents';/*index.js호출*/
 import Board from './board/Board';
 import Main from './main/Main';
 import Top from './top/Top';
@@ -21,6 +21,10 @@ const Title = (props) => {
     {
       path:'/subjective',
       component : Subjective
+    },
+    {
+      path: '/choice',
+      component : Choice
     },
     {
       // default page

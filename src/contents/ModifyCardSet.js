@@ -321,9 +321,8 @@ const ModifyCardSet = ({location}) => {
 
         let url = "http://localhost:9000/updatecardset";
 
-        let path = location.pathname;
         //카드 세트의 번호 가져오기
-        var no = path.substring(path.lastIndexOf('/')+1,path.length);
+        var no = window.sessionStorage.getItem('cardset_no');
         axios.post(url,
             {
                 no,
