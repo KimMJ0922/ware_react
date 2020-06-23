@@ -98,6 +98,18 @@ const BoardItem=({match})=> {
     }
     const golist = () => {
         history.push("/home/board?page="+match.params.pageNum);
+        //history.goBack();
+    }
+
+    const deleteboard= async ()=>{
+        try {
+            await Axios.get(
+                "http://localhost:9000/board/delete?board_no="+board_no
+            )
+            history.push("/home/board?page="+match.params.pageNum);
+        } catch (e) {
+            console.log(e);
+        }
     }
     return ( 
         <div>
@@ -116,13 +128,16 @@ const BoardItem=({match})=> {
                         <p>인덱스 : {index}</p>
                         <p>문제 : {row.question}</p>
                         <p>답 : {row.answer}</p>
+                        {
+                            row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
+                        }
                     </div>
                 ))
             }
             <br/>
             <button type="button" onClick={golist}>리스트</button>
             <button type="button" >수정</button>
-            <button type="button" >삭제</button>
+            <button type="button" onClick={deleteboard}>삭제</button>
         </div>
     );
 }
