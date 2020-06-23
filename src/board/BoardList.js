@@ -48,7 +48,9 @@ const BoardList=()=>{
                 console.log(e);
             }
         }
-        getData();
+        setTimeout(()=>{
+            getData();
+        },100);
         BoardCount();
     },[pageNum])
     
