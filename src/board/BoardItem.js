@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import {useHistory} from 'react-router';
 import Axios from 'axios';
 
 const BoardItem=({match})=> {
-    console.log(match.params.board_no);
+    var history = useHistory();
+    //console.log("pagenum : "+match.params.pageNum);
     const [item, setItem] = useState({
         board_no : '',
         content : '',
@@ -93,7 +95,9 @@ const BoardItem=({match})=> {
             rte="profile/default/";
         }
     }
-
+    const golist = () => {
+        history.push("/home/board?page="+match.params.pageNum);
+    }
     return ( 
         <div>
             제목 : {item.subject}<br/>
@@ -114,6 +118,10 @@ const BoardItem=({match})=> {
                     </div>
                 ))
             }
+            <br/>
+            <button type="button" onClick={golist}>리스트</button>
+            <button type="button" >수정</button>
+            <button type="button" >삭제</button>
         </div>
     );
 }

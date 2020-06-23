@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { MemoryRouter, Route } from 'react-router';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import BoardItems from './BoardItems';
@@ -14,6 +14,7 @@ import { Grid, Radio } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
 const BoardList=()=>{ 
+    
     const [boardData, setBoardData] = useState([]);
     const [countNum, setCountNum] = useState(0);
     const [pageNum, setPageNum] = useState(0);
@@ -25,6 +26,7 @@ const BoardList=()=>{
       };
 
     useEffect(()=>{
+        console.log("list호출");
         const getData = async () =>{
             try {
                 const data = await Axios.get(
@@ -46,7 +48,9 @@ const BoardList=()=>{
                 console.log(e);
             }
         }
-        getData();
+        setTimeout(()=>{
+            getData();
+        },100);
         BoardCount();
     },[pageNum])
     
@@ -91,7 +95,7 @@ const BoardList=()=>{
             </Grid>
             {
                 boardData.map((row,index) => (
-                    <BoardItems row={row} index={index}/>
+                    <BoardItems row={row} pageNum={pageNum}/>
                 ))
             }   
             {/* 여백채우기용 */}
@@ -103,7 +107,7 @@ const BoardList=()=>{
            
             <Grid xs={12} md={12}>
             <div className="BoardPagination">
-                <MemoryRouter initialEntries={['/home/board']} initialIndex={0}>
+                <BrowserRouter>
                     <Route>
                         {({ location }) => {
                         const query = new URLSearchParams(location.search);
@@ -126,7 +130,7 @@ const BoardList=()=>{
                         );
                         }}
                     </Route>
-                </MemoryRouter>
+                </BrowserRouter>
             </div>
             </Grid>
 
