@@ -214,18 +214,11 @@ const Study=()=>{
     });
   }
 
-  //더블 클릭 막기
-  const dobuleClickDefen = (e) => {
-    e.preventDefault();
-  }
-
   //주관식으로 이동
   const Subjective = () => {
     routerHistory.push('/subjective');
   }
-  const allFalse = () => {
-    return false;
-  }
+
   var maxCard = cardList.length;
   return(
       <>
@@ -242,7 +235,7 @@ const Study=()=>{
             <p>문제 풀기</p>
             <button type="button"><BookIcon/>학습하기</button>
             <button type="button"><MouseIcon/>객관식</button>
-            <button type="button"><KeyboardIcon/>주관식</button>
+            <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
             <button type="button"><TestIcon/>테스트</button>
             <p>설정</p>   
              {/* 수정 버튼 */}
@@ -287,7 +280,7 @@ const Study=()=>{
                         cardState === false ? item.question : item.answer
                       }
                       {
-                        item.imgFile !== "" && cardState === false && <img src={item.imgFile} className="std_content_img" alt=""/>
+                        item.imgSrc !== "" && cardState === false && <img src={item.imgSrc} className="std_content_img" alt=""/>
                       }               
                    </div>
                    <div className="std_contetn_next">

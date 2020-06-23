@@ -85,8 +85,12 @@ const Set=()=>{
   //그러기 때문에 router에 있는 useHistory로 이동해야 유지됨.
   const linkClick = (e) => {
     e.preventDefault();
-    window.sessionStorage.setItem('cardset_no',e.target.id);
-    history.push('/study');
+    let id = e.target.id;
+    setTimeout(() => {
+      window.sessionStorage.setItem('cardset_no',id);
+      history.push('/study');
+    },100)
+    
   }
   //더보기 버튼
   const moreCardSetList = () => {
@@ -179,9 +183,9 @@ const Set=()=>{
                         <Link to="" onClick={item.open_scope === "public" ? linkClick : item.open_scope === "private" ? linkClick : checkPass}>                       
                           <div className="sq_on_cnt" style={{backgroundColor:'white', 
                               boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>
-                            <span className="sq_on_txt_cnt">{item.cnt} 단어</span>
+                            <span className="sq_on_txt_cnt" id={item.no}>{item.cnt} 단어</span>
 
-                            <div className="sq_on_title_box">
+                            <div className="sq_on_title_box" id={item.no}>
                             <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
                              {
                                 item.open_scope === "public" ? 
