@@ -214,7 +214,6 @@ const Study=({location})=>{
 
     });
   }
-
   //주관식으로 이동
   const Subjective = () => {
     routerHistory.push('/subjective');
