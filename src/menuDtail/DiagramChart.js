@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Hidden, Button } from '@material-ui/core';
-import { ExpandMore,ExpandLess } from '@material-ui/icons';
+import { ExpandMore,ExpandLess,ChevronRight } from '@material-ui/icons';
+import {Link} from 'react-router-dom';
 
 import { XYPlot, ArcSeries, YAxis, VerticalBarSeries, XAxis } from 'react-vis';
 import './MenuDtail.css'
@@ -16,12 +17,12 @@ const DiagramChart=()=>{
     const PI = Math.PI;
 
     const [totalCount,setTotalCount] =useState(58); //총 문제 갯수 
-    const [rightCount, setRightCount] = useState(24); // 맞은갯수
+    const [rightCount, setRightCount] = useState(29); // 맞은갯수
     const [wrongCount, setWrongCount] = useState(totalCount-rightCount); //틀린 갯수
   
     const [rightCountScore, setRightCountScore] = useState(rightCount/totalCount); //정답률
     const [godLoopCnt, setGodLoopCnt] = useState((rightCountScore*100).toFixed(1));
-  
+    
     const [myGoodData, setMyGoodData] = useState([{
         angle0:0,
         angle: 0,
@@ -58,11 +59,7 @@ const DiagramChart=()=>{
         {x: '4회', y: 51},
         {x: '5회', y: 100}
     ]);
-
-    const [settingCheck, setSettingCheck] = useState(false);
-    const expandChange = (e) => {
-        setSettingCheck(!settingCheck);    
-      }
+    
     useEffect(()=>{
         //웹 오답률 출력
         setTimeout(()=>{
@@ -136,6 +133,7 @@ const DiagramChart=()=>{
                 })(i);
             }
         },1100);  
+       
     },[]);
 
 
@@ -143,18 +141,18 @@ const DiagramChart=()=>{
     return(
         
         <Grid container  className='DiagramInfo' style={diagramInfoActive} >
-
+            
             {/* 웹용 */}
             <Hidden only={['xs','sm']}>
-                <Grid xs={6} md={6} lg={6} className='DiagramInfoCardBox'>
-                <span className='DiagramInfoCardSubject'>제목1</span>
-                    <span className='DiagramInfoCardcommit'>부제123123123</span>
-                    <div className='mycardCardId'>
+            <Grid md={4} className='DiagramInfoCardBox'>
+                    <span className='DiagramInfoCardSubject'>제목1</span>
+                    <span className='DiagramInfoCardCommit'>부제123123123</span>
+                    <div className='DiagramInfoCard'>
                         <img src={ProfileImg} className='DiagramInfoCardImg' alt=''/>
-                        <span>ExampleID</span>
+                        <span className='DiagramInfoCardId'>ExampleID</span>
                     </div>
                 </Grid>
-                <Grid xs={3} md={3} lg={3} className='DiagramInfoChart01'>
+                <Grid md={3} lg={3} className='DiagramInfoChart01'>
                     <div className='ArcSeries'>
                         <XYPlot
                             xDomain={[-5, 5]}
@@ -180,10 +178,10 @@ const DiagramChart=()=>{
                         </XYPlot>
                     </div>
                     <div className='ArcSeriesPoint' >
-                    {(rightCountScore*100).toFixed(1)}%
+                     {(rightCountScore*100).toFixed(1)}%
                     </div>
                 </Grid>
-                <Grid xs={3} md={3} lg={3} className='DiagramInfoChart02'>
+                <Grid md={4} lg={4} className='DiagramInfoChart02'>
                     <div class='VerticalBarSeries'>
                     <XYPlot
                             xType="ordinal"
@@ -202,6 +200,12 @@ const DiagramChart=()=>{
                     </XYPlot>    
                     </div>
                 </Grid>
+                <Grid md={1} lg={1}>
+                    <Button id='DiagramDetail'>
+                    <ChevronRight style={{ fontSize: 45 }}/>
+                    </Button>
+                </Grid>
+               
             </Hidden>
 
 
@@ -259,18 +263,22 @@ const DiagramChart=()=>{
                                     s
                                     // barWidth='0.4'
                                     // cluster="2015"
-                                    color="#12939A"
+                                    color="#405de8"
                                     data={[...barData]}
                                 />
                         </XYPlot>    
                     </div>
                 </Grid>
+               
             </Hidden>
-            <div className='moreView' onClick={expandChange}>
+            <div className='moreView'>
                 
-                {
-                    settingCheck === false ? <Button><ExpandMore/></Button> : <Button><ExpandLess/></Button>
-                }
+                <Link exact to='/home/diagramlist'>
+                    <Button id='DiagramDetail'>
+                        <ExpandMore style={{ fontSize: 40 }}/>
+                    </Button>
+                </Link>
+                
             </div>
         </Grid>
     )
