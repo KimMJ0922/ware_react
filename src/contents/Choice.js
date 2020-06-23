@@ -147,10 +147,10 @@ const Choice = () => {
                                         if(i === random){
                                             return(
                                                 <>
-                                                <button type="button" value={item.answer1} onClick={btnClick}>{item.answer1}</button>
-                                                <button type="button" value={item.answer2} onClick={btnClick}>{item.answer2}</button>
-                                                <button type="button" value={item.answer3} onClick={btnClick}>{item.answer3}</button>
-                                                <button type="button" value={item.answer4} onClick={btnClick}>{item.answer4}</button>
+                                                    <button type="button" value={item.answer1} onClick={btnClick}>{item.answer1}</button>
+                                                    <button type="button" value={item.answer2} onClick={btnClick}>{item.answer2}</button>
+                                                    <button type="button" value={item.answer3} onClick={btnClick}>{item.answer3}</button>
+                                                    <button type="button" value={item.answer4} onClick={btnClick}>{item.answer4}</button>
                                                 </>
                                             )
                                         }
