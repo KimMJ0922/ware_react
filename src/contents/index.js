@@ -8,3 +8,4 @@ export {default as Study} from './Study';
 export {default as ModifyCardSet} from './ModifyCardSet';
 export {default as Subjective} from './Subjective';
 export {default as Choice} from './Choice';
+export {default as Test} from './Test';

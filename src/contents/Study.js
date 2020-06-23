@@ -225,6 +225,10 @@ const Study=({location})=>{
   const Choice = () => {
     routerHistory.push('/choice');
   }
+  //테스트 이동
+  const goTest = () => {
+    routerHistory.push('/test');
+  }
   var maxCard = cardList.length;
   return(
       <>
@@ -241,9 +245,9 @@ const Study=({location})=>{
             <div className="std_menu_box">
             <p>문제 풀기</p>
             <button type="button"><BookIcon/>학습하기</button>
-            <button type="button" onClick={Choice}><MouseIcon/>객관식</button>
+            <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
             <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
-            <button type="button"><TestIcon/>테스트</button>
+            <button type="button" onClick={goTest}><TestIcon/>테스트</button>
             <p>설정</p>   
              {/* 수정 버튼 */}
             <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
@@ -344,7 +348,7 @@ const Study=({location})=>{
             <button type="button"><TestIcon/>테스트</button>
             <p>설정</p>   
              {/* 수정 버튼 */}
-           <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
+            <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
               {/* 삭제 버튼 */}
               {
                 parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}><DeleteIcon/>삭제</button> : ""
