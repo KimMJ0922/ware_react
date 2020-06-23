@@ -1313,7 +1313,7 @@ border: none;
     }
 }
 
-/* 클래스(검색 만들기) - media 웹 최소 사이즈 */
+/* 클래스(검색 만들기) - media 일반 사이즈 */
 @media(min-width:550px){
     .gld_sch_body{
         width: 100%;
@@ -1397,4 +1397,126 @@ border: none;
     @media(max-width: 375px){
 
     }
+}
+
+
+
+/* Diagram - media 일반 사이즈 */
+@media(min-width: 551px){
+
+}
+/* Diagram - media 웹 최소 사이즈 */
+@media(max-width: 550px){
+    .DiagramInfo{
+        height: 212px;
+        padding: 0.6rem;
+        box-shadow: 2px 12px 11px #a8a8a8;
+        border-radius: 13px;
+    }
+    .ArcSeriesPoint{
+        position: relative;
+        top: -6.5rem;
+        left: 5.3rem;
+        color: #1483c3;
+        font-weight: 400;
+        text-shadow: 0px 0px 0px grey;
+        font-size: 1.5rem;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCardSubject{
+        display: block;
+        font-weight: 400;
+        font-size: 1.5rem;
+        overflow:hidden; 
+        text-overflow:ellipsis; 
+        white-space:nowrap;
+
+    }
+    .DiagramInfoCardBox>.DiagramInfoCardCommit{
+        display: block;
+        padding: 0.2rem 0;
+        overflow:hidden; 
+        text-overflow:ellipsis; 
+        white-space:nowrap;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCard{
+        padding: 0 0.3rem;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCard>.DiagramInfoCardImg{
+        width: 55px;
+        height: 55px;
+        border-radius: 40px;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCard>.DiagramInfoCardId{
+        font-size: 1.3rem;
+        display: inline-block;
+        padding-left: 0.8rem;
+        position: relative;
+        top: -20px;
+    }
+    /* .VerticalBarSeries>.rv-xy-plot >.rv-xy-plot__axis{
+        padding: 0.2rem;
+    }
+    .VerticalBarSeries>.rv-xy-plot >.rv-xy-plot__inner{
+        width: 250px;
+    } */
+     .DiagramInfoChart01>.ArcSeries{
+        margin: 0 auto;
+        width: 170px;
+     }                           
+                                
+}
+/* Diagram - media 웹 최소 사이즈 */
+@media(max-width: 375px){
+    .DiagramInfo{
+        padding: 0.6rem;
+        box-shadow: 2px 12px 11px #a8a8a8;
+        border-radius: 13px;
+        transition: 0.12s;
+    }
+    .ArcSeriesPoint{
+        position: relative;
+        top: -6.4rem;
+        left: 3.1rem;
+        color: #1483c3;
+        font-weight: 400;
+        text-shadow: 0px 0px 0px grey;
+        font-size: 1.5rem;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCardSubject{
+        display: block;
+        font-weight: 400;
+        font-size: 1.5rem;
+        overflow:hidden; 
+        text-overflow:ellipsis; 
+        white-space:nowrap;
+
+    }
+    .DiagramInfoCardBox>.DiagramInfoCardCommit{
+        display: block;
+        padding: 0.2rem 0;
+        overflow:hidden; 
+        text-overflow:ellipsis; 
+        white-space:nowrap;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCard{
+        padding: 0 0.3rem;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCard>.DiagramInfoCardImg{
+        width: 55px;
+        height: 55px;
+        border-radius: 40px;
+    }
+    .DiagramInfoCardBox>.DiagramInfoCard>.DiagramInfoCardId{
+        font-size: 1.3rem;
+        display: inline-block;
+        padding-left: 0.8rem;
+        position: relative;
+        top: -20px;
+    }
+    .moreView{
+        position: relative;
+        top: -74px;
+        left: 147px;
+    }
+
 }
