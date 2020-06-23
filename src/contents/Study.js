@@ -1,4 +1,5 @@
 import React,{useState,useEffect, useReducer} from 'react';
+import {useHistory} from 'react-router';
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -15,7 +16,8 @@ import { AudioAnalyser } from 'three';
 import { relativeTimeRounding } from 'moment';
 import { red } from '@material-ui/core/colors';
 
-const Study=({location})=>{
+const Study=()=>{
+  var routerHistory = useHistory();
   const [memberInfo, setMemberInfo] = useState({
     no : '',
     name : '',
@@ -43,12 +45,14 @@ const Study=({location})=>{
 
   //페이지가 불러와지면 처음 실행
   useEffect(()=>{
-    let url = location.pathname;
-    //카드 세트의 번호 가져오기
-    var no = url.substring(url.lastIndexOf('/')+1,url.length);
-    url = "http://localhost:9000/getcardlist"
+    let url = "http://localhost:9000/getcardlist"
 
     const getCard = async() =>{
+      let no = window.sessionStorage.getItem('cardset_no');
+      console.log(no);
+      if(no === null || no === 'null' || no === ''){
+        routerHistory.go(-1);
+      }
       try{
         let list = await axios.post(url,{no});
         let mem = list.data.mdto
@@ -63,7 +67,7 @@ const Study=({location})=>{
             question_no : item.question_no,
             question : item.question,
             answer : item.answer,
-            imgFile : item.imgFile
+            imgSrc : item.imgSrc
           }
           cardList.push(data);
         })
@@ -182,7 +186,8 @@ const Study=({location})=>{
     axios.post(url,{
       no : cardSetInfo.no
     }).then((res) => {
-      window.location.replace("/home/set");
+      window.sessionStorage.setItem('cardset_no',null);
+      routerHistory.replace("/home/set");
     }).catch((err) => {
 
     })
@@ -190,7 +195,7 @@ const Study=({location})=>{
 
   //수정 버튼 클릭 시
   const privateUpdate = () => {
-    window.location.href="/modify/"+cardSetInfo.no;
+    routerHistory.push("/modify");
   } 
 
   const memberUpdate = () => {
@@ -202,11 +207,24 @@ const Study=({location})=>{
       update_password : pass
     }).then((res) => {
       if(res.data){
-        window.location.href="/modify/"+cardSetInfo.no;
+        routerHistory.push("/modify");
       }
     }).catch((err) => {
 
     });
+  }
+
+  //더블 클릭 막기
+  const dobuleClickDefen = (e) => {
+    e.preventDefault();
+  }
+
+  //주관식으로 이동
+  const Subjective = () => {
+    routerHistory.push('/subjective');
+  }
+  const allFalse = () => {
+    return false;
   }
   var maxCard = cardList.length;
   return(

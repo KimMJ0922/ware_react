@@ -10,7 +10,7 @@ import Signup from '../contents/Signup';
 // 프로필 예시 사진
 import img2 from './iu.jpg';
 
-const Top = ({path}) =>{
+const Top = (props) =>{
     const [userInfo, setUserInfo] = useState({
         email : window.sessionStorage.getItem('email'),
         name : window.sessionStorage.getItem('name'),
@@ -59,7 +59,7 @@ const Top = ({path}) =>{
       
 
    
-    if(path === "/"){
+    if(props.path === "/"){
         return (
             <div id='topMainFirst'>
                 <Grid container spacing={0}>
@@ -105,11 +105,7 @@ const Top = ({path}) =>{
                   <Signup/>
                  </div>      
             </Modal>  
-
-
             </div>
-
-            
         )
     }else{
         return (
@@ -157,8 +153,7 @@ const Top = ({path}) =>{
                                                 ||  window.sessionStorage.getItem('provider') === 'default' && 
                                                     <img src="/profile/ware.png" alt="" style={{width:'20px', height:'20px'}}/>
                                             }
-                                            {userInfo.name}
-                                            
+                                            {props.name}
                                         </span>
                                     </div>
                                 </Link>

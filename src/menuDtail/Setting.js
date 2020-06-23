@@ -1,11 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import {useHistory} from 'react-router'
 import './Setting.css';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import ReportIcon from '@material-ui/icons/Report';
 import { Grid, Paper } from '@material-ui/core';
 
-const Setting = () => {
+const Setting = (props) => {
+    var rou= useHistory();
     const [provider, setProvider] = useState(window.sessionStorage.getItem('provider'));
     const [newName, setNewName] = useState(window.sessionStorage.getItem('name'));
     const [fileName, setFileName] = useState('');
@@ -87,7 +89,9 @@ const Setting = () => {
                     );
                 }
                 window.sessionStorage.setItem('profile',res.data);
-                window.location.reload();
+                props.setProfile(res.data);
+                rou.push();
+                //window.location.reload();
             }
         ).catch(
             (error)=>{
@@ -106,7 +110,9 @@ const Setting = () => {
             email : window.sessionStorage.getItem('email')
         }).then((res)=>{
             window.sessionStorage.setItem('profile',profile);
-            window.location.reload();
+            props.setProfile(profile);
+            rou.push()
+            //window.location.reload();
         }).catch((err)=>{
             
         })
@@ -123,7 +129,9 @@ const Setting = () => {
             email : window.sessionStorage.getItem('email')
         }).then((res)=>{
             window.sessionStorage.setItem('profile',profile);
-            window.location.reload();
+            props.setProfile(profile);
+            rou.push()
+            //window.location.reload();
         }).catch((err)=>{
             
         })
@@ -188,8 +196,10 @@ const Setting = () => {
                     })
                 );
             }
-            alert("변경되었습니다.");
-            window.location.reload();
+            //alert("변경되었습니다.");
+            props.setName(newName);
+            rou.push();
+            //window.location.reload();
         }).catch((err) => {
 
         })
@@ -217,7 +227,8 @@ const Setting = () => {
             password : newPassword
         }).then((res) => {
             alert("변경되었습니다.");
-            window.location.reload();
+            rou.push();
+            //window.location.reload();
         }).catch((err) => {
 
         });
@@ -261,7 +272,7 @@ const Setting = () => {
                 <Paper className="set_prof_box_top">
                     { 
                         provider !== "default" &&                      
-                        <img src={window.sessionStorage.getItem('socialProfile')} alt=""
+                        <img src={window.sessionStorage.getItem('profile')} alt=""
                          onClick={socialProfileImgClick} className="set_befor_img"/>                                  
                     }
                      <p className="set_top_font2">현재 프로필</p>
