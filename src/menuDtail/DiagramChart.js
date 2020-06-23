@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Hidden, Button } from '@material-ui/core';
+import { Grid, Hidden, Button, Radio } from '@material-ui/core';
 import { ExpandMore,ExpandLess,ChevronRight } from '@material-ui/icons';
 import {Link} from 'react-router-dom';
 
@@ -10,12 +10,9 @@ import './MenuDtail.css'
 import ProfileImg from './iu03.jpg';
 
 const DiagramChart=()=>{
-    const [diagramInfoActive,setDiagramInfoActive] =useState({
-        height:'212px'
-    })
 
     const PI = Math.PI;
-
+    // const [search, setSearch] = useState('');
     const [totalCount,setTotalCount] =useState(58); //총 문제 갯수 
     const [rightCount, setRightCount] = useState(29); // 맞은갯수
     const [wrongCount, setWrongCount] = useState(totalCount-rightCount); //틀린 갯수
@@ -60,6 +57,13 @@ const DiagramChart=()=>{
         {x: '5회', y: 100}
     ]);
     
+    //radio 
+    const [selectedValue, setSelectedValue] = useState("테스트");
+
+    const selectChange = event => {
+        setSelectedValue(event.target.value);
+    };
+
     useEffect(()=>{
         //웹 오답률 출력
         setTimeout(()=>{
@@ -140,11 +144,11 @@ const DiagramChart=()=>{
 
     return(
         
-        <Grid container  className='DiagramInfo' style={diagramInfoActive} >
+        <Grid container  className='DiagramInfo' >
             
             {/* 웹용 */}
             <Hidden only={['xs','sm']}>
-            <Grid md={4} className='DiagramInfoCardBox'>
+            <Grid md={3} className='DiagramInfoCardBox'>
                     <span className='DiagramInfoCardSubject'>제목1</span>
                     <span className='DiagramInfoCardCommit'>부제123123123</span>
                     <div className='DiagramInfoCard'>
@@ -181,7 +185,7 @@ const DiagramChart=()=>{
                      {(rightCountScore*100).toFixed(1)}%
                     </div>
                 </Grid>
-                <Grid md={4} lg={4} className='DiagramInfoChart02'>
+                <Grid md={3} lg={3} className='DiagramInfoChart02'>
                     <div class='VerticalBarSeries'>
                     <XYPlot
                             xType="ordinal"
@@ -192,20 +196,48 @@ const DiagramChart=()=>{
                             <XAxis />
                             <VerticalBarSeries
                                 animation
-                                // barWidth='0.4'
-                                // cluster="2015"
                                 color="#12939A"
                                 data={[...barData]}
                             />
                     </XYPlot>    
                     </div>
                 </Grid>
-                <Grid md={1} lg={1}>
-                    <Button id='DiagramDetail'>
-                    <ChevronRight style={{ fontSize: 45 }}/>
-                    </Button>
+                <Grid md={2} lg={2} className='DiagramListChart04'>
+                    <div className='diagramSearchForm'>
+                        <ul>
+                            <li>
+                                <Radio
+                                checked={selectedValue === "객관식"}
+                                onChange={selectChange}
+                                value="객관식"
+                                name="radio-button-demo"
+                                className="diagramSearchRadio"
+                                />객관식
+                            </li>
+                            <li>
+                            <Radio
+                            checked={selectedValue === "주관식"}
+                            onChange={selectChange}
+                            value="주관식"
+                             />주관식
+                            </li>
+                            <li>
+                            <Radio
+                            checked={selectedValue === "테스트"}
+                            onChange={selectChange}
+                            value="테스트"
+                              />테스트
+                            </li>
+                        </ul>
+                    </div>
                 </Grid>
-               
+                <Grid md={1} lg={1} className='DiagramListChart03'>
+                    <Link exact to='/home/diagramlist'>
+                        <Button id='DiagramDetail'>
+                            <ChevronRight style={{ fontSize: 45 }}/>
+                        </Button>
+                    </Link>
+                </Grid>
             </Hidden>
 
 
@@ -257,29 +289,47 @@ const DiagramChart=()=>{
                                 width={170}
                                 height={130}
                                 >
-                                    {/* <YAxis /> */}
                                 <XAxis />
                                 <VerticalBarSeries
-                                    s
-                                    // barWidth='0.4'
-                                    // cluster="2015"
                                     color="#405de8"
                                     data={[...barData]}
                                 />
                         </XYPlot>    
                     </div>
                 </Grid>
-               
+               <Grid xs={12} sm={12} className='DiagramListChart03'>
+                    <div className='diagramSearchForm'>
+                    <Radio
+                        checked={selectedValue === "객관식"}
+                        onChange={selectChange}
+                        value="객관식"
+                        name="radio-button-demo"
+                        className="diagramSearchRadio"
+                    />객관식
+                    
+                    <Radio
+                        checked={selectedValue === "주관식"}
+                        onChange={selectChange}
+                        value="주관식"
+                    />주관식
+                    <Radio
+                        checked={selectedValue === "테스트"}
+                        onChange={selectChange}
+                        value="테스트"
+                    />테스트
+                    </div>
+                </Grid>
+                <Grid xs={12} sm={12} className='DiagramListChart04'>
+                    <div className='moreView'>
+                        <Link exact to='/home/diagramlist'>
+                            <Button id='DiagramDetail'>
+                                <ExpandMore style={{ fontSize: 20 }} color='#fff'/>
+                            </Button>
+                        </Link>
+                     </div>
+                </Grid>
             </Hidden>
-            <div className='moreView'>
-                
-                <Link exact to='/home/diagramlist'>
-                    <Button id='DiagramDetail'>
-                        <ExpandMore style={{ fontSize: 40 }}/>
-                    </Button>
-                </Link>
-                
-            </div>
+            
         </Grid>
     )
 }
