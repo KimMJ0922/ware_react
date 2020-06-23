@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {useHistory} from 'react-router';
 import {Route, Switch} from 'react-router-dom';
 import {Home,Create,Search,Signin,Signup,ChangePassword,Study,ModifyCardSet,Subjective} from './contents';/*index.js호출*/
 import Board from './board/Board';
@@ -7,6 +8,7 @@ import Top from './top/Top';
 import Default from './menuDtail/Default';
 
 const Title = (props) => {
+  var history = useHistory();
   const routes = [
     {
       path:'/study',
@@ -69,13 +71,14 @@ const Title = (props) => {
       //메인 페이지로 이동
       if(nowPath!==''){
         if(page.indexOf(nowPath) === -1 && email === null){
-          window.location.replace('/')
+          history.replace('/');
         }
         //로그인 한 상태에서 메인으로 강제로 가면 
         //전 페이지로 이동
         else if(email !== null && page.indexOf(nowPath) !== -1){
           if(nowPath === '/'){
-            window.history.back();
+            history.go(-1);
+            history.push();
           }
         }
       }

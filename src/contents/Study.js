@@ -38,6 +38,10 @@ const Study=()=>{
 
     const getCard = async() =>{
       let no = window.sessionStorage.getItem('cardset_no');
+      console.log(no);
+      if(no === null || no === 'null' || no === ''){
+        routerHistory.go(-1);
+      }
       try{
         let list = await axios.post(url,{no});
         let mem = list.data.mdto
@@ -175,6 +179,7 @@ const Study=()=>{
     axios.post(url,{
       no : cardSetInfo.no
     }).then((res) => {
+      window.sessionStorage.setItem('cardset_no',null);
       routerHistory.replace("/home/set");
     }).catch((err) => {
 

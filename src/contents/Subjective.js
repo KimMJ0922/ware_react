@@ -22,6 +22,8 @@ const Subjective = () => {
     const [random, setRandom] = useState(0);
     const [inputText, setInputText] = useState('');
     const [saveNum, setSaveNum] = useState([]);
+    const [rightAnswer, setRightAnswer] = useState(0);
+    const [wrongAnswer, setWrongAnswer] = useState(0);
     const randomNum = () => {
         while(true){
             if(cardList.length === saveNum.length){
@@ -86,19 +88,23 @@ const Subjective = () => {
         cardList.map((item,i) => {
             if(i===random){
                 if(item.answer === inputText){
-                    alert("정답");
+                    setRightAnswer(rightAnswer+1);
                     saveNum.push(random);
                     randomNum();
                 }else{
-                    alert("오답");
+                    setWrongAnswer(wrongAnswer+1);
+                    randomNum();
                 }
             }
-        })
+        });
     }
     return (
         <>
+            총 갯수 : {cardList.length}<br/>
+            맞은 횟수 : {rightAnswer}<br/>
+            틀린 횟수 : {wrongAnswer}<br/>
             {
-                cardList.map((item,i) => {
+                cardList.length !== saveNum.length && cardList.map((item,i) => {
                     if(i === random){
                         return (
                             <>
@@ -109,6 +115,10 @@ const Subjective = () => {
                         )
                     }
                 })
+            }
+
+            {
+                cardList.length === saveNum.length && <span>다풀었다.</span>
             }
         </>
     )
