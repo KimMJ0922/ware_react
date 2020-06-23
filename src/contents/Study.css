@@ -91,7 +91,7 @@
         color:black;
         font-size: 2rem;
         padding-top: 200px;
-        box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 1px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
+        box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 2px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
     }
 
     .std_content_img{
@@ -160,24 +160,30 @@
         margin-bottom: 40px;
     }
 
-}
-
-/* 학습하기 웹 최대 사이즈  */
-@media(min-width:500px){
-    .std_body{
-        width:70%;
-        margin-left: 15%;
-        font-size: 16px;
-        height: 100%;
+    .gu_ka_text{
+         width: 37px;
+         border: none;
+         cursor: context-menu;
     }
 
+}
+
+/* 학습하기 웹 최소 사이즈  */
+@media(max-width:500px){
+    .std_body{
+        width:500px;
+        font-size: 16px;
+        height: 100%;
+        display: -webkit-box;      
+        -webkit-box-orient: vertical;
+    }
     .std_radio_box{
         font-size: 0.7rem;
     }
 
     .std_menu_box>input[type="radio"]{
-        width:25px;
-        height: 25px;
+        width:40px;
+        height: 40px;
     }
     #timer{
         width:100px;
@@ -204,9 +210,8 @@
     }
     
     .std_menu_box{
-        display: grid;
-        width: 80%;
-        padding-left: 20%;
+        width: 500px;
+        margin-bottom: 50px;
     }
 
     .std_menu_box>button{
@@ -233,9 +238,10 @@
     /* 문제푸는 화면 */
 
     .std_content_box{
-        width: 600px;
-        height: 500px;
+        width: 500px;
+        height: 400px;
         position: relative;
+
     }
 
     .std_contetn_prev{
@@ -243,19 +249,20 @@
         background: none;
         float: left;
         position: absolute;
-        top:200px;
-        left: 0;
+        top:180px;
+        left: 10px;
     }
     .std_content{
         border:none;
         border-radius: 5px;
-        width: 600px;
+        width: 450px;
         height: 300px;
         text-align: center;
+        margin-left: 18px;
         color:black;
-        font-size: 2rem;
-        padding-top: 200px;
-        box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 1px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
+        font-size: 1.6rem;
+        padding-top: 100px;
+        box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 2px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
     }
 
     .std_content_img{
@@ -264,8 +271,8 @@
         border-radius: 10px;
         height: 150px;
         text-align: center;
-        margin-left: 38%;
-        margin-top: 20px;
+        margin-left: 150px;
+        margin-top: 30px;
     }
 
     .std_content_cnt{
@@ -278,8 +285,8 @@
         background: none;
         float: right;
         position: absolute;
-        top:200px;
-        right: 0;
+        top:180px;
+        right: 25px;
         
     }
 
@@ -315,13 +322,195 @@
     }
     
     .std_com_font{
+        display: flex;
+        height: 50px;
         font-size: 0.9rem;
-        margin-left: 100px;
+        margin-left: 18px;
     }
 
     .std_hr{
-        margin-top: 40px;
-        margin-bottom: 40px;
+        width: 445px;
+        margin-right: 34px;
     }
 
+    .gu_ka_text{
+        width: 28px;
+        border: none;
+        cursor: context-menu;
+        font-size: 0.4rem;
+   }
+}
+
+@media(max-width:375px){
+    .std_body{
+        width:375px;
+        font-size: 16px;
+        height: 100%;
+        display: -webkit-box;      
+        -webkit-box-orient: vertical;
+    }
+    .std_radio_box{
+        font-size: 0.7rem;
+    }
+
+    .std_menu_box>input[type="radio"]{
+        width:40px;
+        height: 40px;
+    }
+    #timer{
+        width:100px;
+        border:none;
+        border-bottom: 1px solid gray;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .std_title_font{
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-left: 0;
+    }
+
+    .std_user_box{
+        float: right;
+        margin-right: 30px;
+    }
+    .std_user_box>img{
+        width:30px;
+        height:30px;
+        border-radius: 100%;
+    }
+    
+    .std_menu_box{
+        width: 375px;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .std_menu_box>button{
+        width: 150px;
+        height:50px;
+        border: none;
+        background: none;
+        text-align: left;
+        padding-left: 30px;
+    }
+    .std_menu_box>button>.MuiSvgIcon-root{
+        margin-right: 10px;
+        font-size: 1.4rem;
+        
+    }
+
+    .std_menu_box>button>.MuiSvgIcon-root{
+        color:#c29fcb;
+    }
+
+
+    
+
+    /* 문제푸는 화면 */
+
+    .std_content_box{
+        width: 375px;
+        height: 300px;
+        position: relative;
+
+    }
+
+    .std_contetn_prev{
+        border:none;
+        background: none;
+        float: left;
+        position: absolute;
+        top:120px;
+        left: 10px;
+    }
+    .std_content{
+        border:none;
+        border-radius: 5px;
+        width: 330px;
+        height: 200px;
+        text-align: center;
+        margin-left: 22px;
+        color:black;
+        font-size: 1.2rem;
+        padding-top: 100px;
+        box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 2px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
+    }
+
+    .std_content_img{
+        display: block;
+        width: 100px;
+        border-radius: 10px;
+        height: 100px;
+        text-align: center;
+        margin-left: 115px;
+        margin-top: 30px;
+    }
+
+    .std_content_cnt{
+        font-size: 0.8rem;
+        float: right;
+    }
+
+    .std_contetn_next{
+        border:none;
+        background: none;
+        float: right;
+        position: absolute;
+        top:120px;
+        right: 25px;
+        
+    }
+
+    .std_contetn_next>button{
+        border:none;
+        background: none;
+    }
+
+    .std_contetn_next>button>.MuiSvgIcon-root{
+        font-size: 2rem;
+    }
+
+    .std_contetn_prev>button{
+        border:none;
+        background: none;
+    }
+
+    .std_contetn_prev>button>.MuiSvgIcon-root{
+        font-size: 2rem;
+    }
+
+
+    .std_content_provar{
+        height:8px;
+        background: #c29fcb;
+    }
+
+    
+
+    .std_content_box::after{
+        clear: both;
+        content: '';
+    }
+    
+    .std_com_font{
+        display: flex;
+        height: 50px;
+        font-size: 0.9rem;
+        margin-left: 18px;
+    }
+
+    .std_hr{
+        width: 350px;
+        margin-right: 10px;
+    }
+
+    .gu_ka_text{
+        width: 28px;
+        border: none;
+        cursor: context-menu;
+        font-size: 0.4rem;
+   }
 }
