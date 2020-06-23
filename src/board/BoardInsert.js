@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {useHistory} from 'react-router';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import { Paper } from '@material-ui/core';
@@ -8,6 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import './Board.css';
 
 const BoardInsert = () => {
+    var history = useHistory();
     const no= window.sessionStorage.getItem('no');
     const [num, setNum] = useState(2);
     const [title, setTitle] = useState('');
@@ -240,7 +242,7 @@ const BoardInsert = () => {
                 point
             }
         ).then((res)=>{
-            //window.location.replace("/home/set");
+            history.push("/home/board/item/"+res.data);
         }).catch((error)=>{
             console.log("error"+error);
         });

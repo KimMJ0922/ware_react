@@ -6,6 +6,7 @@ import { Grid } from '@material-ui/core';
 import Axios from 'axios';
 
 const BoardItems=props=> {
+    //console.log("index : "+props.pageNum);
     const [ip,setIp]=useState('');
     var rte='';
     const imagearray=[
@@ -37,9 +38,8 @@ const BoardItems=props=> {
     
     return ( 
         <Grid xs={12} md={4}>
-            <Link to={`/home/board/item/${props.row.board_no}`}>
+            <Link to={`/home/board/item/${props.row.board_no}/${props.pageNum}`}>
                 <div className="BoardItem">
-                    {/* <div>{props.row.board_no}</div> 일단 가리겠음 */}
                     <Grid container>
                     <Grid xs={6} md={6}> <div className="BoardItemSubject">{props.row.subject}</div></Grid>
                      <Grid xs={6} md={6}> <div className="BoardItemWriteDay" style={{textAlign:'right'}}>{props.row.writeday}</div></Grid>
