@@ -121,25 +121,54 @@ font-size: 0.9rem;
 }
 
 .sq_on_cnt{
-    width: 90%;
-    height:100px;
+    width: 88%;
+    height:110px;
     margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 35px;
+    padding-top: 10px;
+    padding-left: 10px;
 }
-.sq_on_cnt:hover{
-  
-}
+
 .sq_on_txt1{
-    font-size:0.825rem;
+    font-size:1rem;
+    margin-top: 5px;
     display: flex;
 }
     
 .sq_on_txt2{
-    display: flex;
+    display: inline;
     margin-top: 4px;
     font-size: 1.3erm;
     font-weight: 900;
+    color:black;
 }
+
+.sq_on_txt_cnt{
+    font-size: 0.9rem;
+}
+
+.sq_on_title_box{
+    height: 30px;
+    font-size: 1.5rem;
+}
+.sq_on_title_box>img{
+    display: inline;
+    width:25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.sq_on_more_btn{
+    border:none;
+    background: #c29fcb;
+    border-radius: 5px;
+    width: 70px;
+    height: 40px;
+    float: right;
+    margin-right: 28px;
+}
+
 
 }
 
@@ -245,7 +274,7 @@ font-size: 0.9rem;
     
     .sq_on_cnt{
         width: 90%;
-        height:50px;
+        height:100px;
         padding-left: 10px;
         padding-top: 10px;
         margin-bottom: 10px;
@@ -253,15 +282,39 @@ font-size: 0.9rem;
     }
     
     .sq_on_txt1{
-        font-size:0.825rem;
+        font-size:0.875rem;
+        margin-top: 5px;
         display: flex;
     }
         
     .sq_on_txt2{
-        display: flex;
+        display: inline;
         margin-top: 4px;
         font-size: 1.1erm;
         font-weight: 900;
+        color: black;
+    }
+
+    .sq_on_title_box{
+        height: 30px;
+        font-size: 1.5rem;
+    }
+    .sq_on_title_box>img{
+        display: inline;
+        width:25px;
+        height: 25px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .sq_on_more_btn{
+        border:none;
+        background: #c29fcb;
+        border-radius: 5px;
+        width: 70px;
+        height: 40px;
+        float: right;
+        margin-right: 28px;
     }
 }
     
@@ -364,23 +417,48 @@ font-size: 0.9rem;
     
     .sq_on_cnt{
         width: 90%;
-        height:50px;
+        height:100px;
         padding-left: 10px;
         padding-top: 10px;
         margin-bottom: 10px;
         margin-left: 10px;
     }
+
+    .sq_on_txt_cnt{
+        font-size: 0.8rem;
+    }
     
     .sq_on_txt1{
         font-size:0.825rem;
+        margin-top: 5px;
+        margin-left: 2px;
         display: flex;
     }
         
     .sq_on_txt2{
-        display: flex;
-        margin-top: 4px;
-        font-size: 1.1erm;
+        display: inline;
         font-weight: 900;
+    }
+    .sq_on_title_box{
+        height: 30px;
+        font-size: 1.5rem;
+    }
+    .sq_on_title_box>img{
+        display: inline;
+        width:25px;
+        height: 25px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .sq_on_more_btn{
+        border:none;
+        background: #c29fcb;
+        border-radius: 5px;
+        width: 70px;
+        height: 30px;
+        float: right;
+        margin-right: 18px;
     }
 }
     

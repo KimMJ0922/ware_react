@@ -1,5 +1,16 @@
 import React,{useState,useEffect, useReducer} from 'react';
 import axios from 'axios';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import PrevIcon from '@material-ui/icons/NavigateBefore';
+import NextIcon from '@material-ui/icons/NavigateNext';
+import UpdateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/DeleteForever';
+import BookIcon from '@material-ui/icons/MenuBook';
+import MouseIcon from '@material-ui/icons/Mouse';
+import TestIcon from '@material-ui/icons/Flag';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
+import './Study.css';
 import { AudioAnalyser } from 'three';
 import { relativeTimeRounding } from 'moment';
 import { red } from '@material-ui/core/colors';
@@ -124,14 +135,13 @@ const Study=({location})=>{
   const changeSettingCheck = (e) => {
     setSettingCheck(!settingCheck);    
   }
-
   var inter = '';
+
   useEffect(() => {
     if(settingCheck){
       setTimer(5);
       setSaveTimer(5);
     }
-    
     console.log(timer);
   },[settingCheck]);
 
@@ -161,11 +171,8 @@ const Study=({location})=>{
         }
         //console.log(timer);
       },1000);
-      
     }
   },[timer]);
-
-
   //카드 삭제
   const deleteCardSet = () => {
     let check = window.confirm("삭제하시겠습니까?");
@@ -188,7 +195,6 @@ const Study=({location})=>{
 
   const memberUpdate = () => {
     let pass = window.prompt("수정 비밀번호를 입력해주세요");
-
     let url = "http://localhost:9000/updatepasscheck";
 
     axios.post(url,{
@@ -205,95 +211,109 @@ const Study=({location})=>{
   var maxCard = cardList.length;
   return(
       <>
-        <div>
-          <h2>{cardSetInfo.title}</h2>
-          <h3>{cardSetInfo.comment}</h3>
-        </div>
-        <div>
-          {/* 카드 세트 만든 사람 정보 */}
-          <img src={memberInfo["profile"]} alt="" style={{width:'80px', height:'80px'}}/>
-          <img src={
-            memberInfo["provider"] === 'default' ? '/profile/ware.png' : memberInfo["provider"] === 'kakao' ? '/profile/kakao.png' : '/profile/google.png'
-          } alt="" style={{width:'20px', height:'20px'}}/>
-          {memberInfo["name"]}
-          ({memberInfo["email"]})
-        </div>
-        <div>
-          <button type="button">학습하기</button>
-          <button type="button">객관식</button>
-          <button type="button">주관식</button>
-        </div>
-        <div>
-          {
-            settingCheck === false ? <button type="button" onClick={cntDown} style={{float:'left'}}>이전</button> : ''
-          }
-          
-          {
-            cardList.map((item,i) => {
-              if(cnt === i){
-                return (
-                  <>
-                    {/* div 클릭시 cardState 상태를 반전 시킴 */}
-                    <div onClick={settingCheck === false ? cardClick : null} style={{width:'400px', height:'300px', border:'1px solid gray', textAlign:'center', float:'left'}}>
-                      {/* 이미지가 있으면 화면에 출력 */}
-                      {
-                        item.imgFile !== "" && cardState === false && <img src={item.imgFile} alt="" style={{width:'150px', height:'150px'}}/>
-                      }
-                      <br/>
-                      {/* cardState가 false면 문제를 보여주고, cardState가 true면 답을 보여준다. */}
-                      {
-                        cardState === false ? item.question : item.answer
-                      }
-                    </div>
-                  </>
-                )
-             }
-            })
-          }
-
-          {
-            settingCheck === false ? <button type="button" onClick={cntUp} style={{float:'left'}}>다음</button> : ''
-          }
-          
-        </div>
-        <div style={{clear:'both'}}>
-          {
-            (cnt+1)+"/"+maxCard
-          }
-          {
-            settingCheck === true && <div style={{width : 300-(timer*(300/saveTimer)), height:'5px',backgroundColor:'black',transition:'0.5s'}}/>
-          }
-          <br/>
-          {
-            settingCheck === true && timer+"초"
-          }
-        </div>
-        <div style={{clear:'both'}}>
-          <h3>설정</h3>
-          <input type="radio" name="settimg" value="수동" onChange={changeSettingCheck} checked={settingCheck === false ? 'true' : ''}/>수동
-          <input type="radio" name="settimg" value="자동" onChange={changeSettingCheck} checked={settingCheck === true ? 'true' : ''}/>자동
-        </div>
-        {
+      <div className="std_body">
+        {/* top 컨테이너 */}
+      <Grid container>
+        <Grid item xs={12} md={12}>
+          <p className="std_title_font">{cardSetInfo.title}</p>
+        </Grid>
+      </Grid>
+      <Grid container>
+          <Grid xs={12} md={4}>
+            <div className="std_menu_box">
+            <p>문제 풀기</p>
+            <button type="button"><BookIcon/>학습하기</button>
+            <button type="button"><MouseIcon/>객관식</button>
+            <button type="button"><KeyboardIcon/>주관식</button>
+            <button type="button"><TestIcon/>테스트</button>
+            <p>설정</p>   
+             {/* 수정 버튼 */}
+           <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
+              {/* 삭제 버튼 */}
+              {
+                parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}><DeleteIcon/>삭제</button> : ""
+              }
+              <p>수동 / 자동</p>
+          <div className="std_radio_box">         
+            <input type="radio" name="settimg" value="수동" onChange={changeSettingCheck} checked={settingCheck === false ? 'true' : ''}/>수동
+            <input type="radio" name="settimg" value="자동" onChange={changeSettingCheck} checked={settingCheck === true ? 'true' : ''}/>자동
+            </div>
+            {
           settingCheck === true &&
-          <div>
             <select id="timer" onChange={setTime}>
               <option value="5">5초</option>
               <option value="10">10초</option>
               <option value="15">15초</option>
               <option value="30">30초</option>
             </select>
-          </div>
-        }
-        <div style={{clear:'both'}}>
-          {/* 수정 버튼 */}
-           <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}>수정</button>
-
-          {/* 삭제 버튼 */}
+            }
+            </div>
+          </Grid>
+          <Grid xs={12} md={8}>
           {
-            parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}>삭제</button> : ""
+            cardList.map((item,i) => {
+              if(cnt === i){
+                return (
+                  <>
+                  <div className="std_content_box">
+                    {/* div 클릭시 cardState 상태를 반전 시킴 */}
+                    <div className="std_contetn_prev">
+                        {
+                          settingCheck === false ? <button type="button" onClick={cntDown}><PrevIcon/></button> : ''
+                        }
+                    </div>
+                    <div className="std_content" onClick={settingCheck === false ? cardClick : null}>
+                      {/* 이미지가 있으면 화면에 출력 */}
+                      {/* cardState가 false면 문제를 보여주고, cardState가 true면 답을 보여준다. */}
+                      {
+                        cardState === false ? item.question : item.answer
+                      }
+                      {
+                        item.imgFile !== "" && cardState === false && <img src={item.imgFile} className="std_content_img" alt=""/>
+                      }               
+                   </div>
+                   <div className="std_contetn_next">
+                        {
+                            settingCheck === false ? <button type="button" onClick={cntUp}><NextIcon/></button> : ''
+                          }
+                    </div>
+                   <div style={{clear:'both'}}>
+                          {
+                            settingCheck === true && <div className="std_content_provar" style={{width : 600-(timer*(600/saveTimer)),transition:'0.5s'}}/>
+                          }
+                            <div className="std_content_cnt">
+                              {
+                                (cnt+1)+"/"+maxCard
+                              }
+                            </div>
+                          {
+                            settingCheck === true && timer+"초"
+                          }
+                      </div>
+                    </div>
+                  </>
+                )
+             }
+            })
           }
-        </div>
-      </>
+          </Grid>
+      </Grid>
+      <hr className="std_hr"></hr>
+      <Grid container>
+        <Grid xs={6} md={6}>
+        <span className="std_com_font">Comment / {cardSetInfo.comment}</span>
+        </Grid>
+        <Grid xs={6} md={6}>
+        <div className="std_user_box"> <img src={memberInfo["profile"]} alt=""/>  {memberInfo["name"]} {/* 카드 세트 만든 사람 정보 */}
+          <img src={
+            memberInfo["provider"] === 'default' ? '/profile/ware.png' : memberInfo["provider"] === 'kakao' ? '/profile/kakao.png' : '/profile/google.png'
+          } alt="" style={{width:'20px', height:'20px'}}/>
+          ({memberInfo["email"]})</div>
+          </Grid>
+      </Grid>
+
+   </div>
+ </>
   )
 }
 export default Study;

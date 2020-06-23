@@ -169,32 +169,28 @@ const Set=()=>{
                               onClick={item.open_scope === "public" ? "" : item.open_scope === "private" ? "" : checkPass} name={item.no}>                       
                           <div className="sq_on_cnt" style={{backgroundColor:'white', 
                               boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>
-                            <sapn className="sq_on_txt11" id={item.no}>아이디 : {item.no} 갯수 :  {item.cnt}</sapn>
+                            <span className="sq_on_txt_cnt">{item.cnt} 단어</span>
+
+                            <div className="sq_on_title_box">
                             <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
-                            <sapn className="sq_on_txt1" id={item.no}>{item.comment}</sapn>
-                            <sapn className="sq_on_txt1" id={item.no}>
-                              
-                              공개 범위 : 
-                              {
+                             {
                                 item.open_scope === "public" ? 
                                 <img src="/icon/public.png" className="scopeIcon" alt=""/> : 
                                 item.open_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt=""/> : 
                                 <img src="/icon/private.png" className="scopeIcon" alt=""/>
                               }
-                            </sapn>
-                            <sapn className="sq_on_txt1" id={item.no}>
-                              수정 범위 : 
                               {
                                 item.update_scope === "public" ? <img src="/icon/public.png" className="scopeIcon" alt=""/> : item.update_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt=""/> : <img src="/icon/private.png" className="scopeIcon" alt=""/>
-                              }
-                            </sapn>         
+                              }               
+                            <sapn className="sq_on_txt1" id={item.no}>{item.comment}</sapn>
+                            </div>         
                           </div>
                         </Link>
                       </div>
                     )
                   })
                 }
-                <button type="button" onClick={moreCardSetList}>더보기</button>
+                <button type="button" className="sq_on_more_btn" onClick={moreCardSetList}>더보기</button>
               </div>
             </Paper>
           </Grid>
