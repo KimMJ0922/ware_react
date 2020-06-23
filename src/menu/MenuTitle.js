@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {Diagram,Folder,Friend,Guild,Set,Setting,Default,Guild_sch} from '../menuDtail';/*index.js호출*/
+import {Diagram,DiagramList, Folder,Friend,Guild,Set,Setting,Default,Guild_sch} from '../menuDtail';/*index.js호출*/
 import {Board,BoardInsert,BoardItem,BoardItems,BoardList,BoardUpdate} from '../board';/*index.js호출*/
 import { Route, Switch } from 'react-router-dom';
 import './menu.css';
@@ -17,6 +17,7 @@ const MenuTitle=(props)=>{
                 </Route>
                 
                 <Route exact path="/home/diagram" component={Diagram}/>
+                <Route exact path="/home/diagramlist" component={DiagramList}/>
 
                 <Route exact path="/home/friend" component={Friend}/>
 
