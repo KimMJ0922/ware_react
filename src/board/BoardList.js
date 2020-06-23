@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import Axios from 'axios';
 import BoardItems from './BoardItems';
 import './Board.css'
@@ -14,23 +14,27 @@ import { Grid, Radio } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
 const BoardList=()=>{ 
-    
+    const history = useHistory();
+    const [search, setSearch] = useState('');
     const [boardData, setBoardData] = useState([]);
     const [countNum, setCountNum] = useState(0);
     const [pageNum, setPageNum] = useState(0);
 
     // radio 값바꾸기
-    const [selectedValue, setSelectedValue] = React.useState("최신순");
+    const [selectedValue, setSelectedValue] = useState("최신순");
+
     const selectChange = event => {
         setSelectedValue(event.target.value);
-      };
+    };
+    const searchChange = event => {
+        setSearch(event.target.value);
+    };
 
     useEffect(()=>{
-        console.log("list호출");
         const getData = async () =>{
             try {
                 const data = await Axios.get(
-                    "http://localhost:9000/board/list?pageNum="+pageNum
+                    "http://localhost:9000/board/list?pageNum="+pageNum+"&search="+search+"&select="+selectedValue
                 );
                 setBoardData(data.data);
             } catch (e) {
@@ -41,7 +45,7 @@ const BoardList=()=>{
         const BoardCount = async () =>{
             try {
                 const data = await Axios.get(
-                    "http://localhost:9000/board/count"
+                    "http://localhost:9000/board/count?search="+search
                 );
                 setCountNum(data.data);
             } catch (e) {
@@ -52,15 +56,27 @@ const BoardList=()=>{
             getData();
         },100);
         BoardCount();
-    },[pageNum])
-    
+    },[pageNum, search, selectedValue])
+    var items = null;
+    if(boardData.length !== 0){
+        items = boardData.map((row) => (
+            <BoardItems row={row} pageNum={pageNum}/>
+        ));
+    }else {
+        items = 
+        <Grid xs={12} md={12}>
+            <div>
+            검색 결과가 없습니다.
+            </div>
+        </Grid>;
+    }
     return (
         <>
         <Grid container className='boardTableSubject'> 
             <Grid xs={12} md={6}>
                 <div className='boardSearchForm'>
                     <form  noValidate autoComplete="off">
-                        <TextField className='boardSearchBar'  type="search"  />
+                        <TextField className='boardSearchBar' onChange={searchChange} type="search"/>
                         <Button id='boardSearchBtn' ><Search/></Button>
                     </form>
                 </div> 
@@ -81,22 +97,20 @@ const BoardList=()=>{
                     value="조회순"
                 />조회순
                 <Radio
-                    checked={selectedValue === "최소가격"}
+                    checked={selectedValue === "낮은가격순"}
                     onChange={selectChange}
-                    value="최소가격"
-                />최소가격
+                    value="낮은가격순"
+                />낮은가격순
                 <Radio
-                    checked={selectedValue === "최대가격"}
+                    checked={selectedValue === "높은가격순"}
                     onChange={selectChange}
-                    value="최대가격"
-                />최대가격
+                    value="높은가격순"
+                />높은가격순
                 </div>
                 
             </Grid>
             {
-                boardData.map((row,index) => (
-                    <BoardItems row={row} pageNum={pageNum}/>
-                ))
+                items
             }   
             {/* 여백채우기용 */}
             <Grid xs={12} md={12}>

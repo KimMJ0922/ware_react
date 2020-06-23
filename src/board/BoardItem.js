@@ -83,9 +83,10 @@ const BoardItem=({match})=> {
 
         getIp();
         updateReadcount();
-        getData();
         getCartData();
-
+        setTimeout(()=>{
+            getData();
+        },100);
     },[])
 
     if(item.profile.substring(0,4)!=="http"){
