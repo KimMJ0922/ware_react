@@ -1,5 +1,4 @@
 import React,{useState,useEffect, useReducer} from 'react';
-import {useHistory} from 'react-router';
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -15,9 +14,9 @@ import './Study.css';
 import { AudioAnalyser } from 'three';
 import { relativeTimeRounding } from 'moment';
 import { red } from '@material-ui/core/colors';
+import { Hidden } from '@material-ui/core';
 
-const Study=()=>{
-  var routerHistory = useHistory();
+const Study=({location})=>{
   const [memberInfo, setMemberInfo] = useState({
     no : '',
     name : '',
@@ -45,14 +44,12 @@ const Study=()=>{
 
   //페이지가 불러와지면 처음 실행
   useEffect(()=>{
-    let url = "http://localhost:9000/getcardlist"
+    let url = location.pathname;
+    //카드 세트의 번호 가져오기
+    var no = url.substring(url.lastIndexOf('/')+1,url.length);
+    url = "http://localhost:9000/getcardlist"
 
     const getCard = async() =>{
-      let no = window.sessionStorage.getItem('cardset_no');
-      console.log(no);
-      if(no === null || no === 'null' || no === ''){
-        routerHistory.go(-1);
-      }
       try{
         let list = await axios.post(url,{no});
         let mem = list.data.mdto
@@ -67,7 +64,7 @@ const Study=()=>{
             question_no : item.question_no,
             question : item.question,
             answer : item.answer,
-            imgSrc : item.imgSrc
+            imgFile : item.imgFile
           }
           cardList.push(data);
         })
@@ -109,7 +106,7 @@ const Study=()=>{
     }else{
       setCnt(cnt+1);
     }
-
+ 
     if(settingCheck){
       timerActive();
       setTimer(saveTimer);
@@ -186,8 +183,7 @@ const Study=()=>{
     axios.post(url,{
       no : cardSetInfo.no
     }).then((res) => {
-      window.sessionStorage.setItem('cardset_no',null);
-      routerHistory.replace("/home/set");
+      window.location.replace("/home/set");
     }).catch((err) => {
 
     })
@@ -195,7 +191,7 @@ const Study=()=>{
 
   //수정 버튼 클릭 시
   const privateUpdate = () => {
-    routerHistory.push("/modify");
+    window.location.href="/modify/"+cardSetInfo.no;
   } 
 
   const memberUpdate = () => {
@@ -207,24 +203,11 @@ const Study=()=>{
       update_password : pass
     }).then((res) => {
       if(res.data){
-        routerHistory.push("/modify");
+        window.location.href="/modify/"+cardSetInfo.no;
       }
     }).catch((err) => {
 
     });
-  }
-
-  //더블 클릭 막기
-  const dobuleClickDefen = (e) => {
-    e.preventDefault();
-  }
-
-  //주관식으로 이동
-  const Subjective = () => {
-    routerHistory.push('/subjective');
-  }
-  const allFalse = () => {
-    return false;
   }
   var maxCard = cardList.length;
   return(
@@ -237,6 +220,7 @@ const Study=()=>{
         </Grid>
       </Grid>
       <Grid container>
+        <Hidden only={['xs','sm']}>
           <Grid xs={12} md={4}>
             <div className="std_menu_box">
             <p>문제 풀기</p>
@@ -267,6 +251,7 @@ const Study=()=>{
             }
             </div>
           </Grid>
+          </Hidden>
           <Grid xs={12} md={8}>
           {
             cardList.map((item,i) => {
@@ -297,7 +282,10 @@ const Study=()=>{
                     </div>
                    <div style={{clear:'both'}}>
                           {
-                            settingCheck === true && <div className="std_content_provar" style={{width : 600-(timer*(600/saveTimer)),transition:'0.5s'}}/>
+                            settingCheck === true && <div className="std_content_provar" 
+                            style={{width : 600-(timer*(600/saveTimer)),transition:'0.5s'
+                          
+                          }}/>
                           }
                             <div className="std_content_cnt">
                               {
@@ -326,10 +314,42 @@ const Study=()=>{
           <img src={
             memberInfo["provider"] === 'default' ? '/profile/ware.png' : memberInfo["provider"] === 'kakao' ? '/profile/kakao.png' : '/profile/google.png'
           } alt="" style={{width:'20px', height:'20px'}}/>
-          ({memberInfo["email"]})</div>
+          <input type="text" className="gu_ka_text" value={memberInfo["email"]} maxLength='5' readOnly/>    
+        </div> 
           </Grid>
       </Grid>
-
+          <Hidden only={['md','lg','xl']}>
+      <Grid xs={12}>
+            <div className="std_menu_box">
+            <p>문제 풀기</p>
+            <button type="button"><BookIcon/>학습하기</button>
+            <button type="button"><MouseIcon/>객관식</button>
+            <button type="button"><KeyboardIcon/>주관식</button>
+            <button type="button"><TestIcon/>테스트</button>
+            <p>설정</p>   
+             {/* 수정 버튼 */}
+           <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
+              {/* 삭제 버튼 */}
+              {
+                parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}><DeleteIcon/>삭제</button> : ""
+              }
+              <p>수동 / 자동</p>
+          <div className="std_radio_box">         
+            <input type="radio" name="settimg" value="수동" onChange={changeSettingCheck} checked={settingCheck === false ? 'true' : ''}/>수동
+            <input type="radio" name="settimg" value="자동" onChange={changeSettingCheck} checked={settingCheck === true ? 'true' : ''}/>자동
+            </div>
+            {
+          settingCheck === true &&
+            <select id="timer" onChange={setTime}>
+              <option value="5">5초</option>
+              <option value="10">10초</option>
+              <option value="15">15초</option>
+              <option value="30">30초</option>
+            </select>
+            }
+            </div>
+          </Grid>
+          </Hidden>
    </div>
  </>
   )
