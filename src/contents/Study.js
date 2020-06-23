@@ -8,6 +8,7 @@ import UpdateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
 import BookIcon from '@material-ui/icons/MenuBook';
 import MouseIcon from '@material-ui/icons/Mouse';
+import TestIcon from '@material-ui/icons/Flag';
 import KeyboardIcon from '@material-ui/icons/Keyboard';
 import './Study.css';
 import { AudioAnalyser } from 'three';
@@ -134,14 +135,13 @@ const Study=({location})=>{
   const changeSettingCheck = (e) => {
     setSettingCheck(!settingCheck);    
   }
-
   var inter = '';
+
   useEffect(() => {
     if(settingCheck){
       setTimer(5);
       setSaveTimer(5);
     }
-    
     console.log(timer);
   },[settingCheck]);
 
@@ -171,11 +171,8 @@ const Study=({location})=>{
         }
         //console.log(timer);
       },1000);
-      
     }
   },[timer]);
-
-
   //카드 삭제
   const deleteCardSet = () => {
     let check = window.confirm("삭제하시겠습니까?");
@@ -221,7 +218,6 @@ const Study=({location})=>{
           <p className="std_title_font">{cardSetInfo.title}</p>
         </Grid>
       </Grid>
-
       <Grid container>
           <Grid xs={12} md={4}>
             <div className="std_menu_box">
@@ -229,12 +225,10 @@ const Study=({location})=>{
             <button type="button"><BookIcon/>학습하기</button>
             <button type="button"><MouseIcon/>객관식</button>
             <button type="button"><KeyboardIcon/>주관식</button>
+            <button type="button"><TestIcon/>테스트</button>
             <p>설정</p>   
-          
-
              {/* 수정 버튼 */}
            <button type="button" onClick={cardSetInfo.update_scope === "member" ? memberUpdate : privateUpdate}><UpdateIcon/>수정</button>
-
               {/* 삭제 버튼 */}
               {
                 parseInt(memberInfo.no) === parseInt(window.sessionStorage.getItem('no')) ? <button type="button" onClick={deleteCardSet}><DeleteIcon/>삭제</button> : ""
@@ -269,17 +263,11 @@ const Study=({location})=>{
                         }
                     </div>
                     <div className="std_content" onClick={settingCheck === false ? cardClick : null}>
-                  
                       {/* 이미지가 있으면 화면에 출력 */}
-                      
-                     
                       {/* cardState가 false면 문제를 보여주고, cardState가 true면 답을 보여준다. */}
-                      
                       {
                         cardState === false ? item.question : item.answer
                       }
-
-                    
                       {
                         item.imgFile !== "" && cardState === false && <img src={item.imgFile} className="std_content_img" alt=""/>
                       }               
@@ -290,7 +278,6 @@ const Study=({location})=>{
                           }
                     </div>
                    <div style={{clear:'both'}}>
-                          
                           {
                             settingCheck === true && <div className="std_content_provar" style={{width : 600-(timer*(600/saveTimer)),transition:'0.5s'}}/>
                           }
@@ -304,13 +291,11 @@ const Study=({location})=>{
                           }
                       </div>
                     </div>
-                   
                   </>
                 )
              }
             })
           }
-        
           </Grid>
       </Grid>
       <hr className="std_hr"></hr>
