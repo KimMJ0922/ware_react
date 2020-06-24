@@ -334,7 +334,14 @@ const Setting = (props) => {
                         <button type="button" onClick={signOut} className="set_exit_btn">회원 탈퇴</button>
                     </Paper>                  
                 </Grid>
-              </Grid>              
+
+              </Grid> 
+            <Grid item xs={12} md={12}>
+                <p className="set_title_font3" style={{"text-align":"left"}}>포인트 내역</p>
+                <Paper>
+
+                </Paper>
+            </Grid>
             </div>
         </>
     )

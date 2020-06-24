@@ -18,6 +18,8 @@ const BoardItem=({match})=> {
     const [carddata, setCarddata] = useState([]);
     const board_no = match.params.board_no;
     const [ip,setIp]=useState('');
+
+    const [buyed, setBuyed] = useState(false);
     
     var rte='';
     const imagearray=[
@@ -25,6 +27,22 @@ const BoardItem=({match})=> {
     ]
 
     useEffect(()=>{
+        const getBuyed = async () =>{
+            try {
+                const gBuyed = await Axios.post(
+                    "http://localhost:9000/board/buyedcheck",{
+                        board_no:board_no,
+                        member_no:window.sessionStorage.getItem("no")
+                    }
+                )
+                if(gBuyed.data===1){
+                    setBuyed(true);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
         const getIp = async () =>{
             try {
                 const gip = await Axios.get(
@@ -86,6 +104,7 @@ const BoardItem=({match})=> {
         getCartData();
         setTimeout(()=>{
             getData();
+            getBuyed();
         },100);
     },[])
 
@@ -161,7 +180,24 @@ const BoardItem=({match})=> {
                 <button type="button" onClick={buy}>구매하기</button>
             </div>
     }
-    
+    var problems = null;
+    if(buyed===true){
+        problems = 
+            carddata.map((row,index) => (
+                <div>
+                    <p>인덱스 : {index}</p>
+                    <p>문제 : {row.question}</p>
+                    <p>답 : {row.answer}</p>
+                    {
+                        row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
+                    }
+                </div>
+            ))
+    }else{
+        problems = 
+            <div>구매 후 문제 확인 가능합니다.</div>
+    }
+
     return ( 
         <div>
             제목 : {item.subject}<br/>
@@ -173,16 +209,7 @@ const BoardItem=({match})=> {
             작성자 프로필 사진 : 
             <img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/><br/><br/>
             {
-                carddata.map((row,index) => (
-                    <div>
-                        <p>인덱스 : {index}</p>
-                        <p>문제 : {row.question}</p>
-                        <p>답 : {row.answer}</p>
-                        {
-                            row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
-                        }
-                    </div>
-                ))
+                problems
             }
             <br/>
             {buttons}
