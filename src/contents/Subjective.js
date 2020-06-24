@@ -47,7 +47,7 @@ const Subjective = () => {
     }
     useEffect(() => {
         const getCardSet = async() => {
-            let url = "http://localhost:9000/getcardlist"
+            let url = "http://localhost:9000/getcardlist";
             try {
                 let list = await axios.post(url,{no : cardset_no});
                 let mem = list.data.mdto

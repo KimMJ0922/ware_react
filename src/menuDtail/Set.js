@@ -189,12 +189,14 @@ const Set=()=>{
                             <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
                              {
                                 item.open_scope === "public" ? 
-                                <img src="/icon/public.png" className="scopeIcon" alt=""/> : 
-                                item.open_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt=""/> : 
-                                <img src="/icon/private.png" className="scopeIcon" alt=""/>
+                                <img src="/icon/public.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                item.open_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                <img src="/icon/private.png" className="scopeIcon" alt="" id={item.no}/>
                               }
                               {
-                                item.update_scope === "public" ? <img src="/icon/public.png" className="scopeIcon" alt=""/> : item.update_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt=""/> : <img src="/icon/private.png" className="scopeIcon" alt=""/>
+                                item.update_scope === "public" ? <img src="/icon/public.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                item.update_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                                <img src="/icon/private.png" className="scopeIcon" alt="" id={item.no}/>
                               }               
                             <sapn className="sq_on_txt1" id={item.no}>{item.comment}</sapn>
                             </div>         

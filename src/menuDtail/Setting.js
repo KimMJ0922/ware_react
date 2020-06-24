@@ -73,31 +73,27 @@ const Setting = (props) => {
                 url : "http://localhost:9000/uploadProfileImg",
                 headers : {'Content-Type' : 'multipart/form-data'}
             }
-        ).then(
-            (res) => {
-                //자동 로그인 설정이 되어있으면 로컬스토리지 값 변경
-                let auto = localStorage.getItem('autoLogin');
-                if(auto !== null){
-                    localStorage.setItem(
-                        "autoLogin",
-                        JSON.stringify({
-                            no : window.sessionStorage.getItem('no'),
-                            email: window.sessionStorage.getItem('email'),
-                            name : window.sessionStorage.getItem('name'),
-                            profile : window.sessionStorage.getItem(res.data)
-                        })
-                    );
-                }
-                window.sessionStorage.setItem('profile',res.data);
-                props.setProfile(res.data);
-                rou.push();
-                //window.location.reload();
+        ).then((res) => {
+            window.sessionStorage.setItem('profile',''); 
+            props.setProfile('');
+            //자동 로그인 설정이 되어있으면 로컬스토리지 값 변경
+            let auto = localStorage.getItem('autoLogin');
+            if(auto !== null){
+                localStorage.setItem(
+                    "autoLogin",
+                    JSON.stringify({
+                        no : window.sessionStorage.getItem('no'),
+                        email: window.sessionStorage.getItem('email'),
+                        name : window.sessionStorage.getItem('name'),
+                        profile : window.sessionStorage.getItem(res.data)
+                    })
+                );
             }
-        ).catch(
-            (error)=>{
-                console.log(error);
-            }
-        );
+            window.sessionStorage.setItem('profile',res.data); 
+            props.setProfile(res.data); 
+        }).catch((error)=>{
+            console.log(error);
+        });
     }
 
     //프로필 이미지 선택시
@@ -111,8 +107,6 @@ const Setting = (props) => {
         }).then((res)=>{
             window.sessionStorage.setItem('profile',profile);
             props.setProfile(profile);
-            rou.push()
-            //window.location.reload();
         }).catch((err)=>{
             
         })
@@ -130,7 +124,7 @@ const Setting = (props) => {
         }).then((res)=>{
             window.sessionStorage.setItem('profile',profile);
             props.setProfile(profile);
-            rou.push()
+            //rou.replace(rou.go(0));
             //window.location.reload();
         }).catch((err)=>{
             
@@ -198,8 +192,6 @@ const Setting = (props) => {
             }
             //alert("변경되었습니다.");
             props.setName(newName);
-            rou.push();
-            //window.location.reload();
         }).catch((err) => {
 
         })
@@ -227,7 +219,7 @@ const Setting = (props) => {
             password : newPassword
         }).then((res) => {
             alert("변경되었습니다.");
-            rou.push();
+            rou.replace(rou.push())
             //window.location.reload();
         }).catch((err) => {
 
@@ -250,7 +242,7 @@ const Setting = (props) => {
                     no : window.sessionStorage.getItem('no')
                 }).then((res) => {
                    window.sessionStorage.clear();
-                   window.location.replace('/');
+                   rou.replace('/');
                 }).catch((err) => {
 
                 });
@@ -333,7 +325,7 @@ const Setting = (props) => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Paper className="set_exit_text_box">
-                        <p>회원 탈퇴 시</p>
+                        <p>회원 탈퇴 시 </p>
                         <p>해당 계정의 정보는 모두 지워집니다.</p>
                         <p> 회원 탈퇴를 원하시면</p>
                         <p><font style={{color:'red'}}>" 회원탈퇴 "</font></p>
