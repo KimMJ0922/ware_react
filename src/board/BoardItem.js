@@ -116,6 +116,7 @@ const BoardItem=({match})=> {
                         <p>인덱스 : {index}</p>
                         <p>문제 : {row.question}</p>
                         <p>답 : {row.answer}</p>
+                        
                     </div>
                 ))
             }

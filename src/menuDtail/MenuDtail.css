@@ -1549,12 +1549,18 @@ border: none;
      .moreView{
          display:none;
      }
+     .diagramSearchForm>ul>li{
+        list-style: none;
+        height: 60px;
+        font-size: 1.1rem;
+        font-weight: 600;
+     }
 
 }
 /* Diagram - media 웹 최소 사이즈 */
 @media(max-width: 550px){
     .DiagramInfo{
-        height: 212px;
+        height: auto;
         padding: 0.6rem;
         box-shadow: 2px 12px 11px #a8a8a8;
         border-radius: 13px;
@@ -1599,26 +1605,28 @@ border: none;
         position: relative;
         top: -20px;
     }
-    /* .VerticalBarSeries>.rv-xy-plot >.rv-xy-plot__axis{
-        padding: 0.2rem;
-    }
-    .VerticalBarSeries>.rv-xy-plot >.rv-xy-plot__inner{
-        width: 250px;
-    } */
      .DiagramInfoChart01>.ArcSeries{
         margin: 0 auto;
         width: 170px;
      } 
      .moreView{
+        background-color: #dbdbdb;
         position: relative;
-        top: -94px;
-        left: 198px;
-    }                          
+        top: 9px;
+        left: 0;
+        width: 100px;
+        margin: 0 auto;
+        text-align: center;
+    }        
+    .diagramSearchForm{
+        text-align: center;
+    }                  
                                 
 }
-/* Diagram - media 웹 최소 사이즈 */
+/* Diagram - media 모바일 사이즈 */
 @media(max-width: 375px){
     .DiagramInfo{
+        height: auto;
         padding: 0.6rem;
         box-shadow: 2px 12px 11px #a8a8a8;
         border-radius: 13px;
@@ -1665,9 +1673,203 @@ border: none;
         top: -20px;
     }
     .moreView{
+        background-color: #dbdbdb;
         position: relative;
-        top: -80px;
-        left: 147px;
+        top: 9px;
+        left: 0;
+        width: 100px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .diagramSearchForm{
+        text-align: center;
     }
 
 }
+
+
+
+/* DiagramList - media 일반 사이즈 */
+@media(min-width: 551px){
+    .diagramList{
+        min-height: 780px;
+    }
+}
+/* DiagramList - media 웹 최소 사이즈 */
+@media(max-width: 550px){
+    .diagramList{
+        min-height: 780px;
+    }
+    .diagramList>.DiagramInfo{
+        height: auto;
+        padding: 0.6rem;
+        box-shadow: 2px 12px 11px #a8a8a8;
+        border-radius: 13px;  
+    }
+    .DiagramListChart03>.better{
+        min-height: 54px;
+        border-top: 1px solid #a8a8a8;
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+        padding-top: 17px;
+        margin-bottom: 18px;
+        margin-top: 0;
+        font-weight: 600;
+        transition: 0.5s;
+    }
+    .DiagramListChart03>.better>span{
+        color: #283fab;
+        vertical-align: middle;
+    }
+    .testCount{
+        width: 170px;
+        text-align: center;
+    }
+    .testKind{
+        width: 170px;
+        text-align: center;
+    }
+    .DiagramUl{
+        padding: 0;
+    }
+    .DiagramUl>.DiagramLiTitle>span{
+        border-left: 1px solid #dbdbdb;
+    }
+    .DiagramUl>.DiagramLiTitle>span:nth-child(1){
+        border-left: none;
+    }
+    .DiagramUl>.DiagramLi{
+        text-align: center;
+        list-style: none;
+    }
+    /* .DiagramLiSubjective>span{
+        border-bottom: 1px solid #efefef;
+        display: inline-block;
+        padding: 0.4rem 0;
+    } */
+    .DiagramLiSubjective{
+        border-bottom: 1px solid #a8a8a8;
+    }
+    .DiagramLiSubjective:nth-last-child(1){
+        border-bottom: none;
+    }
+    .DiagramLiChoice{
+        border-bottom: 1px solid #a8a8a8;
+        display: flex;
+    }
+    .DiagramLiChoice:nth-last-child(1){
+        border-bottom: none;
+    }
+    .DiagramLiChoiceQuest{
+        width: 70%;
+    }
+    .DiagramLiChoiceQuest>p{
+        text-align: left;
+    }
+    .DiagramLiChoiceQuest>p:nth-child(1){
+        text-align: center;
+    }
+    .DiagramLiChoiceresult{
+        width: 30%;
+    }
+    .DiagramLiChoiceresult>p{
+        padding-top: 53px;
+    }
+    .DiagramLiChoiceresult>p>span{
+        height: 46px;
+        line-height: 3rem;
+        display: inline-block;
+    }
+}
+/* DiagramList - media 모바일 사이즈 */
+@media(max-width: 375px){
+    .diagramList{
+        min-height: 750px;
+    }
+    .diagramList>.DiagramInfo{
+        height: auto;
+        padding: 0.6rem;
+        box-shadow: 2px 12px 11px #a8a8a8;
+        border-radius: 13px;  
+    }
+    .DiagramListChart03>.better{
+        min-height: 54px;
+        border-top: 1px solid #a8a8a8;
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+        padding-top: 17px;
+        margin-bottom: 18px;
+        margin-top: 0;
+        font-weight: 600;
+        transition: 0.5s;
+    }
+    .DiagramListChart03>.better>span{
+        color: #283fab;
+        vertical-align: middle;
+    }
+    .testCount{
+        width: 170px;
+        text-align: center;
+    }
+    .testKind{
+        width: 170px;
+        text-align: center;
+    }
+    .DiagramUl{
+        padding: 0;
+    }
+    .DiagramUl>.DiagramLiTitle>span{
+        border-left: 1px solid #dbdbdb;
+    }
+    .DiagramUl>.DiagramLiTitle>span:nth-child(1){
+        border-left: none;
+    }
+    .DiagramUl>.DiagramLi{
+        text-align: center;
+        list-style: none;
+    }
+    /* .DiagramLiSubjective>span{
+        border-bottom: 1px solid #efefef;
+        display: inline-block;
+        padding: 0.4rem 0;
+    } */
+    .DiagramLiSubjective{
+        border-bottom: 1px solid #a8a8a8;
+    }
+    .DiagramLiSubjective:nth-last-child(1){
+        border-bottom: none;
+    }
+    .DiagramLiChoice{
+        border-bottom: 1px solid #a8a8a8;
+        display: flex;
+    }
+    .DiagramLiChoice:nth-last-child(1){
+        border-bottom: none;
+    }
+    .DiagramLiChoiceQuest{
+        width: 70%;
+    }
+    .DiagramLiChoiceQuest>p{
+        text-align: left;
+    }
+    .DiagramLiChoiceQuest>p:nth-child(1){
+        text-align: center;
+    }
+    .DiagramLiChoiceresult{
+        width: 30%;
+    }
+    .DiagramLiChoiceresult>p{
+        padding-top: 53px;
+    }
+    .DiagramLiChoiceresult>p>span{
+        height: 46px;
+        line-height: 3rem;
+        display: inline-block;
+    }
+
+}
+
+
+

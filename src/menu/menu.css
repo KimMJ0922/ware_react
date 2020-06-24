@@ -4,6 +4,7 @@
 
 @media(min-width: 551px){
     .mainMenuDetail{
+        padding-left: 1rem;
         background-color: #FAFAFA;
         max-height: 794px;
     }
