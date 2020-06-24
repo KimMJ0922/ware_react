@@ -14,6 +14,7 @@ const Setting = (props) => {
     const [defaultImg, setDefaultImg] = useState([]);
     const [newPassword, setNewPassword] = useState('');
     const [outText, setOutText] = useState('');
+    const [history, setHistory] = useState([]);
 
     //이름을 입력했을 때
     const changeName = (e) => {
@@ -30,6 +31,13 @@ const Setting = (props) => {
                 let listData = list.data;
                 setDefaultImg(listData);
             }catch(e){
+                console.log(e);
+            }
+        }
+
+        const point_history = async () =>{
+            try {
+            } catch (e) {
                 console.log(e);
             }
         }
