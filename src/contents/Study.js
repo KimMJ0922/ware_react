@@ -245,7 +245,9 @@ const Study=({location})=>{
             <div className="std_menu_box">
             <p>문제 풀기</p>
             <button type="button"><BookIcon/>학습하기</button>
-            <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+            {
+              cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+            }
             <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
             <button type="button" onClick={goTest}><TestIcon/>테스트</button>
             <p>설정</p>   
@@ -343,7 +345,9 @@ const Study=({location})=>{
             <div className="std_menu_box">
             <p>문제 풀기</p>
             <button type="button"><BookIcon/>학습하기</button>
-            <button type="button"><MouseIcon/>객관식</button>
+            {
+              cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+            }
             <button type="button"><KeyboardIcon/>주관식</button>
             <button type="button"><TestIcon/>테스트</button>
             <p>설정</p>   
