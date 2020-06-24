@@ -1,0 +1,83 @@
+/* 주관식 웹 최대 사이즈  */
+@media(min-width:501px){
+    .sbjc_body{
+        width:70%;
+        margin-left: 15%;
+        font-size: 16px;
+        height: 100%;
+    }
+
+    .sbjc_menu_box{
+        display: grid;
+        width: 80%;
+        padding-left: 20%;
+    }
+
+    .sbjc_menu_box>button{
+        width: 150px;
+        height:50px;
+        border: none;
+        background: none;
+        text-align: left;
+        padding-left: 30px;
+    }
+    .sbjc_menu_box>button>.MuiSvgIcon-root{
+        margin-right: 10px;
+        font-size: 1.4rem;
+        color:#c29fcb;
+        
+    }
+    .sbjc_menu_box>p{
+        width: 150px;
+        height:20px;
+        text-align: left;
+        font-size: 0.8rem;
+    }
+    .sbjc_menu_box>p>.MuiSvgIcon-root{
+        margin-right: 10px;
+        font-size: 1.4rem;
+        color:#c29fcb;
+        margin-left: 30px;
+    }
+
+    /* 문제화면 */
+
+    .sbjc_content_box{
+        width: 600px;
+        height: 500px;
+        position: relative;
+    }
+
+    .sbjc_content{
+        border:none;
+        border-radius: 5px;
+        width: 600px;
+        height: 300px;
+        text-align: center;
+        color:black;
+        font-size: 2rem;
+        padding-top: 200px;
+        box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 2px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
+    }
+    .sbjc_content>input{
+        width:400px;
+        height: 50px;
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-left: 50px;
+    }
+
+    .sbjc_content>button{
+        border:none;
+        background: none;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+    }
+
+    .sbjc_content>button>.MuiSvgIcon-root{
+        font-size: 1.5rem;
+    }
+
+
+}

@@ -1,8 +1,19 @@
 import React,{useState,useEffect} from 'react';
 import {useHistory} from 'react-router';
 import axios from 'axios';
+import { Grid, Hidden } from '@material-ui/core';
+import PrevIcon from '@material-ui/icons/NavigateBefore';
+import NextIcon from '@material-ui/icons/NavigateNext';
+import BookIcon from '@material-ui/icons/MenuBook';
+import MouseIcon from '@material-ui/icons/Mouse';
+import TestIcon from '@material-ui/icons/Flag';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
+import CredIcon from '@material-ui/icons/CreditCard';
+import CheckIcon from '@material-ui/icons/DoneOutline';
+import './Subjective.css';
 
 const Subjective = () => {
+    var routerHistory = useHistory();
     var history = useHistory();
     const [cardset_no, setCardSet_no] = useState(window.sessionStorage.getItem('cardset_no'));
     const [memberInfo, setMemberInfo] = useState({
@@ -45,6 +56,25 @@ const Subjective = () => {
             
         }
     }
+
+    const learning = () =>{
+        routerHistory.push('/study');
+    }
+
+  //주관식으로 이동
+  const Subjective = () => {
+    routerHistory.push('/subjective');
+  }
+
+  //객관식 이동
+  const Choice = () => {
+    routerHistory.push('/choice');
+  }
+  //테스트 이동
+  const goTest = () => {
+    routerHistory.push('/test');
+  }
+
     useEffect(() => {
         const getCardSet = async() => {
             let url = "http://localhost:9000/getcardlist";
@@ -141,22 +171,52 @@ const Subjective = () => {
     }
     return (
         <>
-            총 갯수 : {cardList.length}<br/>
-            맞은 횟수 : {rightAnswer}<br/>
-            틀린 횟수 : {wrongAnswer}<br/>
+        <div className="sbjc_body">
+        <Grid container>
+        <Grid item xs={12} md={12}>
+          <p className="std_title_font">{cardSetInfo.title}</p>
+        </Grid>
+      </Grid>
+
+      <Grid container>
+        <Hidden only={['xs','sm']}>
+          <Grid xs={12} md={4}>
+            <div className="sbjc_menu_box">
+            <p>문제 풀기</p>
+            <button type="button" onClick={learning}><BookIcon/>학습하기</button>
             {
-                cardList.length !== rightAnswer+wrongAnswer && cardList.map((item,i) => {
-                    if(i === random){
-                        return (
-                            <>
-                                <img src={item.imgSrc} alt="" style={{width:'150px', height:'150px'}}/>
-                                {item.question}<br/>
-                                <input type="text" onChange={textChange} onKeyPress={keyEnter} value={inputText} autoFocus="true"/><button type="button" onClick={btnClick}>입력 완료</button>
-                            </>
-                        )
-                    }
-                })
+              cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
             }
+            <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+            <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+            <p>주관식 정보</p>
+            <p><CredIcon/>총 카드수 : {cardList.length}</p>
+            <p><CheckIcon style={{color:'#bfff00'}}/>정답 : {rightAnswer}</p>
+            <p><CheckIcon style={{color:'red'}}/>오답 : {wrongAnswer}</p>
+            </div>
+          </Grid>
+          </Hidden>
+          <Grid xs={12} md={8}>
+               <div className="sbjc_content_box">
+                    <div className="sbjc_content">
+                    {
+                            cardList.length !== rightAnswer+wrongAnswer && cardList.map((item,i) => {
+                                if(i === random){
+                                    return (
+                                        <>
+                                            <img src={item.imgSrc} alt="" style={{width:'150px', height:'150px'}}/>
+                                            {item.question}<br/>
+                                            <input type="text" onChange={textChange} onKeyPress={keyEnter} value={inputText} autoFocus="true"/><button type="button" onClick={btnClick}><CheckIcon/></button>
+                                        </>
+                                    )
+                                }
+                            })
+                    }
+                    </div>
+               </div>
+          </Grid>
+        </Grid>
+           
 
             {
                 cardList.length === rightAnswer+wrongAnswer && 
@@ -204,6 +264,7 @@ const Subjective = () => {
                     </table>
                 </>
             }
+            </div>
         </>
     )
 }
