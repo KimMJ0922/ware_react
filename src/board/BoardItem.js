@@ -98,7 +98,70 @@ const BoardItem=({match})=> {
     }
     const golist = () => {
         history.push("/home/board?page="+match.params.pageNum);
+        //history.goBack();
     }
+
+    const deleteboard= async ()=>{
+        try {
+            await Axios.get(
+                "http://localhost:9000/board/delete?board_no="+board_no
+            )
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    const update = () =>{
+        history.push("/home/board/update/"+board_no);
+    }
+
+    //구매
+    const buy = async () =>{
+        try {
+            let data = await Axios.get(
+                 "http://localhost:9000/board/currentPoint?member_no="+window.sessionStorage.getItem("no")
+            )
+            console.log(data.data);
+            if(data.data<item.requirepoint){
+                alert("포인트 부족");
+                return false;
+            }
+        } catch (e) {
+            alert("포인트 조회 실패");
+            console.log(e);
+        }
+        try {
+            await Axios.post(
+                "http://localhost:9000/board/buy",{
+                    board_no: board_no,
+                    member_no: window.sessionStorage.getItem("no"),
+                    requirepoint: item.requirepoint
+                }
+            )
+            alert("구매 성공");
+        } catch (e) {
+            alert("구매 오류 다시 시도하세요");
+            console.log(e);
+        }
+    }
+    var buttons = null;
+    if(window.sessionStorage.getItem("name")===item.name){
+        console.log("작성자가 들어옴");
+        buttons = 
+            <div>
+                <button type="button" onClick={golist}>리스트</button>
+                <button type="button" onClick={update}>수정</button>
+                <button type="button" onClick={deleteboard}>삭제</button>
+            </div>
+    }else{
+        console.log("구매자가 들어옴");
+        buttons = 
+            <div>
+                <button type="button" onClick={golist}>리스트</button>
+                <button type="button" onClick={buy}>구매하기</button>
+            </div>
+    }
+    
     return ( 
         <div>
             제목 : {item.subject}<br/>
@@ -109,21 +172,20 @@ const BoardItem=({match})=> {
             작성자 : {item.name}<br/>
             작성자 프로필 사진 : 
             <img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/><br/><br/>
-            문제 : 
             {
                 carddata.map((row,index) => (
                     <div>
                         <p>인덱스 : {index}</p>
                         <p>문제 : {row.question}</p>
                         <p>답 : {row.answer}</p>
-                        
+                        {
+                            row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
+                        }
                     </div>
                 ))
             }
             <br/>
-            <button type="button" onClick={golist}>리스트</button>
-            <button type="button" >수정</button>
-            <button type="button" >삭제</button>
+            {buttons}
         </div>
     );
 }

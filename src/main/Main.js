@@ -183,7 +183,7 @@ const Main = () => {
     mount.current.appendChild(renderer.domElement);
     animate();
 
-    var ment_1 = ment1.current.innerText;
+    //var ment_1 = ment1.current.innerText;
     var controller = new ScrollMagic.Controller();
     var tl = new TimelineMax();
     tl.fromTo(

@@ -15,26 +15,37 @@ import { Search } from '@material-ui/icons';
 
 const BoardList=()=>{ 
     const history = useHistory();
+    var p = window.sessionStorage.getItem("pageNum");
+    var sl = window.sessionStorage.getItem("select");
+    var se = window.sessionStorage.getItem("search");
     const [search, setSearch] = useState('');
     const [boardData, setBoardData] = useState([]);
     const [countNum, setCountNum] = useState(0);
     const [pageNum, setPageNum] = useState(0);
 
     // radio 값바꾸기
-    const [selectedValue, setSelectedValue] = useState("최신순");
+    const [selectedValue, setSelectedValue] = useState("");
 
     const selectChange = event => {
         setSelectedValue(event.target.value);
-    };
-    const searchChange = event => {
-        setSearch(event.target.value);
+        window.sessionStorage.setItem("select",event.target.value);
     };
 
+    const searchChange = event => {
+        setSearch(event.target.value);
+        window.sessionStorage.setItem("search",event.target.value);
+    };
+    
     useEffect(()=>{
-        const getData = async () =>{
+        //window.addEventListener("load",init);
+        const getData = async (p, sl, se) =>{
             try {
-                const data = await Axios.get(
-                    "http://localhost:9000/board/list?pageNum="+pageNum+"&search="+search+"&select="+selectedValue
+                const data = await Axios.post(
+                    "http://localhost:9000/board/list",{
+                        pageNum:p,
+                        search:se,
+                        select:sl
+                    }
                 );
                 setBoardData(data.data);
             } catch (e) {
@@ -42,10 +53,10 @@ const BoardList=()=>{
             }
         }
     
-        const BoardCount = async () =>{
+        const BoardCount = async (se) =>{
             try {
                 const data = await Axios.get(
-                    "http://localhost:9000/board/count?search="+search
+                    "http://localhost:9000/board/count?search="+se
                 );
                 setCountNum(data.data);
             } catch (e) {
@@ -53,14 +64,18 @@ const BoardList=()=>{
             }
         }
         setTimeout(()=>{
-            getData();
+            p = window.sessionStorage.getItem("pageNum");
+            sl = window.sessionStorage.getItem("select");
+            se = window.sessionStorage.getItem("search");
+            getData(p, sl, se);
+            BoardCount(se);
         },100);
-        BoardCount();
     },[pageNum, search, selectedValue])
+
     var items = null;
     if(boardData.length !== 0){
         items = boardData.map((row) => (
-            <BoardItems row={row} pageNum={pageNum}/>
+            <BoardItems row={row} pageNum={pageNum} search={search} selectedValue={selectedValue}/>
         ));
     }else {
         items = 
@@ -70,13 +85,14 @@ const BoardList=()=>{
             </div>
         </Grid>;
     }
+
     return (
         <>
         <Grid container className='boardTableSubject'> 
             <Grid xs={12} md={6}>
                 <div className='boardSearchForm'>
                     <form  noValidate autoComplete="off">
-                        <TextField className='boardSearchBar' onChange={searchChange} type="search"/>
+                        <TextField className='boardSearchBar' onChange={searchChange} value={se} type="search"/>
                         <Button id='boardSearchBtn' ><Search/></Button>
                     </form>
                 </div> 
@@ -84,7 +100,7 @@ const BoardList=()=>{
             <Grid xs={12} md={6}>
                 <div className='boardSearchForm'>
                 <Radio
-                    checked={selectedValue === "최신순"}
+                    checked={sl === "최신순"}
                     onChange={selectChange}
                     value="최신순"
                     name="radio-button-demo"
@@ -92,17 +108,17 @@ const BoardList=()=>{
                 />최신순
                 
                 <Radio
-                    checked={selectedValue === "조회순"}
+                    checked={sl === "조회순"}
                     onChange={selectChange}
                     value="조회순"
                 />조회순
                 <Radio
-                    checked={selectedValue === "낮은가격순"}
+                    checked={sl === "낮은가격순"}
                     onChange={selectChange}
                     value="낮은가격순"
                 />낮은가격순
                 <Radio
-                    checked={selectedValue === "높은가격순"}
+                    checked={sl === "높은가격순"}
                     onChange={selectChange}
                     value="높은가격순"
                 />높은가격순
@@ -127,6 +143,7 @@ const BoardList=()=>{
                         const query = new URLSearchParams(location.search);
                         const page = parseInt(query.get('page') || '1', 10);
                         setPageNum(page);
+                        window.sessionStorage.setItem("pageNum",page);
                         return (
                             <div>
                             <Pagination
