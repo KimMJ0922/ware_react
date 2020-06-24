@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Hidden, Button, Radio, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
-import { ExpandMore,ExpandLess,ChevronRight } from '@material-ui/icons';
-import {Link} from 'react-router-dom';
 import { XYPlot, ArcSeries, YAxis, VerticalBarSeries, XAxis } from 'react-vis';
 import './MenuDtail.css'
 
@@ -10,8 +8,17 @@ import ProfileImg from './iu03.jpg';
 
 
 const DiagramList=()=>{
-
+    var items=null;
     const PI = Math.PI;
+
+    //폰트 트렌지션
+    const [moreBetterSize, setMoreBetterSize] = useState({
+        fontSize:'1.6rem'
+    });
+    const [moreBetter, setMoreBetter] = useState({
+        fontSize:'0rem'
+    });
+
 
     const [totalCount,setTotalCount] =useState(58); //총 문제 갯수 
     const [rightCount, setRightCount] = useState(29); // 맞은갯수
@@ -48,13 +55,112 @@ const DiagramList=()=>{
         radius: 40,
         radius0:60
     }]);
+   
 
-    //select 
-    const [age, setAge] = useState('');\
-      const handleChange = (event) => {
-        setAge(event.target.value);
+    //select 회차
+    const [testCount, setTestCount] = useState('');
+
+      const handleChangeTestCount = (event) => {
+        setTestCount(event.target.value);
+        
       };
-    
+
+    //select 시험유형
+    const [testKind, setTestKind] = useState('');
+      const handleChangeTestKind = (event) => {
+        setTestKind(event.target.value);
+      };
+    if(testKind==='subjective'){
+        items =
+        <ul className='DiagramUl'>
+{/* -------------------- 여기서li를 문제 map돌리면됨*/}
+            <li className='DiagramLi DiagramLiSubjective'>
+                <p>사람이름이 아닌것은?</p>
+                <p>
+                    <span>나의 답 : </span>
+                    <span className='DiagramLiSubjectiveMyResult'>곽철용</span>
+                </p>
+                <p>
+                <span>정답 : </span>
+                <span className='DiagramLiSubjectiveResult'>엄준식</span>
+                </p>
+            </li> 
+            <li className='DiagramLi DiagramLiSubjective'>
+                <p>1962년 애덤스미스가 설명한 오늘날 경제학의 중심이된 이론은?</p>
+                <p>
+                    <span>나의 답 : </span>
+                    <span className='DiagramLiSubjectiveMyResult'>잘보이는 손</span>
+                </p>
+                <p>
+                <span>정답 : </span>
+                <span className='DiagramLiSubjectiveResult'>보이지않는 손</span>
+                </p>
+            </li>
+        </ul>
+    }else if(testKind==='choice'){
+        items =
+        <ul className='DiagramUl'>
+{/* -------------------- 여기서list로 문제 map돌리면됨 일단 3개 만들어놨음*/}
+            <li className='DiagramLi DiagramLiChoice'>
+                
+                <div className='DiagramLiChoiceQuest'>
+                    <p>대한민국의 수도는?</p>    
+                    <p>1. 평양</p>
+                    <p>2. 가나</p>
+                    <p>3. 우리집화장실</p>
+                    <p>4. 서울</p>
+                </div>
+                <div className='DiagramLiChoiceresult'>
+                    <p>
+                        <span>내가 고른답 : 2 </span>
+                        <span>문제 정답 : 4 </span>
+                    </p>
+                </div>
+                
+            </li>
+            <li className='DiagramLi DiagramLiChoice'>
+                <div className='DiagramLiChoiceQuest'>
+                    <p>대한민국의 수도는?</p>    
+                    <p>1. 평양</p>
+                    <p>2. 가나</p>
+                    <p>3. 우리집화장실</p>
+                    <p>4. 서울</p>
+                </div>
+                <div className='DiagramLiChoiceresult'>
+                    <p>
+                        <span>내가 고른답 : 2 </span>
+                        <span>문제 정답 : 4 </span>
+                    </p>
+                </div>
+            </li>
+            <li className='DiagramLi DiagramLiChoice'>
+                <div className='DiagramLiChoiceQuest'>
+                    <p>대한민국의 수도는?</p>    
+                    <p>1. 평양</p>
+                    <p>2. 가나</p>
+                    <p>3. 우리집화장실</p>
+                    <p>4. 서울</p>
+                </div>
+                <div className='DiagramLiChoiceresult'>
+                    <p>
+                        <span>나의 답 : 2 </span>
+                        <span> 정답 : 4 </span>
+                    </p>
+                </div>
+                
+            </li>
+        </ul>
+    }else if(testKind==='test'){
+            items =
+            <ul className='DiagramUl'>
+{/* 여기 문제 섞어서 출력해야 하는데 객관식 주관식 따로따로 map을 써서출력을 어떻게 해야할지 모르겠음  */}
+                <li className='DiagramLi DiagramLiTest'>
+                    <span>문제</span>
+                    <span>답34  </span>
+                    <span>정답/오답</span>
+                </li>
+            </ul>
+    }
     //Bar 임의 데이터 
     const [barData, setBarData] = useState([
         {x: '2회', y: 46},
@@ -63,7 +169,19 @@ const DiagramList=()=>{
         {x: '5회', y: 100}
     ]);
     
+    
+
+    
+    
+
     useEffect(()=>{
+
+        //폰트 트렌지션
+    setTimeout(()=>{
+        setMoreBetter(moreBetterSize);
+        console.log('Works!');
+    },1000);
+    
         //웹 오답률 출력
         setTimeout(()=>{
             for(var i=0; i<wrongloopCnt;i++){
@@ -77,9 +195,9 @@ const DiagramList=()=>{
                             radius0:80
                         }
                         setMyWrongData([{...data}]);
-                        console.log('ㅎ'+x);
+                        // console.log('ㅎ'+x);
                         
-                    },x*1000)
+                    },x*500)
                 })(i);
             }
         },900);  
@@ -113,7 +231,7 @@ const DiagramList=()=>{
                             radius0:80
                         }
                         setMyGoodData([{...data}]);
-                        console.log('ㅗ'+x);
+                        // console.log('ㅗ'+x);
                       
                     },x*1000)
                 })(i);
@@ -139,9 +257,10 @@ const DiagramList=()=>{
        
     },[]);
 
+    
     return(
+        
         <div className='diagramList'>
-
 <Grid container  className='DiagramInfo'  >
             
             {/* 웹용 */}
@@ -204,7 +323,7 @@ const DiagramList=()=>{
                 </Grid>
                 <Grid xs={12} sm={12} className='DiagramListChart03'>
 {/* -------------------- 여기서 map돌리면됨 */}
-                <span>전보다 6문제더 맞았어요!</span>
+                <span >전보다 6문제더 맞았어요!</span>
                 </Grid>
                
             </Hidden>
@@ -268,30 +387,44 @@ const DiagramList=()=>{
                 </Grid>
                 
                 <Grid xs={12} sm={12} className='DiagramListChart03'>
-                <span>전보다 6문제더 맞았어요!</span>
+                <p className='better' style={moreBetter}><span >전보다 6문제더 맞았어요!</span></p>
                 </Grid>
                 <Grid xs={6} sm={6} className='DiagramListChart04'>
-                    <FormControl variant="outlined">
-                        <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+                    <FormControl variant="outlined" className='testCount'>
+                        <InputLabel>회차</InputLabel>
                         <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
-                        value={age}
-                        onChange={handleChange}
-                        label="Age"
-                        >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-    {/* -------------------- 여기서 MenuItem으로  map돌리면됨 일단 3개 만들어놨음*/}
-                        <MenuItem value={'1'}>1회차</MenuItem>
-                        <MenuItem value={'2'}>2회차</MenuItem>
-                        <MenuItem value={'3'}>3회차</MenuItem>
+                            
+                            value={testCount}
+                            onChange={handleChangeTestCount}
+                            label="회차"
+                            >
+        {/* -------------------- 여기서 MenuItem으로 회차 map돌리면됨 일단 3개 만들어놨음*/}
+                            <MenuItem value={'1'} >1회차 (3.13)</MenuItem>
+                            <MenuItem value={'2'}>2회차 (4.24)</MenuItem>
+                            <MenuItem value={'3'}>3회차 (5.3)</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid xs={6} sm={6} className='DiagramListChart05'>
 
+                <Grid xs={6} sm={6} className='DiagramListChart05'>
+                <FormControl variant="outlined" className='testKind' >
+                        <InputLabel >유형</InputLabel>
+                        <Select
+                            value={testKind}
+                            onChange={handleChangeTestKind}
+                            label="유형"
+                            >
+                            <MenuItem value={'subjective'}>주관식</MenuItem>
+                            <MenuItem value={'choice'}>객관식</MenuItem>
+                            <MenuItem value={'test'}>테스트</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid xs={12} sm={12} className='DiagramListChart06'>
+                        {
+                                
+                            items
+                        }
                 </Grid>
             </Hidden>
         </Grid>
