@@ -215,7 +215,6 @@ const Study=({location})=>{
 
     });
   }
-
   //주관식으로 이동
   const Subjective = () => {
     routerHistory.push('/subjective');
@@ -280,14 +279,16 @@ const Study=({location})=>{
               if(cnt === i){
                 return (
                   <>
-                  <div className="std_content_box">
+                  <div className={cardState === false ? "std_content_box" : "std_content_box card_after"}>
+                  {/* <div className="std_content_box"> */}
                     {/* div 클릭시 cardState 상태를 반전 시킴 */}
                     <div className="std_contetn_prev">
                         {
                           settingCheck === false ? <button type="button" onClick={cntDown}><PrevIcon/></button> : ''
                         }
                     </div>
-                    <div className="std_content" onClick={settingCheck === false ? cardClick : null}>
+
+                    <div className="std_content " onClick={settingCheck === false ? cardClick : null}>
                       {/* 이미지가 있으면 화면에 출력 */}
                       {/* cardState가 false면 문제를 보여주고, cardState가 true면 답을 보여준다. */}
                       {
@@ -297,6 +298,7 @@ const Study=({location})=>{
                         item.imgSrc !== "" && cardState === false && <img src={item.imgSrc} className="std_content_img" alt=""/>
                       }               
                    </div>
+
                    <div className="std_contetn_next">
                         {
                             settingCheck === false ? <button type="button" onClick={cntUp}><NextIcon/></button> : ''
