@@ -20,8 +20,9 @@ const Board=()=>{
         <Router>
             <Route exact path="/home/board" component={BoardList} />
             <Route exact path="/home/board/insert" component={BoardInsert} />
-            <Route exact path="/home/board/update" component={BoardUpdate} />
             <Route exact path="/home/board/item/:board_no/:pageNum" component={BoardItem} />
+            <Route exact path="/home/board/update/:board_no" component={BoardUpdate} />
+            {/* <Route exact path='/home/board/update' render={() => <BoardUpdate />}/> */}
         </Router>
     )
 }
