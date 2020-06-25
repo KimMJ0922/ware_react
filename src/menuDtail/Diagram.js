@@ -3,7 +3,7 @@ import DiagramChart from './DiagramChart';
 import { Button } from '@material-ui/core';
 import axios from 'axios';
 
-const Diagram=()=>{
+const Diagram=({location})=>{
     const [diagramList, setDiagramList] = useState([]);
     const [diagramLastList, setDiagramLastList] = useState([]);
     const [radioCheck, setRadioCheck] = useState([]);
@@ -57,7 +57,7 @@ const Diagram=()=>{
                     }
                     data.push(temp);
                 })
-                
+
                 lastList.map((item) => {
                     let check = {
                         cardset_no : item.cardset_no,
@@ -76,9 +76,6 @@ const Diagram=()=>{
         getList();
     },[])
     
-    useEffect(() => {
-        //console.log(radioCheck);
-    },[radioCheck])
     return(
         <>
             {/* 여기다가 map돌리면됨 일부러 파일 분류했음 -엄준식 */}

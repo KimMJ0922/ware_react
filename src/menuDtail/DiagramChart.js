@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Hidden, Button, Radio } from '@material-ui/core';
 import { ExpandMore,ExpandLess,ChevronRight } from '@material-ui/icons';
 import {Link} from 'react-router-dom';
-
+import {useHistory} from 'react-router';
 import { XYPlot, ArcSeries, YAxis, VerticalBarSeries, XAxis } from 'react-vis';
 import './MenuDtail.css'
 
-//프로필 이미지 대용
-import ProfileImg from './iu03.jpg';
-
 const DiagramChart=(props)=>{
     const PI = Math.PI;
+    var history = useHistory();
     // const [search, setSearch] = useState('');
     const [totalCount,setTotalCount] =useState(props.item.rightcnt+props.item.wrongcnt); //총 문제 갯수 
     const [rightCount, setRightCount] = useState(props.item.rightcnt); // 맞은갯수
@@ -60,7 +58,6 @@ const DiagramChart=(props)=>{
     const [diagramList, setDiagramList] = useState([...props.diaList]);
     const selectChange = event => {
         let name = parseInt(event.target.name);
-        console.log(name);
         setSelectedValue(event.target.value);
         let radioCheck = props.radioCheck;
         radioCheck.map((item) => {
@@ -171,8 +168,12 @@ const DiagramChart=(props)=>{
         // },1100);  
        
     },[]);
-
-
+    
+    const goDiagramList = (e) => {
+        e.preventDefault();
+        window.sessionStorage.setItem('diagram',props.item.cardset_no);
+        history.push('/home/diagramlist');
+    }
 
     return(
         <Grid container  className='DiagramInfo' >
@@ -262,7 +263,7 @@ const DiagramChart=(props)=>{
                     </div>
                 </Grid>
                 <Grid md={1} lg={1} className='DiagramListChart03'>
-                    <Link exact to='/home/diagramlist'>
+                    <Link onClick={goDiagramList}>
                         <Button id='DiagramDetail'>
                             <ChevronRight style={{ fontSize: 45 }}/>
                         </Button>
@@ -353,7 +354,8 @@ const DiagramChart=(props)=>{
                 </Grid>
                 <Grid xs={12} sm={12} className='DiagramListChart04'>
                     <div className='moreView'>
-                        <Link exact to='/home/diagramlist'>
+                        {/* exact to='/home/diagramlist' ch={'dddddd'} */}
+                        <Link onClick={goDiagramList}>
                             <Button id='DiagramDetail'>
                                 <ExpandMore style={{ fontSize: 20 }} color='#fff'/>
                             </Button>
