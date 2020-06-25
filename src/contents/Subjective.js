@@ -199,6 +199,53 @@ const Subjective = () => {
           <Grid xs={12} md={8}>
                <div className="sbjc_content_box">
                     <div className="sbjc_content">
+                
+                     {
+                cardList.length === rightAnswer+wrongAnswer && 
+                <>
+                     <p className="sbjc_r_w_re_box"> 
+                        <button type="button" onClick={answerShow} name="right">맞춘 답</button>
+                        <button type="button" onClick={answerShow} name="wrong">틀린 답</button>
+                        <button type="button" onClick={retry}>다시 풀기</button>
+                        </p>
+
+                    {answerCheck === false ? "" : ""}
+                    <table className="sbjc_result_table">
+                        <thead>
+                            <tr>
+                                <th>문제</th>
+                                <th>답</th>
+                                <th>사용자 답</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                answerCheck === false && wrong.map((item) => {
+                                    return(
+                                        <tr>
+                                            <td>{item.question}</td>
+                                            <td>{item.answer}</td>
+                                            <td>{item.userAnswer}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+
+                            {
+                                answerCheck === true && right.map((item) => {
+                                    return(
+                                        <tr>
+                                            <td>{item.question}</td>
+                                            <td>{item.answer}</td>
+                                            <td>{item.userAnswer}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </>
+            }                   
                     {
                             cardList.length !== rightAnswer+wrongAnswer && cardList.map((item,i) => {
                                 if(i === random){
@@ -216,54 +263,26 @@ const Subjective = () => {
                </div>
           </Grid>
         </Grid>
-           
-
+        <Grid container>
+        <Hidden only={['md','lg','xl']}>
+          <Grid xs={12}>
+            <div className="sbjc_menu_box">
+            <p>주관식 정보</p>
+            <span className="sbjc_result_box"><CredIcon/>총 카드수 : {cardList.length}
+            <CheckIcon style={{color:'#bfff00'}}/>정답 : {rightAnswer}
+            <CheckIcon style={{color:'red'}}/>오답 : {wrongAnswer}</span>
+            <p>문제 풀기</p>
+            <button type="button" onClick={learning}><BookIcon/>학습하기</button>
             {
-                cardList.length === rightAnswer+wrongAnswer && 
-                <>
-                    <button type="button" onClick={answerShow} name="right">정답</button>
-                    <button type="button" onClick={answerShow} name="wrong">오답</button>
-                    <button type="button" onClick={retry}>다시 풀기</button>
-                    <h3>{answerCheck === false ? "오답 목록" : "정답 목록"}</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>문제 번호</th>
-                                <th>문제</th>
-                                <th>답</th>
-                                <th>사용자 답</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                answerCheck === false && wrong.map((item) => {
-                                    return(
-                                        <tr>
-                                            <td>{item.question_no}</td>
-                                            <td>{item.question}</td>
-                                            <td>{item.answer}</td>
-                                            <td>{item.userAnswer}</td>
-                                        </tr>
-                                    )
-                                })
-                            }
-
-                            {
-                                answerCheck === true && right.map((item) => {
-                                    return(
-                                        <tr>
-                                            <td>{item.question_no}</td>
-                                            <td>{item.question}</td>
-                                            <td>{item.answer}</td>
-                                            <td>{item.userAnswer}</td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
-                </>
+              cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
             }
+            <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+            <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+            
+            </div>
+          </Grid>
+          </Hidden>
+          </Grid>
             </div>
         </>
     )

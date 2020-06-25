@@ -350,7 +350,7 @@ const Study=({location})=>{
             {
               cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
             }
-            <button type="button"><KeyboardIcon/>주관식</button>
+            <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
             <button type="button"><TestIcon/>테스트</button>
             <p>설정</p>   
              {/* 수정 버튼 */}
