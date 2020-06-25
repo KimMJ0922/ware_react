@@ -59,6 +59,8 @@ const BoardUpdate = ({match}) => {
     const board_no = match.params.board_no;
     const [ip,setIp]=useState('');
 
+    const [list, setList] = useState([]);
+
     useEffect(()=>{
         const getIp = async () =>{
             try {
@@ -96,23 +98,14 @@ const BoardUpdate = ({match}) => {
 
         const getCartData = async () => {
             try {
-                let data = await Axios.get(
-                    "http://localhost:9000/board/boardcarddatas?board_no="+board_no
+                let data = await Axios.post(
+                    "http://localhost:9000/board/getcardset",{
+                        board_no:board_no,
+                        member_no:no
+                    }
                 )
-                data.data.map((row,index)=>{
-                    setCarddata([
-                        {
-                            id: index+1,
-                            question: row.question,
-                            answer:row.answer,
-                            visible : true,
-                            img : row.imgFile,
-                            imgSrc : '',
-                            searchText : ''
-                        }
-                    ])
-                })
-                //setRows(...carddata);
+                console.log(data.data);
+                setList(data.data.list);
             } catch (e) {
                 console.log(e);
             }
@@ -125,6 +118,26 @@ const BoardUpdate = ({match}) => {
             console.log(carddata);
         },100);
     },[])
+
+    useEffect(() => {
+        let t = [];
+        list.map((item,idx) => {
+            let visible = false
+            if(item.imgFile !== "") visible = true;
+            t.push({
+                id: item.question_no,
+                question: item.question,
+                answer:item.answer,
+                visible : visible,
+                img : item.imgFile,
+                imgSrc : item.imgSrc,
+                searchText : ''
+            });
+            setNum(item.question_no+1);
+        })
+        setRows([...t]);
+        console.log(num);
+    },[list])
 
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
@@ -304,6 +317,11 @@ const BoardUpdate = ({match}) => {
 
         if(comment.length === 0){
             alert("설명을 작성해주세요");
+            return false;
+        }
+
+        if(point.length === 0){
+            alert("판매하실 포인트를 작성해주세요");
             return false;
         }
 
@@ -512,7 +530,7 @@ const BoardUpdate = ({match}) => {
                 </Grid>
                 <Grid xs={12} md={12}>
                     <div className="board_create_btn_box">
-                    <button type="submit" className="board_create_btn">만들기</button>
+                    <button type="submit" className="board_create_btn">수정하기</button>
                     </div>
                 </Grid>
                 {/* 컨테이너 그리드 */}
