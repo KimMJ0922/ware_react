@@ -17,6 +17,7 @@ const BoardItem=({match})=> {
     });
     const [carddata, setCarddata] = useState([]);
     const board_no = match.params.board_no;
+    const no = match.params.no;
     const [ip,setIp]=useState('');
 
     const [buyed, setBuyed] = useState(false);
@@ -138,7 +139,7 @@ const BoardItem=({match})=> {
     const buy = async () =>{
         try {
             let data = await Axios.get(
-                 "http://localhost:9000/board/currentPoint?member_no="+window.sessionStorage.getItem("no")
+                 "http://localhost:9000/currentPoint?member_no="+window.sessionStorage.getItem("no")
             )
             console.log(data.data);
             if(data.data<item.requirepoint){
@@ -154,6 +155,7 @@ const BoardItem=({match})=> {
                 "http://localhost:9000/board/buy",{
                     board_no: board_no,
                     member_no: window.sessionStorage.getItem("no"),
+                    no:no,
                     requirepoint: item.requirepoint
                 }
             )
@@ -164,7 +166,7 @@ const BoardItem=({match})=> {
         }
     }
     var buttons = null;
-    if(window.sessionStorage.getItem("name")===item.name){
+    if(window.sessionStorage.getItem("no")===no){
         console.log("작성자가 들어옴");
         buttons = 
             <div>
@@ -181,7 +183,7 @@ const BoardItem=({match})=> {
             </div>
     }
     var problems = null;
-    if(buyed===true){
+    if(window.sessionStorage.getItem("no")===no || buyed===true){
         problems = 
             carddata.map((row,index) => (
                 <div>

@@ -47,6 +47,7 @@ const BoardList=()=>{
                         select:sl
                     }
                 );
+                console.log(data.data);
                 setBoardData(data.data);
             } catch (e) {
                 console.log(e);
