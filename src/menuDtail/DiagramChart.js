@@ -9,13 +9,13 @@ import './MenuDtail.css'
 //프로필 이미지 대용
 import ProfileImg from './iu03.jpg';
 
-const DiagramChart=()=>{
-
+const DiagramChart=(props)=>{
+    console.log(props);
     const PI = Math.PI;
     // const [search, setSearch] = useState('');
-    const [totalCount,setTotalCount] =useState(58); //총 문제 갯수 
-    const [rightCount, setRightCount] = useState(29); // 맞은갯수
-    const [wrongCount, setWrongCount] = useState(totalCount-rightCount); //틀린 갯수
+    const [totalCount,setTotalCount] =useState(props.item.rightcnt+props.item.wrongcnt); //총 문제 갯수 
+    const [rightCount, setRightCount] = useState(props.item.rightcnt); // 맞은갯수
+    const [wrongCount, setWrongCount] = useState(props.item.wrongcnt); //틀린 갯수
   
     const [rightCountScore, setRightCountScore] = useState(rightCount/totalCount); //정답률
     const [godLoopCnt, setGodLoopCnt] = useState((rightCountScore*100).toFixed(1));
@@ -42,6 +42,7 @@ const DiagramChart=()=>{
         radius: 50,
         radius0:80
     }]);
+    
     const [myWrongDataM, setMyWrongDataM] = useState([{
         angle0:0,
         angle: 0,
@@ -58,7 +59,7 @@ const DiagramChart=()=>{
     ]);
     
     //radio 
-    const [selectedValue, setSelectedValue] = useState("테스트");
+    const [selectedValue, setSelectedValue] = useState(props.item.method);
 
     const selectChange = event => {
         setSelectedValue(event.target.value);
@@ -66,77 +67,77 @@ const DiagramChart=()=>{
 
     useEffect(()=>{
         //웹 오답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<wrongloopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let data ={
-                            angle0:0,
-                            angle: -(2*PI*(i/100)),
-                            radius: 50, 
-                            radius0:80
-                        }
-                        setMyWrongData([{...data}]);
-                        console.log('ㅎ'+x);
+        // setTimeout(()=>{
+        //     for(var i=0; i<wrongloopCnt;i++){
+        //         // eslint-disable-next-line no-loop-func
+        //         ((x) => {
+        //             setTimeout(() => {
+        //                 let data ={
+        //                     angle0:0,
+        //                     angle: -(2*PI*(i/100)),
+        //                     radius: 50, 
+        //                     radius0:80
+        //                 }
+        //                 setMyWrongData([{...data}]);
+        //                 console.log('ㅎ'+x);
                         
-                    },x*1000)
-                })(i);
-            }
-        },900);  
+        //             },x*1000)
+        //         })(i);
+        //     }
+        // },900);
         //모바일 오답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<wrongloopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let dataM ={
-                            angle0:0,
-                            angle: -(2*PI*(i/100)),
-                            radius: 40, 
-                            radius0:60
-                        }
-                        setMyWrongDataM([{...dataM}]);
-                    },x*1000)
-                })(i);
-            }
-        },1500);  
+        // setTimeout(()=>{
+        //     for(var i=0; i<wrongloopCnt;i++){
+        //         // eslint-disable-next-line no-loop-func
+        //         ((x) => {
+        //             setTimeout(() => {
+        //                 let dataM ={
+        //                     angle0:0,
+        //                     angle: -(2*PI*(i/100)),
+        //                     radius: 40, 
+        //                     radius0:60
+        //                 }
+        //                 setMyWrongDataM([{...dataM}]);
+        //             },x*1000)
+        //         })(i);
+        //     }
+        // },1500);  
         //웹 정답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<godLoopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let data ={
-                            angle0:0,
-                            angle: 2*PI*(i/100),
-                            radius: 50, 
-                            radius0:80
-                        }
-                        setMyGoodData([{...data}]);
-                        console.log('ㅗ'+x);
+        // setTimeout(()=>{
+        //     for(var i=0; i<godLoopCnt;i++){
+        //         // eslint-disable-next-line no-loop-func
+        //         ((x) => {
+        //             setTimeout(() => {
+        //                 let data ={
+        //                     angle0:0,
+        //                     angle: 2*PI*(i/100),
+        //                     radius: 50, 
+        //                     radius0:80
+        //                 }
+        //                 setMyGoodData([{...data}]);
+        //                 console.log('ㅗ'+x);
                       
-                    },x*1000)
-                })(i);
-            }
-        },500);   
+        //             },x*1000)
+        //         })(i);
+        //     }
+        // },500);   
         //모바일 정답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<godLoopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let dataM ={
-                            angle0:0,
-                            angle: 2*PI*(i/100),
-                            radius: 40, 
-                            radius0:60
-                        }
-                        setMyGoodDataM([{...dataM}]);
-                    },x*1000)
-                })(i);
-            }
-        },1100);  
+        // setTimeout(()=>{
+        //     for(var i=0; i<godLoopCnt;i++){
+        //         // eslint-disable-next-line no-loop-func
+        //         ((x) => {
+        //             setTimeout(() => {
+        //                 let dataM ={
+        //                     angle0:0,
+        //                     angle: 2*PI*(i/100),
+        //                     radius: 40, 
+        //                     radius0:60
+        //                 }
+        //                 setMyGoodDataM([{...dataM}]);
+        //             },x*1000)
+        //         })(i);
+        //     }
+        // },1100);  
        
     },[]);
 
@@ -149,11 +150,11 @@ const DiagramChart=()=>{
             {/* 웹용 */}
             <Hidden only={['xs','sm']}>
             <Grid md={3} className='DiagramInfoCardBox'>
-                    <span className='DiagramInfoCardSubject'>제목1</span>
-                    <span className='DiagramInfoCardCommit'>부제123123123</span>
+                    <span className='DiagramInfoCardSubject'>{props.item.title}</span>
+                    <span className='DiagramInfoCardCommit'>{props.item.comment}</span>
                     <div className='DiagramInfoCard'>
-                        <img src={ProfileImg} className='DiagramInfoCardImg' alt=''/>
-                        <span className='DiagramInfoCardId'>ExampleID</span>
+                        <img src={props.item.profile} className='DiagramInfoCardImg' alt=''/>
+                        <span className='DiagramInfoCardId'>{props.item.name}</span>
                     </div>
                 </Grid>
                 <Grid md={3} lg={3} className='DiagramInfoChart01'>
@@ -207,25 +208,25 @@ const DiagramChart=()=>{
                         <ul>
                             <li>
                                 <Radio
-                                checked={selectedValue === "객관식"}
+                                checked={selectedValue === "choice"}
                                 onChange={selectChange}
-                                value="객관식"
+                                value="choice"
                                 name="radio-button-demo"
                                 className="diagramSearchRadio"
                                 />객관식
                             </li>
                             <li>
                             <Radio
-                            checked={selectedValue === "주관식"}
+                            checked={selectedValue === "subjective"}
                             onChange={selectChange}
-                            value="주관식"
+                            value="subjective"
                              />주관식
                             </li>
                             <li>
                             <Radio
-                            checked={selectedValue === "테스트"}
+                            checked={selectedValue === "test"}
                             onChange={selectChange}
-                            value="테스트"
+                            value="test"
                               />테스트
                             </li>
                         </ul>
@@ -244,13 +245,13 @@ const DiagramChart=()=>{
             {/* 모바일용 */}
             <Hidden only={['md','lg','xl']}>
                 <Grid xs={6} md={6} className='DiagramInfoCardBox'>
-                    <span className='DiagramInfoCardSubject'>제목1</span>
-                    <span className='DiagramInfoCardCommit'>부제123123123</span>
+                    <span className='DiagramInfoCardSubject'>{props.item.title}</span>
+                    <span className='DiagramInfoCardCommit'>{props.item.comment}</span>
                 </Grid>
                 <Grid xs={6} md={6} className='DiagramInfoCardBox'>
                     <div className='DiagramInfoCard'>
-                        <img src={ProfileImg} className='DiagramInfoCardImg' alt=''/>
-                        <span className='DiagramInfoCardId'>ExampleID</span>
+                        <img src={props.item.profile} className='DiagramInfoCardImg' alt=''/>
+                        <span className='DiagramInfoCardId'>{props.item.name}</span>
                     </div>
                 </Grid>
                 <Grid xs={6} md={6}  className='DiagramInfoChart01'>
@@ -300,22 +301,22 @@ const DiagramChart=()=>{
                <Grid xs={12} sm={12} className='DiagramListChart03'>
                     <div className='diagramSearchForm'>
                     <Radio
-                        checked={selectedValue === "객관식"}
+                        checked={selectedValue === "choice"}
                         onChange={selectChange}
-                        value="객관식"
+                        value="choice"
                         name="radio-button-demo"
                         className="diagramSearchRadio"
                     />객관식
                     
                     <Radio
-                        checked={selectedValue === "주관식"}
+                        checked={selectedValue === "subjective"}
                         onChange={selectChange}
-                        value="주관식"
+                        value="subjective"
                     />주관식
                     <Radio
-                        checked={selectedValue === "테스트"}
+                        checked={selectedValue === "test"}
                         onChange={selectChange}
-                        value="테스트"
+                        value="test"
                     />테스트
                     </div>
                 </Grid>

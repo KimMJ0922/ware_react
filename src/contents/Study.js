@@ -61,7 +61,10 @@ const Study=({location})=>{
         let mem = list.data.mdto
         let cardSet = list.data.csdto;
         let card = list.data.cList;
-
+        if(card.length === 0 ){
+          alert('삭제된 카드 세트입니다.');
+          routerHistory.replace(routerHistory.go(-1));
+        }
         setMemberInfo({...mem});
         setCardSetInfo({...cardSet});
         card.map((item,i) => {
@@ -79,6 +82,7 @@ const Study=({location})=>{
         console.log(e);
       }
     }
+
     getCard();
   },[]);
 

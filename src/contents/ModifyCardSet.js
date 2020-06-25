@@ -33,7 +33,7 @@ const ModifyCardSet = ({location}) => {
                 let cardset = await axios.post(url,{no,member_no : window.sessionStorage.getItem('no')});
                 let csdto = cardset.data.csdto;
                 let list = cardset.data.list;
-                console.log(list);
+
                 if(csdto.update_scope === 'private' && parseInt(window.sessionStorage.getItem('no')) !== csdto.member_no){
                     history.replace('/study/'+no);
                 }

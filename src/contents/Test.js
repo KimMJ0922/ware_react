@@ -270,7 +270,8 @@ const Test = (props) => {
         if(scoringCheck){
             setRecord();
         }
-    },[scoringCheck])
+    },[scoringCheck]);
+
     //결과 저장
     const setRecord = () => {
         let url = "http://localhost:9000/setrecord";
