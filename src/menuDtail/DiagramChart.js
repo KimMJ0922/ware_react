@@ -10,7 +10,6 @@ import './MenuDtail.css'
 import ProfileImg from './iu03.jpg';
 
 const DiagramChart=(props)=>{
-    console.log(props);
     const PI = Math.PI;
     // const [search, setSearch] = useState('');
     const [totalCount,setTotalCount] =useState(props.item.rightcnt+props.item.wrongcnt); //총 문제 갯수 
@@ -22,7 +21,7 @@ const DiagramChart=(props)=>{
     
     const [myGoodData, setMyGoodData] = useState([{
         angle0:0,
-        angle: 0,
+        angle: (2*PI*(godLoopCnt/100)),
         radius: 50,
         radius0:80
     }]);
@@ -38,7 +37,7 @@ const DiagramChart=(props)=>{
     const [wrongloopCnt, setWrongloopCnt] = useState((wrongCountScore*100).toFixed(1));
     const [myWrongData, setMyWrongData] = useState([{
         angle0:0,
-        angle: 0,
+        angle: -(2*PI*(wrongloopCnt/100)),
         radius: 50,
         radius0:80
     }]);
@@ -52,20 +51,52 @@ const DiagramChart=(props)=>{
     
     //Bar 임의 데이터 
     const [barData, setBarData] = useState([
-        {x: '2회', y: 46},
-        {x: '3회', y: 78},
-        {x: '4회', y: 51},
-        {x: '5회', y: 100}
     ]);
     
     //radio 
     const [selectedValue, setSelectedValue] = useState(props.item.method);
 
+    //props에서 받은 list
+    const [diagramList, setDiagramList] = useState([...props.diaList]);
     const selectChange = event => {
+        let name = parseInt(event.target.name);
+        console.log(name);
         setSelectedValue(event.target.value);
+        let radioCheck = props.radioCheck;
+        radioCheck.map((item) => {
+            if(item.cardset_no === name){
+                item["method"] = event.target.value;
+            }
+        });
+        props.setRadioCheck([...radioCheck]); 
     };
 
     useEffect(()=>{
+        let chartList = props.chartList;
+        let data = [];
+        //해당 카드세트에 맞는 차트 거르기
+        chartList.map((item,idx) => {
+            if(item.method === props.item.method && item.cardset_no === props.item.cardset_no){
+                data.push(item);
+            }
+        })
+
+        //거른걸로 4개 출력
+        let leng = data.length-1;
+        let xydata = [];
+        data.map((item,idx) => {
+            if(leng-idx<=3){
+                let xy ={
+                    x : (idx+1)+'회',
+                    y : item.rightcnt/(item.rightcnt+item.wrongcnt)*100
+                }
+
+                xydata.push(xy);
+            }
+        })
+
+
+        setBarData([...xydata]);
         //웹 오답률 출력
         // setTimeout(()=>{
         //     for(var i=0; i<wrongloopCnt;i++){
@@ -144,7 +175,6 @@ const DiagramChart=(props)=>{
 
 
     return(
-        
         <Grid container  className='DiagramInfo' >
             
             {/* 웹용 */}
@@ -206,29 +236,28 @@ const DiagramChart=(props)=>{
                 <Grid md={2} lg={2} className='DiagramListChart04'>
                     <div className='diagramSearchForm'>
                         <ul>
-                            <li>
-                                <Radio
-                                checked={selectedValue === "choice"}
-                                onChange={selectChange}
-                                value="choice"
-                                name="radio-button-demo"
-                                className="diagramSearchRadio"
-                                />객관식
-                            </li>
-                            <li>
-                            <Radio
-                            checked={selectedValue === "subjective"}
-                            onChange={selectChange}
-                            value="subjective"
-                             />주관식
-                            </li>
-                            <li>
-                            <Radio
-                            checked={selectedValue === "test"}
-                            onChange={selectChange}
-                            value="test"
-                              />테스트
-                            </li>
+                            {
+                                //기록 되어있는 것만 출력
+                                diagramList.map((item) => {
+                                    if(item.cardset_no === props.item.cardset_no){
+                                        return (
+                                            <>
+                                                <li>
+                                                    <Radio
+                                                        checked={selectedValue === item.method}
+                                                        onChange={selectChange}
+                                                        value={item.method}
+                                                        //name="radio-button-demo"
+                                                        name = {props.item.cardset_no}
+                                                        className="diagramSearchRadio"
+                                                    />{item.method === "subjective" ? "주관식" : 
+                                                       item.method === "choice" ? "객관식" : "테스트"}
+                                                </li>
+                                            </>
+                                        )
+                                    }
+                                })
+                            }
                         </ul>
                     </div>
                 </Grid>
@@ -300,24 +329,26 @@ const DiagramChart=(props)=>{
                 </Grid>
                <Grid xs={12} sm={12} className='DiagramListChart03'>
                     <div className='diagramSearchForm'>
-                    <Radio
-                        checked={selectedValue === "choice"}
-                        onChange={selectChange}
-                        value="choice"
-                        name="radio-button-demo"
-                        className="diagramSearchRadio"
-                    />객관식
-                    
-                    <Radio
-                        checked={selectedValue === "subjective"}
-                        onChange={selectChange}
-                        value="subjective"
-                    />주관식
-                    <Radio
-                        checked={selectedValue === "test"}
-                        onChange={selectChange}
-                        value="test"
-                    />테스트
+                        {
+                            //기록 되어있는 것만 출력
+                            diagramList.map((item) => {
+                                if(item.cardset_no === props.item.cardset_no){
+                                    return (
+                                        <>
+                                            <Radio
+                                                checked={selectedValue === item.method}
+                                                onChange={selectChange}
+                                                value={item.method}
+                                                //name="radio-button-demo"
+                                                name = {props.item.cardset_no}
+                                                className="diagramSearchRadio"
+                                            />{item.method === "subjective" ? "주관식" : 
+                                                item.method === "choice" ? "객관식" : "테스트"}
+                                        </>
+                                    )
+                                }
+                            })
+                        }
                     </div>
                 </Grid>
                 <Grid xs={12} sm={12} className='DiagramListChart04'>

@@ -6,6 +6,8 @@ import axios from 'axios';
 const Diagram=()=>{
     const [diagramList, setDiagramList] = useState([]);
     const [diagramLastList, setDiagramLastList] = useState([]);
+    const [radioCheck, setRadioCheck] = useState([]);
+    const [chartList, setChartList] = useState([]); 
     useEffect(()=>{
         const getList = async() => {
             let url = "http://localhost:9000/getdiagramlist";
@@ -16,6 +18,7 @@ const Diagram=()=>{
 
                 let dilist = list.data.rlist;
                 let lastList = list.data.lastList;
+                let cList = list.data.chartList;
 
                 let data = [];
                 dilist.map((item,idx) => {
@@ -26,14 +29,19 @@ const Diagram=()=>{
                         rightcnt : item.rightcnt,
                         wrongcnt : item.wrongcnt,
                         method : item.method,
-                        recordday : item.recordday
+                        recordday : item.recordday,
+                        name : item.name,
+                        profile : item.profile,
+                        title : item.title,
+                        comment : item.comment
                     }
                     data.push(temp);
                 });
                 setDiagramList([...data]);
 
                 data = [];
-                lastList.map((item,idx) => {
+                let ch = [];
+                cList.map((item,idx) => {
                     let temp = {
                         no : item.no,
                         cardset_no : item.cardset_no,
@@ -49,32 +57,48 @@ const Diagram=()=>{
                     }
                     data.push(temp);
                 })
-
-                setDiagramLastList([...data]);
                 
+                lastList.map((item) => {
+                    let check = {
+                        cardset_no : item.cardset_no,
+                        category : item.category,
+                        method : item.method
+                    }
+                    ch.push(check);
+                })
+                setChartList([...data]);
+                setRadioCheck([...ch]);
             }catch(e){
                 console.log(e);
             }
         }
 
         getList();
-
-        console.log(diagramList);
     },[])
     
     useEffect(() => {
-        console.log(diagramList.length);
-    },[diagramList])
+        //console.log(radioCheck);
+    },[radioCheck])
     return(
         <>
             {/* 여기다가 map돌리면됨 일부러 파일 분류했음 -엄준식 */}
             {
-                diagramLastList.map((item,idx) => {
+                radioCheck.map((last,i) => {
                     return (
                         <>
-                            <DiagramChart item={item}/>
+                            {
+                                diagramList.map((item,j)=>{
+                                    if(item.cardset_no === last.cardset_no && item.method === last.method){
+                                        return (
+                                            <>
+                                                <DiagramChart item={item} setRadioCheck={setRadioCheck} radioCheck={radioCheck} diaList = {diagramList} chartList={chartList}/>
+                                            </>
+                                        )
+                                    }
+                                })
+                            }
                         </>
-                    )
+                    )  
                 })
             }
             {/*  */}
