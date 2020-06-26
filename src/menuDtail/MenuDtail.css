@@ -1488,9 +1488,11 @@ border: none;
         border-radius: 13px;
     }
     .ArcSeriesPoint{
+        text-align: center;
         position: relative;
-        top: -8.9rem;
-        left: 6.8rem;
+        top: -8.8rem;
+        width: 100px;
+        left: 6.2rem;
         color: #1483c3;
         font-weight: 400;
         text-shadow: 0px 0px 0px grey;
@@ -1508,7 +1510,7 @@ border: none;
     }
     .DiagramInfoCardBox>.DiagramInfoCardCommit{
         display: block;
-        height: 35%;
+        height: 32%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -1555,6 +1557,12 @@ border: none;
         font-size: 1.1rem;
         font-weight: 600;
      }
+     .ArcSeriesInfo{
+        font-size: 0.9rem;
+        color: #405de8;
+        margin-bottom: -7px;
+        font-weight: bolder;
+    }
 
 }
 /* Diagram - media 웹 최소 사이즈 */
@@ -1566,8 +1574,10 @@ border: none;
         border-radius: 13px;
     }
     .ArcSeriesPoint{
+        text-align: center;
         position: relative;
-        top: -6.5rem;
+        top: -6.2rem;
+        width: 65px;
         left: 5.3rem;
         color: #1483c3;
         font-weight: 400;
@@ -1620,7 +1630,13 @@ border: none;
     }        
     .diagramSearchForm{
         text-align: center;
-    }                  
+    }        
+    .ArcSeriesInfo{
+        font-size: 0.9rem;
+        color: #405de8;
+        margin-bottom: -7px;
+        font-weight: bolder;
+    }          
                                 
 }
 /* Diagram - media 모바일 사이즈 */
@@ -1633,8 +1649,10 @@ border: none;
         transition: 0.12s;
     }
     .ArcSeriesPoint{
+        text-align: center;
         position: relative;
-        top: -6.4rem;
+        top: -6.2rem;
+        width: 65px;
         left: 3.3rem;
         color: #1483c3;
         font-weight: 400;
@@ -1683,6 +1701,12 @@ border: none;
     }
     .diagramSearchForm{
         text-align: center;
+    }
+    .ArcSeriesInfo{
+        font-size: 0.9rem;
+        color: #405de8;
+        margin-bottom: -7px;
+        font-weight: bolder;
     }
 
 }

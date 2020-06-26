@@ -52,9 +52,9 @@ const DiagramChart=()=>{
     //Bar 임의 데이터 
     const [barData, setBarData] = useState([
         {x: '2회', y: 46},
-        {x: '3회', y: 78},
-        {x: '4회', y: 51},
-        {x: '5회', y: 100}
+            // {x: '3회', y: 78},
+            // {x: '4회', y: 51},
+            // {x: '5회', y: 100}
     ]);
     
     //radio 
@@ -157,6 +157,9 @@ const DiagramChart=()=>{
                     </div>
                 </Grid>
                 <Grid md={3} lg={3} className='DiagramInfoChart01'>
+                <div className='ArcSeriesInfo'>
+                        마지막 시험
+                    </div>
                     <div className='ArcSeries'>
                         <XYPlot
                             xDomain={[-5, 5]}
@@ -182,7 +185,7 @@ const DiagramChart=()=>{
                         </XYPlot>
                     </div>
                     <div className='ArcSeriesPoint' >
-                     {(rightCountScore*100).toFixed(1)}%
+                     {(rightCountScore*100).toFixed(0)}%
                     </div>
                 </Grid>
                 <Grid md={3} lg={3} className='DiagramInfoChart02'>
@@ -195,7 +198,7 @@ const DiagramChart=()=>{
                             <YAxis />
                             <XAxis />
                             <VerticalBarSeries
-                                animation
+                                barWidth={0.4}
                                 color="#12939A"
                                 data={[...barData]}
                             />
@@ -254,7 +257,11 @@ const DiagramChart=()=>{
                     </div>
                 </Grid>
                 <Grid xs={6} md={6}  className='DiagramInfoChart01'>
+                    <div className='ArcSeriesInfo'>
+                        마지막 시험
+                    </div>
                     <div className='ArcSeries'>
+                    
                         <XYPlot
                             xDomain={[-5, 5]}
                             yDomain={[-5, 5]}
@@ -277,22 +284,30 @@ const DiagramChart=()=>{
                                 color={'#289ee2'}
                                 colorType={'literal'}/>
                         </XYPlot>
+                       
                     </div>
+                    
                     <div className='ArcSeriesPoint' >
-                    {(rightCountScore*100).toFixed(1)}%
+                    {
+                    (rightCountScore*100).toFixed(0)
+                    }%
                     </div>
+                    
                 </Grid>
                 <Grid xs={6} sm={6} md={6} className='DiagramInfoChart02'>
                     <div className='VerticalBarSeries'>
+                        
                         <XYPlot
                                 xType="ordinal"
                                 width={170}
-                                height={130}
+                                height={170}
                                 >
                                 <XAxis />
+                                
                                 <VerticalBarSeries
                                     color="#405de8"
                                     data={[...barData]}
+                                    barWidth={0.4}
                                 />
                         </XYPlot>    
                     </div>

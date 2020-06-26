@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Hidden, Button, Radio, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { XYPlot, ArcSeries, YAxis, VerticalBarSeries, XAxis } from 'react-vis';
+import DiagramLiChoice from './DiagramLiChoice';
+import DiagramLiSubjective from './DiagramLiSubjective';
+import DiagramLiTest from './DiagramLiTest';
 import './MenuDtail.css'
 
 //프로필 이미지 대용
@@ -8,7 +11,6 @@ import ProfileImg from './iu03.jpg';
 
 
 const DiagramList=()=>{
-    var items=null;
     const PI = Math.PI;
 
     //폰트 트렌지션
@@ -70,97 +72,7 @@ const DiagramList=()=>{
       const handleChangeTestKind = (event) => {
         setTestKind(event.target.value);
       };
-    if(testKind==='subjective'){
-        items =
-        <ul className='DiagramUl'>
-{/* -------------------- 여기서li를 문제 map돌리면됨*/}
-            <li className='DiagramLi DiagramLiSubjective'>
-                <p>사람이름이 아닌것은?</p>
-                <p>
-                    <span>나의 답 : </span>
-                    <span className='DiagramLiSubjectiveMyResult'>곽철용</span>
-                </p>
-                <p>
-                <span>정답 : </span>
-                <span className='DiagramLiSubjectiveResult'>엄준식</span>
-                </p>
-            </li> 
-            <li className='DiagramLi DiagramLiSubjective'>
-                <p>1962년 애덤스미스가 설명한 오늘날 경제학의 중심이된 이론은?</p>
-                <p>
-                    <span>나의 답 : </span>
-                    <span className='DiagramLiSubjectiveMyResult'>잘보이는 손</span>
-                </p>
-                <p>
-                <span>정답 : </span>
-                <span className='DiagramLiSubjectiveResult'>보이지않는 손</span>
-                </p>
-            </li>
-        </ul>
-    }else if(testKind==='choice'){
-        items =
-        <ul className='DiagramUl'>
-{/* -------------------- 여기서list로 문제 map돌리면됨 일단 3개 만들어놨음*/}
-            <li className='DiagramLi DiagramLiChoice'>
-                
-                <div className='DiagramLiChoiceQuest'>
-                    <p>대한민국의 수도는?</p>    
-                    <p>1. 평양</p>
-                    <p>2. 가나</p>
-                    <p>3. 우리집화장실</p>
-                    <p>4. 서울</p>
-                </div>
-                <div className='DiagramLiChoiceresult'>
-                    <p>
-                        <span>내가 고른답 : 2 </span>
-                        <span>문제 정답 : 4 </span>
-                    </p>
-                </div>
-                
-            </li>
-            <li className='DiagramLi DiagramLiChoice'>
-                <div className='DiagramLiChoiceQuest'>
-                    <p>대한민국의 수도는?</p>    
-                    <p>1. 평양</p>
-                    <p>2. 가나</p>
-                    <p>3. 우리집화장실</p>
-                    <p>4. 서울</p>
-                </div>
-                <div className='DiagramLiChoiceresult'>
-                    <p>
-                        <span>내가 고른답 : 2 </span>
-                        <span>문제 정답 : 4 </span>
-                    </p>
-                </div>
-            </li>
-            <li className='DiagramLi DiagramLiChoice'>
-                <div className='DiagramLiChoiceQuest'>
-                    <p>대한민국의 수도는?</p>    
-                    <p>1. 평양</p>
-                    <p>2. 가나</p>
-                    <p>3. 우리집화장실</p>
-                    <p>4. 서울</p>
-                </div>
-                <div className='DiagramLiChoiceresult'>
-                    <p>
-                        <span>나의 답 : 2 </span>
-                        <span> 정답 : 4 </span>
-                    </p>
-                </div>
-                
-            </li>
-        </ul>
-    }else if(testKind==='test'){
-            items =
-            <ul className='DiagramUl'>
-{/* 여기 문제 섞어서 출력해야 하는데 객관식 주관식 따로따로 map을 써서출력을 어떻게 해야할지 모르겠음  */}
-                <li className='DiagramLi DiagramLiTest'>
-                    <span>문제</span>
-                    <span>답34  </span>
-                    <span>정답/오답</span>
-                </li>
-            </ul>
-    }
+    
     //Bar 임의 데이터 
     const [barData, setBarData] = useState([
         {x: '2회', y: 46},
@@ -174,7 +86,7 @@ const DiagramList=()=>{
     
     
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
         //폰트 트렌지션
     setTimeout(()=>{
@@ -182,80 +94,80 @@ const DiagramList=()=>{
         console.log('Works!');
     },1000);
     
-        //웹 오답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<wrongloopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let data ={
-                            angle0:0,
-                            angle: -(2*PI*(i/100)),
-                            radius: 50, 
-                            radius0:80
-                        }
-                        setMyWrongData([{...data}]);
-                        // console.log('ㅎ'+x);
+    //     //웹 오답률 출력
+    //     setTimeout(()=>{
+    //         for(var i=0; i<wrongloopCnt;i++){
+    //             // eslint-disable-next-line no-loop-func
+    //             ((x) => {
+    //                 setTimeout(() => {
+    //                     let data ={
+    //                         angle0:0,
+    //                         angle: -(2*PI*(i/100)),
+    //                         radius: 50, 
+    //                         radius0:80
+    //                     }
+    //                     setMyWrongData([{...data}]);
+    //                     // console.log('ㅎ'+x);
                         
-                    },x*500)
-                })(i);
-            }
-        },900);  
-        //모바일 오답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<wrongloopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let dataM ={
-                            angle0:0,
-                            angle: -(2*PI*(i/100)),
-                            radius: 40, 
-                            radius0:60
-                        }
-                        setMyWrongDataM([{...dataM}]);
-                    },x*1000)
-                })(i);
-            }
-        },1500);  
-        //웹 정답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<godLoopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let data ={
-                            angle0:0,
-                            angle: 2*PI*(i/100),
-                            radius: 50, 
-                            radius0:80
-                        }
-                        setMyGoodData([{...data}]);
-                        // console.log('ㅗ'+x);
+    //                 },x*500)
+    //             })(i);
+    //         }
+    //     },900);  
+    //     //모바일 오답률 출력
+    //     setTimeout(()=>{
+    //         for(var i=0; i<wrongloopCnt;i++){
+    //             // eslint-disable-next-line no-loop-func
+    //             ((x) => {
+    //                 setTimeout(() => {
+    //                     let dataM ={
+    //                         angle0:0,
+    //                         angle: -(2*PI*(i/100)),
+    //                         radius: 40, 
+    //                         radius0:60
+    //                     }
+    //                     setMyWrongDataM([{...dataM}]);
+    //                 },x*1000)
+    //             })(i);
+    //         }
+    //     },1500);  
+    //     //웹 정답률 출력
+    //     setTimeout(()=>{
+    //         for(var i=0; i<godLoopCnt;i++){
+    //             // eslint-disable-next-line no-loop-func
+    //             ((x) => {
+    //                 setTimeout(() => {
+    //                     let data ={
+    //                         angle0:0,
+    //                         angle: 2*PI*(i/100),
+    //                         radius: 50, 
+    //                         radius0:80
+    //                     }
+    //                     setMyGoodData([{...data}]);
+    //                     // console.log('ㅗ'+x);
                       
-                    },x*1000)
-                })(i);
-            }
-        },500);   
-        //모바일 정답률 출력
-        setTimeout(()=>{
-            for(var i=0; i<godLoopCnt;i++){
-                // eslint-disable-next-line no-loop-func
-                ((x) => {
-                    setTimeout(() => {
-                        let dataM ={
-                            angle0:0,
-                            angle: 2*PI*(i/100),
-                            radius: 40, 
-                            radius0:60
-                        }
-                        setMyGoodDataM([{...dataM}]);
-                    },x*1000)
-                })(i);
-            }
-        },1100);  
+    //                 },x*1000)
+    //             })(i);
+    //         }
+    //     },500);   
+    //     //모바일 정답률 출력
+    //     setTimeout(()=>{
+    //         for(var i=0; i<godLoopCnt;i++){
+    //             // eslint-disable-next-line no-loop-func
+    //             ((x) => {
+    //                 setTimeout(() => {
+    //                     let dataM ={
+    //                         angle0:0,
+    //                         angle: 2*PI*(i/100),
+    //                         radius: 40, 
+    //                         radius0:60
+    //                     }
+    //                     setMyGoodDataM([{...dataM}]);
+    //                 },x*1000)
+    //             })(i);
+    //         }
+    //     },1100);  
        
-    },[]);
+    // },[]);
 
     
     return(
@@ -421,10 +333,11 @@ const DiagramList=()=>{
                     </FormControl>
                 </Grid>
                 <Grid xs={12} sm={12} className='DiagramListChart06'>
+                    <ul className='DiagramUl'>
                         {
-                                
-                            items
+                            testKind==='choice'?<DiagramLiChoice/>:testKind==='subjective'?<DiagramLiSubjective/>:<DiagramLiTest/>
                         }
+                    </ul>
                 </Grid>
             </Hidden>
         </Grid>
