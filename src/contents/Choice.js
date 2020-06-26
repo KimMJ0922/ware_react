@@ -1,8 +1,17 @@
 import React,{useState,useEffect} from 'react';
 import {useHistory} from 'react-router';
 import axios from 'axios';
+import BookIcon from '@material-ui/icons/MenuBook';
+import MouseIcon from '@material-ui/icons/Mouse';
+import TestIcon from '@material-ui/icons/Flag';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
+import CredIcon from '@material-ui/icons/CreditCard';
+import CheckIcon from '@material-ui/icons/DoneOutline';
+import './Choice.css';
+import { Hidden, Grid } from '@material-ui/core';
 
 const Choice = () => {
+    var routerHistory = useHistory();
     var history = useHistory();
     const [cardset_no, setCardSet_no] = useState(window.sessionStorage.getItem('cardset_no'));
     const [memberInfo, setMemberInfo] = useState({
@@ -31,6 +40,24 @@ const Choice = () => {
     const [rightAnswer, setRightAnswer] = useState(0);
     const [wrongAnswer, setWrongAnswer] = useState(0);
     const [answerCheck, setAnswerCheck] = useState(false);
+
+    const learning = () =>{
+        routerHistory.push('/study');
+    }
+
+  //주관식으로 이동
+  const Subjective = () => {
+    routerHistory.push('/subjective');
+  }
+
+  //객관식 이동
+  const Choice = () => {
+    routerHistory.push('/choice');
+  }
+  //테스트 이동
+  const goTest = () => {
+    routerHistory.push('/test');
+  }
 
     const randomNum = () => {
         while(true){
@@ -135,13 +162,38 @@ const Choice = () => {
     }
     return (
         <>
+        <div className="ch_body">
+        <Grid item xs={12} md={12}>
+          <p className="std_title_font">{cardSetInfo.title}</p>
+        </Grid>
+
+        <Grid container>
+        <Hidden only={['xs','sm']}>
+          <Grid xs={12} md={4}>
+            <div className="sbjc_menu_box">
+            <p>문제 풀기</p>
+            <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+            {
+              cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+            }
+            <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+            <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+            <p>주관식 정보</p>
+            <p><CredIcon/>총 카드수 : {cardList.length}</p>
+            <p><CheckIcon style={{color:'#bfff00'}}/>정답 : {rightAnswer}</p>
+            <p><CheckIcon style={{color:'red'}}/>오답 : {wrongAnswer}</p>
+            </div>
+          </Grid>
+          </Hidden>
             {
                 cardList.length !== rightAnswer+wrongAnswer && cardList.map((item,i) => {
                     if(i === random){
                         return (
                             <>
-                                <img src={item.imgSrc} alt="" style={{width:'150px', height:'150px'}}/>
-                                {item.question}<br/>
+                            <Grid item xs={12} md={8}>
+                                <div className="ch_mun_box">
+                                <img src={item.imgSrc} alt=""/>
+                                <p>{item.question}</p>
                                 {
                                     choiceList.map((item,i) => {
                                         if(i === random){
@@ -156,25 +208,30 @@ const Choice = () => {
                                         }
                                     })
                                 }
+                                </div>
+                                </Grid>
+                                
                             </>
                         )
                     }
                 })
             }
-
+           
+            
             {
                 cardList.length === rightAnswer+wrongAnswer && 
                 <>
+                <Grid xs={12} md={8}>
+                    <div className="ch_result_box">
                     <button type="button" onClick={answerShow} name="right">정답</button>
                     <button type="button" onClick={answerShow} name="wrong">오답</button>
                     <button type="button" onClick={retry}>다시 풀기</button>
-                    <h3>{answerCheck === false ? "오답 목록" : "정답 목록"}</h3>
+                   
                     <table>
                         <thead>
                             <tr>
-                                <th>문제 번호</th>
                                 <th>문제</th>
-                                <th>답</th>
+                                <th>정답</th>
                                 <th>사용자 답</th>
                             </tr>
                         </thead>
@@ -183,7 +240,6 @@ const Choice = () => {
                                 answerCheck === false && wrong.map((item) => {
                                     return(
                                         <tr>
-                                            <td>{item.question_no}</td>
                                             <td>{item.question}</td>
                                             <td>{item.answer}</td>
                                             <td>{item.userAnswer}</td>
@@ -196,7 +252,6 @@ const Choice = () => {
                                 answerCheck === true && right.map((item) => {
                                     return(
                                         <tr>
-                                            <td>{item.question_no}</td>
                                             <td>{item.question}</td>
                                             <td>{item.answer}</td>
                                             <td>{item.userAnswer}</td>
@@ -206,8 +261,30 @@ const Choice = () => {
                             }
                         </tbody>
                     </table>
+                    </div>
+                </Grid>
                 </>
             }
+             </Grid>
+            </div>
+            
+            <Hidden only={['md','lg','xl']}>
+          <Grid xs={12}>
+            <div className="sbjc_menu_box">
+            <p>주관식 정보</p>
+            <span className="sbjc_result_box"><CredIcon/>총 카드수 : {cardList.length}
+            <CheckIcon style={{color:'#bfff00'}}/>정답 : {rightAnswer}
+            <CheckIcon style={{color:'red'}}/>오답 : {wrongAnswer}</span>
+            <p>문제 풀기</p>
+            <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+            {
+              cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+            }
+            <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+            <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+            </div>
+          </Grid>
+          </Hidden>
         </>
     )
 }
