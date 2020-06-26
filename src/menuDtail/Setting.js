@@ -5,6 +5,7 @@ import './Setting.css';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import ReportIcon from '@material-ui/icons/Report';
 import { Grid, Paper } from '@material-ui/core';
+import PointHistory from './PointHistory';
 
 const Setting = (props) => {
     var rou= useHistory();
@@ -14,6 +15,10 @@ const Setting = (props) => {
     const [defaultImg, setDefaultImg] = useState([]);
     const [newPassword, setNewPassword] = useState('');
     const [outText, setOutText] = useState('');
+    
+    //포인트 내역 관련 변수
+    const [pointHistory, setPointHistory] = useState([]);
+    const [currnetPoint, setCurrentPoint] = useState(0);
 
     //이름을 입력했을 때
     const changeName = (e) => {
@@ -34,7 +39,31 @@ const Setting = (props) => {
             }
         }
 
+        const point_history = async () =>{
+            try {
+                const getHistory = await axios.get(
+                    "http://localhost:9000/pointHistory?member_no="+window.sessionStorage.getItem("no")
+                )
+                setPointHistory(getHistory.data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        const getPoint = async () =>{
+            try {
+                let data = await axios.get(
+                    "http://localhost:9000/currentPoint?member_no="+window.sessionStorage.getItem("no")
+                )
+                setCurrentPoint(data.data);
+            } catch (e) {
+                alert("포인트 조회 실패");
+                console.log(e);
+            }
+        }
+
         defaultProfileImg();
+        getPoint();
+        point_history();
     },[]);
 
     //프로필 이미지 직접 올리기
@@ -334,7 +363,14 @@ const Setting = (props) => {
                         <button type="button" onClick={signOut} className="set_exit_btn">회원 탈퇴</button>
                     </Paper>                  
                 </Grid>
-              </Grid>              
+
+              </Grid> 
+            <Grid item xs={12} md={12}>
+                <p className="set_title_font3" style={{"text-align":"left"}}>포인트 내역(보유 포인트 : {currnetPoint})</p>
+                <Paper>
+                    <PointHistory pointHistory={pointHistory}/>
+                </Paper>
+            </Grid>
             </div>
         </>
     )

@@ -38,7 +38,7 @@ const BoardItems=props=> {
     
     return ( 
         <Grid xs={12} md={4}>
-            <Link to={`/home/board/item/${props.row.board_no}/${props.pageNum}`}>
+            <Link to={`/home/board/item/${props.row.board_no}/${props.pageNum}/${props.row.no}`}>
                 <div className="BoardItem">
                     <Grid container>
                     <Grid xs={6} md={6}> <div className="BoardItemSubject">{props.row.subject}</div></Grid>

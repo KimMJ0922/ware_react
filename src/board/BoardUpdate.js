@@ -59,6 +59,8 @@ const BoardUpdate = ({match}) => {
     const board_no = match.params.board_no;
     const [ip,setIp]=useState('');
 
+    const [list, setList] = useState([]);
+
     useEffect(()=>{
         const getIp = async () =>{
             try {
@@ -77,6 +79,7 @@ const BoardUpdate = ({match}) => {
                     "http://localhost:9000/board/getdata?board_no="+board_no
                 )
                 let board = data.data;
+                
                 board.map((data)=>{
                     setItem({
                         board_no : data.board_no,
@@ -88,7 +91,9 @@ const BoardUpdate = ({match}) => {
                         name : data.name,
                         profile : data.profile
                     })
+                    
                 });
+                
             } catch (e) {
                 console.log(e);
             }
@@ -96,23 +101,14 @@ const BoardUpdate = ({match}) => {
 
         const getCartData = async () => {
             try {
-                let data = await Axios.get(
-                    "http://localhost:9000/board/boardcarddatas?board_no="+board_no
+                let data = await Axios.post(
+                    "http://localhost:9000/board/getcardset",{
+                        board_no:board_no,
+                        member_no:no
+                    }
                 )
-                data.data.map((row,index)=>{
-                    setCarddata([
-                        {
-                            id: index+1,
-                            question: row.question,
-                            answer:row.answer,
-                            visible : true,
-                            img : row.imgFile,
-                            imgSrc : '',
-                            searchText : ''
-                        }
-                    ])
-                })
-                //setRows(...carddata);
+                console.log(data.data);
+                setList(data.data.list);
             } catch (e) {
                 console.log(e);
             }
@@ -126,10 +122,36 @@ const BoardUpdate = ({match}) => {
         },100);
     },[])
 
+    useEffect(() => {
+        let t = [];
+        list.map((item,idx) => {
+            let visible = false
+            if(item.imgFile !== "") visible = true;
+            t.push({
+                id: item.question_no,
+                question: item.question,
+                answer:item.answer,
+                visible : visible,
+                img : item.imgFile,
+                imgSrc : item.imgSrc,
+                searchText : ''
+            });
+            setNum(item.question_no+1);
+        })
+        setRows([...t]);
+        console.log(num);
+    },[list])
+
+    useEffect(()=>{
+        setTitle(item.subject);
+        setComment(item.content);
+        setPoint(item.requirepoint);
+    },[item])
+    
     //제목, 설명 텍스트 저장
     const changeTitle = (e) => {
         setTitle(e.target.value);
-        
+        //item["subject"]=e.target.value;
     }
 
     const changeComment = (e) => {
@@ -307,6 +329,11 @@ const BoardUpdate = ({match}) => {
             return false;
         }
 
+        if(point.length === 0){
+            alert("판매하실 포인트를 작성해주세요");
+            return false;
+        }
+
         let check = true;
         rows.map((data,idx) => {
             if(data.id === 1){
@@ -326,11 +353,12 @@ const BoardUpdate = ({match}) => {
             return false;
         }
 
-        let url = "http://localhost:9000/board/insert";
+        let url = "http://localhost:9000/board/updatecardset";
         axios.post(url,
             {
                 rows,
                 no,
+                board_no,
                 title,
                 comment,
                 point
@@ -418,18 +446,18 @@ const BoardUpdate = ({match}) => {
                 <Grid container>
                     <Grid container style={{marginBottom:'50px'}}>
                         <Grid xs={12} md={12}>
-                            <div class="board_top">세트 만들기</div>
+                            <div class="board_top">세트 수정</div>
                         </Grid>
                     </Grid>
                     {/* 제목, 설명 */}
                     <Grid xs={12} md={12}>
                         <div className="board_top_input_box">
                             <label for="title" className="board_ist_input_font">제목</label><br/>
-                            <input type="text" value={item.subject} name="title" id="title" className="board_ist_title inputTop" placeholder="제목을 입력하세요." onChange={changeTitle}/><br/>
+                            <input type="text" value={title} name="title" id="title" className="board_ist_title inputTop" placeholder="제목을 입력하세요." onChange={changeTitle}/><br/>
                             <label for="comment" className="board_ist_input_font">설명</label><br/>
-                            <input type="text" value={item.content} name="comment" id="comment" className="board_ist_title inputTop" placeholder="설명을 입력하세요." onChange={changeComment}/><br/> 
+                            <input type="text" value={comment} name="comment" id="comment" className="board_ist_title inputTop" placeholder="설명을 입력하세요." onChange={changeComment}/><br/> 
                             <label for="comment" className="board_ist_input_font">포인트</label><br/>
-                            <input type="text" value={item.requirepoint} name="requirepoint" id="requirepoint" className="board_ist_title inputTop" placeholder="포인트를 입력하세요." onChange={changePoint}/>
+                            <input type="text" value={point} name="requirepoint" id="requirepoint" className="board_ist_title inputTop" placeholder="포인트를 입력하세요." onChange={changePoint}/>
                         </div>
                     </Grid>
                     {
@@ -512,7 +540,7 @@ const BoardUpdate = ({match}) => {
                 </Grid>
                 <Grid xs={12} md={12}>
                     <div className="board_create_btn_box">
-                    <button type="submit" className="board_create_btn">만들기</button>
+                    <button type="submit" className="board_create_btn">수정하기</button>
                     </div>
                 </Grid>
                 {/* 컨테이너 그리드 */}

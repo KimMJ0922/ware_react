@@ -17,7 +17,10 @@ const BoardItem=({match})=> {
     });
     const [carddata, setCarddata] = useState([]);
     const board_no = match.params.board_no;
+    const no = match.params.no;
     const [ip,setIp]=useState('');
+
+    const [buyed, setBuyed] = useState(false);
     
     var rte='';
     const imagearray=[
@@ -25,6 +28,22 @@ const BoardItem=({match})=> {
     ]
 
     useEffect(()=>{
+        const getBuyed = async () =>{
+            try {
+                const gBuyed = await Axios.post(
+                    "http://localhost:9000/board/buyedcheck",{
+                        board_no:board_no,
+                        member_no:window.sessionStorage.getItem("no")
+                    }
+                )
+                if(gBuyed.data===1){
+                    setBuyed(true);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
         const getIp = async () =>{
             try {
                 const gip = await Axios.get(
@@ -86,6 +105,7 @@ const BoardItem=({match})=> {
         getCartData();
         setTimeout(()=>{
             getData();
+            getBuyed();
         },100);
     },[])
 
@@ -106,6 +126,7 @@ const BoardItem=({match})=> {
             await Axios.get(
                 "http://localhost:9000/board/delete?board_no="+board_no
             )
+            history.push("/home/board?page="+match.params.pageNum);
         } catch (e) {
             console.log(e);
         }
@@ -119,7 +140,7 @@ const BoardItem=({match})=> {
     const buy = async () =>{
         try {
             let data = await Axios.get(
-                 "http://localhost:9000/board/currentPoint?member_no="+window.sessionStorage.getItem("no")
+                 "http://localhost:9000/currentPoint?member_no="+window.sessionStorage.getItem("no")
             )
             console.log(data.data);
             if(data.data<item.requirepoint){
@@ -135,6 +156,7 @@ const BoardItem=({match})=> {
                 "http://localhost:9000/board/buy",{
                     board_no: board_no,
                     member_no: window.sessionStorage.getItem("no"),
+                    no:no,
                     requirepoint: item.requirepoint
                 }
             )
@@ -145,7 +167,7 @@ const BoardItem=({match})=> {
         }
     }
     var buttons = null;
-    if(window.sessionStorage.getItem("name")===item.name){
+    if(window.sessionStorage.getItem("no")===no){
         console.log("작성자가 들어옴");
         buttons = 
             <div>
@@ -155,13 +177,37 @@ const BoardItem=({match})=> {
             </div>
     }else{
         console.log("구매자가 들어옴");
-        buttons = 
+        if(buyed===true){
+            buttons = 
+            <div>
+                <button type="button" onClick={golist}>리스트</button>
+            </div>
+        }else{
+            buttons = 
             <div>
                 <button type="button" onClick={golist}>리스트</button>
                 <button type="button" onClick={buy}>구매하기</button>
             </div>
+        }
     }
-    
+    var problems = null;
+    if(window.sessionStorage.getItem("no")===no || buyed===true){
+        problems = 
+            carddata.map((row,index) => (
+                <div>
+                    <p>인덱스 : {index}</p>
+                    <p>문제 : {row.question}</p>
+                    <p>답 : {row.answer}</p>
+                    {
+                        row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
+                    }
+                </div>
+            ))
+    }else{
+        problems = 
+            <div>구매 후 문제 확인 가능합니다.</div>
+    }
+
     return ( 
         <div>
             제목 : {item.subject}<br/>
@@ -173,16 +219,7 @@ const BoardItem=({match})=> {
             작성자 프로필 사진 : 
             <img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/><br/><br/>
             {
-                carddata.map((row,index) => (
-                    <div>
-                        <p>인덱스 : {index}</p>
-                        <p>문제 : {row.question}</p>
-                        <p>답 : {row.answer}</p>
-                        {
-                            row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
-                        }
-                    </div>
-                ))
+                problems
             }
             <br/>
             {buttons}
