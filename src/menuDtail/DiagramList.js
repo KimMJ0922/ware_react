@@ -244,10 +244,10 @@ const DiagramList=()=>{
 
         getList();
         //폰트 트렌지션
-        // setTimeout(()=>{
-        //     setMoreBetter(moreBetterSize);
-        //     console.log('Works!');
-        // },1000);
+        setTimeout(()=>{
+            setMoreBetter(moreBetterSize);
+            console.log('Works!');
+        },1000);
     
         //웹 오답률 출력
         // setTimeout(()=>{
@@ -324,8 +324,7 @@ const DiagramList=()=>{
        
     },[]);
 
-    diagramList.map((item) => {
-        if(item.cardset_no === selectCheck.cardset_no && item.method === selectCheck.method){
+
             return(
                 <div className='diagramList'>
                     번호 : {selectCheck.cardset_no}
@@ -334,8 +333,8 @@ const DiagramList=()=>{
                     {/* 웹용 */}
                     <Hidden only={['xs','sm']}>
                         <Grid md={6} lg={6} className='DiagramListCardBox'>
-                            <span className='DiagramInfoCardSubject'>{item.title}</span>
-                            <span className='DiagramInfoCardCommit'>{item.comment}</span>
+                            <span className='DiagramInfoCardSubject'></span>
+                            <span className='DiagramInfoCardCommit'></span>
                         </Grid>
                         <Grid md={6} lg={6} className='DiagramInfoCardBox'>
                             <div className='DiagramInfoCard'>
@@ -499,7 +498,5 @@ const DiagramList=()=>{
 
                 </div>
             )
-        }
-    })
 }
 export default DiagramList;
