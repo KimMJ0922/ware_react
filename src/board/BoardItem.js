@@ -126,6 +126,7 @@ const BoardItem=({match})=> {
             await Axios.get(
                 "http://localhost:9000/board/delete?board_no="+board_no
             )
+            history.push("/home/board?page="+match.params.pageNum);
         } catch (e) {
             console.log(e);
         }
@@ -176,11 +177,18 @@ const BoardItem=({match})=> {
             </div>
     }else{
         console.log("구매자가 들어옴");
-        buttons = 
+        if(buyed===true){
+            buttons = 
+            <div>
+                <button type="button" onClick={golist}>리스트</button>
+            </div>
+        }else{
+            buttons = 
             <div>
                 <button type="button" onClick={golist}>리스트</button>
                 <button type="button" onClick={buy}>구매하기</button>
             </div>
+        }
     }
     var problems = null;
     if(window.sessionStorage.getItem("no")===no || buyed===true){
