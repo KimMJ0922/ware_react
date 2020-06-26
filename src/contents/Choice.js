@@ -40,6 +40,7 @@ const Choice = () => {
     const [rightAnswer, setRightAnswer] = useState(0);
     const [wrongAnswer, setWrongAnswer] = useState(0);
     const [answerCheck, setAnswerCheck] = useState(false);
+    const [scoring, setScoring] = useState(false);
 
     const learning = () =>{
         routerHistory.push('/study');
@@ -127,7 +128,8 @@ const Choice = () => {
                         question_no : item.question_no,
                         question : item.question,
                         userAnswer : value,
-                        answer : item.answer
+                        answer : item.answer,
+                        category : '객관식'
                     });
                 }else{
                     setWrongAnswer(wrongAnswer+1);
@@ -136,12 +138,12 @@ const Choice = () => {
                         question_no : item.question_no,
                         question : item.question,
                         userAnswer : value,
-                        answer : item.answer
+                        answer : item.answer,
+                        category : '객관식'
                     });
                 }
             }
         });
-
         randomNum();
     }
 
@@ -159,6 +161,32 @@ const Choice = () => {
     //다시하기
     const retry = () => {
         history.go(0);
+    }
+
+    useEffect(() => {
+        if(cardList.length !== 0 && rightAnswer+wrongAnswer === cardList.length){
+            setRecord();
+        }
+    },[rightAnswer,wrongAnswer]);
+
+    //결과 저장
+    const setRecord = () => {
+        let url = "http://localhost:9000/setrecord";
+
+        axios.post(url,{
+            member_no : window.sessionStorage.getItem('no'),
+            category : 'cardset',
+            cardset_no : window.sessionStorage.getItem('cardset_no'),
+            rightcnt : rightAnswer,
+            wrongcnt : wrongAnswer,
+            method : 'choice',
+            right,
+            wrong
+        }).then((res) => {
+
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     return (
         <>

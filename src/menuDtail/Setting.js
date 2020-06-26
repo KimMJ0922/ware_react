@@ -290,12 +290,10 @@ const Setting = (props) => {
         <Grid container>
             <Grid item xs={12} md={4}>
             <p className="set_top_font1">프로필 이미지 변경</p>              
-                <Paper className="set_prof_box_top">
-                    { 
-                        provider !== "default" &&                      
-                        <img src={window.sessionStorage.getItem('profile')} alt=""
-                         onClick={socialProfileImgClick} className="set_befor_img"/>                                  
-                    }
+                <Paper className="set_prof_box_top">                 
+                    <img src={window.sessionStorage.getItem('profile')} alt=""
+                         className="set_befor_img"/>                                  
+
                      <p className="set_top_font2">현재 프로필</p>
                      </Paper>             
             </Grid>

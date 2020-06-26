@@ -130,7 +130,8 @@ const Subjective = () => {
                         question_no : item.question_no,
                         question : item.question,
                         userAnswer : inputText,
-                        answer : item.answer
+                        answer : item.answer,
+                        category : '주관식'
                     });
                 }else{
                     setWrongAnswer(wrongAnswer+1);
@@ -139,8 +140,8 @@ const Subjective = () => {
                         question_no : item.question_no,
                         question : item.question,
                         userAnswer : inputText,
-                        answer : item.answer
-
+                        answer : item.answer,
+                        category : '주관식'
                     });
                 }
             }
@@ -169,6 +170,33 @@ const Subjective = () => {
     const retry = () => {
         history.go(0);
     }
+
+    useEffect(() => {
+        if(cardList.length !== 0 && rightAnswer+wrongAnswer === cardList.length){
+            setRecord();
+        }
+    },[rightAnswer,wrongAnswer]);
+    
+    //결과 저장
+    const setRecord = () => {
+        let url = "http://localhost:9000/setrecord";
+
+        axios.post(url,{
+            member_no : window.sessionStorage.getItem('no'),
+            category : 'cardset',
+            cardset_no : window.sessionStorage.getItem('cardset_no'),
+            rightcnt : rightAnswer,
+            wrongcnt : wrongAnswer,
+            method : 'subjective',
+            right,
+            wrong
+        }).then((res) => {
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     return (
         <>
         <div className="sbjc_body">

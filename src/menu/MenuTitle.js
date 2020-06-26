@@ -17,6 +17,7 @@ const MenuTitle=(props)=>{
                 </Route>
                 
                 <Route exact path="/home/diagram" component={Diagram}/>
+                
                 <Route exact path="/home/diagramlist" component={DiagramList}/>
 
                 <Route exact path="/home/friend" component={Friend}/>

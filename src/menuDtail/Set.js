@@ -70,6 +70,7 @@ const Set=()=>{
     }).then((res)=>{
       if(res.data){
         window.sessionStorage.setItem('cardset_no',no);
+        setStudy();
         history.push('/study');
       }else{
         alert("비밀번호가 맞지 않습니다.");
@@ -88,10 +89,27 @@ const Set=()=>{
     let id = e.target.id;
     setTimeout(() => {
       window.sessionStorage.setItem('cardset_no',id);
+      setStudy();
       history.push('/study');
     },100)
     
   }
+
+  //학습 저장
+  const setStudy = () => {
+    let url = "http://localhost:9000/setstudy";
+
+    axios.post(url,{
+      cardset_no : window.sessionStorage.getItem('cardset_no'),
+      member_no : window.sessionStorage.getItem('no'),
+      category : 'cardset'
+    }).then((res) => {
+
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
   //더보기 버튼
   const moreCardSetList = () => {
     if(start>totalCnt){

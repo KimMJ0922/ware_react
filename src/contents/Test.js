@@ -265,6 +265,32 @@ const Test = (props) => {
             setAnswerCheck(true);
         }
     }
+
+    useEffect(() => {
+        if(scoringCheck){
+            setRecord();
+        }
+    },[scoringCheck]);
+
+    //결과 저장
+    const setRecord = () => {
+        let url = "http://localhost:9000/setrecord";
+
+        axios.post(url,{
+            member_no : window.sessionStorage.getItem('no'),
+            category : 'cardset',
+            cardset_no : window.sessionStorage.getItem('cardset_no'),
+            rightcnt : rightCnt,
+            wrongcnt : wrongCnt,
+            method : 'test',
+            right,
+            wrong
+        }).then((res) => {
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return(
         <>
             {
