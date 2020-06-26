@@ -8,6 +8,25 @@ import Top from './top/Top';
 import Default from './menuDtail/Default';
 
 const Title = (props) => {
+   //메뉴 클릭시 메뉴출력
+   const [mobileDisplay,setMobileDisplay]= useState({
+    display:'none'
+  })  
+  const [mobileDisplayMenu,setMobileDisplayMenu]= useState({
+    display:'block'
+  })  
+  // const mobileDisplayOn=()=>{
+  //   if(props.mobileDisplay.display==='none'){
+  //       props.setMobileDisplay({display:'block'})
+  //       props.setMobileDisplayMenu({display:'none'})
+  //   }else{
+  //       props.setMobileDisplay({display:'none'})
+  //       props.setMobileDisplayMenu({display:'block'})
+  //   }
+    
+  // }
+  
+  
   var history = useHistory();
   const routes = [
     {
@@ -94,7 +113,10 @@ const Title = (props) => {
 
     return (
         <div style={{fontSize: '16px'}}>
-          <Top path={nowPath} profile={profile} setProfile={setProfile} name={name} setName={setName}/>
+          <Top path={nowPath} profile={profile} setProfile={setProfile} name={name} setName={setName} 
+          setMobileDisplay={setMobileDisplay} mobileDisplay={mobileDisplay}
+          setMobileDisplayMenu={setMobileDisplayMenu} mobileDisplayMenu={mobileDisplayMenu}
+          />
           <Switch > 
             {/*<Route exact path="/" component={Main}></Route>
             <Route exact path="/home/default" component={Home}></Route>
@@ -119,7 +141,11 @@ const Title = (props) => {
          render={prop => (
         // 중첩을 유지하기 위해 하위 경로를 전달
         //no={route.no} setNo={route.setNo}
-          <route.component {...prop} routes={route.routes} no={props.no} setNo={props.setNo} profile={profile} setProfile={setProfile} name={name} setName={setName}/>
+          <route.component {...prop} routes={route.routes} no={props.no} setNo={props.setNo} 
+          profile={profile} setProfile={setProfile} name={name} setName={setName} 
+          setMobileDisplay={setMobileDisplay} mobileDisplay={mobileDisplay}
+          setMobileDisplayMenu={setMobileDisplayMenu} mobileDisplayMenu={mobileDisplayMenu}
+         /> 
         )}
       />
     );

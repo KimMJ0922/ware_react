@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Hidden, Button, Radio, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { XYPlot, ArcSeries, YAxis, VerticalBarSeries, XAxis } from 'react-vis';
 import DiagramLiChoice from './DiagramLiChoice';
-import DiagramLiSubjective from './DiagramLiSubjective';
-import DiagramLiTest from './DiagramLiTest';
 import './MenuDtail.css'
 import axios from 'axios';
 
 //프로필 이미지 대용
 import ProfileImg from './iu03.jpg';
-const DiagramList=()=>{
-
-
 const DiagramList=()=>{
     const PI = Math.PI;
 
@@ -88,14 +83,20 @@ const DiagramList=()=>{
     const [selectCheck, setSelectCheck] = useState({});
     const [chartList, setChartList] = useState([]); 
 
-    // useEffect(()=>{
+    useEffect(()=>{
+        const getList = async() => {
+            let url = "http://localhost:9000/getdiagramlist";
+            try{
+                let list = await axios.post(url,{
+                    member_no : window.sessionStorage.getItem('no')
+                });
 
-                let diagram = list.data.diagram;
-                let last = list.data.last;
-                let chart = list.data.chart;
+                let dilist = list.data.rlist;
+                let lastList = list.data.lastList;
+                let cList = list.data.chartList;
 
                 let data = [];
-                diagram.map((item,idx) => {
+                dilist.map((item,idx) => {
                     let temp = {
                         no : item.no,
                         cardset_no : item.cardset_no,
@@ -115,7 +116,7 @@ const DiagramList=()=>{
 
                 data = [];
                 let ch = [];
-                chart.map((item,idx) => {
+                cList.map((item,idx) => {
                     let temp = {
                         no : item.no,
                         cardset_no : item.cardset_no,
@@ -132,18 +133,16 @@ const DiagramList=()=>{
                     data.push(temp);
                 })
 
-                last.map((item,idx) => {
-                    let temp = {
+                lastList.map((item) => {
+                    let check = {
                         cardset_no : item.cardset_no,
                         category : item.category,
                         method : item.method
                     }
-
-                    ch.push(temp);
+                    ch.push(check);
                 })
-             
                 setChartList([...data]);
-                setSelectCheck(...ch);
+                setSelectCheck([...ch]);
             }catch(e){
                 console.log(e);
             }
@@ -153,83 +152,9 @@ const DiagramList=()=>{
         //폰트 트렌지션
         setTimeout(()=>{
             setMoreBetter(moreBetterSize);
-            console.log('Works!');
         },1000);
     
-    //     //웹 오답률 출력
-    //     setTimeout(()=>{
-    //         for(var i=0; i<wrongloopCnt;i++){
-    //             // eslint-disable-next-line no-loop-func
-    //             ((x) => {
-    //                 setTimeout(() => {
-    //                     let data ={
-    //                         angle0:0,
-    //                         angle: -(2*PI*(i/100)),
-    //                         radius: 50, 
-    //                         radius0:80
-    //                     }
-    //                     setMyWrongData([{...data}]);
-    //                     // console.log('ㅎ'+x);
-                        
-    //                 },x*500)
-    //             })(i);
-    //         }
-    //     },900);  
-    //     //모바일 오답률 출력
-    //     setTimeout(()=>{
-    //         for(var i=0; i<wrongloopCnt;i++){
-    //             // eslint-disable-next-line no-loop-func
-    //             ((x) => {
-    //                 setTimeout(() => {
-    //                     let dataM ={
-    //                         angle0:0,
-    //                         angle: -(2*PI*(i/100)),
-    //                         radius: 40, 
-    //                         radius0:60
-    //                     }
-    //                     setMyWrongDataM([{...dataM}]);
-    //                 },x*1000)
-    //             })(i);
-    //         }
-    //     },1500);  
-    //     //웹 정답률 출력
-    //     setTimeout(()=>{
-    //         for(var i=0; i<godLoopCnt;i++){
-    //             // eslint-disable-next-line no-loop-func
-    //             ((x) => {
-    //                 setTimeout(() => {
-    //                     let data ={
-    //                         angle0:0,
-    //                         angle: 2*PI*(i/100),
-    //                         radius: 50, 
-    //                         radius0:80
-    //                     }
-    //                     setMyGoodData([{...data}]);
-    //                     // console.log('ㅗ'+x);
-                      
-    //                 },x*1000)
-    //             })(i);
-    //         }
-    //     },500);   
-    //     //모바일 정답률 출력
-    //     setTimeout(()=>{
-    //         for(var i=0; i<godLoopCnt;i++){
-    //             // eslint-disable-next-line no-loop-func
-    //             ((x) => {
-    //                 setTimeout(() => {
-    //                     let dataM ={
-    //                         angle0:0,
-    //                         angle: 2*PI*(i/100),
-    //                         radius: 40, 
-    //                         radius0:60
-    //                     }
-    //                     setMyGoodDataM([{...dataM}]);
-    //                 },x*1000)
-    //             })(i);
-    //         }
-    //     },1100);  
-       
-    // },[]);
+    },[]);
 
 
             return(
@@ -296,12 +221,9 @@ const DiagramList=()=>{
                             </div>
                         </Grid>
                         <Grid xs={12} sm={12} className='DiagramListChart03'>
-        {/* -------------------- 여기서 map돌리면됨 */}
-                        <span >전보다 6문제더 맞았어요!</span>
+                            <p className='better' style={moreBetter}><span >전보다 6문제더 맞았어요!</span></p>
                         </Grid>
-                    
                     </Hidden>
-
 
                     {/* 모바일용 */}
                     <Hidden only={['md','lg','xl']}>
@@ -364,54 +286,49 @@ const DiagramList=()=>{
                         <p className='better' style={moreBetter}><span >전보다 6문제더 맞았어요!</span></p>
                         </Grid>
                         <Grid xs={6} sm={6} className='DiagramListChart04'>
-                            <FormControl variant="outlined" className='testCount'>
-                                <InputLabel>회차</InputLabel>
-                                <Select
-                                    
-                                    value={testCount}
-                                    onChange={handleChangeTestCount}
-                                    label="회차"
-                                    >
-                {/* -------------------- 여기서 MenuItem으로 회차 map돌리면됨 일단 3개 만들어놨음*/}
-                                    <MenuItem value={'1'} >1회차 (3.13)</MenuItem>
-                                    <MenuItem value={'2'}>2회차 (4.24)</MenuItem>
-                                    <MenuItem value={'3'}>3회차 (5.3)</MenuItem>
-                                </Select>
-                            </FormControl>
+                            <div className='testCountwidth'>
+                                <FormControl variant="outlined" className='testCount'>
+                                    <InputLabel>회차</InputLabel>
+                                    <Select
+                                        
+                                        value={testCount}
+                                        onChange={handleChangeTestCount}
+                                        label="회차"
+                                        >
+                    {/* -------------------- 여기서 MenuItem으로 회차 map돌리면됨 일단 3개 만들어놨음*/}
+                                        <MenuItem value={'1'} >1회차 (3.13)</MenuItem>
+                                        <MenuItem value={'2'}>2회차 (4.24)</MenuItem>
+                                        <MenuItem value={'3'}>3회차 (5.3)</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </div>
                         </Grid>
 
                         <Grid xs={6} sm={6} className='DiagramListChart05'>
-                        <FormControl variant="outlined" className='testKind' >
-                                <InputLabel >유형</InputLabel>
-                                <Select
-                                    value={testKind}
-                                    onChange={handleChangeTestKind}
-                                    label="유형"
-                                    >
-                                    <MenuItem value={'subjective'}>주관식</MenuItem>
-                                    <MenuItem value={'choice'}>객관식</MenuItem>
-                                    <MenuItem value={'test'}>테스트</MenuItem>
-                                </Select>
-                            </FormControl>
+                            <div className='testCountwidth'>
+                                <FormControl variant="outlined" className='testKind' >
+                                        <InputLabel >유형</InputLabel>
+                                        <Select
+                                            value={testKind}
+                                            onChange={handleChangeTestKind}
+                                            label="유형"
+                                            >
+                                            <MenuItem value={'subjective'}>주관식</MenuItem>
+                                            <MenuItem value={'choice'}>객관식</MenuItem>
+                                            <MenuItem value={'test'}>테스트</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                            </div>
                         </Grid>
                         <Grid xs={12} sm={12} className='DiagramListChart06'>
+                            <ul className='DiagramUl'>
                                 {
-                                        
-                                    items
+                                    <DiagramLiChoice/>
                                 }
+                            </ul>
                         </Grid>
                     </Hidden>
                 </Grid>
-                <Grid xs={12} sm={12} className='DiagramListChart06'>
-                    <ul className='DiagramUl'>
-                        {
-                            testKind==='choice'?<DiagramLiChoice/>:testKind==='subjective'?<DiagramLiSubjective/>:<DiagramLiTest/>
-                        }
-                    </ul>
-                </Grid>
-            </Hidden>
-        </Grid>
-
                 </div>
             )
 }

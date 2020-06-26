@@ -39,6 +39,7 @@ const Top = (props) =>{
         localStorage.removeItem('autoLogin');
         window.location.replace('/');
     }
+    
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const LoginModalOpen = () => {
@@ -56,7 +57,17 @@ const Top = (props) =>{
       const SingupModalClose = () => {
         setOpen2(false);
       };
-      
+
+      const mobileDisplayOn=()=>{
+        if(props.mobileDisplay.display==='none'){
+            props.setMobileDisplay({display:'block'})
+            props.setMobileDisplayMenu({display:'none'})
+        }else{
+            props.setMobileDisplay({display:'none'})
+            props.setMobileDisplayMenu({display:'block'})
+        }
+      }
+
 
    
     if(props.path === "/"){
@@ -211,7 +222,7 @@ const Top = (props) =>{
                         </div>
                     </Grid>
                     <Grid item xs={2} md={2}>
-                        <div className='topMenu'><div className='topMenuList'><Menu/></div></div>
+                        <div className='topMenu'><div className='topMenuList' onClick={mobileDisplayOn}><Menu/></div></div>
                     </Grid>
                     </Hidden>
                 </Grid>

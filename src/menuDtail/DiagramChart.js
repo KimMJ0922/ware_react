@@ -26,7 +26,7 @@ const DiagramChart=(props)=>{
     //모바일 정답률
     const [myGoodDataM, setMyGoodDataM] = useState([{
         angle0:0,
-        angle: 0,
+        angle: (2*PI*(godLoopCnt/100)),
         radius: 40,
         radius0:60
     }]);
@@ -42,7 +42,7 @@ const DiagramChart=(props)=>{
     
     const [myWrongDataM, setMyWrongDataM] = useState([{
         angle0:0,
-        angle: 0,
+        angle: -(2*PI*(wrongloopCnt/100)),
         radius: 40,
         radius0:60
     }]);

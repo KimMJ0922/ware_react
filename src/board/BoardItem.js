@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {useHistory} from 'react-router';
 import Axios from 'axios';
+import { Grid } from '@material-ui/core';
+import { Visibility } from '@material-ui/icons'
+import './Board.css';
 
 const BoardItem=({match})=> {
     var history = useHistory();
@@ -171,7 +174,7 @@ const BoardItem=({match})=> {
         console.log("작성자가 들어옴");
         buttons = 
             <div>
-                <button type="button" onClick={golist}>리스트</button>
+                <button type="button" onClick={golist}>뒤로</button>
                 <button type="button" onClick={update}>수정</button>
                 <button type="button" onClick={deleteboard}>삭제</button>
             </div>
@@ -180,12 +183,12 @@ const BoardItem=({match})=> {
         if(buyed===true){
             buttons = 
             <div>
-                <button type="button" onClick={golist}>리스트</button>
+                <button type="button" onClick={golist}>뒤로</button>
             </div>
         }else{
             buttons = 
             <div>
-                <button type="button" onClick={golist}>리스트</button>
+                <button type="button" onClick={golist}>뒤로</button>
                 <button type="button" onClick={buy}>구매하기</button>
             </div>
         }
@@ -194,14 +197,21 @@ const BoardItem=({match})=> {
     if(window.sessionStorage.getItem("no")===no || buyed===true){
         problems = 
             carddata.map((row,index) => (
-                <div>
-                    <p>인덱스 : {index}</p>
-                    <p>문제 : {row.question}</p>
-                    <p>답 : {row.answer}</p>
+                <Grid xs={12} className='BoardStoreItemList'>
+                    {/* <p><span>인덱스 : {index}</span></p> */}
+                    <p style={{textAlign:'center'}}><span style={{display:'inline-block',width:'15%'}}>문제 :</span><span style={{display:'inline-block',width:'84%',fontWeight: '600'}}>{row.question}</span></p>
+                    
                     {
-                        row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
+                        row.imgFile!==""?
+                        <p style={{textAlign:'center'}}><span>
+                        <img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px",paddingLeft:'32px'}} alt=''/>
+                        </span></p>
+                        :
+                        <></>
                     }
-                </div>
+                    <p style={{textAlign:'center'}}><span style={{display:'inline-block',width:'15%'}}>답 :</span><span style={{display:'inline-block',width:'84%',fontWeight: '600'}}>{row.answer}</span></p>
+                   
+                </Grid>
             ))
     }else{
         problems = 
@@ -209,21 +219,36 @@ const BoardItem=({match})=> {
     }
 
     return ( 
-        <div>
-            제목 : {item.subject}<br/>
-            설명 : {item.content}<br/>
-            조회수 : {item.readcount}<br/>
-            포인트 : {item.requirepoint}<br/>
-            작성일 : {item.writeday}<br/>
-            작성자 : {item.name}<br/>
-            작성자 프로필 사진 : 
-            <img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/><br/><br/>
+        
+        <Grid container className='BoardStoreItem'>
+            <Grid xs={12}className='BoardStoreSubject'>
+                {item.subject}
+            </Grid>
+            <Grid xs={12} className='BoardStoreContent'> 
+                {item.content}
+            </Grid>
+            <Grid xs={4} className='BoardStorePoint'> 
+                {item.requirepoint}Point
+            </Grid>
+            <Grid xs={3}className='BoardStoreReadCount'>
+               <p><Visibility color="action"/> <span>{item.readcount}</span></p>
+            </Grid>
+            <Grid xs={5} className='BoardStoreWriteDay'> 
+                {item.writeday}
+            </Grid>
+            <Grid xs={12}className='BoardStoreSeller'> 
+                <p><img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/>
+                <span>{item.name}</span></p>
+            </Grid>
             {
                 problems
             }
-            <br/>
-            {buttons}
-        </div>
+            <Grid xs={12}>
+                <div className='BoardStore'>
+                    {buttons}
+                </div>
+            </Grid>
+        </Grid>
     );
 }
  
