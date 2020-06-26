@@ -85,7 +85,7 @@ const Diagram=({location})=>{
                         <>
                             {
                                 diagramList.map((item,j)=>{
-                                    if(item.cardset_no === last.cardset_no && item.method === last.method){
+                                    if(item.cardset_no === last.cardset_no && item.method === last.method && item.category === last.category){
                                         return (
                                             <>
                                                 <DiagramChart item={item} setRadioCheck={setRadioCheck} radioCheck={radioCheck} diaList = {diagramList} chartList={chartList}/>

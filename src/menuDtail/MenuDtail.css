@@ -1757,21 +1757,12 @@ border: none;
     .DiagramUl{
         padding: 0;
     }
-    .DiagramUl>.DiagramLiTitle>span{
-        border-left: 1px solid #dbdbdb;
-    }
-    .DiagramUl>.DiagramLiTitle>span:nth-child(1){
-        border-left: none;
-    }
+
     .DiagramUl>.DiagramLi{
         text-align: center;
         list-style: none;
     }
-    /* .DiagramLiSubjective>span{
-        border-bottom: 1px solid #efefef;
-        display: inline-block;
-        padding: 0.4rem 0;
-    } */
+
     .DiagramLiSubjective{
         border-bottom: 1px solid #a8a8a8;
     }
@@ -1780,31 +1771,12 @@ border: none;
     }
     .DiagramLiChoice{
         border-bottom: 1px solid #a8a8a8;
-        display: flex;
+      
     }
     .DiagramLiChoice:nth-last-child(1){
         border-bottom: none;
     }
-    .DiagramLiChoiceQuest{
-        width: 70%;
-    }
-    .DiagramLiChoiceQuest>p{
-        text-align: left;
-    }
-    .DiagramLiChoiceQuest>p:nth-child(1){
-        text-align: center;
-    }
-    .DiagramLiChoiceresult{
-        width: 30%;
-    }
-    .DiagramLiChoiceresult>p{
-        padding-top: 53px;
-    }
-    .DiagramLiChoiceresult>p>span{
-        height: 46px;
-        line-height: 3rem;
-        display: inline-block;
-    }
+    
 }
 /* DiagramList - media 모바일 사이즈 */
 @media(max-width: 375px){
@@ -1854,11 +1826,6 @@ border: none;
         text-align: center;
         list-style: none;
     }
-    /* .DiagramLiSubjective>span{
-        border-bottom: 1px solid #efefef;
-        display: inline-block;
-        padding: 0.4rem 0;
-    } */
     .DiagramLiSubjective{
         border-bottom: 1px solid #a8a8a8;
     }
@@ -1867,33 +1834,10 @@ border: none;
     }
     .DiagramLiChoice{
         border-bottom: 1px solid #a8a8a8;
-        display: flex;
     }
     .DiagramLiChoice:nth-last-child(1){
         border-bottom: none;
     }
-    .DiagramLiChoiceQuest{
-        width: 70%;
-    }
-    .DiagramLiChoiceQuest>p{
-        text-align: left;
-    }
-    .DiagramLiChoiceQuest>p:nth-child(1){
-        text-align: center;
-    }
-    .DiagramLiChoiceresult{
-        width: 30%;
-    }
-    .DiagramLiChoiceresult>p{
-        padding-top: 53px;
-    }
-    .DiagramLiChoiceresult>p>span{
-        height: 46px;
-        line-height: 3rem;
-        display: inline-block;
-    }
-
 }
-
 
 

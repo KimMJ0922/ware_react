@@ -165,7 +165,7 @@ export default function PointHistory(props) {
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
-                inputProps: { 'aria-label': '표시갯수' },
+                inputProps: { 'aria-label' : '표시갯수' },
                 native: true,
               }}
               onChangePage={handleChangePage}
