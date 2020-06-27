@@ -4,6 +4,6 @@ export {default as DiagramList} from './DiagramList';
 export {default as Folder} from './Folder';
 export {default as Friend} from './Friend';
 export {default as Guild} from './Guild';
-export {default as Set} from './Set';
+export {default as Set} from './SetLayout';
 export {default as Setting} from './Setting';
 export {default as Guild_sch} from './Guild_sch';

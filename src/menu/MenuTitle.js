@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {Diagram,DiagramList, Folder,Friend,Guild,Set,Setting,Default,Guild_sch} from '../menuDtail';/*index.js호출*/
-import {Board,BoardInsert,BoardItem,BoardItems,BoardList,BoardUpdate} from '../board';/*index.js호출*/
+import {Board} from '../board';/*index.js호출*/
 import { Route, Switch } from 'react-router-dom';
 import './menu.css';
 const MenuTitle=(props)=>{
@@ -35,16 +35,6 @@ const MenuTitle=(props)=>{
                 <Route exact path="/home/guild" component={Guild}/> 
 
                 <Route exact path="/home/board" component={Board}/>
-
-                <Route exact path="/home/Boardinsert" component={BoardInsert}/>
-
-                <Route exact path="/home/board/item/:board_no" component={BoardItem}/>
-
-                <Route exact path="/home/boarditems" component={BoardItems}/>
-                
-                <Route exact path="/home/Boardlist" component={BoardList}/>
-
-                <Route exact path="/home/boardupdate" component={BoardUpdate}/>
             </Switch>
         </div>
     )
