@@ -271,6 +271,13 @@ const DiagramList=()=>{
                                                                 {/* 원형 그래프 */}
                                                                 <div className='ArcSeries'>
                                                                     <XYPlot xDomain={[-5, 5]} yDomain={[-5, 5]} width={150} height={150}>
+                                                                    <ArcSeries animation radiusDomain={[0, 3]} radiusType={'literal'} center={{x: -1, y: -1}}
+                                                                                data={[{
+                                                                                    angle0:0,
+                                                                                    angle: -(2*PI*(chart.wrongcnt/(chart.rightcnt+chart.wrongcnt))),
+                                                                                    radius: 40,
+                                                                                    radius0:60
+                                                                                }]} color={'#f55e5e'} colorType={'literal'} />
                                                                         <ArcSeries animation radiusDomain={[0, 3]} radiusType={'literal'} center={{x: -1, y: -1}}
                                                                                 data={[{
                                                                                     angle0:0,
@@ -278,14 +285,7 @@ const DiagramList=()=>{
                                                                                     radius: 40,
                                                                                     radius0:60
                                                                                 }]} color={'#289ee2'} colorType={'literal'}/>
-                                                                        <ArcSeries animation radiusDomain={[0, 3]} radiusType={'literal'} center={{x: -1, y: -1}}
-                                                                                   color={'#f55e5e'} colorType={'literal'} 
-                                                                                data={[{
-                                                                                    angle0:0,
-                                                                                    angle: -(2*PI*(chart.wrongcnt/(chart.rightcnt+chart.wrongcnt))),
-                                                                                    radius: 40,
-                                                                                    radius0:60
-                                                                                }]} />
+                                                                        
                                                                     </XYPlot>
                                                                     문제 : {chart.rightcnt+chart.wrongcnt} 정답 : {chart.rightcnt} 오답 : {chart.wrongcnt}
                                                                 </div>
@@ -337,7 +337,6 @@ const DiagramList=()=>{
                                             </Select>
                                         </FormControl>
                                     </Grid>
-
                                     
                                     <Grid xs={12} sm={12} className='DiagramListChart06'>
                                         <ul className='DiagramUl'>
