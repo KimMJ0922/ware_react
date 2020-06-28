@@ -53,7 +53,14 @@ const Diagram=()=>{
                                         </div>
                                         <div className='mycardCardId'>
                                             <img src={row.profile} alt="" className='cardProfileImg'/>
-                                            <span>{row.name}</span>
+                                            <span>
+                                                {
+                                                    row.provider === 'kakao' ? <img src="/profile/kakao.png" alt="" style={{width:'20px', height:'20px'}}/> :
+                                                    row.provider === 'google' ? <img src="/profile/google.png" alt="" style={{width:'20px', height:'20px'}}/> : 
+                                                    <img src="/profile/ware.png" alt="" style={{width:'20px', height:'20px'}}/>
+                                                }
+                                                {row.name}
+                                            </span>
                                             <span>{row.studyday}</span>
                                         </div>
                                     </div>
