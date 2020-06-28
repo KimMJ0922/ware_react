@@ -321,12 +321,15 @@ const Test = (props) => {
   const goTest = () => {
     routerHistory.push('/test');
   }
+
     return(
         <>
         <div className="test_body">
+            
             {
                 choice.length === 0 && subjective.length === 0 &&
                 <>
+                
                 <Grid container>
                     <Grid item xs={12} md={12}>
                     <p className="test_top_font">제한 시간 내에 풀지 못했을 경우 빈칸은 오답 처리 됩니다.</p>
@@ -367,29 +370,38 @@ const Test = (props) => {
                 </Grid>
                 </>
             }
-
-
-            
             {/* 문제 */}
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} md={12}>
             {  
                 testCheck === true &&                
                 <>
+               <Grid container>
+               <Hidden only={['xs','sm']}>
+                    <Grid md={4}>
+                        <div className="sbjc_menu_box">
+                        <p>문제 풀기</p>
+                        <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+                        {
+                        cardCount >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+                        }
+                        <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+                        <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+                        </div>
+                    </Grid>
+                    </Hidden>
+
+                   <Grid item md={8}>
                 <div className="test_test_box">
                     {/* 시간 출력 */}
                     <p> <TimeIcon/> 남은 시간 {timeText}</p>
                     <p>객관식</p>
                     {/* 객관식 출력 */}
-                    {
-                        
+                    {                   
                         choice.map((item,i) => {
                             return (
                                 <>
-                                
                                 <Paper className="test_ch_box">
-                                    <div key={i}>
-                                        
-                                        
+                                    <div key={i}>                                
                                         <p className="test_ch_title_font">{item.question}</p>
                                     </div>
                                     <br/>
@@ -422,42 +434,54 @@ const Test = (props) => {
                                 </>
                             )
                         })
-                    }
-                    
+                    }            
                     {/* 주관식 출력 */}
                     <p>주관식</p>
-                    <Paper className="test_subj_box">
-                    {
-                        
-                        
+                    <Paper className="test_subj_box">  
+                    {                                               
                         subjective.map((item,i) => {
                             return(
-                                <>               
-                                    <div>
+                                <>         
                                         {/* <img src={item.imgSrc} alt=""/> */}
                                         <p>{item.question}</p>
-                                        <p><img src={Img} alt='경로 오류'/></p>
-                                        
-                                    </div>                                
+                                        <p><img src={Img} alt='경로 오류'/></p>                                                                 
                                     <input type="text" key={i} name={item.question_no} onChange={subjectiveTextChange} placeholder='답을 입력하시오'/>
+                                  
                                 </>
                             )
-                        })
-                        
+                        })                
                     }
-                     </Paper>
-                    
-                    <button type="button" id="scoringBtn" onClick={scoring} className="test_check_btn">채점하기</button> 
+                      </Paper>
+                                   
+                    <button type="button" id="scoringBtn" onClick={scoring} className="test_check_btn">채점하기</button>                                     
                    </div>
+                   </Grid>
+                   {/* 컨테이너 끝 */}
+                </Grid>               
             </>
         }
             </Grid>
-
             {/* 채점 했을 때 나오는 곳 */}
-            <Grid item xs={12} md={8}>
+           
             {
                 scoringCheck === true && 
                 <>
+                 <Grid container>
+                 <Hidden only={['xs','sm']}>
+                    <Grid md={4}>
+                        <div className="sbjc_menu_box">
+                        <p>문제 풀기</p>
+                        <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+                        {
+                        cardCount >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+                        }
+                        <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+                        <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+                        </div>
+                    </Grid>
+                    </Hidden>
+                
+                 <Grid item xs={12} md={8}>
                 <Paper className="text_result_box">
                     <p className="text_result_return_box">
                     <button type="button" onClick={answerShow} name="right">정답</button>
@@ -510,9 +534,11 @@ const Test = (props) => {
                         </tbody>
                     </table>
                     </Paper>
+                    </Grid>
+                    {/* 컨테이너 */}
+                    </Grid>
                 </>
             }
-            </Grid>
                <Grid container>
         <Hidden only={['md','lg','xl']}>
           <Grid xs={12}>
