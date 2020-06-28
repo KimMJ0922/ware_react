@@ -173,6 +173,7 @@ const BoardItem=({match})=> {
     if(window.sessionStorage.getItem("no")===no){
         console.log("작성자가 들어옴");
         buttons = 
+        
             <Grid xs={12} className='BoardStore'>
                 <button type="button" className='BoardStoreBtn backType02' onClick={golist}>
                     <Reply style={{fontSize:'2rem'}}/>
@@ -187,6 +188,7 @@ const BoardItem=({match})=> {
                     <span className='BoardBtnInfo'>삭제</span>
                 </button>
             </Grid>
+        
     }else{
         console.log("구매자가 들어옴");
         if(buyed===true){
@@ -216,16 +218,18 @@ const BoardItem=({match})=> {
         problems = 
             carddata.map((row,index) => (
                 <Grid xs={12} className='BoardStoreItemList'>
-                    <p style={{textAlign:'center'}}><span  style={{display:'inline-block',width:'15%'}}>문제 :</span><span style={{display:'inline-block',width:'84%',fontWeight: '600'}}>{row.question}</span></p>
+                    <p style={{textAlign:'center'}}><span style={{display:'inline-block',fontWeight: '400',fontSize:'1.3rem'}}>{row.question}</span></p>
+                    {/* <span  style={{display:'inline-block',width:'15%'}}>문제 :</span> */}
                     {
                         row.imgFile!==""?
                         <p style={{textAlign:'center'}}><span>
-                        <img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px",paddingLeft:'32px'}} alt=''/>
+                        <img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} alt=''/>
                         </span></p>
                         :
                         <></>
                     }
-                    <p style={{textAlign:'center'}}><span style={{display:'inline-block',width:'15%'}}>답 :</span><span style={{display:'inline-block',width:'84%',fontWeight: '600'}}>{row.answer}</span></p>
+                    <p style={{textAlign:'center'}}><span style={{display:'inline-block',fontWeight: '400'}}>{row.answer}</span></p>
+                    {/* <span style={{display:'inline-block',width:'15%'}}>답 :</span> */}
                 </Grid>
             ))
     }else{
@@ -240,33 +244,27 @@ const BoardItem=({match})=> {
         <Grid container className='BoardStoreItem'>
             {/* 웹 */}
             <Hidden only={['xs','sm']}>
-            <div style={{border:'1px solid',width:'100%'}}>
-                <Grid md={12} lg={12} xl={12} className='BoardStoreSubject'>
-                    {item.subject}
-                </Grid>
-                
-                <Grid md={6}> 
-                tesst1
-            </Grid>
-                {/* className='BoardStoreContent' */}
-                   {/* <span>{item.content}</span>   */}
-                
-                <Grid md={6} className='BoardStoreSeller'> 
-                    <p><img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/>
-                    <span>{item.name}</span></p>
-                </Grid>
-            </div>
-           
-            <Grid md={4} className='BoardStorePoint'> 
-                {item.requirepoint}Point
-            </Grid>
-            <Grid md={3}className='BoardStoreReadCount'>
-               <p><Visibility color="action"/> <span>{item.readcount}</span></p>
-            </Grid>
-            <Grid md={5} className='BoardStoreWriteDay'> 
-                {item.writeday}
-            </Grid>
-            
+               
+                    <Grid md={12} className='BoardStoreSubject'>
+                        {item.subject}
+                    </Grid>
+                    <Grid md={12} className='BoardStoreContent'> 
+                        {item.content}
+                    </Grid>
+                    <Grid md={2} className='BoardStorePoint'> 
+                        {item.requirepoint}Point
+                    </Grid>
+                    <Grid md={2} className='BoardStoreReadCount'>
+                        <p><Visibility color="action" style={{fontSize:'27'}}/> <span>{item.readcount}</span></p>
+                    </Grid>
+                    <Grid md={3} className='BoardStoreWriteDay'> 
+                        {item.writeday}
+                    </Grid>
+                    <Grid md={5} className='BoardStoreSeller'> 
+                            <p><img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/>
+                            <span>{item.name}</span></p>
+                    </Grid>
+               
             </Hidden>
 
             {/* 모바일 */}
