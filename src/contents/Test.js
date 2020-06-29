@@ -13,7 +13,7 @@ import Img from './iu03.jpg';
 import './Test.css';
 
 const Test = (props) => {
-    var routerHistory = useHistory();
+    var comp = window.sessionStorage.getItem('study');
     var history= useHistory();
     const [setting, setSetting] = useState({
         choice : 0,
@@ -47,7 +47,14 @@ const Test = (props) => {
     //페이지 처음 시작 했을 때 해당 카드 세트의 카드 총 갯수를 구해온다.
     useEffect(() => {
         let no = window.sessionStorage.getItem('cardset_no');
-        let url = "http://localhost:9000/getcardsetcount";
+        
+        let url = "";
+        if(comp==="board"){
+            url = "http://localhost:9000/board/getcardsetcount"
+        }else{
+            url = "http://localhost:9000/getcardsetcount"
+        }
+
         const getCardSetCount = async() => {
             try {
                 let cnt = await axios.post(url,{no});
@@ -113,7 +120,13 @@ const Test = (props) => {
         let choiceListTemp = [];
         let subjectiveTemp = [];
         let choiceQuestionTemp = [];
-        let url = "http://localhost:9000/gettestlist";
+        let url = "";
+        if(comp==="board"){
+            url = "http://localhost:9000/board/gettestlist"
+        }else{
+            url = "http://localhost:9000/gettestlist"
+        }
+
         axios.post(url,{
             no : window.sessionStorage.getItem('cardset_no'),
             choice : setting.choice,
@@ -289,7 +302,7 @@ const Test = (props) => {
 
         axios.post(url,{
             member_no : window.sessionStorage.getItem('no'),
-            category : 'cardset',
+            category : window.sessionStorage.getItem('study'),
             cardset_no : window.sessionStorage.getItem('cardset_no'),
             rightcnt : rightCnt,
             wrongcnt : wrongCnt,

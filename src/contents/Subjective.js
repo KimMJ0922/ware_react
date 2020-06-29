@@ -13,6 +13,7 @@ import CheckIcon from '@material-ui/icons/DoneOutline';
 import './Subjective.css';
 
 const Subjective = () => {
+    var comp = window.sessionStorage.getItem('study');
     var routerHistory = useHistory();
     var history = useHistory();
     const [cardset_no, setCardSet_no] = useState(window.sessionStorage.getItem('cardset_no'));
@@ -77,7 +78,13 @@ const Subjective = () => {
 
     useEffect(() => {
         const getCardSet = async() => {
-            let url = "http://localhost:9000/getcardlist";
+            let url = "";
+            if(comp==="board"){
+                url = "http://localhost:9000/board/getcardlist"
+            }else{
+                url = "http://localhost:9000/getcardlist"
+            }
+           
             try {
                 let list = await axios.post(url,{no : cardset_no});
                 let mem = list.data.mdto
@@ -85,7 +92,17 @@ const Subjective = () => {
                 let card = list.data.cList;
 
                 setMemberInfo({...mem});
+                if(comp==="board"){
+                    setCardSetInfo({
+                      no : cardSet.board_no,
+                      title : cardSet.subject,
+                      comment : cardSet.content,
+                      open_scope : '',
+                      update_scope : ''
+                    })
+                }else{
                 setCardSetInfo({...cardSet});
+                }
                 let t = [];
                 let leng = 0;
                 card.map((item,i) => {

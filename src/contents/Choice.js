@@ -11,6 +11,7 @@ import './Choice.css';
 import { Hidden, Grid } from '@material-ui/core';
 
 const Choice = () => {
+    var comp = window.sessionStorage.getItem('study');
     var routerHistory = useHistory();
     var history = useHistory();
     const [cardset_no, setCardSet_no] = useState(window.sessionStorage.getItem('cardset_no'));
@@ -78,7 +79,13 @@ const Choice = () => {
 
     useEffect(() => {
         const getCardSet = async() => {
-            let url = "http://localhost:9000/getcardchoicelist"
+            let url = "";
+            if(comp==="board"){
+                url = "http://localhost:9000/board/getcardchoicelist"
+            }else{
+                url = "http://localhost:9000/getcardchoicelist"
+            }
+            
             try {
                 let list = await axios.post(url,{no : cardset_no});
                 let choiceList = list.data.choiceList;
@@ -87,7 +94,17 @@ const Choice = () => {
                 let card = list.data.cList;
                 setChoiceList([...choiceList]);
                 setMemberInfo({...mem});
+                if(comp==="board"){
+                    setCardSetInfo({
+                      no : cardSet.board_no,
+                      title : cardSet.subject,
+                      comment : cardSet.content,
+                      open_scope : '',
+                      update_scope : ''
+                    })
+                }else{
                 setCardSetInfo({...cardSet});
+                }
                 let t = [];
                 let leng = 0;
                 card.map((item,i) => {

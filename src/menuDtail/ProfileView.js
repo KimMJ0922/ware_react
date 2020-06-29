@@ -2,7 +2,10 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-const ProfileView = ()=>{
+const ProfileView = (props) =>{
+  const clickBtn=(e)=>{
+    props.changeComponent(e.target.name);
+  }
   return(
     <Grid container>    
       <Grid item xs={4} md={2} >
@@ -18,9 +21,9 @@ const ProfileView = ()=>{
         </Paper>
         <Paper> 
             <div style={{border:'2px solid #dadee0'}} className="btn_box">
-              <button className="btn" type="button">최근(Home)</button>
-              <button className="btn" type="button">만든 세트(Set)</button>
-              <button className="btn" type="button">학습한(Set)</button>
+              <button className="btn" type="button" onClick={clickBtn} name="Set">만든 세트(Set)</button>
+              <button className="btn" type="button" onClick={clickBtn} name="BoardSet">구매 세트(Set)</button>
+              <button className="btn" type="button" onClick={clickBtn} name="SellsSet">판매 세트(Set)</button>
             </div>
         </Paper>
       </Grid>
