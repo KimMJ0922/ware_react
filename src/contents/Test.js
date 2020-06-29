@@ -318,21 +318,21 @@ const Test = (props) => {
 
   //학습하기로 이동
   const learning = () =>{
-        routerHistory.push('/study');
+    history.push('/study');
     }
 
   //주관식으로 이동
   const Subjective = () => {
-    routerHistory.push('/subjective');
+    history.push('/subjective');
   }
 
   //객관식 이동
   const Choice = () => {
-    routerHistory.push('/choice');
+    history.push('/choice');
   }
   //테스트 이동
   const goTest = () => {
-    routerHistory.push('/test');
+    history.push('/test');
   }
 
     return(
