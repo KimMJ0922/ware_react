@@ -237,8 +237,8 @@ const Choice = () => {
                             <>
                             <Grid item xs={12} md={8}>
                                 <div className="ch_mun_box">
-                                <img src={item.imgSrc} alt=""/>
-                                <p>{item.question}</p>
+                                <p className="ch_mun_qus_box">{item.question}</p>
+                                <p className="ch_mun_img_box"><img src={item.imgSrc} alt=""/></p>
                                 {
                                     choiceList.map((item,i) => {
                                         if(i === random){

@@ -1,6 +1,5 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
-import ProfileView from './ProfileView';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
 import { Paper } from '@material-ui/core';
@@ -11,9 +10,10 @@ import FolderDetail from './FolderDetail';
 // 아이콘
 import FolderIcon from '@material-ui/icons/FolderOpenSharp';
 import DeleteIcon from '@material-ui/icons/Delete';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddIcon from '@material-ui/icons/AddCircle';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import CreateIcon from '@material-ui/icons/Create';
+import StorefrontIcon from '@material-ui/icons/Storefront';
 
 const Folder=()=>{
     const [open, setOpen] = useState(false);
@@ -289,13 +289,23 @@ const Folder=()=>{
         <div className="fdr_body">
              <Grid container> 
                 <Grid item xs={12} md={12}>
-                    <ProfileView/>
+                <Grid container>    
+                    <Grid item xs={4} md={2} >                   
+                        <img src={window.sessionStorage.getItem('profile')} alt="" className="proimg"/>                    
+                    </Grid>
+                    <Grid item xs={8} md={10}>
+                      
+                        <p className="id_box">
+                            <span className="id" style={{display:'flex'}}>{window.sessionStorage.getItem('name')}</span>
+                            <p className="pro_fdr_count"><FolderIcon/><span className="id"> {folder.length} 개 </span></p>
+                        </p>
+                       
+                        </Grid>
+                </Grid>
                     {/* 폴더가 없을 때 */}
                     {
                         folder.length === 0 &&
-                        <>
-                            
-                                
+                        <>    
                                 <Paper>
                                     <div className="fdr_no_box" style={{ boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}}>
                                         <span className="fdr_no_font1">회원님은 아직 폴더를 생성하시지 않았습니다.</span><br/>
@@ -310,7 +320,8 @@ const Folder=()=>{
                     {/* 폴더가 있을때 */}
                     {
                         folder.length !== 0 && 
-                        <>
+                        <>  
+                        <div className="fdr_sort_box">
                             <input type="radio" name="sort" value="최신순" onClick={sortRadioClick} 
                                 checked={sort === '최신순' ? 'checked' : ''}/>최신순
                             <input type="radio" name="sort" value="오래된순" onClick={sortRadioClick} 
@@ -319,49 +330,39 @@ const Folder=()=>{
                                 checked={sort === '폴더명 오름차순' ? 'checked' : ''}/>폴더명 오름차순
                             <input type="radio" name="sort" value="폴더명 내림차순" onClick={sortRadioClick}
                                 checked={sort === '폴더명 내림차순' ? 'checked' : ''}/>폴더명 내림차순
-                            <Grid item xs={12} md={12}>
-                                <Paper>
-                                    <div>
-                                        <p>({folder.length})개</p>
-                                        <button type="button" onClick={handleOpen} className="fdr_no_btn">폴더 만들기</button>
-                                    </div>
-                                </Paper>
-                            </Grid>
+                                <button type="button" onClick={handleOpen} className="fdr_add_btn">폴더 만들기</button>
+                        </div>
                             {
                                 folder.map((item,idx) => {
                                     return (
                                         <>
-                                            <Grid item xs={3} md={2}>
+                                        <Grid container>
+                                            <Grid item xs={12} md={12}>
                                                 {/*  */}
-                                                 <Paper>
-                                                    <button type="button" onClick={changeVisible} value={item.no}
-                                                    style={{border:'none',background:'none', padding:'0', margin:'0'}}>
-                                                        {/* <FolderIcon/> */}
-                                                        아이콘
-                                                    </button>
-                                                </Paper> 
-                                            </Grid>
-
-                                            <Grid item xs={5} md={8}>
-                                                <Paper>
-                                                    <span className="fdr_on_font1">{item.title}({item.cnt})</span>
-                                                </Paper> 
-                                            </Grid>
-                                            
-                                            <Grid item xs={4} md={2}>
-                                                <Paper>
-                                                    <div className="fdr_icon_box">
-                                                        <button type="button" onClick={addListModal} id={item.no}>추가</button>
-                                                        {/* <AddCircleIcon onClick={addListModal}/> */}
+                                                 <Paper className="fdr_subject_box" >
+                                                     {/* Paper에 onClick 메소드 추가 해야됨 */}
+                                                 {/* onClick={changeVisible} value={item.no} */}
+                                                         <FolderIcon/> 
+                                                         <span className="fdr_on_font1">{item.title} ({item.cnt})</span> 
+                                                        <AddIcon  onClick={addListModal} id={item.no}/>  
                                                         <MoreHorizIcon aria-controls="simple-menu" aria-haspopup="true" onClick={menuClick(item.no)}/>
-                                                    </div>
+                                                    
                                                 </Paper> 
+                                            </Grid>                                    
                                             </Grid>
                                             {
                                                 item.visible === true &&
                                                 <>
-                                                    설명 : {item.comment}
-                                                    <FolderDetail no={item.no} study={studyList} card={cardList}/>
+                                                <Grid container>
+                                                    <Grid item xs={12} md={12}>
+                                                     설명 : {item.comment}
+                                                    </Grid>
+                                                    <Grid item xs={12} md={12}>
+                                                        <FolderDetail no={item.no} study={studyList} card={cardList}/>
+                                                    </Grid>
+                                                </Grid>
+                                                
+                                               
                                                 </>
                                             }
                                         </>
@@ -409,21 +410,25 @@ const Folder=()=>{
             <Modal open={addFolderList} onClose={addListModalClose} aria-labelledby="simple-modal-title"                   aria-describedby="simple-modal-description">
                 <div className="fdr_on_modal">
                     <p className="fdr_on_modal_top">폴더에 목록 추가하기</p>
-                    <div style={{marginTop:'30px', overflow:'scrollY',maxHeight:'300px'}}>
+                    <div className="fdr_on_add_fdr_content">
                         {
                             studyList.map((study,idx) => {
                                 return(
                                     <>
-                                        <div>
-                                            <input type="checkbox" name="stlist" value={study.no}/>{study.title}({study.category})<br/>
-                                            <img src={study.profile} alt="" style={{width:'40px', height:'40px'}}/>{study.name}
+                                    <Paper className="fdr_on_add_fdr_content_box">
+                                        <div className="fdr_on_add_modal_box">
+                                            <input type="checkbox" name="stlist" value={study.no}/><span className="fdr_add_modal_con_sub_font">{study.title}({study.category})</span>
+                                            <img src={study.profile} alt=""/><span className="fdr_add_modal_con_name_font">{study.name}</span>
+                                            {/* 아이콘 */}
+                                            <StorefrontIcon/>
                                         </div>
+                                        </Paper>
                                     </>
                                 )
                             })
                         }
 
-                        <button type="button" onClick={addStudyFolderList}>추가하기</button>
+                        <div className="fdr_on_add_submit_btn_box"><button type="button" onClick={addStudyFolderList}>추가하기</button></div>
                     </div> 
                 </div> 
             </Modal>

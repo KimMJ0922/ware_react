@@ -296,8 +296,8 @@ const Subjective = () => {
                                 if(i === random){
                                     return (
                                         <>
-                                            <img src={item.imgSrc} alt="" style={{width:'150px', height:'150px'}}/>
-                                            {item.question}<br/>
+                                            <p className="sbjc_mun_font">{item.question}</p>
+                                            <p className="sbjc_mun_img"><img src={item.imgSrc} alt=""/></p>
                                             <input type="text" onChange={textChange} onKeyPress={keyEnter} value={inputText} autoFocus="true"/><button type="button" onClick={btnClick}><CheckIcon/></button>
                                         </>
                                     )

@@ -433,8 +433,7 @@ const Test = (props) => {
                                                                 <input type="radio" name={item.question_no} value={choice.answer4} onClick={choiceClick}/><span>{choice.answer4}</span><br/>
                                                                 </Grid>
                                                                 <Grid item xs={6} md={4}>
-                                                                {/* <img src={item.imgSrc} alt=""/> */}
-                                                                <img src={Img} alt='경로 오류'/>
+                                                                <img src={item.imgSrc} alt=""/>                                                          
                                                                 </Grid>
                                                             </Grid>
                                                         </label>
@@ -455,9 +454,9 @@ const Test = (props) => {
                         subjective.map((item,i) => {
                             return(
                                 <>         
-                                        {/* <img src={item.imgSrc} alt=""/> */}
+                                        
                                         <p>{item.question}</p>
-                                        <p><img src={Img} alt='경로 오류'/></p>                                                                 
+                                        <p><img src={item.imgSrc} alt=""/></p>                                                                 
                                     <input type="text" key={i} name={item.question_no} onChange={subjectiveTextChange} placeholder='답을 입력하시오'/>
                                   
                                 </>
