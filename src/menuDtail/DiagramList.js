@@ -59,7 +59,7 @@ const DiagramList=()=>{
 
                 data = [];
                 let ch = [];
-                cList.map((item,idx) => {
+                chart.map((item,idx) => {
                     let temp = {
                         no : item.no,
                         cardset_no : item.cardset_no,
