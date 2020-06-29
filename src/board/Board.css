@@ -196,7 +196,7 @@ a{
         text-align: center;
     }
     .boardSearchForm{
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         text-align: center;
     }
     .BoardInsert{
@@ -931,4 +931,271 @@ a{
         font-size: 0.9rem;
     }
 }
-
+/* ---------------------------------------------- */
+/* boardItem 웹 사이즈 */
+@media(min-width: 551px){
+    .BoardStoreSubject{
+        font-size: 1.3rem;
+        padding: 1.5rem;
+        font-weight: 600;
+    }
+    .BoardStoreContent{
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+    .BoardStorePoint{
+        color: #737373;
+        text-align: center;
+        line-height: 3.3rem;
+        font-size: 1.2rem;
+    }
+    .BoardStoreReadCount{
+        color: #737373;
+        text-align: center;
+    }
+    .BoardStoreReadCount>p>span{
+        font-size: 1.05rem;
+        position: relative;
+        top: -0.5rem;
+        color: #737373;
+    }
+    .BoardStoreWriteDay{
+        text-align: center;
+        line-height: 3.8rem;
+        font-size: 1.2rem;
+        color: #737373;
+    }
+    .BoardStoreSeller{
+        text-align: center;
+    }
+    .BoardStoreSeller>p>span{
+        position: relative;
+        top: -0.75rem;
+        left: 0.3rem;
+        font-size: 1.3rem;
+    }
+    .BoardStoreItemList{
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 15px;
+        box-shadow: 0px 0px 8px 1px #bdbdbd;  
+    }
+    .BoardStore{
+        height: 5rem;
+    }
+    .BoardStoreBtn{
+        border: 0;
+        color: #fff;
+        height: 100%;
+        background-color: #fb6666;
+    }
+    
+    .backType01{
+        width: 100%;
+       
+    }
+    .backType02{
+        width: 33%;
+        border-right: 1px solid #fff;
+    }
+    .backType03{
+        width: 50%;
+    }
+    .BoardStoreBuyBtn{
+        width: 50%;
+        border-left: 1px solid #fff;
+    }
+    .BoardBtnInfo{
+        font-size: 1.1rem;
+        position: relative;
+        top: -0.5rem;
+        left: 0.3rem;
+    }
+    .BoardeditBtn{
+        width: 34%;
+        border-right: 1px solid #fff;
+    }
+    .BoarddeleteBtn{
+        width: 33%;
+    }
+}
+/* boardItem 웹 최소 사이즈 */
+@media(max-width: 550px){
+    .BoardStoreSubject{
+        font-size: 1.3rem;
+        margin-top: 1.1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .BoardStoreContent{
+        text-align: center;
+        margin: 0.9rem 0.2rem;
+        border-top: 1px solid;
+        font-size: 1.1rem;
+        padding-top: 0.4rem;
+    }
+    .BoardStorePoint{
+        color: #737373;
+        text-align: center;
+        line-height: 3.3rem;
+        font-size: 1.2rem;
+    }
+    .BoardStoreReadCount{
+        color: #737373;
+        text-align: center;
+    }
+    .BoardStoreReadCount>p>span{
+        position: relative;
+        top: -0.35rem;
+        color: #737373;
+    }
+    .BoardStoreWriteDay{
+        text-align: center;
+        line-height: 3.4rem;
+        font-size: 1.1rem;
+        color: #737373;
+    }
+    .BoardStoreSeller{
+        text-align: center;
+    }
+    .BoardStoreSeller>p>span{
+        position: relative;
+        top: -0.7rem;
+        left: 0.2rem;
+        font-size: 1.3rem;
+    }
+    .BoardStoreItemList{
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 15px;
+        box-shadow: 0px 0px 8px 1px #bdbdbd;      
+    }
+    .BoardStore{
+        height: 5rem;
+    }
+    .BoardStoreBtn{
+        border: 0;
+        color: #fff;
+        height: 100%;
+        background-color: #fb6666;
+    }
+    
+    .backType01{
+        width: 100%;
+       
+    }
+    .backType02{
+        width: 33%;
+        border-right: 1px solid #fff;
+    }
+    .backType03{
+        width: 50%;
+    }
+    .BoardStoreBuyBtn{
+        width: 50%;
+        border-left: 1px solid #fff;
+    }
+    .BoardBtnInfo{
+        font-size: 1.1rem;
+        position: relative;
+        top: -0.5rem;
+        left: 0.3rem;
+    }
+    .BoardeditBtn{
+        width: 34%;
+        border-right: 1px solid #fff;
+    }
+    .BoarddeleteBtn{
+        width: 33%;
+    }
+}
+/* boardItem 모바일 사이즈 */
+@media(max-width: 375px){
+    .BoardStoreSubject{
+        font-size: 1.3rem;
+        margin-top: 1.1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .BoardStoreContent{
+        text-align: center;
+        margin: 0.9rem 0.2rem;
+        border-top: 1px solid;
+        font-size: 1.1rem;
+        padding-top: 0.4rem;
+    }
+    .BoardStorePoint{
+        color: #737373;
+        text-align: center;
+        line-height: 3.3rem;
+        font-size: 1.2rem;
+    }
+    .BoardStoreReadCount{
+        color: #737373;
+        text-align: center;
+    }
+    .BoardStoreReadCount>p>span{
+        position: relative;
+        top: -0.35rem;
+        color: #737373;
+    }
+    .BoardStoreWriteDay{
+        text-align: center;
+        line-height: 3.4rem;
+        font-size: 1.1rem;
+        color: #737373;
+    }
+    .BoardStoreSeller{
+        text-align: center;
+    }
+    .BoardStoreSeller>p>span{
+        position: relative;
+        top: -0.7rem;
+        left: 0.2rem;
+        font-size: 1.3rem;
+    }
+    .BoardStoreItemList{
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 15px;
+        box-shadow: 0px 0px 8px 1px #bdbdbd;    
+    }
+    .BoardStore{
+        height: 5rem;
+    }
+    .BoardStoreBtn{
+        border: 0;
+        color: #fff;
+        height: 100%;
+        background-color: #fb6666;
+    }
+    
+    .backType01{
+        width: 100%;
+       
+    }
+    .backType02{
+        width: 33%;
+        border-right: 1px solid #fff;
+    }
+    .backType03{
+        width: 50%;
+    }
+    .BoardStoreBuyBtn{
+        width: 50%;
+        border-left: 1px solid #fff;
+    }
+    .BoardBtnInfo{
+        font-size: 1.1rem;
+        position: relative;
+        top: -0.5rem;
+        left: 0.3rem;
+    }
+    .BoardeditBtn{
+        width: 34%;
+        border-right: 1px solid #fff;
+    }
+    .BoarddeleteBtn{
+        width: 33%;
+    }
+}

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {useHistory} from 'react-router';
 import Axios from 'axios';
+import { Grid, Hidden } from '@material-ui/core';
+import { Visibility, Reply,Store,Create,Delete} from '@material-ui/icons'
+import './Board.css';
 
 const BoardItem=({match})=> {
     var history = useHistory();
@@ -170,60 +173,131 @@ const BoardItem=({match})=> {
     if(window.sessionStorage.getItem("no")===no){
         console.log("작성자가 들어옴");
         buttons = 
-            <div>
-                <button type="button" onClick={golist}>리스트</button>
-                <button type="button" onClick={update}>수정</button>
-                <button type="button" onClick={deleteboard}>삭제</button>
-            </div>
+        
+            <Grid xs={12} className='BoardStore'>
+                <button type="button" className='BoardStoreBtn backType02' onClick={golist}>
+                    <Reply style={{fontSize:'2rem'}}/>
+                    <span className='BoardBtnInfo'>뒤로</span>
+                </button>
+                <button type="button" className='BoardStoreBtn BoardeditBtn' onClick={update}>
+                    <Create style={{fontSize:'2rem'}}/>
+                    <span className='BoardBtnInfo'>수정</span>
+                </button>
+                <button type="button" className='BoardStoreBtn BoarddeleteBtn' onClick={deleteboard}>
+                    <Delete style={{fontSize:'2rem'}}/>
+                    <span className='BoardBtnInfo'>삭제</span>
+                </button>
+            </Grid>
+        
     }else{
         console.log("구매자가 들어옴");
         if(buyed===true){
             buttons = 
-            <div>
-                <button type="button" onClick={golist}>리스트</button>
-            </div>
+                    <Grid xs={12} className='BoardStore'>
+                        <button type="button" className='BoardStoreBtn backType01' onClick={golist}>
+                            <Reply style={{fontSize:'2rem'}}/>
+                            <span className='BoardBtnInfo'>뒤로</span>
+                        </button>
+                    </Grid>
         }else{
             buttons = 
-            <div>
-                <button type="button" onClick={golist}>리스트</button>
-                <button type="button" onClick={buy}>구매하기</button>
-            </div>
+                <Grid xs={12} className='BoardStore'>
+                    <button type="button" className= 'BoardStoreBtn backType03' onClick={golist}>
+                        <Reply style={{fontSize:'2rem'}}/>
+                        <span className='BoardBtnInfo'>뒤로</span>
+                    </button>
+                    <button type="button" className='BoardStoreBtn BoardStoreBuyBtn' onClick={buy}>
+                        <Store style={{fontSize:'2rem'}}/>
+                        <span className='BoardBtnInfo'>구매하기</span>
+                    </button>
+                </Grid>
         }
     }
     var problems = null;
     if(window.sessionStorage.getItem("no")===no || buyed===true){
         problems = 
             carddata.map((row,index) => (
-                <div>
-                    <p>인덱스 : {index}</p>
-                    <p>문제 : {row.question}</p>
-                    <p>답 : {row.answer}</p>
+                <Grid xs={12} className='BoardStoreItemList'>
+                    <p style={{textAlign:'center'}}><span style={{display:'inline-block',fontWeight: '400',fontSize:'1.3rem'}}>{row.question}</span></p>
+                    {/* <span  style={{display:'inline-block',width:'15%'}}>문제 :</span> */}
                     {
-                        row.imgFile!==""?<img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} />:<></>
+                        row.imgFile!==""?
+                        <p style={{textAlign:'center'}}><span>
+                        <img src={ip+"/bcard/img/"+row.imgFile} style={{width:"300px",height:"300px"}} alt=''/>
+                        </span></p>
+                        :
+                        <></>
                     }
-                </div>
+                    <p style={{textAlign:'center'}}><span style={{display:'inline-block',fontWeight: '400'}}>{row.answer}</span></p>
+                    {/* <span style={{display:'inline-block',width:'15%'}}>답 :</span> */}
+                </Grid>
             ))
     }else{
         problems = 
+        <Grid xs={12} className='BoardStoreItemList'>
             <div>구매 후 문제 확인 가능합니다.</div>
+        </Grid>
     }
 
     return ( 
-        <div>
-            제목 : {item.subject}<br/>
-            설명 : {item.content}<br/>
-            조회수 : {item.readcount}<br/>
-            포인트 : {item.requirepoint}<br/>
-            작성일 : {item.writeday}<br/>
-            작성자 : {item.name}<br/>
-            작성자 프로필 사진 : 
-            <img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/><br/><br/>
+        
+        <Grid container className='BoardStoreItem'>
+            {/* 웹 */}
+            <Hidden only={['xs','sm']}>
+               
+                    <Grid md={12} className='BoardStoreSubject'>
+                        {item.subject}
+                    </Grid>
+                    <Grid md={12} className='BoardStoreContent'> 
+                        {item.content}
+                    </Grid>
+                    <Grid md={2} className='BoardStorePoint'> 
+                        {item.requirepoint}Point
+                    </Grid>
+                    <Grid md={2} className='BoardStoreReadCount'>
+                        <p><Visibility color="action" style={{fontSize:'27'}}/> <span>{item.readcount}</span></p>
+                    </Grid>
+                    <Grid md={3} className='BoardStoreWriteDay'> 
+                        {item.writeday}
+                    </Grid>
+                    <Grid md={5} className='BoardStoreSeller'> 
+                            <p><img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/>
+                            <span>{item.name}</span></p>
+                    </Grid>
+               
+            </Hidden>
+
+            {/* 모바일 */}
+            <Hidden only={['md','lg','xl']}>
+            <Grid xs={12}className='BoardStoreSubject'>
+                {item.subject}
+            </Grid>
+            <Grid xs={12} className='BoardStoreContent'> 
+                {item.content}
+            </Grid>
+            <Grid xs={4} className='BoardStorePoint'> 
+                {item.requirepoint}Point
+            </Grid>
+            <Grid xs={3}className='BoardStoreReadCount'>
+               <p><Visibility color="action"/> <span>{item.readcount}</span></p>
+            </Grid>
+            <Grid xs={5} className='BoardStoreWriteDay'> 
+                {item.writeday}
+            </Grid>
+            <Grid xs={12}className='BoardStoreSeller'> 
+                <p><img src={item.profile.substring(0,4)!="http"?ip+rte+item.profile:item.profile} className="BoardProImage" alt=''/>
+                <span>{item.name}</span></p>
+            </Grid>
+            </Hidden>
             {
-                problems
+             problems
             }
-            <br/>
-            {buttons}
-        </div>
+            
+            {
+            buttons
+            }
+            
+        </Grid>
     );
 }
  

@@ -126,7 +126,7 @@
         background-color: #dbdbdb;
     }
     .mainViewItem{
-        display: none;
+        /* display: none; */
         box-shadow: 0px 7px 31px -16px #BDBDBD;
         z-index: 10;
         background-color: #FAFAFA;
@@ -193,7 +193,7 @@
         background-color: #dbdbdb;
     }
     .mainViewItem{
-        display: none;
+        /* display: none; */
         box-shadow: 0px 7px 31px -16px #BDBDBD;
         z-index: 10;
         background-color: #FAFAFA;

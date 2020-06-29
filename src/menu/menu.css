@@ -5,21 +5,19 @@
 @media(min-width: 551px){
     .mainMenuDetail{
         padding-left: 1rem;
-        background-color: #FAFAFA;
-        max-height: 794px;
+        min-height: 794px;
     }
 }
 
 @media(max-width: 550px){
     .mainMenuDetail{
-        background-color: #FAFAFA;
         min-height: 794px;
     }
 }
 
 @media(max-width: 375px){
     .mainMenuDetail{
-        background-color: #FAFAFA;
         min-height: 0px;
     }
+    
 }
