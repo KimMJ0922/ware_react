@@ -80,19 +80,7 @@ const BoardUpdate = ({match}) => {
                 )
                 let board = data.data;
                 
-                board.map((data)=>{
-                    setItem({
-                        board_no : data.board_no,
-                        content : data.content,
-                        readcount : data.readcount,
-                        requirepoint : data.requirepoint,
-                        subject : data.subject,
-                        writeday : data.writeday,
-                        name : data.name,
-                        profile : data.profile
-                    })
-                    
-                });
+                setItem(board);
                 
             } catch (e) {
                 console.log(e);

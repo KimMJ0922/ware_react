@@ -89,6 +89,7 @@ const Set=()=>{
     let id = e.target.id;
     setTimeout(() => {
       window.sessionStorage.setItem('cardset_no',id);
+      window.sessionStorage.setItem('study','cardset');
       setStudy();
       history.push('/study');
     },100)
@@ -102,7 +103,7 @@ const Set=()=>{
     axios.post(url,{
       cardset_no : window.sessionStorage.getItem('cardset_no'),
       member_no : window.sessionStorage.getItem('no'),
-      category : 'cardset'
+      category : window.sessionStorage.getItem('study')
     }).then((res) => {
 
     }).catch((err) => {

@@ -18,6 +18,7 @@ import { red } from '@material-ui/core/colors';
 import { Hidden } from '@material-ui/core';
 
 const Study=({location})=>{
+  var comp = window.sessionStorage.getItem('study');
   var routerHistory = useHistory();
   const [memberInfo, setMemberInfo] = useState({
     no : '',
@@ -49,8 +50,12 @@ const Study=({location})=>{
 
     //카드 세트의 번호 가져오기
     var no = window.sessionStorage.getItem('cardset_no');
-    let url = "http://localhost:9000/getcardlist"
-
+    let url = "";
+    if(comp==="board"){
+      url = "http://localhost:9000/board/getcardlist"
+    }else{
+      url = "http://localhost:9000/getcardlist"
+    }
     const getCard = async() =>{
       try{
         if(no === null || no === 'null' || no === ''){
@@ -58,6 +63,7 @@ const Study=({location})=>{
         }
 
         let list = await axios.post(url,{no});
+        console.log(list.data);
         let mem = list.data.mdto
         let cardSet = list.data.csdto;
         let card = list.data.cList;
@@ -66,7 +72,18 @@ const Study=({location})=>{
           routerHistory.replace(routerHistory.go(-1));
         }
         setMemberInfo({...mem});
-        setCardSetInfo({...cardSet});
+        if(comp==="board"){
+          setCardSetInfo({
+            no : cardSet.board_no,
+            title : cardSet.subject,
+            comment : cardSet.content,
+            open_scope : '',
+            update_scope : ''
+          })
+        }else{
+          setCardSetInfo({...cardSet});
+        }
+        
         card.map((item,i) => {
           let data = {
             cardset_no : item.cardset_no,

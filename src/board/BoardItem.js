@@ -61,18 +61,7 @@ const BoardItem=({match})=> {
                     "http://localhost:9000/board/getdata?board_no="+board_no
                 )
                 let board = data.data;
-                board.map((data)=>{
-                    setItem({
-                        board_no : data.board_no,
-                        content : data.content,
-                        readcount : data.readcount,
-                        requirepoint : data.requirepoint,
-                        subject : data.subject,
-                        writeday : data.writeday,
-                        name : data.name,
-                        profile : data.profile
-                    })
-                });
+                setItem(board);
             } catch (e) {
                 console.log(e);
             }
@@ -161,6 +150,9 @@ const BoardItem=({match})=> {
                 }
             )
             alert("구매 성공");
+            setTimeout(() => {
+                history.push("/home/board?page="+match.params.pageNum);
+            },100)
         } catch (e) {
             alert("구매 오류 다시 시도하세요");
             console.log(e);
@@ -168,7 +160,6 @@ const BoardItem=({match})=> {
     }
     var buttons = null;
     if(window.sessionStorage.getItem("no")===no){
-        console.log("작성자가 들어옴");
         buttons = 
             <div>
                 <button type="button" onClick={golist}>리스트</button>
@@ -176,7 +167,6 @@ const BoardItem=({match})=> {
                 <button type="button" onClick={deleteboard}>삭제</button>
             </div>
     }else{
-        console.log("구매자가 들어옴");
         if(buyed===true){
             buttons = 
             <div>

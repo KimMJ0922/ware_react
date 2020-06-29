@@ -4,7 +4,6 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
 import {useHistory} from 'react-router'
-import ProfileView from './ProfileView';
 import { Link } from 'react-router-dom';
 import './Set.css';
 
@@ -22,10 +21,9 @@ const SellsSet=()=>{
           start
         });
         let listData = list.data;
-        console.log(listData);
         listData.map((item,idx)=>{
           cardSet.push({
-            no : item.no,
+            no : item.board_no,
             title : item.subject,
             comment : item.content,
             createday : item.writeday.slice(0,10),
@@ -63,11 +61,27 @@ const SellsSet=()=>{
     let id = e.target.id;
     setTimeout(() => {
       window.sessionStorage.setItem('cardset_no',id);
+      window.sessionStorage.setItem('study','board');
+      setStudy();
       history.push('/study');
     },100)
     
   }
 
+  //학습 저장
+  const setStudy = () => {
+    let url = "http://localhost:9000/setstudy";
+
+    axios.post(url,{
+      cardset_no : window.sessionStorage.getItem('cardset_no'),
+      member_no : window.sessionStorage.getItem('no'),
+      category : window.sessionStorage.getItem('study')
+    }).then((res) => {
+
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
 
   //더보기 버튼
   const moreCardSetList = () => {
@@ -84,7 +98,7 @@ const SellsSet=()=>{
       let data = res.data;
       data.map((item,idx)=>{
         cardSet.push({
-            no : item.no,
+            no : item.board_no,
             title : item.subject,
             comment : item.content,
             createday : item.writeday.slice(0,10),
