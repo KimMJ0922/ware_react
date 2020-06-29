@@ -1,13 +1,24 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import './SignUp.css';
-const Signup=()=>{
+const Signup=(props)=>{
+    console.log(props);
     const [userInfo, setUserInfo] = useState({
         email : '',
         name : '',
         password : '',
         birth : ''
     })
+
+    if(props.sname!=='' && props.semail!==''){
+        setUserInfo({
+            email : props.semail,
+            name : props.sname,
+            password : '',
+            birth : ''
+        })
+    }
+
     const [eff, setEff] = useState({
         emailEff : '이메일',
         passEff : '비밀번호',

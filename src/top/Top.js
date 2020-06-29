@@ -66,7 +66,12 @@ const Top = (props) =>{
             props.setMobileDisplay({display:'none'})
             props.setMobileDisplayMenu({display:'block'})
         }
-      }
+    }
+
+    useEffect(()=>{
+        if(props.sname!=='' && props.semail!=='')
+            SingupModalOpen();
+    },[props.sname, props.semail])
 
 
    
@@ -102,7 +107,7 @@ const Top = (props) =>{
             >
              
                  <div className="Login_modal_div">
-                  <Signin/>
+                  <Signin />
                  </div>      
             </Modal> 
 
@@ -113,7 +118,7 @@ const Top = (props) =>{
             aria-describedby="simple-modal-description"
             >
                  <div className="Login_modal_div">
-                  <Signup/>
+                  <Signup sname={props.sname} semail={props.semail}/>
                  </div>      
             </Modal>  
             </div>

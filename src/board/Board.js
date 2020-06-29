@@ -10,7 +10,6 @@ import './Board.css';
 const Board=()=>{
     //다른 페이지 갔다올시에 검색 조건 세션 지우기
     const init=()=>{
-        console.log("init")
         window.sessionStorage.setItem("select","최신순");
         window.sessionStorage.setItem("search","");
     }

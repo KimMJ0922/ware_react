@@ -110,12 +110,17 @@ const Title = (props) => {
         }
       }
     },[nowPath]);
-
+    const [sname,setSname] = useState('');
+    const [semail,setSemail] = useState('');
+    const startBtn=(data)=>{
+      setSname(data.name);
+      setSemail(data.email);
+    }
     return (
         <div style={{fontSize: '16px'}}>
           <Top path={nowPath} profile={profile} setProfile={setProfile} name={name} setName={setName} 
           setMobileDisplay={setMobileDisplay} mobileDisplay={mobileDisplay}
-          setMobileDisplayMenu={setMobileDisplayMenu} mobileDisplayMenu={mobileDisplayMenu}
+          setMobileDisplayMenu={setMobileDisplayMenu} mobileDisplayMenu={mobileDisplayMenu} sname={sname} semail={semail}
           />
           <Switch > 
             {/*<Route exact path="/" component={Main}></Route>
@@ -144,7 +149,7 @@ const Title = (props) => {
           <route.component {...prop} routes={route.routes} no={props.no} setNo={props.setNo} 
           profile={profile} setProfile={setProfile} name={name} setName={setName} 
           setMobileDisplay={setMobileDisplay} mobileDisplay={mobileDisplay}
-          setMobileDisplayMenu={setMobileDisplayMenu} mobileDisplayMenu={mobileDisplayMenu}
+          setMobileDisplayMenu={setMobileDisplayMenu} mobileDisplayMenu={mobileDisplayMenu} startBtn={startBtn}
          /> 
         )}
       />
