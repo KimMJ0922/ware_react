@@ -70,6 +70,7 @@ const Set=()=>{
     }).then((res)=>{
       if(res.data){
         window.sessionStorage.setItem('cardset_no',no);
+        window.sessionStorage.setItem('study','cardset');
         setStudy();
         history.push('/study');
       }else{
@@ -153,7 +154,6 @@ const Set=()=>{
             <Grid item md={12} xs={12}>
               <Paper>
                 <div className="sq_content_off" style={{boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}}>
-                <span className="sq_content_font1_off">데이터가 없을때</span>
                   <span className="sq_content_font1_off">아직 세트를 생성하지 않았습니다.</span>
                   <span className="sq_content_font2_off">학습 세트를 만들어 원하시는 주제를 학습해 보세요.</span>
                   <button type="button" className="sq_content_btn_off" onClick={goCreateCardSet}>세트 만들기</button>

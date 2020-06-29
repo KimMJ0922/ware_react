@@ -56,13 +56,13 @@ const DiagramChart=(props)=>{
     //props에서 받은 list
     const [diagramList, setDiagramList] = useState([...props.diaList]);
     
-    const selectChange = event => {
-        let name = parseInt(event.target.name);
-        setSelectedValue(event.target.value);
+    const selectChange = (cardset_no, category, method) => {
+        let name = cardset_no;
+        setSelectedValue(method);
         let radioCheck = props.radioCheck;
         radioCheck.map((item) => {
-            if(item.cardset_no === name){
-                item["method"] = event.target.value;
+            if(item.cardset_no === name && item.category === category){
+                item["method"] = method;
             }
         });
         props.setRadioCheck([...radioCheck]); 
@@ -150,8 +150,8 @@ const DiagramChart=(props)=>{
                                         return (
                                             <>
                                                 <li>
-                                                    <Radio checked={selectedValue === item.method} onChange={selectChange} 
-                                                           value={item.method} name = {props.item.cardset_no} className="diagramSearchRadio"
+                                                    <Radio checked={selectedValue === item.method} onChange={(e) => selectChange(props.item.cardset_no,props.item.category,item.method)} 
+                                                           className="diagramSearchRadio"
                                                     />{item.method === "subjective" ? "주관식" : item.method === "choice" ? "객관식" : "테스트"}
                                                 </li>
                                             </>
@@ -215,11 +215,11 @@ const DiagramChart=(props)=>{
                         {
                             //기록 되어있는 것만 출력
                             diagramList.map((item) => {
-                                if(item.cardset_no === props.item.cardset_no){
+                                if(item.cardset_no === props.item.cardset_no && item.category === props.item.category){
                                     return (
                                         <>
-                                            <Radio checked={selectedValue === item.method} onChange={selectChange} value={item.method}
-                                                   name = {props.item.cardset_no} className="diagramSearchRadio"
+                                            <Radio checked={selectedValue === item.method} onChange={(e) => selectChange(props.item.cardset_no,props.item.category,item.method)} 
+                                                    className="diagramSearchRadio"
                                             />{item.method === "subjective" ? "주관식" : item.method === "choice" ? "객관식" : "테스트"}
                                         </>
                                     )

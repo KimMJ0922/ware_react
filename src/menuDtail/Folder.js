@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import ProfileView from './ProfileView';
+import FolderAddList from './FolderAddList';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
 import { Paper } from '@material-ui/core';
@@ -410,19 +411,7 @@ const Folder=()=>{
                 <div className="fdr_on_modal">
                     <p className="fdr_on_modal_top">폴더에 목록 추가하기</p>
                     <div style={{marginTop:'30px', overflow:'scrollY',maxHeight:'300px'}}>
-                        {
-                            studyList.map((study,idx) => {
-                                return(
-                                    <>
-                                        <div>
-                                            <input type="checkbox" name="stlist" value={study.no}/>{study.title}({study.category})<br/>
-                                            <img src={study.profile} alt="" style={{width:'40px', height:'40px'}}/>{study.name}
-                                        </div>
-                                    </>
-                                )
-                            })
-                        }
-
+                        <FolderAddList study={studyList} card={cardList} no={folderNo}/>
                         <button type="button" onClick={addStudyFolderList}>추가하기</button>
                     </div> 
                 </div> 

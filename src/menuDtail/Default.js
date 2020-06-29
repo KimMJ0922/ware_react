@@ -1,9 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
+import {useHistory} from 'react-router';
 import { Grid, Hidden } from '@material-ui/core';
 import {Add } from '@material-ui/icons';
 import './MenuDtail.css';
 const Diagram=()=>{
+    let history = useHistory();
     const [row, setRows ]= useState([]);
     const [start, setStart] = useState(9);
     const [listMaxLeng, setListMaxLeng] = useState(0);
@@ -36,6 +38,58 @@ const Diagram=()=>{
         console.log(start);
     }
 
+    const goStudy = (cardset_no, open_scope, category) => {
+        console.log(cardset_no, open_scope, category);
+        if(category === 'cardset'){
+            if(open_scope === 'member'){
+                let pass = window.prompt("비밀번호를 입력하세요");
+                passCheck(cardset_no,pass);
+            }else{
+                window.sessionStorage.setItem('cardset_no',cardset_no);
+                window.sessionStorage.setItem('study','cardset');
+                setStudy();
+            }
+        }else{
+            window.sessionStorage.setItem('cardset_no',cardset_no);
+            window.sessionStorage.setItem('study','board');
+            setStudy();
+        }
+
+        history.push('/study');
+    }
+
+    const passCheck = (no,pass) => {
+        let url = "http://localhost:9000/cardsetpasscheck";
+        axios.post(url,{
+            no,
+            open_password : pass
+        }).then((res)=>{
+            if(res.data){
+                window.sessionStorage.setItem('cardset_no',no);
+                window.sessionStorage.setItem('study','cardset');
+                setStudy();
+                history.push('/study');
+            }else{
+                alert("비밀번호가 맞지 않습니다.");
+            }
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+
+    //학습 저장
+    const setStudy = () => {
+        let url = "http://localhost:9000/setstudy";
+        axios.post(url,{
+            cardset_no : window.sessionStorage.getItem('cardset_no'),
+            member_no : window.sessionStorage.getItem('no'),
+            category : window.sessionStorage.getItem('study')
+        }).then((res) => {
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return(
         <>
             <span className='defaultTitle'>최근 학습함</span>
@@ -43,7 +97,7 @@ const Diagram=()=>{
                 {
                     row.map((row,i)=>{
                         return(
-                            <Grid xs={12} sm={6} md={4}>
+                            <Grid xs={12} sm={6} md={4} onClick={(e) => goStudy(row.cardset_no,row.open_scope,row.category)} name={row.cardset_no} style={{cursor:'pointer'}}>
                                     <div className='mycardList'>
                                         <div className='mycardSubject'>
                                             {row.title}
