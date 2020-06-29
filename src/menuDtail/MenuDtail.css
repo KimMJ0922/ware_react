@@ -1816,16 +1816,12 @@ border: none;
     .DiagramUl{
         padding: 0;
     }
-    .DiagramUl>.DiagramLiTitle>span{
-        border-left: 1px solid #dbdbdb;
-    }
-    .DiagramUl>.DiagramLiTitle>span:nth-child(1){
-        border-left: none;
-    }
+
     .DiagramUl>.DiagramLi{
         text-align: center;
         list-style: none;
     }
+
     .DiagramLiSubjective{
         border-bottom: 1px solid #a8a8a8;
     }
@@ -1834,16 +1830,12 @@ border: none;
     }
     .DiagramLiChoice{
         border-bottom: 1px solid #a8a8a8;
+      
     }
     .DiagramLiChoice:nth-last-child(1){
         border-bottom: none;
     }
-    .testCountwidth{
-        width: 170px;
-        margin: 0 auto;
-    }
-
-
+    
 }
 /* DiagramList - media 모바일 사이즈 */
 @media(max-width: 375px){
@@ -1905,8 +1897,6 @@ border: none;
     .DiagramLiChoice:nth-last-child(1){
         border-bottom: none;
     }
-
 }
-
 
 

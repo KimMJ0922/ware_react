@@ -48,14 +48,14 @@ const DiagramChart=(props)=>{
     }]);
     
     //Bar 임의 데이터 
-    const [barData, setBarData] = useState([
-    ]);
+    const [barData, setBarData] = useState([]);
     
     //radio 
     const [selectedValue, setSelectedValue] = useState(props.item.method);
 
     //props에서 받은 list
     const [diagramList, setDiagramList] = useState([...props.diaList]);
+    
     const selectChange = event => {
         let name = parseInt(event.target.name);
         setSelectedValue(event.target.value);
@@ -73,7 +73,7 @@ const DiagramChart=(props)=>{
         let data = [];
         //해당 카드세트에 맞는 차트 거르기
         chartList.map((item,idx) => {
-            if(item.method === props.item.method && item.cardset_no === props.item.cardset_no){
+            if(item.method === props.item.method && item.cardset_no === props.item.cardset_no && item.category === props.item.category){
                 data.push(item);
             }
         })
@@ -98,6 +98,7 @@ const DiagramChart=(props)=>{
     const goDiagramList = (e) => {
         e.preventDefault();
         window.sessionStorage.setItem('diagram',props.item.cardset_no);
+        window.sessionStorage.setItem('category',props.item.category);
         history.push('/home/diagramlist');
     }
 
@@ -115,52 +116,28 @@ const DiagramChart=(props)=>{
                     </div>
                 </Grid>
                 <Grid md={3} lg={3} className='DiagramInfoChart01'>
-                <div className='ArcSeriesInfo'>
+                    <div className='ArcSeriesInfo'>
                         마지막 시험
                     </div>
                     <div className='ArcSeries'>
-                        <XYPlot
-                            xDomain={[-5, 5]}
-                            yDomain={[-5, 5]}
-                            width={200}
-                            height={200}>
-                            <ArcSeries
-                                animation
-                                radiusDomain={[0, 4]}
-                                radiusType={'literal'}
-                                center={{x: -1, y: 0}}
-                                data={myWrongData}
-                                color={'#f55e5e'}
-                                colorType={'literal'}/>
-                            <ArcSeries
-                                animation
-                                radiusDomain={[0, 4]}
-                                radiusType={'literal'}
-                                center={{x: -1, y: 0}}
-                                data={myGoodData}
-                                color={'#289ee2'}
-                                colorType={'literal'}/>
+                        <XYPlot xDomain={[-5, 5]} yDomain={[-5, 5]} width={200} height={200}>
+                            <ArcSeries animation radiusDomain={[0, 4]} radiusType={'literal'} center={{x: -1, y: 0}}
+                                       data={myWrongData} color={'#f55e5e'} colorType={'literal'}/>
+                            <ArcSeries animation radiusDomain={[0, 4]} radiusType={'literal'} center={{x: -1, y: 0}}
+                                       data={myGoodData} color={'#289ee2'} colorType={'literal'}/>
                         </XYPlot>
                     </div>
                     <div className='ArcSeriesPoint' >
-                     {(rightCountScore*100).toFixed(0)}%
+                        {(rightCountScore*100).toFixed(0)}%
                     </div>
                 </Grid>
                 <Grid md={3} lg={3} className='DiagramInfoChart02'>
                     <div class='VerticalBarSeries'>
-                    <XYPlot
-                            xType="ordinal"
-                            width={250}
-                            height={200}
-                            >
+                        <XYPlot xType="ordinal" width={250} height={200}>
                             <YAxis />
                             <XAxis />
-                            <VerticalBarSeries
-                                barWidth={0.4}
-                                color="#12939A"
-                                data={[...barData]}
-                            />
-                    </XYPlot>    
+                            <VerticalBarSeries barWidth={0.4} color="#12939A" data={[...barData]}/>
+                        </XYPlot>
                     </div>
                 </Grid>
                 <Grid md={2} lg={2} className='DiagramListChart04'>
@@ -169,19 +146,13 @@ const DiagramChart=(props)=>{
                             {
                                 //기록 되어있는 것만 출력
                                 diagramList.map((item) => {
-                                    if(item.cardset_no === props.item.cardset_no){
+                                    if(item.cardset_no === props.item.cardset_no && item.category === props.item.category){
                                         return (
                                             <>
                                                 <li>
-                                                    <Radio
-                                                        checked={selectedValue === item.method}
-                                                        onChange={selectChange}
-                                                        value={item.method}
-                                                        //name="radio-button-demo"
-                                                        name = {props.item.cardset_no}
-                                                        className="diagramSearchRadio"
-                                                    />{item.method === "subjective" ? "주관식" : 
-                                                       item.method === "choice" ? "객관식" : "테스트"}
+                                                    <Radio checked={selectedValue === item.method} onChange={selectChange} 
+                                                           value={item.method} name = {props.item.cardset_no} className="diagramSearchRadio"
+                                                    />{item.method === "subjective" ? "주관식" : item.method === "choice" ? "객관식" : "테스트"}
                                                 </li>
                                             </>
                                         )
@@ -219,53 +190,23 @@ const DiagramChart=(props)=>{
                     </div>
                     <div className='ArcSeries'>
                     
-                        <XYPlot
-                            xDomain={[-5, 5]}
-                            yDomain={[-5, 5]}
-                            width={150}
-                            height={150}>
-                            <ArcSeries
-                                animation
-                                radiusDomain={[0, 3]}
-                                radiusType={'literal'}
-                                center={{x: -1, y: -1}}
-                                data={myWrongDataM}
-                                color={'#f55e5e'}
-                                colorType={'literal'}/>
-                            <ArcSeries
-                                animation
-                                radiusDomain={[0, 3]}
-                                radiusType={'literal'}
-                                center={{x: -1, y: -1}}
-                                data={myGoodDataM}
-                                color={'#289ee2'}
-                                colorType={'literal'}/>
+                        <XYPlot xDomain={[-5, 5]} yDomain={[-5, 5]} width={150} height={150}>
+                            <ArcSeries animation radiusDomain={[0, 3]} radiusType={'literal'} center={{x: -1, y: -1}}
+                                       data={myWrongDataM} color={'#f55e5e'} colorType={'literal'}/>
+                            <ArcSeries animation radiusDomain={[0, 3]} radiusType={'literal'} center={{x: -1, y: -1}}
+                                       data={myGoodDataM} color={'#289ee2'} colorType={'literal'}/>
                         </XYPlot>
-                       
                     </div>
                     
                     <div className='ArcSeriesPoint' >
-                    {
-                    (rightCountScore*100).toFixed(0)
-                    }%
+                        {(rightCountScore*100).toFixed(0)}%
                     </div>
-                    
                 </Grid>
                 <Grid xs={6} sm={6} md={6} className='DiagramInfoChart02'>
                     <div className='VerticalBarSeries'>
-                        
-                        <XYPlot
-                                xType="ordinal"
-                                width={170}
-                                height={170}
-                                >
-                                <XAxis />
-                                
-                                <VerticalBarSeries
-                                    color="#405de8"
-                                    data={[...barData]}
-                                    barWidth={0.4}
-                                />
+                        <XYPlot xType="ordinal" width={170} height={170} >
+                            <XAxis />
+                            <VerticalBarSeries color="#405de8" data={[...barData]} barWidth={0.4} />
                         </XYPlot>    
                     </div>
                 </Grid>
@@ -277,15 +218,9 @@ const DiagramChart=(props)=>{
                                 if(item.cardset_no === props.item.cardset_no){
                                     return (
                                         <>
-                                            <Radio
-                                                checked={selectedValue === item.method}
-                                                onChange={selectChange}
-                                                value={item.method}
-                                                //name="radio-button-demo"
-                                                name = {props.item.cardset_no}
-                                                className="diagramSearchRadio"
-                                            />{item.method === "subjective" ? "주관식" : 
-                                                item.method === "choice" ? "객관식" : "테스트"}
+                                            <Radio checked={selectedValue === item.method} onChange={selectChange} value={item.method}
+                                                   name = {props.item.cardset_no} className="diagramSearchRadio"
+                                            />{item.method === "subjective" ? "주관식" : item.method === "choice" ? "객관식" : "테스트"}
                                         </>
                                     )
                                 }
@@ -295,7 +230,6 @@ const DiagramChart=(props)=>{
                 </Grid>
                 <Grid xs={12} sm={12} className='DiagramListChart04'>
                     <div className='moreView'>
-                        {/* exact to='/home/diagramlist' ch={'dddddd'} */}
                         <Link onClick={goDiagramList}>
                             <Button id='DiagramDetail'>
                                 <ExpandMore style={{ fontSize: 20 }} color='#fff'/>
