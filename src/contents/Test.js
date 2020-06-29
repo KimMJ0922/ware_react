@@ -1,8 +1,19 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router'
+import { Grid, Hidden, Paper } from '@material-ui/core';
+import BookIcon from '@material-ui/icons/MenuBook';
+import MouseIcon from '@material-ui/icons/Mouse';
+import TestIcon from '@material-ui/icons/Flag';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
+import CredIcon from '@material-ui/icons/CreditCard';
+import TimeIcon from '@material-ui/icons/AccessTime';
+import CheckIcon from '@material-ui/icons/DoneOutline';
+import Img from './iu03.jpg';
+import './Test.css';
 
 const Test = (props) => {
+    var routerHistory = useHistory();
     var history= useHistory();
     const [setting, setSetting] = useState({
         choice : 0,
@@ -291,41 +302,107 @@ const Test = (props) => {
             console.log(err);
         })
     }
+
+  //학습하기로 이동
+  const learning = () =>{
+        routerHistory.push('/study');
+    }
+
+  //주관식으로 이동
+  const Subjective = () => {
+    routerHistory.push('/subjective');
+  }
+
+  //객관식 이동
+  const Choice = () => {
+    routerHistory.push('/choice');
+  }
+  //테스트 이동
+  const goTest = () => {
+    routerHistory.push('/test');
+  }
+
     return(
         <>
+        <div className="test_body">
+            
             {
                 choice.length === 0 && subjective.length === 0 &&
                 <>
-                    <h2>제한 시간 내에 풀지 못했을 경우 빈칸은 오답 처리 됩니다.</h2>
+                
+                <Grid container>
+                    <Grid item xs={12} md={12}>
+                    <p className="test_top_font">제한 시간 내에 풀지 못했을 경우 빈칸은 오답 처리 됩니다.</p>
+                    </Grid>
+                </Grid>
                     {/* 카드의 총 갯수가 4개 미만인 경우 객관식 지원 안함. */}
-                    카드 갯수 : {cardCount}<br/>
+                    <Grid container>
+                    <Hidden only={['xs','sm']}>
+                    <Grid md={4}>
+                        <div className="sbjc_menu_box">
+                        <p>문제 풀기</p>
+                        <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+                        {
+                        cardCount >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+                        }
+                        <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+                        <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+                        </div>
+                    </Grid>
+                    </Hidden>
+
+                    <Grid item xs={12} md={8}>
+                    <div className="test_select_box">
+                    <p className="test_card_total_cnt"><CredIcon/>카드 갯수 : {cardCount}</p>
                     {
                         cardCount >= 4 && 
                         <>
-                            객관식 : <input type="text" name="choice" onChange={settingChange} value={setting.choice} onFocus={settingFocus} onBlur={settingBlur}/>문제<br/>
+                          <p className="test_choice_cnt"><MouseIcon/>객관식 : <input type="text" name="choice" onChange={settingChange} value={setting.choice} onFocus={settingFocus} onBlur={settingBlur}/>문제</p>
                         </>
                     }
-                    주관식 : <input type="text" name="subjective" onChange={settingChange} value={setting.subjective} onFocus={settingFocus} onBlur={settingBlur}/>문제<br/>
-                    시간 : <input type="text" name="minute" onChange={settingChange} value={setting.minute} onFocus={settingFocus} onBlur={settingBlur}/>분
-                        <input type="text" name="second" onChange={settingChange} value={setting.second} onFocus={settingFocus} onBlur={settingBlur}/>초<br/>
+                    <p className="test_sbjt_cnt"><KeyboardIcon/>주관식 : <input type="text" name="subjective" onChange={settingChange} value={setting.subjective} onFocus={settingFocus} onBlur={settingBlur}/>문제</p>
+                    <p className="test_time_cnt"><TimeIcon/>시간 : <input type="text" name="minute" onChange={settingChange} value={setting.minute} onFocus={settingFocus} onBlur={settingBlur}/>분
+                        <input type="text" name="second" onChange={settingChange} value={setting.second} onFocus={settingFocus} onBlur={settingBlur}/>초</p>
                     <button type="button" onClick={settingBtnClick}>설정 완료</button>
+                    </div>
+                    </Grid>
+                    {/* 컨테이너 끝 */}
+                </Grid>
                 </>
             }
-            
             {/* 문제 */}
+            <Grid item xs={12} md={12}>
             {  
                 testCheck === true &&                
                 <>
+               <Grid container>
+               <Hidden only={['xs','sm']}>
+                    <Grid md={4}>
+                        <div className="sbjc_menu_box">
+                        <p>문제 풀기</p>
+                        <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+                        {
+                        cardCount >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+                        }
+                        <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+                        <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+                        </div>
+                    </Grid>
+                    </Hidden>
+
+                   <Grid item md={8}>
+                <div className="test_test_box">
                     {/* 시간 출력 */}
-                    {timeText}<br/>
+                    <p> <TimeIcon/> 남은 시간 {timeText}</p>
+                    <p>객관식</p>
                     {/* 객관식 출력 */}
-                    {
+                    {                   
                         choice.map((item,i) => {
                             return (
                                 <>
-                                    <div key={i}>
-                                        <img src={item.imgSrc} alt=""/>
-                                        {item.question}
+                                <Paper className="test_ch_box">
+                                    <div key={i}>                                
+                                        <p className="test_ch_title_font">{item.question}</p>
                                     </div>
                                     <br/>
                                     {/* 객관식 문항 */}
@@ -334,55 +411,91 @@ const Test = (props) => {
                                             if(i===j){
                                                 return (
                                                     <>
-                                                        <input type="radio" name={item.question_no} value={choice.answer1} onClick={choiceClick}/>{choice.answer1}<br/>
-                                                        <input type="radio" name={item.question_no} value={choice.answer2} onClick={choiceClick}/>{choice.answer2}<br/>
-                                                        <input type="radio" name={item.question_no} value={choice.answer3} onClick={choiceClick}/>{choice.answer3}<br/>
-                                                        <input type="radio" name={item.question_no} value={choice.answer4} onClick={choiceClick}/>{choice.answer4}<br/>
+                                                        <label className="text_radio_box">
+                                                            <Grid container>
+                                                                <Grid item xs={6} md={8}>
+                                                                <input type="radio" name={item.question_no} value={choice.answer1} onClick={choiceClick}/><span>{choice.answer1}</span><br/>
+                                                                <input type="radio" name={item.question_no} value={choice.answer2} onClick={choiceClick}/><span>{choice.answer2}</span><br/>
+                                                                <input type="radio" name={item.question_no} value={choice.answer3} onClick={choiceClick}/><span>{choice.answer3}</span><br/>
+                                                                <input type="radio" name={item.question_no} value={choice.answer4} onClick={choiceClick}/><span>{choice.answer4}</span><br/>
+                                                                </Grid>
+                                                                <Grid item xs={6} md={4}>
+                                                                {/* <img src={item.imgSrc} alt=""/> */}
+                                                                <img src={Img} alt='경로 오류'/>
+                                                                </Grid>
+                                                            </Grid>
+                                                        </label>
                                                     </>
                                                 )
                                             }
                                         })
                                     }
+                                    </Paper>
                                 </>
                             )
                         })
-                    }
-                    <hr />
+                    }            
                     {/* 주관식 출력 */}
-                    {
+                    <p>주관식</p>
+                    <Paper className="test_subj_box">  
+                    {                                               
                         subjective.map((item,i) => {
                             return(
-                                <>
-                                    <div>
-                                        <img src={item.imgSrc} alt=""/>
-                                        {item.question}
-                                    </div>
-                                    
-                                    <input type="text" key={i} name={item.question_no} onChange={subjectiveTextChange}/>
+                                <>         
+                                        {/* <img src={item.imgSrc} alt=""/> */}
+                                        <p>{item.question}</p>
+                                        <p><img src={Img} alt='경로 오류'/></p>                                                                 
+                                    <input type="text" key={i} name={item.question_no} onChange={subjectiveTextChange} placeholder='답을 입력하시오'/>
+                                  
                                 </>
                             )
-                        })
-                        
+                        })                
                     }
-                    
-                    <button type="button" id="scoringBtn" onClick={scoring}>채점하기</button> 
-                </>
-            }
-
+                      </Paper>
+                                   
+                    <button type="button" id="scoringBtn" onClick={scoring} className="test_check_btn">채점하기</button>                                     
+                   </div>
+                   </Grid>
+                   {/* 컨테이너 끝 */}
+                </Grid>               
+            </>
+        }
+            </Grid>
             {/* 채점 했을 때 나오는 곳 */}
+           
             {
                 scoringCheck === true && 
                 <>
+                 <Grid container>
+                 <Hidden only={['xs','sm']}>
+                    <Grid md={4}>
+                        <div className="sbjc_menu_box">
+                        <p>문제 풀기</p>
+                        <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+                        {
+                        cardCount >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+                        }
+                        <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+                        <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+                        </div>
+                    </Grid>
+                    </Hidden>
+                
+                 <Grid item xs={12} md={8}>
+                <Paper className="text_result_box">
+                    <p className="text_result_return_box">
                     <button type="button" onClick={answerShow} name="right">정답</button>
                     <button type="button" onClick={answerShow} name="wrong">오답</button>
                     <button type="button">다시 풀기</button>
-                    정답 갯수 : {rightCnt}<br/>
-                    오답 갯수 : {wrongCnt}<br/>
+                    </p>
+                    <p className="text_result_check_box">
+                       <CheckIcon style={{color:'#bfff00'}}/> 정답: {rightCnt}
+                       <CheckIcon style={{color:'red'}}/> 오답: {wrongCnt}
+                    </p>
+                    
                     <table>
                         <thead>
                             <tr>
-                                <th>문제 번호</th>
-                                <th>문제</th>
                                 <th>답</th>
                                 <th>사용자 답</th>
                                 <th>문제 유형</th>
@@ -395,8 +508,6 @@ const Test = (props) => {
                                     return (
                                         <>
                                             <tr>
-                                                <td>{item.question_no}</td>
-                                                <td>{item.question}</td>
                                                 <td>{item.answer}</td>
                                                 <td>{item.userAnswer}</td>
                                                 <td>{item.category}</td>
@@ -411,8 +522,6 @@ const Test = (props) => {
                                     return (
                                         <>
                                             <tr>
-                                                <td>{item.question_no}</td>
-                                                <td>{item.question}</td>
                                                 <td>{item.answer}</td>
                                                 <td>{item.userAnswer}</td>
                                                 <td>{item.category}</td>
@@ -424,8 +533,29 @@ const Test = (props) => {
                             }
                         </tbody>
                     </table>
+                    </Paper>
+                    </Grid>
+                    {/* 컨테이너 */}
+                    </Grid>
                 </>
             }
+               <Grid container>
+        <Hidden only={['md','lg','xl']}>
+          <Grid xs={12}>
+            <div className="sbjc_menu_box">
+            <p>문제 풀기</p>
+            <button type="button" onClick={learning}><BookIcon/>학습하기</button>
+            {
+              cardCount >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
+            }
+            <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
+            <button type="button" onClick={goTest}><TestIcon/>테스트</button>
+            
+            </div>
+          </Grid>
+          </Hidden>
+          </Grid>
+            </div>
         </>
     )
 }

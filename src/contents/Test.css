@@ -1,0 +1,579 @@
+@media(max-width:375px){
+    .test_body{
+        width:375px;
+        font-size: 16px;
+    }
+
+    .test_top_font{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .test_select_box{
+        width: 350px;
+        text-align: left;
+    }
+
+    .test_card_total_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+    .test_choice_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .test_sbjt_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .test_time_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px; 
+    }
+
+    .test_choice_cnt>input{
+        text-align: center;
+        border:none;
+        border-bottom: 1px solid gray;
+        width:50px;
+    }
+
+    .test_sbjt_cnt>input{
+        text-align: center;
+        border:none;
+        border-bottom: 1px solid gray;
+        width:50px;
+    }
+
+    .test_time_cnt>input{
+        border:none;
+        text-align: center;
+        width:30px;
+        border-bottom: 1px solid gray;
+    }
+
+    .test_select_box>p>.MuiSvgIcon-root{
+        color:#c29fcb;
+        font-size: 1.8rem;
+        margin-right: 10px;
+    }
+
+    .test_select_box>button{
+        width:300px;
+        height: 50px;
+        margin-left: 34px;
+        border:none;
+        background: gray;
+        border-radius: 5px;
+    }
+
+    .test_ch_title_font{
+        height: 40px;
+        font-size: 1.2rem;
+        margin:0;
+        padding:0;
+    }
+
+    .test_ch_box{
+        width:330px;
+        margin-left: 20px;
+        height:200px;
+        margin-bottom: 15px;
+    }
+
+    .test_ch_box img{
+        width:110px;
+        height: 110px;
+        padding-left: 20px;
+        border-radius: 5px;
+    }
+
+    .text_radio_box{
+        font-size: 0.9rem;
+    }
+
+    .text_radio_box input[type="radio"]:checked + span{
+        font-weight: bold;
+        color:red;
+    }
+
+    .test_subj_box{
+        width:330px;
+        margin-left: 18px;
+        height:100%;
+    }
+    .test_subj_box img{
+        width:110px;
+        height: 110px;
+        padding-left: 20px;
+        border-radius: 5px;
+    }
+
+    .test_subj_box>div{
+        height:100%;
+        font-size: 1.2rem;
+        padding-top: 10px;
+    }
+
+    .test_subj_box>input{
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-bottom: 10px;
+        width: 200px;
+        height: 40px;
+        margin-left: 10px;
+    }
+
+
+    .test_check_btn{
+        border:none;
+        margin-top:20px;
+        width:300px;
+        height:50px;
+        border-radius: 5px;
+        margin-left: 35px;
+        background: #c29fcb;
+
+    }
+
+    .text_result_box{
+        height:100%;
+        margin-top: 20px;
+        width:300px;
+        margin-left: 15px;
+        padding:20px;
+    }
+    .text_result_return_box{
+        text-align: center;
+    }
+
+    .text_result_return_box>button{
+        margin:10px;
+        border:none;
+        background: none;
+        border-bottom: 3px solid gray;
+        width: 80px;
+        height:50px;
+    }
+    .text_result_return_box>button:focus{
+        border-bottom: 3px solid #c29fcb;
+    }
+
+    .text_result_check_box{
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    .text_result_check_box>.MuiSvgIcon-root{
+        font-size: 0.9rem;
+        margin-left:10px;
+    }
+
+    .text_result_box>table{
+        text-align: center;
+        width: 100%;
+    }
+    .text_result_box>table>thead>tr>th{
+        width:33%;
+    }
+    .text_result_box>table>tbody>tr>td{
+        width:33%;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+}
+
+@media(min-width:500px){
+    .test_body{
+        width:500px;
+        font-size: 16px;
+    }
+
+    .test_top_font{
+        font-size: 1.7rem;
+        text-align: center;
+    }
+
+    .test_select_box{
+        width: 500px;
+        text-align: left;
+    }
+
+    .test_card_total_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+    .test_choice_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .test_sbjt_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .test_time_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px; 
+    }
+
+    .test_choice_cnt>input{
+        text-align: center;
+        border:none;
+        border-bottom: 1px solid gray;
+        width:50px;
+    }
+
+    .test_sbjt_cnt>input{
+        text-align: center;
+        border:none;
+        border-bottom: 1px solid gray;
+        width:50px;
+    }
+
+    .test_time_cnt>input{
+        border:none;
+        text-align: center;
+        width:30px;
+        border-bottom: 1px solid gray;
+    }
+
+    .test_select_box>p>.MuiSvgIcon-root{
+        color:#c29fcb;
+        font-size: 1.8rem;
+        margin-right: 10px;
+    }
+
+    .test_select_box>button{
+        width:400px;
+        height: 50px;
+        margin-left: 44px;
+        border:none;
+        background: gray;
+        border-radius: 5px;
+    }
+
+    /* 문제풀기 */
+
+    .test_ch_title_font{
+        height: 40px;
+        font-size: 1.4rem;
+        margin:0;
+        padding:0;
+    }
+
+    .test_ch_box{
+        width:440px;
+        margin-left: 20px;
+        height:210px;
+        margin-bottom: 15px;
+    }
+
+    .test_ch_box img{
+        width:120px;
+        height: 120px;
+        padding-left: 20px;
+        border-radius: 5px;
+    }
+
+    .text_radio_box{
+        font-size: 1rem;
+    }
+
+    .text_radio_box input[type="radio"]:checked + span{
+        font-weight: bold;
+        color:red;
+    }
+
+    .test_subj_box{
+        width:440px;
+        margin-left: 18px;
+        height:100%;
+        text-align: center;
+    }
+    .test_subj_box img{
+        width:180px;
+        height: 180px;
+        padding-left: 20px;
+        border-radius: 5px;
+    }
+
+    .test_subj_box>div{
+        height:100%;
+        font-size: 1.4rem;
+        padding-top: 10px;
+    }
+
+    .test_subj_box>input{
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-bottom: 10px;
+        width: 200px;
+        height: 40px;
+        margin-left: 10px;
+    }
+
+
+    .test_check_btn{
+        border:none;
+        margin-top:20px;
+        width:400px;
+        height:50px;
+        border-radius: 5px;
+        margin-left: 35px;
+        background: #c29fcb;
+
+    }
+
+
+    /* 정답 오답 */
+    .text_result_box{
+        height: 550px;
+        margin-top: 20px;
+        width:430px;
+        margin-left: 15px;
+        padding:20px;
+        overflow-y: scroll;
+    }
+    .text_result_return_box{
+        text-align: center;
+    }
+
+    .text_result_return_box>button{
+        margin:10px;
+        border:none;
+        background: none;
+        border-bottom: 3px solid gray;
+        width: 80px;
+        height:50px;
+    }
+    .text_result_return_box>button:focus{
+        border-bottom: 3px solid #c29fcb;
+    }
+
+    .text_result_check_box{
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    .text_result_check_box>.MuiSvgIcon-root{
+        font-size: 0.9rem;
+        margin-left:10px;
+    }
+
+    .text_result_box>table{
+        text-align: center;
+        width: 100%;
+    }
+    .text_result_box>table>thead>tr>th{
+        width:33%;
+    }
+    .text_result_box>table>tbody>tr>td{
+        width:33%;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+}
+
+@media(min-width:550px){
+    .test_body{
+        width:70%;
+        margin-left: 15%;
+        font-size: 16px;
+    }
+
+    .test_top_font{
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .test_select_box{
+        margin-top: 100px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .test_card_total_cnt{
+        font-size: 1.2rem;
+        margin-left: 10px;
+    }
+    .test_choice_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .test_sbjt_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .test_time_cnt{
+        font-size: 0.9rem;
+        margin-left: 10px; 
+    }
+
+    .test_choice_cnt>input{
+        text-align: center;
+        border:none;
+        border-bottom: 1px solid gray;
+        width:50px;
+    }
+
+    .test_sbjt_cnt>input{
+        text-align: center;
+        border:none;
+        border-bottom: 1px solid gray;
+        width:50px;
+    }
+
+    .test_time_cnt>input{
+        border:none;
+        text-align: center;
+        width:30px;
+        border-bottom: 1px solid gray;
+    }
+
+    .test_select_box>p>.MuiSvgIcon-root{
+        color:#c29fcb;
+        font-size: 1.8rem;
+        margin-right: 10px;
+    }
+
+    .test_select_box>button{
+        width:400px;
+        height: 50px;
+        margin-left: 44px;
+        border:none;
+        background: gray;
+        border-radius: 5px;
+        margin-top: 100px;
+    }
+
+    /* 문제풀기 */
+
+    .test_ch_title_font{
+        height: 40px;
+        font-size: 1.5rem;
+        margin:0;
+        padding:0;
+    }
+    .test_test_box{
+        width: 100%;
+        height:100%;
+    }
+
+    .test_ch_box{
+        width:70%;
+        margin-left: 20px;
+        height:250px;
+        margin-bottom: 15px;
+    }
+
+    .test_ch_box img{
+        width:140px;
+        height: 140px;
+        padding-left: 20px;
+        border-radius: 5px;
+    }
+
+    .text_radio_box{
+        font-size: 1rem;
+    }
+
+    .text_radio_box input[type="radio"]:checked + span{
+        font-weight: bold;
+        color:red;
+    }
+
+    .test_subj_box{
+        width:625px;
+        margin-left: 18px;
+        min-height: 500px;
+        height: unset;
+        max-height: 100%;
+        text-align: center;
+    }
+    .test_subj_box img{
+        width:180px;
+        height: 180px;
+        padding-left: 20px;
+        border-radius: 5px;
+    }
+
+    .test_subj_box>div{
+        height:100%;
+        font-size: 1.4rem;
+        padding-top: 10px;
+    }
+
+    .test_subj_box>input{
+        border:none;
+        border-bottom: 1px solid gray;
+        margin-bottom: 10px;
+        width: 200px;
+        height: 40px;
+        margin-left: 10px;
+    }
+
+
+    .test_check_btn{
+        border:none;
+        margin-top:20px;
+        width:590px;
+        height:50px;
+        border-radius: 5px;
+        margin-left: 35px;
+        background: #c29fcb;
+
+    }
+
+
+    /* 정답 오답 */
+    .text_result_box{
+        height: 550px;
+        margin-top: 20px;
+        width:590px;
+        margin-left: 15px;
+        margin-bottom: 20px;
+        padding:20px;
+        overflow-y: auto;
+    }
+    .text_result_return_box{
+        text-align: center;
+    }
+
+    .text_result_return_box>button{
+        margin:10px;
+        border:none;
+        background: none;
+        border-bottom: 3px solid gray;
+        width: 80px;
+        height:50px;
+    }
+    .text_result_return_box>button:focus{
+        border-bottom: 3px solid #c29fcb;
+    }
+
+    .text_result_check_box{
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    .text_result_check_box>.MuiSvgIcon-root{
+        font-size: 0.9rem;
+        margin-left:10px;
+    }
+
+    .text_result_box>table{
+        text-align: center;
+        width: 100%;
+    }
+    .text_result_box>table>thead>tr>th{
+        width:33%;
+    }
+    .text_result_box>table>tbody>tr>td{
+        width:33%;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+}

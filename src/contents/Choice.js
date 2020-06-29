@@ -206,7 +206,7 @@ const Choice = () => {
             }
             <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
             <button type="button" onClick={goTest}><TestIcon/>테스트</button>
-            <p>주관식 정보</p>
+            <p>객관식 정보</p>
             <p><CredIcon/>총 카드수 : {cardList.length}</p>
             <p><CheckIcon style={{color:'#bfff00'}}/>정답 : {rightAnswer}</p>
             <p><CheckIcon style={{color:'red'}}/>오답 : {wrongAnswer}</p>
