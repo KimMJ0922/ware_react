@@ -117,16 +117,17 @@ const Folder=()=>{
             })
            
             setFolder([...data]);
-            
-            
-            
         }).catch((err) => {
 
         })
+
+        setFolder([...folder]);
     }
 
     useEffect(() => {
         getFolder();
+        getFolderStudyList();
+        getFolderCardList();
     },[])
 
     //폴더 수정
@@ -191,6 +192,7 @@ const Folder=()=>{
     }
 
     const changeVisible = (e) => {
+        console.log(e.target.value);
         let no = e.target.value;
         folder.map((item,idx)=> {
             if(item.no === parseInt(no)){
@@ -222,7 +224,6 @@ const Folder=()=>{
 
     const addListModal = (e) => {
         setFolderNo(e.target.id);
-        getFolderStudyList();
         setAddFolderList(true);
     }
 
@@ -250,6 +251,7 @@ const Folder=()=>{
         });
         
         insertStudyList(data);
+        
     }
 
     const insertStudyList = (insertList) => {
@@ -259,9 +261,29 @@ const Folder=()=>{
             insertList
         }).then((res) => {
             addListModalClose();
+            getFolder();
+            getFolderCardList();
         }).catch((err) => {
 
         })
+    }
+
+    const getFolderCardList = () => {
+        let url = "http://localhost:9000/getfoldercardlist";
+        let data = [];
+        axios.post(url,{
+            member_no : window.sessionStorage.getItem('no')
+        }).then((res) => {
+            let list = res.data.fllist
+            list.map((item,idx)=> {
+                data.push({...item});
+            })
+            setCardList([...data]);
+        }).catch((err) => {
+
+        })
+
+        setCardList([...cardList]);
     }
     return(
         <div className="fdr_body">
@@ -310,10 +332,11 @@ const Folder=()=>{
                                     return (
                                         <>
                                             <Grid item xs={3} md={2}>
+                                                {/*  */}
                                                  <Paper>
                                                     <button type="button" onClick={changeVisible} value={item.no}
                                                     style={{border:'none',background:'none', padding:'0', margin:'0'}}>
-                                                        {/* <FolderIcon style={{fontSize:'4rem',marginLeft:'20px'}} /> */}
+                                                        {/* <FolderIcon/> */}
                                                         아이콘
                                                     </button>
                                                 </Paper> 
@@ -338,7 +361,7 @@ const Folder=()=>{
                                                 item.visible === true &&
                                                 <>
                                                     설명 : {item.comment}
-                                                    <FolderDetail no={item.no}/>
+                                                    <FolderDetail no={item.no} study={studyList} card={cardList}/>
                                                 </>
                                             }
                                         </>
@@ -386,7 +409,7 @@ const Folder=()=>{
             <Modal open={addFolderList} onClose={addListModalClose} aria-labelledby="simple-modal-title"                   aria-describedby="simple-modal-description">
                 <div className="fdr_on_modal">
                     <p className="fdr_on_modal_top">폴더에 목록 추가하기</p>
-                    <div style={{marginTop:'30px', overflow:'scrollY'}}>
+                    <div style={{marginTop:'30px', overflow:'scrollY',maxHeight:'300px'}}>
                         {
                             studyList.map((study,idx) => {
                                 return(
@@ -399,6 +422,7 @@ const Folder=()=>{
                                 )
                             })
                         }
+
                         <button type="button" onClick={addStudyFolderList}>추가하기</button>
                     </div> 
                 </div> 
