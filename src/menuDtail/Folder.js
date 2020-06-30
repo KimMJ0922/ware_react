@@ -297,7 +297,7 @@ const Folder=()=>{
                       
                         <p className="id_box">
                             <span className="id" style={{display:'flex'}}>{window.sessionStorage.getItem('name')}</span>
-                            <p className="pro_fdr_count"><FolderIcon/><span className="id"> {folder.length} 개 </span></p>
+                            <p className="pro_fdr_count"><FolderIcon/><span className="fdr_length_font"> {folder.length} 개 </span></p>
                         </p>
                        
                         </Grid>

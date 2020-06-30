@@ -477,6 +477,12 @@ font-size: 0.9rem;
     font-size: 0.8rem;
     text-align: center;
 }
+.fdr_length_font{
+    position: relative;
+    top: -10px;
+    left: 15;
+    font-size: 0.8rem;
+}
 
 .fdr_add_btn{
     border:none;
@@ -692,6 +698,12 @@ border: none;
     }    
     .pro_fdr_count{
         margin-left: 15px;
+    }
+    .fdr_length_font{
+        position: relative;
+        top: -10px;
+        left: 15;
+        font-size: 1rem;
     }
 
     .pro_fdr_count>.MuiSvgIcon-root{
@@ -933,6 +945,13 @@ border: none;
     
     .pro_fdr_count{
         margin-left: 30px;
+    }
+
+    .fdr_length_font{
+        position: relative;
+        top: -10px;
+        left: 15;
+        font-size: 2rem;
     }
 
     .pro_fdr_count>.MuiSvgIcon-root{
