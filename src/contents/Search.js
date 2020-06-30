@@ -145,26 +145,26 @@ const Search=()=>{
                    {/* 제목, 작성자 */}
                     <ul className='searchViewRemoconUl'>
                         <li className='searchViewRemoconLi'>
-                            <input type="radio" value="제목" name="division" onChange={selectChange} checked={division === '제목' ? 'checked' : ''}/><p>제목</p>
+                            <Radio value="제목" name="division" onChange={selectChange} checked={division === '제목' ? 'checked' : ''}/><p>제목</p>
                         </li>
                         <li className='searchViewRemoconLi'> 
-                            <input type="radio" value="만든이" name="division" onChange={selectChange} checked={division === '제목' ? '' : 'checked'}/><p>만든이</p>
+                            <Radio value="만든이" name="division" onChange={selectChange} checked={division === '제목' ? '' : 'checked'}/><p>만든이</p>
                         </li>
                     </ul><br/>
                     <ul className='searchViewRemoconUl'>
                         <li className='searchViewRemoconLi'>
-                            <input type="radio" value="최신순" name="sort" onChange={selectChange} checked={sort === '최신순' ? 'checked' : ''}/><p>최신순</p>
+                            <Radio value="최신순" name="sort" onChange={selectChange} checked={sort === '최신순' ? 'checked' : ''}/><p>최신순</p>
                         </li>
                         <li className='searchViewRemoconLi'> 
-                            <input type="radio" value="오래된순" name="sort" onChange={selectChange} checked={sort === '오래된순' ? 'checked' : ''}/><p>오래된순</p>
+                            <Radio value="오래된순" name="sort" onChange={selectChange} checked={sort === '오래된순' ? 'checked' : ''}/><p>오래된순</p>
                         </li>
                     </ul><br/>
                     <ul className='searchViewRemoconUl'>
                         <li className='searchViewRemoconLi'>
-                            <input type="radio" value="검색단어" name="include" onChange={selectChange} checked={include === '검색단어' ? 'checked' : ''}/><p>검색 단어</p>
+                            <Radio value="검색단어" name="include" onChange={selectChange} checked={include === '검색단어' ? 'checked' : ''}/><p>검색 단어</p>
                         </li>
                         <li className='searchViewRemoconLi'>
-                            <input type="radio" value="검색단어포함" name="include" onChange={selectChange} checked={include === '검색단어포함' ? 'checked' : ''}/><p>검색 단어 포함</p>
+                            <Radio value="검색단어포함" name="include" onChange={selectChange} checked={include === '검색단어포함' ? 'checked' : ''}/><p>검색 단어 포함</p>
                         </li>
                     </ul>
                 </div>
