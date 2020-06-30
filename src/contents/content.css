@@ -67,7 +67,6 @@
     }
 
 }
-    
 @media(max-width: 500px){
 
     .mainView{
@@ -202,4 +201,208 @@
         /* font-size: 16px; */
     }
 
+}
+/* search 웹 페이지 */
+@media(min-width: 551px){
+    .searchView{
+        padding: 1rem;
+        width: 1100px;
+        /* background-color: #f3f3f3; */
+        margin: 0 auto;
+        min-height: 825px;
+    }
+    .searchSelectForm {
+        position: fixed;
+        top: 12rem;
+        right: 15rem;
+    }
+    .searchViewRemoconUl{
+        padding: 0;
+        text-align: center;
+        display: inline-block;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi{
+        text-align: left;
+        list-style: none;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi>p{
+        margin: 0;
+        font-size: 1.05rem;
+        display: inline-block;
+    }
+    .searchBar{
+        height: 38px;
+        border-right: 0;
+        border-bottom: 1px solid #bdbdbd;
+        border-top: 1px solid #dbdbdb;
+        width: 300px;
+        font-size: 1rem;
+        margin-left: 0.3rem;
+        margin-top: 0.3rem;
+        border-left: 1px solid #dbdbdb;
+    }
+    .searchBarBtn{
+        border: 0;
+        position: relative;
+        top: 1px;
+        width: 61px;
+        height: 42px;
+        background-color: #5a5ae8;
+        color: #fff;
+    }
+    .searchViewForm>p{
+        padding: 0;
+        margin:0;
+    }
+    .searchProfileImg{
+        border-radius:40px;
+        width:30px;
+        height:30px;
+    }
+    .searchCardId>span{
+        font-size: 1.1rem;
+        width: 40%;
+        text-align: center;
+        display: inline-block;
+        padding-left: 10px;
+        padding-top: 0.5rem;
+    }
+    .searchViewForm >p{
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+}
+/* search 웹 최소 페이지 */
+@media(max-width: 550px){
+    .searchView{
+        background-color:  #f3f3f3;
+    }
+    .searchViewForm {
+
+    }
+    .searchViewRemoconUl{
+        padding: 0;
+        text-align: center;
+        display: flex;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi:nth-child(1){
+        border-left: none;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi{
+        border-top: 1px solid #a8a8a8;
+        border-left: 1px solid #a8a8a8;
+        border-bottom: 1px solid #a8a8a8;
+        width: 50%;
+        list-style: none;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi>p{
+        margin: 0;
+        font-size: 1.05rem;
+        display: block;
+    }
+    .searchBar{
+        height: 38px;
+        border-right: 0;
+        border-bottom: 1px solid #bdbdbd;
+        border-top: 1px solid #dbdbdb;
+        width: 300px;
+        font-size: 1rem;
+        margin-left: 0.3rem;
+        margin-top: 0.3rem;
+        border-left: 1px solid #dbdbdb;
+    }
+    .searchBarBtn{
+        border: 0;
+        position: relative;
+        top: 1px;
+        width: 61px;
+        height: 42px;
+        background-color: #5a5ae8;
+        color: #fff;
+    }
+    .searchViewForm>p{
+        padding: 0;
+        margin:0;
+    }
+    .searchProfileImg{
+        border-radius:40px;
+        width:30px;
+        height:30px;
+    }
+    .searchCardId>span{
+        font-size: 1.1rem;
+        width: 40%;
+        text-align: center;
+        display: inline-block;
+        padding-left: 10px;
+        padding-top: 0.5rem;
+    }
+    .searchViewForm >p{
+        text-align: center;
+    }
+}
+/* search 모바일 페이지 */
+@media(max-width: 375px){
+    .searchView{
+        background-color:  #f3f3f3;
+    }
+    .searchViewForm {
+
+    }
+    .searchViewRemoconUl{
+        padding: 0;
+        text-align: center;
+        display: flex;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi:nth-child(1){
+        border-left: none;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi{
+        border-top: 1px solid #a8a8a8;
+        border-left: 1px solid #a8a8a8;
+        border-bottom: 1px solid #a8a8a8;
+        width: 50%;
+        list-style: none;
+    }
+    .searchViewRemoconUl>.searchViewRemoconLi>p{
+        font-size: 0.85rem;
+        display: inline-block;
+    }
+    .searchBar{
+        height: 38px;
+        border-right: 0;
+        border-bottom: 1px solid #bdbdbd;
+        border-top: 1px solid #dbdbdb;
+        width: 300px;
+        font-size: 1rem;
+        margin-left: 0.3rem;
+        margin-top: 0.3rem;
+        border-left: 1px solid #dbdbdb;
+    }
+    .searchBarBtn{
+        border: 0;
+        position: relative;
+        top: 1px;
+        width: 61px;
+        height: 42px;
+        background-color: #5a5ae8;
+        color: #fff;
+    }
+    .searchViewForm>p{
+        padding: 0;
+        margin:0;
+    }
+    .searchProfileImg{
+        border-radius:40px;
+        width:30px;
+        height:30px;
+    }
+    .searchCardId>span{
+        font-size: 1.1rem;
+        width: 40%;
+        text-align: center;
+        display: inline-block;
+        padding-left: 10px;
+        padding-top: 0.5rem;
+    }
 }

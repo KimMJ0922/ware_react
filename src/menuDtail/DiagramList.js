@@ -171,66 +171,134 @@ const DiagramList=()=>{
                                 <Grid container  className='DiagramInfo'  >
                                 {/* 웹용 */}
                                 <Hidden only={['xs','sm']}>
-                                    <Grid md={6} lg={6} className='DiagramListCardBox'>
-                                        <span className='DiagramInfoCardSubject'></span>
-                                        <span className='DiagramInfoCardCommit'></span>
+                                    <Grid md={9} lg={9} className='DiagramListCardBox'>
+                                        <span className='DiagramInfoCardSubject'>{item.title}</span>
+                                        <span className='DiagramInfoCardCommit'>{item.comment}</span>
                                     </Grid>
-                                    <Grid md={6} lg={6} className='DiagramInfoCardBox'>
+                                    <Grid md={3} lg={3} className='DiagramInfoCardBox'>
                                         <div className='DiagramInfoCard'>
-                                            <img src={ProfileImg} className='DiagramInfoCardImg' alt=''/>
-                                            <span className='DiagramInfoCardId'>ExampleID</span>
+                                            <img src={item.profile} className='DiagramInfoCardImg' alt=''/>
+                                            <span className='DiagramInfoCardId'>{item.name}</span>
                                         </div>
                                     </Grid>
-                                    <Grid md={6} lg={6} className='DiagramListChart01'>
-                                        <div className='ArcSeries'>
-                                            <XYPlot
-                                                xDomain={[-5, 5]}
-                                                yDomain={[-5, 5]}
-                                                width={200}
-                                                height={200}>
-                                                <ArcSeries
-                                                    animation
-                                                    radiusDomain={[0, 4]}
-                                                    radiusType={'literal'}
-                                                    center={{x: -1, y: 0}}
-                                                    data={[]}
-                                                    color={'#f55e5e'}
-                                                    colorType={'literal'}/>
-                                                <ArcSeries
-                                                    animation
-                                                    radiusDomain={[0, 4]}
-                                                    radiusType={'literal'}
-                                                    center={{x: -1, y: 0}}
-                                                    data={[]}
-                                                    color={'#289ee2'}
-                                                    colorType={'literal'}/>
-                                            </XYPlot>
-                                        </div>
-                                        <div className='ArcSeriesPoint' >
-                                            {/* 정답률 */}
-                                            {}%
-                                        </div>
-                                    </Grid>
+                                   
                                     <Grid md={6} lg={6} className='DiagramListChart02'>
-                                        <div class='VerticalBarSeries'>
-                                        <XYPlot
-                                                xType="ordinal"
-                                                width={250}
-                                                height={200}
-                                                >
+                                        {
+                                            selectMethod === '' ? '유형을 선택해주세요' :
+                                            <div className='VerticalBarSeries'>
+                                                <XYPlot xType="ordinal" width={350} height={200}>
                                                 <YAxis />
                                                 <XAxis />
-                                                <VerticalBarSeries
-                                                    animation
-                                                    color="#12939A"
-                                                    data={[]}
-                                                />
-                                        </XYPlot>    
+                                                <VerticalBarSeries color="#12939A" data={[...barData]} barWidth={0.4}/>
+                                                </XYPlot>    
+                                            </div>
+                                        }
+                                    </Grid>
+                                    <Grid md={6} lg={6} className='DiagramListChart01'>
+                                    {   selectCount === '' ? '회차를 선택해주세요' :  
+                                            chart.map((chart, i) => {
+                                                return(
+                                                    <>
+                                                        {
+                                                            chart.method === selectMethod && selectCount === chart.no &&
+                                                            <>
+                                                                {/* 원형 그래프 */}
+                                                                <div className='ArcSeries'>
+                                                                    <XYPlot xDomain={[-5, 5]} yDomain={[-5, 5]} width={500} height={200}>
+                                                                    <ArcSeries animation radiusDomain={[0, 4]} radiusType={'literal'} center={{x: 0, y: 0}}
+                                                                                data={[{
+                                                                                    angle0:0,
+                                                                                    angle: -(2*PI*(chart.wrongcnt/(chart.rightcnt+chart.wrongcnt))),
+                                                                                    radius: 50,
+                                                                                    radius0:80
+                                                                                }]} color={'#f55e5e'} colorType={'literal'} />
+                                                                        <ArcSeries animation radiusDomain={[0, 4]} radiusType={'literal'} center={{x: 0, y: 0}}
+                                                                                data={[{
+                                                                                    angle0:0,
+                                                                                    angle: (2*PI*(chart.rightcnt/(chart.rightcnt+chart.wrongcnt))),
+                                                                                    radius: 50,
+                                                                                    radius0:80
+                                                                                }]} color={'#289ee2'} colorType={'literal'}/>
+                                                                        
+                                                                    </XYPlot>
+                                                                    문제 : {chart.rightcnt+chart.wrongcnt} 정답 : {chart.rightcnt} 오답 : {chart.wrongcnt}
+                                                                </div>
+                                                                {/* 정답률 텍스트 */}
+                                                                <div className='ListArcSeriesPoint' >
+                                                                    {(chart.rightcnt/(chart.rightcnt+chart.wrongcnt)*100).toFixed(0)}%
+                                                                </div>
+                                                            </>
+                                                        }
+                                                    </>
+                                                )
+                                            })
+                                        }
+                                    </Grid>
+                                    <Grid xs={6} sm={6} className='DiagramListChart05'>
+                                        <div className='DiagramListselect'>
+                                            <FormControl variant="outlined" className='testKind' >
+                                                <InputLabel>유형</InputLabel>
+                                                <Select label="유형" onChange={methodChange}>
+                                                    {
+                                                        diagram.map((item)=>{
+                                                            return (
+                                                                <MenuItem value={item.method}>
+                                                                    {item.method === 'subjective' ? '주관식' : item.method === 'choice' ? '객관식' : '테스트'}
+                                                                </MenuItem>
+                                                            )
+                                                        })
+                                                    }
+                                                </Select>
+                                            </FormControl>
                                         </div>
                                     </Grid>
-                                    <Grid xs={12} sm={12} className='DiagramListChart03'>
-                    {/* -------------------- 여기서 map돌리면됨 */}
-                                    <span >전보다 6문제더 맞았어요!</span>
+
+                                    <Grid xs={6} sm={6} className='DiagramListChart04'>
+                                        <div  className='DiagramListselect'>
+                                            <FormControl variant="outlined" className='testCount'>
+                                                <InputLabel>회차</InputLabel>
+                                                <Select label="회차" onChange={selectCntChange}>
+                                                    {
+                                                        chart.map((item,i) => {
+                                                            if(selectMethod === item.method){
+                                                                cnt = cnt +1
+                                                                return(
+                                                                    <MenuItem value={item.no}>
+                                                                        {(cnt)+'회('+item.recordday+')'}
+                                                                    </MenuItem>
+                                                                )
+                                                            }  
+                                                        })
+                                                    }
+                                                </Select>
+                                            </FormControl>
+                                        </div>
+                                    </Grid>
+                                    <Grid xs={12} sm={12} className='DiagramListChart06'>
+                                        <ul className='DiagramUl'>
+                                            {/* 따로 컴포넌트로 뺄려고 했지만 selectCount가 바껴도 컴포넌트를 재실행하지 않음;; */}
+                                            {
+                                                recordList.map((record, idx) => {
+                                                    if(record.record_no === selectCount){
+                                                        return (
+                                                            <>
+                                                                <li className='DiagramLi DiagramLiChoice'>
+                                                                    <div className='DiagramLiChoiceQuest'>
+                                                                        <p>유형 : {record.type}</p>
+                                                                        <p>문제 : {record.question}</p>   
+                                                                    </div>
+                                                                    <div className='DiagramLiChoiceresult'>
+                                                                            <p>작성한 답 : {record.useranswer}</p>
+                                                                            <p>문제 답 : {record.answer}</p>
+                                                                            <p>{record.result}</p>
+                                                                    </div>
+                                                                </li>
+                                                            </>
+                                                        )
+                                                    }
+                                                })
+                                            }
+                                        </ul>
                                     </Grid>
                                 </Hidden>
 
@@ -252,9 +320,9 @@ const DiagramList=()=>{
                                         {
                                             selectMethod === '' ? '유형을 선택해주세요' :
                                             <div className='VerticalBarSeries'>
-                                                <XYPlot xType="ordinal" width={170} height={130}>
+                                                <XYPlot xType="ordinal" width={170} height={150}>
                                                 <XAxis />
-                                                <VerticalBarSeries color="#405de8" data={[...barData]}/>
+                                                <VerticalBarSeries color="#405de8" data={[...barData]} barWidth={0.6}/>
                                                 </XYPlot>    
                                             </div>
                                         }
@@ -290,8 +358,8 @@ const DiagramList=()=>{
                                                                     문제 : {chart.rightcnt+chart.wrongcnt} 정답 : {chart.rightcnt} 오답 : {chart.wrongcnt}
                                                                 </div>
                                                                 {/* 정답률 텍스트 */}
-                                                                <div className='ArcSeriesPoint' >
-                                                                    {(chart.rightcnt/(chart.rightcnt+chart.wrongcnt)*100).toFixed(1)}%
+                                                                <div className='ListArcSeriesPoint' >
+                                                                    {(chart.rightcnt/(chart.rightcnt+chart.wrongcnt)*100).toFixed(0)}%
                                                                 </div>
                                                             </>
                                                         }
@@ -302,40 +370,44 @@ const DiagramList=()=>{
                                     </Grid>
 
                                     <Grid xs={6} sm={6} className='DiagramListChart05'>
-                                        <FormControl variant="outlined" className='testKind' >
-                                            <InputLabel>유형</InputLabel>
-                                            <Select label="유형" onChange={methodChange}>
-                                                {
-                                                    diagram.map((item)=>{
-                                                        return (
-                                                            <MenuItem value={item.method}>
-                                                                {item.method === 'subjective' ? '주관식' : item.method === 'choice' ? '객관식' : '테스트'}
-                                                            </MenuItem>
-                                                        )
-                                                    })
-                                                }
-                                            </Select>
-                                        </FormControl>
+                                        <div className='DiagramListselect'>
+                                            <FormControl variant="outlined" className='testKind' >
+                                                <InputLabel>유형</InputLabel>
+                                                <Select label="유형" onChange={methodChange}>
+                                                    {
+                                                        diagram.map((item)=>{
+                                                            return (
+                                                                <MenuItem value={item.method}>
+                                                                    {item.method === 'subjective' ? '주관식' : item.method === 'choice' ? '객관식' : '테스트'}
+                                                                </MenuItem>
+                                                            )
+                                                        })
+                                                    }
+                                                </Select>
+                                            </FormControl>
+                                        </div>
                                     </Grid>
 
                                     <Grid xs={6} sm={6} className='DiagramListChart04'>
-                                        <FormControl variant="outlined" className='testCount'>
-                                            <InputLabel>회차</InputLabel>
-                                            <Select label="회차" onChange={selectCntChange}>
-                                                {
-                                                    chart.map((item,i) => {
-                                                        if(selectMethod === item.method){
-                                                            cnt = cnt +1
-                                                            return(
-                                                                <MenuItem value={item.no}>
-                                                                    {(cnt)+'회('+item.recordday+')'}
-                                                                </MenuItem>
-                                                            )
-                                                        }  
-                                                    })
-                                                }
-                                            </Select>
-                                        </FormControl>
+                                        <div  className='DiagramListselect'>
+                                            <FormControl variant="outlined" className='testCount'>
+                                                <InputLabel>회차</InputLabel>
+                                                <Select label="회차" onChange={selectCntChange}>
+                                                    {
+                                                        chart.map((item,i) => {
+                                                            if(selectMethod === item.method){
+                                                                cnt = cnt +1
+                                                                return(
+                                                                    <MenuItem value={item.no}>
+                                                                        {(cnt)+'회('+item.recordday+')'}
+                                                                    </MenuItem>
+                                                                )
+                                                            }  
+                                                        })
+                                                    }
+                                                </Select>
+                                            </FormControl>
+                                        </div>
                                     </Grid>
                                     
                                     <Grid xs={12} sm={12} className='DiagramListChart06'>

@@ -52,16 +52,18 @@ const Diagram=()=>{
                                             {row.cnt}문제
                                         </div>
                                         <div className='mycardCardId'>
-                                            <img src={row.profile} alt="" className='cardProfileImg'/>
-                                            <span>
-                                                {
-                                                    row.provider === 'kakao' ? <img src="/profile/kakao.png" alt="" style={{width:'20px', height:'20px'}}/> :
-                                                    row.provider === 'google' ? <img src="/profile/google.png" alt="" style={{width:'20px', height:'20px'}}/> : 
-                                                    <img src="/profile/ware.png" alt="" style={{width:'20px', height:'20px'}}/>
-                                                }
-                                                {row.name}
-                                            </span>
-                                            <span>{row.studyday}</span>
+                                            <p>
+                                                <img src={row.profile} alt="" className='cardProfileImg'/>
+                                                <span className='mycardCardConnect'>
+                                                    {
+                                                        row.provider === 'kakao' ? <img src="/profile/kakao.png" alt="" style={{width:'30px', height:'30px'}}/> :
+                                                        row.provider === 'google' ? <img src="/profile/google.png" alt="" style={{width:'30px', height:'30px'}}/> : 
+                                                        <img src="/profile/ware.png" alt="" style={{width:'30px', height:'30px'}}/>
+                                                    }
+                                                </span>
+                                                <span className='mycardCardName'>{row.name}</span>
+                                                <span className='mycardCardWriteDay'>{row.studyday}</span>
+                                            </p>
                                         </div>
                                     </div>
                             </Grid>
