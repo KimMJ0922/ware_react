@@ -203,7 +203,7 @@ const Set=()=>{
                               boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>
                             <span className="sq_on_txt_cnt" id={item.no}>{item.cnt} 단어</span>
 
-                            <div className="sq_on_title_box" id={item.no}>
+                            <div className="sq_on_title_box" id={item.no} style={{backgroundColor:'white'}}>
                             <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
                              {
                                 item.open_scope === "public" ? 

@@ -3,6 +3,7 @@
     .set_body{
         width:375px;
         font-size: 16px;
+        background: #f9f9f9;
     }
 
     .set_prof_box_top{
@@ -96,11 +97,12 @@
 
     .set_name_btn{
         border:none;
-        background: #c29fcb;
+        background: #294174;
         margin-left: 10px;
         width:70px;
         height:40px;
         border-radius: 5px;
+        color:white;
     }
 
     .set_exit_text_box{
@@ -170,6 +172,7 @@
 @media(min-width:500px){
     .set_body{
         width:500px;
+        background: #f9f9f9;
     }
 
     .set_prof_box_top{
@@ -261,11 +264,12 @@
 
     .set_name_btn{
         border:none;
-        background: #c29fcb;
+        background: #294174;
         margin-left: 10px;
         width:70px;
         height:40px;
         border-radius: 5px;
+        color:white;
     }
 
     .set_exit_text_box{
@@ -336,6 +340,7 @@
 @media(min-width:501px){
     .set_body{
         width:100%;
+        background: #f9f9f9;
     }
 
     .set_prof_box_top{
@@ -423,11 +428,12 @@
 
     .set_name_btn{
         border:none;
-        background: #c29fcb;
+        background: #294174;
         margin-left: 10px;
         width:70px;
         height:40px;
         border-radius: 5px;
+        color:white;
     }
     
     .set_exit_text_box{

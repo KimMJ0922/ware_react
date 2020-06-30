@@ -18,11 +18,12 @@
 .sq_body{
     width:100%;
     font-size: 16px;
+    background-color: #f9f9f9;
 }    
 .sq_body div{
     box-shadow: none;
     background: none;
-    background-color: white;
+    background-color: #f9f9f9; 
    
 }
 /* 공통부분 */
@@ -52,15 +53,15 @@ font-size: 0.9rem;
 }
 
 .btn:hover{
-   color: aqua;
+   color: #f9f9f9;
 }
 
 .btn:active{
-    background-color: aquamarine;
+    background-color: #294174;
 }
 
 .btn:focus{
-    background-color: rgb(5, 19, 14);
+    background-color:#294174;
 }
 
 .btn_box{
@@ -97,9 +98,10 @@ font-size: 0.9rem;
     border:0.5px solid gray;
     width: 140px;
     height: 50px;
-    background-color: #c29fcb;
+    background-color: #294174;
     border-radius: 5px;
     font-size: 0.875rem;
+    color:#fff;
 }
 
 .sq_timeset{
@@ -160,13 +162,16 @@ font-size: 0.9rem;
 }
 
 .sq_on_more_btn{
-    border:none;
-    background: #c29fcb;
+    border: none;
+    background: #294174;
     border-radius: 5px;
-    width: 70px;
-    height: 40px;
+    width: 320px;
+    height: 52px;
     float: right;
-    margin-right: 28px;
+    margin-right: 39%;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1rem;
 }
 
 
@@ -176,13 +181,12 @@ font-size: 0.9rem;
 @media(max-width:500px){
     .sq_body{
         font-size: 16px;
-        background-color: white;
+        background-color: #f9f9f9;
     }
     .sq_body div{    
         box-shadow: none;
         background: none;
-      
-        
+    
     }
     .proimg{
         margin-top: 10px;
@@ -204,6 +208,7 @@ font-size: 0.9rem;
     border:none;
     background: none;
     font-size: 0.745rem;
+    color:white;
     
     }
     
@@ -250,9 +255,10 @@ font-size: 0.9rem;
         border:0.5px solid gray;
         width: 120px;
         height: 40px;
-        background-color: #c29fcb;
+        background-color: #294174;
         border-radius: 10px;
         font-size: 0.725rem;
+        color:#fff;
     }
     
     .sq_timeset{
@@ -308,13 +314,15 @@ font-size: 0.9rem;
     }
 
     .sq_on_more_btn{
-        border:none;
-        background: #c29fcb;
+        border: none;
+        background: #294174;
         border-radius: 5px;
-        width: 70px;
+        width: 445px;
         height: 40px;
         float: right;
         margin-right: 28px;
+        color: white;
+        font-size: 1rem;
     }
 }
     
@@ -323,6 +331,7 @@ font-size: 0.9rem;
     .sq_body{
        width: 375px;
        font-size: 16px;
+       background-color: #f9f9f9;
     }
     .sq_body div{    
         box-shadow: none;
@@ -393,7 +402,7 @@ font-size: 0.9rem;
     .sq_content_btn_off{
         width: 100px;
         height: 40px;
-        background-color: #c29fcb;
+        background-color: #294174;
         border-radius: 10px;
         font-size: 0.725rem;
     }
@@ -452,13 +461,14 @@ font-size: 0.9rem;
     }
 
     .sq_on_more_btn{
-        border:none;
-        background: #c29fcb;
+        border: none;
+        background: #294174;
         border-radius: 5px;
-        width: 70px;
+        width: 345px;
         height: 30px;
         float: right;
         margin-right: 18px;
+        margin-bottom: 10px;
     }
 }
  
@@ -469,6 +479,7 @@ font-size: 0.9rem;
     width:375px;
     height: 100%;
     font-size: 16px;
+    background-color: #f9f9f9;
     
 } 
 
@@ -486,11 +497,12 @@ font-size: 0.9rem;
 
 .fdr_add_btn{
     border:none;
-    background: #c29fcb;
+    background: #294174;
     border-radius: 5px;
     width: 100px;
     height:40px;
     margin-top: 10px;
+    color:#fff;
 }
 .fdr_subject_box{
     width:330px;
@@ -537,7 +549,7 @@ font-size: 0.9rem;
     width: 124px;
     height: 40px;
     border-radius: 5px;
-    background-color: #c29fcb;
+    background-color: #294174;
 }
 
 .fdr_no_btn:active{
@@ -551,17 +563,16 @@ border: none;
     max-height:700px;
     margin-left: 17.5px;
     background-color: white;
-
-
 }
 
 .fdr_on_modal_top{
  text-align: center;
  width: 100%;
  height:50px;
- background-color: #c29fcb;
+ background-color: #294174;
  padding-top: 30px;
  font-size:1.675rem;
+ color:#fff;
 }
 
 .fdr_on_modal_input{
@@ -685,7 +696,8 @@ border: none;
     border-radius: 10px;
     margin-left: 10%;
     border:none;
-    background:#c29fcb;
+    background:#294174;
+    color:#fff;
 }
 
 }
@@ -695,6 +707,7 @@ border: none;
     .fdr_body{
         height: 100%;
         font-size: 16px;   
+        background-color: #f9f9f9;
     }    
     .pro_fdr_count{
         margin-left: 15px;
@@ -715,11 +728,12 @@ border: none;
     }
     .fdr_add_btn{
         border: none;
-        background: #c29fcb;
+        background: #294174;
         border-radius: 5px;
         margin-top: 10px;
         width:120px;
         height: 40px;
+        color:#fff;
     }
 
     .fdr_sort_box{
@@ -738,7 +752,7 @@ border: none;
         
     }
     .fdr_subject_box:hover{
-        border-bottom: 4px solid #c29fcb;
+        border-bottom: 4px solid #294174;
     }
     .fdr_subject_box>.MuiSvgIcon-root:nth-child(1){
         font-size: 4rem;
@@ -779,7 +793,8 @@ border: none;
         width: 140px;
         height: 50px;
         border-radius: 5px;
-        background-color: #c29fcb;
+        background-color: #294174;
+        color:#fff;
     }
     
     .fdr_on_modal{
@@ -794,9 +809,10 @@ border: none;
      text-align: center;
      width: 100%;
      height:50px;
-     background-color: #c29fcb;
+     background-color: #294174;
      padding-top: 30px;
      font-size:1.675rem;
+     color:#fff;
     }
     
     .fdr_on_modal_input{
@@ -931,7 +947,8 @@ border: none;
         border-radius: 10px;
         margin-left: 10%;
         border:none;
-        background:#c29fcb;
+        background:#294174;
+        color:#fff;
     }
 }
 
@@ -940,7 +957,8 @@ border: none;
     .fdr_body{
         width:100%;
         height: 100%;
-        font-size: 16px;   
+        font-size: 16px;  
+        background-color: #f9f9f9;
     }    
     
     .pro_fdr_count{
@@ -966,11 +984,12 @@ border: none;
     }
     .fdr_add_btn{
         border: none;
-        background: #c29fcb;
+        background: #294174;
         margin-left: 30px;
         border-radius: 5px;
         width:100px;
         height: 40px;
+        color:#fff;
     }
     .fdr_sort_box>input[type='radio']{
         margin: 25px;
@@ -985,7 +1004,7 @@ border: none;
         display: flex;
     }
     .fdr_subject_box:hover{
-        border-bottom: 4px solid #c29fcb;
+        border-bottom: 4px solid #294174;
     }
     .fdr_subject_box>.MuiSvgIcon-root:nth-child(1){
         font-size: 4rem;
@@ -1024,8 +1043,9 @@ border: none;
         width: 180px;
         height: 60px;
         border-radius: 5px;
-        background-color: #c29fcb;
+        background-color: #294174;
         font-size: 1.125rem;
+        color:#fff;
         
     }
     
@@ -1041,9 +1061,10 @@ border: none;
      text-align: center;
      width: 100%;
      height:50px;
-     background-color: #c29fcb;
+     background-color: #294174;
      padding-top: 30px;
      font-size:1.675rem;
+     color:#fff;
     }
     
     .fdr_on_modal_input{
@@ -1180,7 +1201,8 @@ border: none;
         border-radius: 10px;
         margin-left: 10%;
         border:none;
-        background:#c29fcb;
+        background:#294174;
+        color:#fff;
     }  
 
 }
