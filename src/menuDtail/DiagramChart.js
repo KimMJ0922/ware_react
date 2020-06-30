@@ -136,7 +136,7 @@ const DiagramChart=(props)=>{
                         <XYPlot xType="ordinal" width={250} height={200}>
                             <YAxis />
                             <XAxis />
-                            <VerticalBarSeries barWidth={0.4} color="#12939A" data={[...barData]}/>
+                            <VerticalBarSeries barWidth={0.4} color="#289ee2" data={[...barData]}/>
                         </XYPlot>
                     </div>
                 </Grid>
@@ -206,7 +206,7 @@ const DiagramChart=(props)=>{
                     <div className='VerticalBarSeries'>
                         <XYPlot xType="ordinal" width={170} height={170} >
                             <XAxis />
-                            <VerticalBarSeries color="#405de8" data={[...barData]} barWidth={0.4} />
+                            <VerticalBarSeries color="#289ee2" data={[...barData]} barWidth={0.4} />
                         </XYPlot>    
                     </div>
                 </Grid>

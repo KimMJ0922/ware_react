@@ -43,6 +43,7 @@ a{
         border-radius: 17px;
         border: 0;
         height: 150px;
+        background-color: #fff;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
     }
     
@@ -92,7 +93,7 @@ a{
         height: 42px;
         padding-top: 0;
         padding-bottom: 0;
-        background-color: #7a378c;
+        background-color: #5a5ae8;
     }
 }
 
@@ -126,6 +127,7 @@ a{
         border-radius: 17px;
         border: 0;
         height: 150px;
+        background-color: #fff;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
     }
     .BoardPagination>div{
@@ -182,7 +184,7 @@ a{
         height: 42px;
         padding-top: 0;
         padding-bottom: 0;
-        background-color: #7a378c;
+        background-color: #5a5ae8;
     }
 }
 
@@ -219,6 +221,7 @@ a{
         border-radius: 17px;
         border: 0;
         height: 150px;
+        background-color: #fff;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
     }
     .BoardPagination>div{
@@ -273,7 +276,7 @@ a{
         height: 42px;
         padding-top: 0;
         padding-bottom: 0;
-        background-color: #7a378c;
+        background-color: #5a5ae8;
     }
 }
 
@@ -467,6 +470,7 @@ a{
         margin-bottom: 10px;
         border-radius: 5px;
         border:none;
+        color:#fff;
         background: #294174;
         width: 100px;
         height:40px;
@@ -693,6 +697,7 @@ a{
         margin-bottom: 10px;
         border-radius: 5px;
         border:none;
+        color: #fff;
         background: #294174;
         width: 110px;
         height:50px;
@@ -908,6 +913,8 @@ a{
         border-radius: 5px;
         border:none;
         background: #294174;
+        color: #fff;
+        font-size: 1.2rem;
         width: 180px;
         height:60px;
         color:white;
@@ -984,13 +991,19 @@ a{
         margin-top: 1rem;
         margin-bottom: 0.5rem;
         border-radius: 15px;
+        background-color: #fff;
         box-shadow: 0px 0px 8px 1px #bdbdbd;  
     }
     .BoardStoreBtn{
+        border-radius: 50px 0 0 50px;
         border: 0;
         color: #fff;
         height: 100%;
-        background-color: #fb6666;
+        background-color: #294174;
+        transition: all 0.3s;
+    }
+    .BoardStoreBtn:hover{
+        border-radius:0
     }
     .backType01{
         width: 100%;
@@ -1024,8 +1037,9 @@ a{
         position: fixed;
         display: flex;
         flex-direction: column;
-        right: 12.2rem;
-        top: 12rem;
+        left: 25.75rem;
+        top: 26rem;
+        z-index: 10;
     }
 }
 /* boardItem 웹 최소 사이즈 */
@@ -1077,6 +1091,7 @@ a{
         margin-top: 1rem;
         margin-bottom: 0.5rem;
         border-radius: 15px;
+        background-color: #fff;
         box-shadow: 0px 0px 8px 1px #bdbdbd;      
     }
     .BoardStore{
@@ -1086,7 +1101,7 @@ a{
         border: 0;
         color: #fff;
         height: 100%;
-        background-color: #fb6666;
+        background-color: #294174;
     }
     
     .backType01{
@@ -1172,6 +1187,7 @@ a{
         margin-top: 1rem;
         margin-bottom: 0.5rem;
         border-radius: 15px;
+        background-color: #fff;
         box-shadow: 0px 0px 8px 1px #bdbdbd;    
     }
     .BoardStore{
@@ -1181,7 +1197,7 @@ a{
         border: 0;
         color: #fff;
         height: 100%;
-        background-color: #fb6666;
+        background-color: #294174;
     }
     
     .backType01{

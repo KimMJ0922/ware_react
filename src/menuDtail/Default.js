@@ -138,12 +138,14 @@ const Diagram=()=>{
                     <Hidden only={['xs','sm','md']}>
                     <Grid  lg={12} xl={12}>
                         <div className='defaultPageFind'>
-                            <span>조금더 찾아 보러갈까요?</span>
+                          
                             {
-                                start === listMaxLeng ?  
+                                start === listMaxLeng ?  <>
+                                <span>조금더 찾아 보러갈까요?</span>
                                 <button className='defaultPageFindButton' onClick={moreList}> 
                                     <Add/>
-                                </button> : ''
+                                </button> </>: ''
+
                             }
                         </div>
                     </Grid>

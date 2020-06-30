@@ -117,7 +117,7 @@ const Title = (props) => {
       setSemail(data.email);
     }
     return (
-        <div style={{fontSize: '16px'}}>
+        <div style={{fontSize: '16px',backgroundColor: '#f9f9f9'}}>
           <Top path={nowPath} profile={profile} setProfile={setProfile} name={name} setName={setName} 
           setMobileDisplay={setMobileDisplay} mobileDisplay={mobileDisplay}
           setMobileDisplayMenu={setMobileDisplayMenu} mobileDisplayMenu={mobileDisplayMenu} sname={sname} semail={semail}

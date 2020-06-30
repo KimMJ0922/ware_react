@@ -227,7 +227,7 @@ const Top = (props) =>{
                         </div>
                     </Grid>
                     <Grid item xs={2} md={2}>
-                        <div className='topMenu'><div className='topMenuList' onClick={mobileDisplayOn}><Menu/></div></div>
+                        <div className='topMenu'><div className='topMenuList' onClick={mobileDisplayOn}><Menu style={{color:'#fff'}}/></div></div>
                     </Grid>
                     </Hidden>
                 </Grid>
