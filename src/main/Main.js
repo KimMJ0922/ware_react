@@ -3,14 +3,16 @@ import { TimelineMax, Linear, TimelineLite } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
 
-import img1 from '../image/1.gif';
-import img2 from '../image/2.gif';
-import img3 from '../image/3.gif';
-import img4 from '../image/4.gif';
-import img5 from '../image/5.gif';
-import img6 from '../image/6.gif';
-import img7 from '../image/7.gif';
-import img8 from '../image/8.gif';
+import img1 from '../image/1.png';
+import img2 from '../image/2.png';
+import img3 from '../image/3.png';
+import img4 from '../image/4.png';
+import img5 from '../image/5.png';
+import img6 from '../image/6.png';
+import img7 from '../image/7.png';
+import img8 from '../image/8.png';
+
+import img9 from '../image/9.png';
 
 import './Main.css';
 
@@ -60,7 +62,7 @@ const Main = (props) => {
     scene.add(sphere);
 
     // squares1
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img1),
       side: THREE.DoubleSide,
@@ -74,7 +76,7 @@ const Main = (props) => {
     parent_obj.add(mesh);
 
     // squares2
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img2),
       side: THREE.DoubleSide,
@@ -88,7 +90,7 @@ const Main = (props) => {
     parent_obj.add(mesh);
 
     // squares3
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img3),
       side: THREE.DoubleSide,
@@ -102,7 +104,7 @@ const Main = (props) => {
     parent_obj.add(mesh);
 
     // squares4
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img4),
       side: THREE.DoubleSide,
@@ -116,7 +118,7 @@ const Main = (props) => {
     parent_obj.add(mesh);
 
     // squares5
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img5),
       side: THREE.DoubleSide,
@@ -130,7 +132,7 @@ const Main = (props) => {
     parent_obj.add(mesh);
 
     // squares6
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img6),
       side: THREE.DoubleSide,
@@ -144,7 +146,7 @@ const Main = (props) => {
     parent_obj.add(mesh);
     
     // squares7
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img7),
       side: THREE.DoubleSide,
@@ -158,7 +160,7 @@ const Main = (props) => {
     parent_obj.add(mesh);
 
     // squares8
-    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_geom = new THREE.PlaneGeometry(13, 8);
     var square_material = new THREE.MeshBasicMaterial({
       map: loader.load(img8),
       side: THREE.DoubleSide,
@@ -251,11 +253,32 @@ const Main = (props) => {
       { opacity:1, ease: Linear.easeNone },
       "+=1"
     );
+    // tl.fromTo(
+    //   ".FloatContainer",
+    //   1,
+    //   { yPercent: 100, opacity:0 },
+    //   { yPercent: -20, opacity:1, ease: Linear.easeNone },
+    //   "+=1"
+    // );
     tl.fromTo(
-      ".FloatContainer",
+      "#floatitem1",
       1,
-      { yPercent: 100, opacity:0 },
-      { yPercent: -20, opacity:1, ease: Linear.easeNone },
+      { yPercent: 50, opacity:0 },
+      { yPercent: 0, opacity:1, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.fromTo(
+      "#floatitem2",
+      1,
+      { yPercent: 50, opacity:0 },
+      { yPercent: 0, opacity:1, ease: Linear.easeNone },
+      "+=1"
+    );
+    tl.fromTo(
+      "#floatitem3",
+      1,
+      { yPercent: 50, opacity:0 },
+      { yPercent: 0, opacity:1, ease: Linear.easeNone },
       "+=1"
     );
     tl.fromTo(
@@ -301,10 +324,7 @@ const Main = (props) => {
 
   }
 
-  const [name,setName] = useState('');
-  const [email,setEmail] = useState('');
   const MainstartBtn=(data)=>{
-    console.log(data);
     props.startBtn(data);
   }
 
@@ -327,9 +347,18 @@ const Main = (props) => {
           </div>
           <div className="Container">
             <div className="FloatContainer">
-              <div className="floatitem">gd</div>->
-              <div className="floatitem">gd</div>->
-              <div className="floatitem">gd</div>
+              <div className="floatitem" id="floatitem1">
+                <img src={img9} className="introimg"></img>
+                <span>나만의 학습세트를 만들어 학습하세요!</span>
+              </div>
+              <div className="floatitem" id="floatitem2">
+                <img src={img9} className="introimg"></img>
+                <span>학습한 내역을 다이어그램으로</span><span>한눈에 확인 시켜드립니다!</span>
+              </div>
+              <div className="floatitem" id="floatitem3">
+                <img src={img9} className="introimg"></img>
+                <span>장터에서 사용자들과 학습법을 공유하고</span><span>포인트를 모아보세요!</span>
+              </div>
             </div>
             <FloatForm MainstartBtn={MainstartBtn} />
           </div>
