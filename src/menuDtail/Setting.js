@@ -4,6 +4,7 @@ import {useHistory} from 'react-router'
 import './Setting.css';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import ReportIcon from '@material-ui/icons/Report';
+import LockIcon from '@material-ui/icons/LockOpen';
 import { Grid, Paper } from '@material-ui/core';
 import PointHistory from './PointHistory';
 
@@ -336,12 +337,20 @@ const Setting = (props) => {
                             
                 {
                     provider === "default" &&
-                    <div>
-                        <h2>비밀번호 변경 </h2>
-                        <input type="password" id="password" name="password" placeholder="●●●●●●●"
-                            onChange={changePassword} value={newPassword}/>
-                        <button type="button" onClick={passwordChangeButton}>변경</button>
-                    </div>
+                <Grid container>
+                            <Grid item xs={12} md={4}>
+                            <p className="set_title_font3">비밀번호 변경</p>
+                                <div className="set_icon_box_1">
+                                    <LockIcon/>
+                                </div> 
+                            </Grid>
+                     <Grid item xs={12} md={8}>
+                        <input type="password" id="password" name="password" placeholder="●●●●●●●" className="set_name_input"
+                                    onChange={changePassword} value={newPassword}/>
+                    <button type="button" className="set_name_btn" onClick={passwordChangeButton}>변경</button>          
+                        </Grid>  
+                </Grid>
+
                 }
               <Grid container>
                 <Grid item xs={12} md={4}>

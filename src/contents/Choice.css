@@ -15,18 +15,26 @@
         padding: 10px;
         text-align: center;
     }
-    .ch_mun_box>p{
-        text-align: center;
-        height: 100px;
-        font-size: 1.5rem;
-        margin-top: 20px;
-        padding-top: 50px;
+    .ch_mun_qus_box{
+        width: 100%;
+        height: 30px;
+        font-size: 1.4rem;
     }
 
-    .ch_mun_box>img{
-        width: 100px;
-        height:100px;
+    .ch_mun_img_box{
+        text-align: center;
+        width: 130px;
+        height:130px;
     }
+
+    .ch_mun_img_box>img{
+        width: 120px;
+        height: 120px;
+        border-radius: 5px;
+        margin-left: 90px;
+
+    }
+
 
     .ch_mun_box>button{
         border: none;
@@ -35,6 +43,7 @@
         width: 18%;
         height: 60px;
         margin-right: 20px;
+        font-size: 0.8rem;
         display: inline-flex;
     }
 
@@ -103,18 +112,27 @@
         padding: 15px;
         text-align: center;
     }
-    .ch_mun_box>p{
-        text-align: center;
-        height: 100px;
-        font-size: 1.5rem;
-        margin-top: 20px;
-        padding-top: 50px;
+
+    .ch_mun_qus_box{
+        width: 100%;
+        height: 30px;
+        font-size: 1.6rem;
     }
 
-    .ch_mun_box>img{
-        width: 100px;
-        height:100px;
+    .ch_mun_img_box{
+        text-align: center;
+        width: 150px;
+        height:150px;
     }
+
+    .ch_mun_img_box>img{
+        width: 150px;
+        height: 150px;
+        border-radius: 5px;
+        margin-left: 150px;
+
+    }
+
 
     .ch_mun_box>button{
         border: none;
@@ -193,17 +211,22 @@
         padding: 15px;
         text-align: center;
     }
-    .ch_mun_box>p{
-        text-align: center;
-        height: 200px;
+    .ch_mun_qus_box{
+        width: 100%;
+        height: 50px;
         font-size: 2rem;
-        margin-top: 20px;
-        padding-top: 50px;
     }
 
-    .ch_mun_box>img{
-        width: 100px;
-        height:100px;
+    .ch_mun_img_box{
+        text-align: center;
+        width: 200px;
+        height:200px;
+    }
+    .ch_mun_img_box>img{
+        width: 200px;
+        height:200px;
+        border-radius: 5px;
+        margin-left: 200px;
     }
 
     .ch_mun_box>button{
