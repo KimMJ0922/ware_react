@@ -1,7 +1,5 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
-import ProfileView from './ProfileView';
-import FolderAddList from './FolderAddList';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
 import { Paper } from '@material-ui/core';
@@ -455,7 +453,21 @@ const Folder=()=>{
                                 <>
                                     <Paper className="fdr_on_add_fdr_content_box">
                                         <div className="fdr_on_add_modal_box">
-                                            <input type="checkbox" name="stlist" value={item.no} checked={item.checked} onChange={checkboxClick}/><span className="fdr_add_modal_con_sub_font">{item.title}(카드 : {item.cnt})</span>
+                                            <input type="checkbox" name="stlist" value={item.no} checked={item.checked} onChange={checkboxClick}/>
+                                            <span className="fdr_add_modal_con_sub_font">
+                                                {item.title}(카드 : {item.cnt})
+                                                {
+                                                    item.open_scope === "public" ? 
+                                                    <img src="/icon/public.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                    item.open_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                    <img src="/icon/private.png" className="scopeIcon" alt="" id={item.no}/>
+                                                }
+                                                {
+                                                    item.update_scope === "public" ? <img src="/icon/public.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                    item.update_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                                                    <img src="/icon/private.png" className="scopeIcon" alt="" id={item.no}/>
+                                                }
+                                            </span>
                                             <img src={item.profile} alt=""/><span className="fdr_add_modal_con_name_font">{item.name}</span>
                                             {/* 아이콘 */}
                                             {
