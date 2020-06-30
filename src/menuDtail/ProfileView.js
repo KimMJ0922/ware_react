@@ -21,9 +21,9 @@ const ProfileView = (props) =>{
         </Paper>
         <Paper> 
             <div style={{border:'2px solid #dadee0'}} className="btn_box">
-              <button className="btn" type="button" onClick={clickBtn} name="Set">만든 세트(Set)</button>
-              <button className="btn" type="button" onClick={clickBtn} name="BoardSet">구매 세트(Set)</button>
-              <button className="btn" type="button" onClick={clickBtn} name="SellsSet">판매 세트(Set)</button>
+              <button className="btn" type="button" onClick={clickBtn} name="Set">만든 세트</button>
+              <button className="btn" type="button" onClick={clickBtn} name="BoardSet">구매 세트</button>
+              <button className="btn" type="button" onClick={clickBtn} name="SellsSet">판매 세트</button>
             </div>
         </Paper>
       </Grid>
