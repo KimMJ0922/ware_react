@@ -28,7 +28,7 @@ const FloatForm=(props)=>{
     }
     
     const start=()=>{
-        props.startBtn({
+        props.MainstartBtn({
         name:name,
         email:email
         });

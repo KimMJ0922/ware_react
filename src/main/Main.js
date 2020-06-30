@@ -14,8 +14,6 @@ import img8 from '../image/8.gif';
 
 import './Main.css';
 
-import { makeStyles } from '@material-ui/core/styles';
-
 import FloatForm from './FloatForm';
 
 
@@ -278,13 +276,6 @@ const Main = (props) => {
 
     t2
     .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=1");
-    
-    let contentScene = new ScrollMagic.Scene({
-        triggerElement: '#content',
-        triggerHook: 0.32,
-        duration: "600%"
-    })
-    contentScene.setPin(".trigger0").setTween(t2).addTo(controller);
 
     window.addEventListener('resize', onResize);
 
@@ -298,7 +289,6 @@ const Main = (props) => {
   const onWheel=(e)=> {
     cancelAnimationFrame(animate);
     update(e.deltaY);
-    console.log(e.deltaY);
   };
 
   const onResize=()=> {
@@ -311,9 +301,11 @@ const Main = (props) => {
 
   }
 
-  
-  const startBtn=(data)=>{
+  const [name,setName] = useState('');
+  const [email,setEmail] = useState('');
+  const MainstartBtn=(data)=>{
     console.log(data);
+    props.startBtn(data);
   }
 
   if(isLoding){
@@ -334,12 +326,13 @@ const Main = (props) => {
             </div>
           </div>
           <div className="Container">
-            <div className="FloatContainer"></div>
-            <FloatForm startBtn={startBtn} />
+            <div className="FloatContainer">
+              <div className="floatitem">gd</div>->
+              <div className="floatitem">gd</div>->
+              <div className="floatitem">gd</div>
+            </div>
+            <FloatForm MainstartBtn={MainstartBtn} />
           </div>
-        </div>
-        <div id="content">
-          <div className="trigger0"></div>
         </div>
       </div>
     );
@@ -348,10 +341,6 @@ const Main = (props) => {
       <div>로딩중...</div>
     )
   }
-  
-  
 };
 
-
-  
-  export default Main;
+export default Main;
