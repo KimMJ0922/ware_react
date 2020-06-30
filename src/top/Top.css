@@ -11,7 +11,7 @@
     } */
     #topMain{
         height: 100px;
-        background-color: #c29fcb;
+        background-color: #232f46;
     }
     .topMenu> .topMenuList{
         line-height: 7rem;
@@ -27,11 +27,10 @@
         height: 100px;
         text-align: left;
         display: inherit;
-        color: #000;
         text-decoration: none;
     }
     .topMenu>.topMenuListSearch>span{
-        color: #2d3639;
+        color: #fff;
         display: inline-block;
         padding: .625rem .75rem;
         font-weight: 600;
@@ -54,7 +53,7 @@
         text-align: left;
     }
     .topMenu>.topMenuList>span{
-        color: #2d3639;
+        color: #fff;
         display: inline-block;
         padding: .625rem .75rem;
         font-weight: 600;
@@ -76,19 +75,19 @@
         position: relative;
         top: -28px;
         left: 81px;
-        color: currentColor;
-        background-color: #c29fcb;
-        border: 1px solid #583961;
+        color: #fff;
+        background-color: #232f46;
+        border: 1px solid #b5b5b5;
         border-radius: 5px;
         width: 83px;
         display: inline-block;
         transition: all 0.4s;
     }
     .userLogout:hover{
-        background-color: #583961;
-        border: 1px solid #583961;
-        border-radius: 10px;
+        background-color: #3d5179;
+        border: 1px solid #b5b5b5;
         color: #fff;
+        border-radius: 10px;
     }
     .topMenuFirst>.MainLogout>span{
         text-decoration: none;
@@ -103,7 +102,7 @@
         border-radius: 40px;
     }
     #profilename>span{
-        color: currentcolor;
+        color: #fff;
         max-width: 200px;
         display: inline-block;
         width: max-content;
@@ -120,7 +119,7 @@
         height: 100px;
         text-align: center;
         display: inherit;
-        color: #000;
+        color: #fff;
         text-decoration: none;
     }
     
@@ -193,7 +192,7 @@
 @media(max-width: 550px){
     #topMain{
         height: 70px;
-        background-color: #c29fcb;
+        background-color: #232f46;
     }
     .topMenu> .topMenuList{
         line-height: 5rem;
@@ -236,7 +235,7 @@
         line-height: 4.4rem;
         text-align: center;
         display: inherit;
-        color: #000;
+        color: #fff;
         text-decoration: none;
     }
     
@@ -288,7 +287,7 @@
 @media(max-width: 375px){
     #topMain{
         height: 60px;
-        background-color: #c29fcb;
+        background-color: #232f46;
     }
     .topMenu> .topMenuList{
         line-height: 4.5rem;
@@ -330,7 +329,7 @@
         text-align: center;
         line-height: 3.8rem;
         display: inherit;
-        color: #000;
+        color: #fff;
         text-decoration: none;
     }
     #topMainFirst{

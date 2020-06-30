@@ -1203,6 +1203,7 @@ border: none;
         border: 0;
         height: 150px;
         margin: 0.3rem 0.3rem;
+        background-color: #fff;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
     }
 
@@ -1267,7 +1268,7 @@ border: none;
         height: 58px;
         border-radius: 5px;
         border: 0;
-        background-color: mediumpurple;
+        background-color: #294174;
         transition: 0.3s;
     }
     .defaultPageFind>span{
@@ -1278,7 +1279,7 @@ border: none;
         padding: 1rem;
     }
     .defaultPageFind>.defaultPageFindButton:active{
-        background-color: purple;
+        background-color: #5383e8;
     }
     .defaultPageFind>.defaultPageFindButton:focus{
         outline: none;    
@@ -1297,6 +1298,7 @@ border: none;
         padding: 0 1rem;
         border: 0;
         height: 150px;
+        background-color: #fff;
         margin: 0.3rem 0.3rem;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
 
@@ -1360,11 +1362,11 @@ border: none;
         border-radius: 40px;
         height: 70px;
         border: 0;
-        background-color: mediumpurple;
+        background-color: #294174;
         transition: 0.3s;
     }
     .defaultPageFind>.defaultPageFindButton:active{
-        background-color: purple;
+        background-color: #5383e8;
     }
     .defaultPageFind>.defaultPageFindButton:focus{
         outline: none;    
@@ -1376,6 +1378,7 @@ border: none;
         padding: 0 1rem;
         border: 0;
         height: 180px;
+        background-color: #fff;
         margin: 5px auto;
         box-shadow: 0px 3px 15px -4px #BDBDBD;
 
@@ -1440,11 +1443,11 @@ border: none;
         border-radius: 40px;
         height: 70px;
         border: navajowhite;
-        background-color: mediumpurple;
+        background-color: #294174;
         transition: 0.3s;
     }
     .defaultPageFind>.defaultPageFindButton:active{
-        background-color: purple;
+        background-color: #5383e8;
     }
     .defaultPageFind>.defaultPageFindButton:focus{
         outline: none;    
@@ -1455,6 +1458,7 @@ border: none;
 /* Diagram - media 일반 사이즈 */
 @media(min-width: 551px){
     .DiagramInfo{
+        background-color: #fff;
         height: 212px;
         padding: 0.6rem;
         box-shadow: 0px 5px 11px #a8a8a8;
@@ -1545,6 +1549,7 @@ border: none;
 /* Diagram - media 웹 최소 사이즈 */
 @media(max-width: 550px){
     .DiagramInfo{
+        background-color: #fff;
         height: auto;
         padding: 0.6rem;
         box-shadow: 2px 3px 11px #a8a8a8;
@@ -1620,6 +1625,7 @@ border: none;
 /* Diagram - media 모바일 사이즈 */
 @media(max-width: 375px){
     .DiagramInfo{
+        background-color: #fff;
         height: auto;
         padding: 0.6rem;
         box-shadow: 2px 4px 11px #a8a8a8;
