@@ -36,7 +36,7 @@ const FloatForm=(props)=>{
     return(
         <div className="FloatForm">
             <span className="Formment">지금 바로 회원가입 하세요!</span>
-            <span className="Formment">Ware.gg를 사용하는 학생의 90%가 높은 점수를 받았다고 합니다.</span>
+            <span className="Formment">Ware.gg를 사용하는 사용자의 90%가 높은 점수를 받았다고 합니다.</span>
             <form className={classes.root} noValidate autoComplete="off">
                 <TextField id="standard-basic" label="이름" variant="outlined" onChange={changeName}/>
                 <TextField id="standard-basic" label="이메일" variant="outlined" onChange={changeEmail}/>

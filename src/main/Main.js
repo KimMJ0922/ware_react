@@ -12,6 +12,8 @@ import img6 from '../image/6.png';
 import img7 from '../image/7.png';
 import img8 from '../image/8.png';
 
+import img9 from '../image/9.png';
+
 import './Main.css';
 
 import FloatForm from './FloatForm';
@@ -346,13 +348,16 @@ const Main = (props) => {
           <div className="Container">
             <div className="FloatContainer">
               <div className="floatitem" id="floatitem1">
+                <img src={img9} className="introimg"></img>
                 <span>나만의 학습세트를 만들어 학습하세요!</span>
               </div>
               <div className="floatitem" id="floatitem2">
-                <span>학습한 내역을 다이어그램으로</span><br /> <span>한눈에 확인 시켜드립니다!</span>
+                <img src={img9} className="introimg"></img>
+                <span>학습한 내역을 다이어그램으로</span><span>한눈에 확인 시켜드립니다!</span>
               </div>
               <div className="floatitem" id="floatitem3">
-                <span>장터에서 사용자들과 학습법을 공유하고</span><br /> <span>포인트를 모아보세요!</span>
+                <img src={img9} className="introimg"></img>
+                <span>장터에서 사용자들과 학습법을 공유하고</span><span>포인트를 모아보세요!</span>
               </div>
             </div>
             <FloatForm MainstartBtn={MainstartBtn} />
