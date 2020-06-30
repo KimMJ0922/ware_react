@@ -332,7 +332,7 @@ const Test = (props) => {
   }
   //테스트 이동
   const goTest = () => {
-    history.push('/test');
+    history.go(0);
   }
 
     return(

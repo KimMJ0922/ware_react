@@ -415,15 +415,6 @@ const Folder=()=>{
                                     )
                                 })
                             }
-                        
-                            {/* 
-                                폴더 설명(쓸 거 같아서 주석처리)
-                                <Grid item xs={12} md={10}>
-                                    <Paper>
-                                        <span>설명 : {item.comment}</span>
-                                    </Paper> 
-                                </Grid>                            
-                            */}
                         </>
                     }
             </Grid>
@@ -464,7 +455,7 @@ const Folder=()=>{
                                 <>
                                     <Paper className="fdr_on_add_fdr_content_box">
                                         <div className="fdr_on_add_modal_box">
-                                            <input type="checkbox" name="stlist" value={item.no} checked={item.checked} onChange={checkboxClick}/><span className="fdr_add_modal_con_sub_font">{item.title}()</span>
+                                            <input type="checkbox" name="stlist" value={item.no} checked={item.checked} onChange={checkboxClick}/><span className="fdr_add_modal_con_sub_font">{item.title}(카드 : {item.cnt})</span>
                                             <img src={item.profile} alt=""/><span className="fdr_add_modal_con_name_font">{item.name}</span>
                                             {/* 아이콘 */}
                                             {
