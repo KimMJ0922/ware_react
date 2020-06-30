@@ -40,7 +40,7 @@ const FloatForm=(props)=>{
             <form className={classes.root} noValidate autoComplete="off">
                 <TextField id="standard-basic" label="이름" variant="outlined" onChange={changeName}/>
                 <TextField id="standard-basic" label="이메일" variant="outlined" onChange={changeEmail}/>
-                <Button variant="contained" color="primary" className={classes.button} onClick={start}>시작하기</Button>
+                <Button variant="contained" style={{"background-color":"#294174","color":"white"}} className={classes.button} onClick={start}>시작하기</Button>
             </form>
         </div>
     )

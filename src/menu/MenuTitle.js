@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {Diagram,DiagramList, Folder,Friend,Set,Setting,Default} from '../menuDtail';/*index.js호출*/
 import {Board} from '../board';/*index.js호출*/
+import BoardInsert from '../board/BoardInsert';
 import { Route, Switch } from 'react-router-dom';
 import './menu.css';
 const MenuTitle=(props)=>{
@@ -32,6 +33,7 @@ const MenuTitle=(props)=>{
                 <Route exact path="/home/folder" component={Folder}/>
 
                 <Route exact path="/home/board" component={Board}/>
+                <Route exact path="/home/board/insert" component={BoardInsert} />
             </Switch>
         </div>
     )

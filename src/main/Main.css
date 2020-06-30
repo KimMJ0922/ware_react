@@ -101,13 +101,12 @@ footer {
   position: absolute;
   justify-content: center;
   align-items: center;
-  background-color: #38ced7;
+  background-color: #ffffff;
 }
 
 .FloatContainer{
-  border: 3px solid black;
-  width: 80%;
-  height: 48%;
+  width: 95%;
+  height: 50%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -117,12 +116,18 @@ footer {
 
 .floatitem{
   border:1px solid black;
-  width: 30%;
+  width: 32%;
   height: 90%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Hi Melody', cursive;
+  font-size: 25pt;
 }
 .FloatForm{
   width: 80%;
-  height: 10%;
+  height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,7 +135,7 @@ footer {
   position: relative;
 }
 .Formment{
-  font-size: 25pt;
+  font-size: 30pt;
   font-family: 'Hi Melody', cursive;
 }
 #content{
