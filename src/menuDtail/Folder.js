@@ -1,5 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
+import ProfileView from './ProfileView';
+import FolderAddList from './FolderAddList';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
 import { Paper } from '@material-ui/core';

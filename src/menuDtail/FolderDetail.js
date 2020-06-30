@@ -7,6 +7,14 @@ const FolderDetail=(props)=>{
     let card = props.card;
     let folder_no = props.no;
     let study = props.study;
+    const check = () => {
+        card.map((item, idx) => {
+            if(item.folder_no === parseInt(folder_no)){
+                console.log(item);
+            }
+        })
+    }
+    
     return(
         <>
             {
