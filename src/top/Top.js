@@ -73,6 +73,13 @@ const Top = (props) =>{
             SingupModalOpen();
     },[props.sname, props.semail])
 
+    const searchIn = () => {
+        window.sessionStorage.setItem('searchStart',9);
+        window.sessionStorage.setItem('searchSort','최신순');
+        window.sessionStorage.setItem('searchDivision','제목');
+        window.sessionStorage.setItem('searchInclude','검색단어포함');
+        window.sessionStorage.setItem('searchText','');
+    }
 
    
     if(props.path === "/"){
@@ -142,7 +149,7 @@ const Top = (props) =>{
                         </div>
                     </Grid>
                     <Grid item xs={1} md={5}>
-                        <div className='topMenu'>
+                        <div className='topMenu' onClick={searchIn}>
                             <NavLink exact to="/search" className='topMenuListSearch' >
                                 <span><Search/><div>검색하기</div></span>
                             </NavLink>

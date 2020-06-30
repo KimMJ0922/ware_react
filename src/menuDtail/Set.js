@@ -194,10 +194,6 @@ const Set=()=>{
                         {
                           text
                         }
-                        {/* 
-                          div에 e.target이 안먹힌다.
-                          a 태그도 마찬가지 
-                        */}
                         <Link to="" onClick={item.open_scope === "public" ? linkClick : item.open_scope === "private" ? linkClick : checkPass}>                       
                           <div className="sq_on_cnt" style={{backgroundColor:'white', 
                               boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>

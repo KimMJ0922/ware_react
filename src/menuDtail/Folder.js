@@ -1,7 +1,5 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
-import ProfileView from './ProfileView';
-import FolderAddList from './FolderAddList';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
 import { Paper } from '@material-ui/core';
@@ -46,7 +44,10 @@ const Folder=()=>{
     const [folderNo, setFolderNo] = useState(0);
 
     //추가할 목록
-    const [insertList, setInsertList] = useState([]);
+    const [chList, setChList] = useState([]);
+
+    //리스트
+    const [list, setList] = useState([]);
     const handleOpen = () => {
         setOpen(true);
     };
@@ -193,9 +194,7 @@ const Folder=()=>{
         })
     }
 
-    const changeVisible = (e) => {
-        console.log(e.target.value);
-        let no = e.target.value;
+    const changeVisible = (no) => {
         folder.map((item,idx)=> {
             if(item.no === parseInt(no)){
                 item["visible"] = !item.visible;
@@ -224,9 +223,10 @@ const Folder=()=>{
         })
     }
 
-    const addListModal = (e) => {
-        setFolderNo(e.target.id);
+    const addListModal = (no) => {
+        setFolderNo(no);
         setAddFolderList(true);
+        listDiv();
     }
 
     const addListModalClose = () => {
@@ -287,6 +287,53 @@ const Folder=()=>{
 
         setCardList([...cardList]);
     }
+
+
+    //폴더 리스트 중에서 해당 폴더의 리스트만 따로 나누기
+    const listDiv = () => {
+        let no = parseInt(folderNo);
+        let data = [];
+        cardList.map((item) => {
+            if(item.folder_no === no){
+                data.push({...item});
+            }
+        })
+
+        let data2=[];
+        studyList.map((studyItem,i) => {
+            let re = data.map((listItem,idx) => {
+                if(studyItem.category === listItem.category && studyItem.cardset_no === listItem.cardset_no){
+                    return false;
+                }else{
+                    return listItem;
+                }
+            })
+            if(re.indexOf(false) === -1){
+                data2.push({...studyItem,checked : ''});
+            }else{
+                data2.push({...studyItem,checked : 'true'});
+            }
+        })
+
+        setList([...data2]);
+    }
+    useEffect(() => {
+        listDiv();
+    },[addFolderList]);
+    const checkboxClick = (e) => {
+        let no = e.target.value;
+        list.map((item) => {
+            if(item.no === parseInt(no)){
+                if(item["checked"] === ''){
+                    item["checked"] = 'true';
+                }else{
+                    item["checked"] = '';
+                }
+            }
+        })
+
+        setList([...list]);
+    }
     return(
         <div className="fdr_body">
              <Grid container> 
@@ -308,13 +355,13 @@ const Folder=()=>{
                     {
                         folder.length === 0 &&
                         <>    
-                                <Paper>
-                                    <div className="fdr_no_box" style={{ boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}}>
-                                        <span className="fdr_no_font1">회원님은 아직 폴더를 생성하시지 않았습니다.</span><br/>
-                                        <span className="fdr_no_font2">폴더를 만들어 세트를 정리하세요.</span><br/>
-                                        <button type="button" onClick={handleOpen} className="fdr_no_btn">폴더 만들기</button>
-                                    </div>
-                                </Paper>
+                            <Paper>
+                                <div className="fdr_no_box" style={{ boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}}>
+                                    <span className="fdr_no_font1">회원님은 아직 폴더를 생성하시지 않았습니다.</span><br/>
+                                    <span className="fdr_no_font2">폴더를 만들어 세트를 정리하세요.</span><br/>
+                                    <button type="button" onClick={handleOpen} className="fdr_no_btn">폴더 만들기</button>
+                                </div>
+                            </Paper>
                             
                         </>
                     }
@@ -338,48 +385,34 @@ const Folder=()=>{
                                 folder.map((item,idx) => {
                                     return (
                                         <>
-                                        <Grid container>
-                                            <Grid item xs={12} md={12}>
-                                                {/*  */}
-                                                 <Paper className="fdr_subject_box" >
-                                                     {/* Paper에 onClick 메소드 추가 해야됨 */}
-                                                 {/* onClick={changeVisible} value={item.no} */}
-                                                         <FolderIcon/> 
-                                                         <span className="fdr_on_font1">{item.title} ({item.cnt})</span> 
-                                                        <AddIcon  onClick={addListModal} id={item.no}/>  
+                                            <Grid container>
+                                                <Grid item xs={12} md={12}>
+                                                    {/*  */}
+                                                    <Paper className="fdr_subject_box">
+                                                        <FolderIcon  onClick={(e) => changeVisible(item.no)}/> 
+                                                        <span className="fdr_on_font1"  onClick={(e) => changeVisible(item.no)}>{item.title} ({item.cnt})</span> 
+                                                        <AddIcon  onClick={(e) => addListModal(item.no)} name="addBtn"/>  
                                                         <MoreHorizIcon aria-controls="simple-menu" aria-haspopup="true" onClick={menuClick(item.no)}/>
-                                                    
-                                                </Paper> 
-                                            </Grid>                                    
+                                                    </Paper> 
+                                                </Grid>                                    
                                             </Grid>
                                             {
                                                 item.visible === true &&
                                                 <>
-                                                <Grid container>
-                                                    <Grid item xs={12} md={12}>
-                                                     설명 : {item.comment}
+                                                    <Grid container>
+                                                        <Grid item xs={12} md={12}>
+                                                        설명 : {item.comment}
+                                                        </Grid>
+                                                        <Grid item xs={12} md={12}>
+                                                            <FolderDetail no={item.no} study={studyList} card={cardList}/>
+                                                        </Grid>
                                                     </Grid>
-                                                    <Grid item xs={12} md={12}>
-                                                        <FolderDetail no={item.no} study={studyList} card={cardList}/>
-                                                    </Grid>
-                                                </Grid>
-                                                
-                                               
                                                 </>
                                             }
                                         </>
                                     )
                                 })
                             }
-                        
-                            {/* 
-                                폴더 설명(쓸 거 같아서 주석처리)
-                                <Grid item xs={12} md={10}>
-                                    <Paper>
-                                        <span>설명 : {item.comment}</span>
-                                    </Paper> 
-                                </Grid>                            
-                            */}
                         </>
                     }
             </Grid>
@@ -397,7 +430,7 @@ const Folder=()=>{
             </Modal>
 
             {/* 수정용 모달 */}
-            <Modal open={modifyOpen} onClose={folderModifyClose} aria-labelledby="simple-modal-title"                   aria-describedby="simple-modal-description">
+            <Modal open={modifyOpen} onClose={folderModifyClose} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description">
                 <div className="fdr_on_modal">
                     <p className="fdr_on_modal_top">폴더 수정</p>
                     <div style={{textAlign:'center',marginTop:'30px'}}>
@@ -413,24 +446,42 @@ const Folder=()=>{
                 <div className="fdr_on_modal">
                     <p className="fdr_on_modal_top">폴더에 목록 추가하기</p>
                     <div className="fdr_on_add_fdr_content">
-                        {
-                            studyList.map((study,idx) => {
-                                return(
-                                    <>
+                    {/* <FolderAddList study={studyList} card={cardList} no={folderNo}/> */}
+                    {
+                        list.map((item)=>{
+                            return (
+                                <>
                                     <Paper className="fdr_on_add_fdr_content_box">
                                         <div className="fdr_on_add_modal_box">
-                                            <input type="checkbox" name="stlist" value={study.no}/><span className="fdr_add_modal_con_sub_font">{study.title}({study.category})</span>
-                                            <img src={study.profile} alt=""/><span className="fdr_add_modal_con_name_font">{study.name}</span>
+                                            <input type="checkbox" name="stlist" value={item.no} checked={item.checked} onChange={checkboxClick}/>
+                                            <span className="fdr_add_modal_con_sub_font">
+                                                {item.title}(카드 : {item.cnt})
+                                                {
+                                                    item.open_scope === "public" ? 
+                                                    <img src="/icon/public.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                    item.open_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                    <img src="/icon/private.png" className="scopeIcon" alt="" id={item.no}/>
+                                                }
+                                                {
+                                                    item.update_scope === "public" ? <img src="/icon/public.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                    item.update_scope === "member" ? <img src="/icon/member.png" className="scopeIcon" alt="" id={item.no}/> : 
+                                                                                    <img src="/icon/private.png" className="scopeIcon" alt="" id={item.no}/>
+                                                }
+                                            </span>
+                                            <img src={item.profile} alt=""/><span className="fdr_add_modal_con_name_font">{item.name}</span>
                                             {/* 아이콘 */}
-                                            <StorefrontIcon/>
+                                            {
+                                                item.category === 'board' ? <StorefrontIcon/> : ''
+                                            }
                                         </div>
-                                        </Paper>
-                                    </>
-                                )
-                            })
-                        }
-
-                        <div className="fdr_on_add_submit_btn_box"><button type="button" onClick={addStudyFolderList}>추가하기</button></div>
+                                    </Paper>
+                                </>
+                            )
+                        })  
+                    }
+                    <div className="fdr_on_add_submit_btn_box">
+                        <button type="button" onClick={addStudyFolderList}>추가하기</button>
+                    </div>
                     </div> 
                 </div> 
             </Modal>
