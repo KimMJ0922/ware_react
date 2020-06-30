@@ -139,7 +139,7 @@ const Top = (props) =>{
                     <Grid item xs={1} md={5}>
                         <div className='topMenu'>
                             <NavLink exact to="/search" className='topMenuListSearch' >
-                                <span><Search/><div><input type='text' placeholder='Search'/></div></span>
+                                <span><Search/><div>검색하기</div></span>
                             </NavLink>
                         </div>
                     </Grid>

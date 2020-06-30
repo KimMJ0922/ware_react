@@ -1207,6 +1207,9 @@ border: none;
     }
 
     .mycardList>.mycardSubject{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         height: 30%;
         font-size: 1.5em;
 
@@ -1220,6 +1223,9 @@ border: none;
         height: 30%;
         display: flex;
     }
+    .mycardCardId>p{
+        margin: 0;
+    }
     .mycardCardId>span{
         padding-left: 0.5rem;
         padding-top: 0.5rem;
@@ -1230,6 +1236,27 @@ border: none;
         width:40px;
         height:40px;
     }
+    .mycardCardId>p{
+        margin: 0;
+    }
+    .mycardCardId>p>span{
+        margin-left: 0.5rem;
+    }
+    /* ------------------- */
+    .mycardCardWriteDay{
+        position: relative;
+        top: -10px;
+        right: -30px;
+    }
+    .mycardCardName{
+        position: relative;
+        top: -10px;
+        left: 0;
+    }
+    .mycardCardConnect{
+
+    }
+    /* ------------------- */
     .defaultPageFind{
         text-align: center;
     }
@@ -1275,6 +1302,9 @@ border: none;
 
     }
     .mycardList>.mycardSubject{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         height: 30%;
         font-size: 1.5em;
 
@@ -1298,6 +1328,28 @@ border: none;
         width:40px;
         height:40px;
     }
+    .mycardCardId>p{
+        margin: 0;
+    }
+    .mycardCardId>p>span{
+        margin-left: 0.5rem;
+        font-size: 1.1rem;
+    }
+    /* ------------------- */
+    .mycardCardWriteDay{
+        position: relative;
+        top: -6px;
+        right: -75px;
+    }
+    .mycardCardName{
+        position: relative;
+        top: -6px;
+        left: 0;
+    }
+    .mycardCardConnect{
+
+    }
+    /* ------------------- */
     .defaultPageFind>.defaultPageFindButton{
         color: #fff;
         position: fixed;
@@ -1329,9 +1381,11 @@ border: none;
 
     }
     .mycardList>.mycardSubject{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         height: 30%;
         font-size: 1.5em;
-
     }
     .mycardList>.mycardCount{
         font-size: 1.3em;
@@ -1342,9 +1396,25 @@ border: none;
         height: 30%;
         display: flex;
     }
-    .mycardCardId>span{
-        padding-left: 10px;
+    .mycardCardId>p{
+        margin: 0;
     }
+    .mycardCardId>p>span{
+        margin-left: 0.5rem;
+        font-size: 1.1rem;
+    }
+    /* ------------------- */
+    .mycardCardWriteDay{
+        position: relative;
+        top: -6px;
+        right: -75px;
+    }
+    .mycardCardName{
+        position: relative;
+        top: -6px;
+        left: 0;
+    }
+    /* ------------------- */
     .cardProfileImg{
         background-color:red;
         border-radius:40px;
@@ -1387,8 +1457,9 @@ border: none;
     .DiagramInfo{
         height: 212px;
         padding: 0.6rem;
-        box-shadow: 2px 12px 11px #a8a8a8;
+        box-shadow: 0px 5px 11px #a8a8a8;
         border-radius: 13px;
+        margin-top: 1.5rem;
     }
     .ArcSeriesPoint{
         text-align: center;
@@ -1436,12 +1507,6 @@ border: none;
         position: relative;
         top: -20px;
     }
-    /* .VerticalBarSeries>.rv-xy-plot >.rv-xy-plot__axis{
-        padding: 0.2rem;
-    }
-    .VerticalBarSeries>.rv-xy-plot >.rv-xy-plot__inner{
-        width: 250px;
-    } */
      .DiagramInfoChart01>.ArcSeries{
         margin: 0 auto;
         width: 170px;
@@ -1466,6 +1531,15 @@ border: none;
         margin-bottom: -7px;
         font-weight: bolder;
     }
+    .DiagramListCardBox>.DiagramInfoCardSubject{
+        display: block;
+        font-size: 1.6rem;
+        padding: 0.3rem 0;
+    }
+    .DiagramListCardBox>.DiagramInfoCardCommit{
+
+       
+    }
 
 }
 /* Diagram - media 웹 최소 사이즈 */
@@ -1473,8 +1547,9 @@ border: none;
     .DiagramInfo{
         height: auto;
         padding: 0.6rem;
-        box-shadow: 2px 12px 11px #a8a8a8;
+        box-shadow: 2px 3px 11px #a8a8a8;
         border-radius: 13px;
+        margin-top: 1.5rem;
     }
     .ArcSeriesPoint{
         text-align: center;
@@ -1547,9 +1622,8 @@ border: none;
     .DiagramInfo{
         height: auto;
         padding: 0.6rem;
-        box-shadow: 2px 12px 11px #a8a8a8;
+        box-shadow: 2px 4px 11px #a8a8a8;
         border-radius: 13px;
-        transition: 0.12s;
     }
     .ArcSeriesPoint{
         text-align: center;
@@ -1621,72 +1695,7 @@ border: none;
     }
     .diagramList>.DiagramInfo{
         height: auto;
-        padding: 0.6rem;
-        box-shadow: 2px 12px 11px #a8a8a8;
-        border-radius: 13px;  
-    }
-    .DiagramListChart03>.better{
-        min-height: 54px;
-        border-top: 1px solid #a8a8a8;
-        text-align: center;
-        width: 100%;
-        display: inline-block;
-        padding-top: 17px;
-        margin-bottom: 18px;
-        margin-top: 0;
-        font-weight: 600;
-        transition: 0.5s;
-    }
-    .DiagramListChart03>.better>span{
-        color: #283fab;
-        vertical-align: middle;
-    }
-    .testCount{
-        width: 170px;
-        text-align: center;
-    }
-    .testKind{
-        width: 170px;
-        text-align: center;
-    }
-    .DiagramUl{
-        padding: 0;
-    }
-    .DiagramUl>.DiagramLiTitle>span{
-        border-left: 1px solid #dbdbdb;
-    }
-    .DiagramUl>.DiagramLiTitle>span:nth-child(1){
-        border-left: none;
-    }
-    .DiagramUl>.DiagramLi{
-        text-align: center;
-        list-style: none;
-    }
-    .DiagramLiSubjective{
-        border-bottom: 1px solid #a8a8a8;
-    }
-    .DiagramLiSubjective:nth-last-child(1){
-        border-bottom: none;
-    }
-    .DiagramLiChoice{
-        border-bottom: 1px solid #a8a8a8;
-    }
-    .DiagramLiChoice:nth-last-child(1){
-        border-bottom: none;
-    }
-    .testCountwidth{
-        width: 170px;
-        margin: 0 auto;
-    }
-}
-/* DiagramList - media 웹 최소 사이즈 */
-@media(max-width: 550px){
-    .diagramList{
-        min-height: 780px;
-    }
-    .diagramList>.DiagramInfo{
-        height: auto;
-        padding: 0.6rem;
+        padding: 0.2rem;
         box-shadow: 2px 12px 11px #a8a8a8;
         border-radius: 13px;  
     }
@@ -1735,6 +1744,108 @@ border: none;
     }
     .DiagramLiChoice:nth-last-child(1){
         border-bottom: none;
+    }
+    .DiagramListChart02{
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    .DiagramListChart01{
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    .ListArcSeriesPoint{
+        text-align: center;
+        position: relative;
+        top: -9.8rem;
+        width: 65px;
+        left: 14.6rem;
+        color: #1483c3;
+        font-weight: 400;
+        text-shadow: 0px 0px 0px grey;
+        font-size: 1.5rem;
+    }
+    .DiagramListselect{
+        text-align: center;
+    }
+}
+/* DiagramList - media 웹 최소 사이즈 */
+@media(max-width: 550px){
+    .diagramList{
+        min-height: 780px;
+    }
+    .diagramList>.DiagramInfo{
+        height: auto;
+        padding: 0.2rem;
+        box-shadow: 2px 12px 11px #a8a8a8;
+        border-radius: 13px;  
+    }
+    .DiagramListChart03>.better{
+        min-height: 54px;
+        border-top: 1px solid #a8a8a8;
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+        padding-top: 17px;
+        margin-bottom: 18px;
+        margin-top: 0;
+        font-weight: 600;
+        transition: 0.5s;
+    }
+    .DiagramListChart03>.better>span{
+        color: #283fab;
+        vertical-align: middle;
+    }
+    .testCount{
+        width: 170px;
+        text-align: center;
+    }
+    .testKind{
+        width: 170px;
+        text-align: center;
+    }
+    .DiagramUl{
+        padding: 0;
+    }
+
+    .DiagramUl>.DiagramLi{
+        text-align: center;
+        list-style: none;
+    }
+
+    .DiagramLiSubjective{
+        border-bottom: 1px solid #a8a8a8;
+    }
+    .DiagramLiSubjective:nth-last-child(1){
+        border-bottom: none;
+    }
+    .DiagramLiChoice{
+        border-bottom: 1px solid #a8a8a8;
+      
+    }
+    .DiagramLiChoice:nth-last-child(1){
+        border-bottom: none;
+    }
+    .DiagramListChart02{
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    .DiagramListChart01{
+        text-align: center; 
+        margin: 0.5rem 0;
+    }
+    .ListArcSeriesPoint{
+        text-align: center;
+        position: relative;
+        top: -7.6rem;
+        width: 65px;
+        left: 3.4rem;
+        color: #1483c3;
+        font-weight: 400;
+        text-shadow: 0px 0px 0px grey;
+        font-size: 1.5rem;
+    }
+    .DiagramListselect{
+        text-align: center;
     }
     
 }
@@ -1797,6 +1908,23 @@ border: none;
     }
     .DiagramLiChoice:nth-last-child(1){
         border-bottom: none;
+    }
+    .DiagramListChart02{
+        margin: 0.5rem 0;
+    }
+    .DiagramListChart01{
+        margin: 0.5rem 0;
+    }
+    .ListArcSeriesPoint{
+        text-align: center;
+        position: relative;
+        top: -7.6rem;
+        width: 65px;
+        left: 3.4rem;
+        color: #1483c3;
+        font-weight: 400;
+        text-shadow: 0px 0px 0px grey;
+        font-size: 1.5rem;
     }
 }
 

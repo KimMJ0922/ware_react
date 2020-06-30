@@ -224,8 +224,8 @@ const BoardItem=({match})=> {
             ))
     }else{
         problems = 
-        <Grid xs={12} className='BoardStoreItemList'>
-            <div>구매 후 문제 확인 가능합니다.</div>
+        <Grid xs={12} >
+            <div className='BoardStoreItemListNone'>구매 후 문제 확인 가능합니다.</div>
         </Grid>
     }
 
