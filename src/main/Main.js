@@ -12,155 +12,28 @@ import img6 from '../image/6.gif';
 import img7 from '../image/7.gif';
 import img8 from '../image/8.gif';
 
-import img9 from '../image/1.JPG';
-import img10 from '../image/2.JPG';
-
 import './Main.css';
 
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import FloatForm from './FloatForm';
 
 
-const Main = () => {
-  useEffect(()=>{
-    console.log("이름 = "+ window.sessionStorage.getItem('name'));
-  });
+const Main = (props) => {
   /*three애니메이션*/
-  const mount = useRef(null);
+  const [isLoding, setIsLoding]=useState(false);
   const ment1 = useRef(null);
   var scene = new THREE.Scene();
-  scene.background = new THREE.Color( 0xffffff );
+  
   var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
-  camera.position.z = 5;
+  
   var renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-      
-  //var geometry = new THREE.SphereGeometry(9, 14, 10, 0, 6.283, 0.9, 1.3);
   var geometry = new THREE.SphereGeometry(250, 14, 10);
-	var material = 
-	new THREE.MeshBasicMaterial();
-	var sphere = new THREE.Mesh(geometry, material);
-  scene.add(sphere);
-
-	// squares
+	var material = new THREE.MeshBasicMaterial();
+  var sphere = new THREE.Mesh(geometry, material);
+  
+  // squares
   var parent_obj = new THREE.Object3D();
   const loader = new THREE.TextureLoader();
 
-  // squares1
-	var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img1),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(18,9,0);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-
-  // squares2
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img2),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(18,-9,15);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-
-  // squares3
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img3),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(4,8,24);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-
-  // squares4
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img4),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(15,-5,-13);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-
-  // squares5
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img5),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(8,12,-25);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-
-  // squares6
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img6),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(-18,9,0);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-  
-  // squares7
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img7),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(-18,-9,15);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-
-  // squares8
-  var square_geom = new THREE.PlaneGeometry(10, 6);
-  var square_material = new THREE.MeshBasicMaterial({
-    map: loader.load(img8),
-    side: THREE.DoubleSide,
-    transparent: true
-  });
-  var mesh = new THREE.Mesh(square_geom, square_material);
-  // position square
-  mesh.position.set(-15,-5,-20);
-  // rotate square to face target
-  mesh.lookAt(sphere.position);
-  parent_obj.add(mesh);
-  
-  scene.add(parent_obj);
-      
   const animate=()=>{
       requestAnimationFrame(animate);
       parent_obj.rotation.y += 0.0035;
@@ -176,11 +49,138 @@ const Main = () => {
       
       renderer.render(scene, camera);
   };
-    
-  useEffect(() => {
-      
+  const init=()=>{
     /*three애니메이션*/
-    mount.current.appendChild(renderer.domElement);
+    scene.background = new THREE.Color( 0xffffff );
+    camera.position.z = 5;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+        
+    //var geometry = new THREE.SphereGeometry(9, 14, 10, 0, 6.283, 0.9, 1.3);
+    
+    scene.add(sphere);
+
+    // squares1
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img1),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(18,9,0);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+
+    // squares2
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img2),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(18,-9,15);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+
+    // squares3
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img3),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(4,8,24);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+
+    // squares4
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img4),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(15,-5,-13);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+
+    // squares5
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img5),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(8,12,-25);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+
+    // squares6
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img6),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(-18,9,0);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+    
+    // squares7
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img7),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(-18,-9,15);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+
+    // squares8
+    var square_geom = new THREE.PlaneGeometry(10, 6);
+    var square_material = new THREE.MeshBasicMaterial({
+      map: loader.load(img8),
+      side: THREE.DoubleSide,
+      transparent: true
+    });
+    var mesh = new THREE.Mesh(square_geom, square_material);
+    // position square
+    mesh.position.set(-15,-5,-20);
+    // rotate square to face target
+    mesh.lookAt(sphere.position);
+    parent_obj.add(mesh);
+    
+    scene.add(parent_obj);
+    setIsLoding(true);
+  }
+  useEffect(() => {
+    init();
+    //mount.current.appendChild(renderer.domElement);
+    if(isLoding){
+      document.getElementById("sphere").appendChild(renderer.domElement);
+    }
+    
     animate();
 
     //var ment_1 = ment1.current.innerText;
@@ -276,13 +276,6 @@ const Main = () => {
 
     t2
     .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=1");
-    
-    let contentScene = new ScrollMagic.Scene({
-        triggerElement: '#content',
-        triggerHook: 0.32,
-        duration: "600%"
-    })
-    contentScene.setPin(".trigger0").setTween(t2).addTo(controller);
 
     window.addEventListener('resize', onResize);
 
@@ -291,7 +284,8 @@ const Main = () => {
       // remove resize listener
       window.removeEventListener('resize', onResize);
     }
-  }, []);
+  }, [isLoding]);
+
   const onWheel=(e)=> {
     cancelAnimationFrame(animate);
     update(e.deltaY);
@@ -307,56 +301,46 @@ const Main = () => {
 
   }
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(2),
-        width: '45ch',
-      },
-    },
-    button: {
-      margin: theme.spacing(2),
-      width: '15ch',
-      height: '7ch',
-    },
-  }));
-  const classes = useStyles();
-  return (
-    <div className="main">
-      <div id="pinMaster">
-        <div id="pinContainer">
-          <div className="wrapper" id="js-wrapper">
-            <div className="cube" onWheel={onWheel} ref={mount}>
-              <section className="section">
-                <span className="logo">Ware.gg</span>
-                <span className="ment" id="ment0">Scroll -></span>
-                <span className="ment" id="ment1" ref={ment1}>나만의 암기법을 공유하세요!</span>
-                <span className="ment" id="ment2">나만의 학습세트를 만들어보세요!</span>
-                <span className="ment" id="ment3">외우려고 노력하지 않아도 암기를 도와드립니다!</span>
-              </section>
+  const [name,setName] = useState('');
+  const [email,setEmail] = useState('');
+  const MainstartBtn=(data)=>{
+    console.log(data);
+    props.startBtn(data);
+  }
+
+  if(isLoding){
+    return (
+      <div className="main">
+        <div id="pinMaster">
+          <div id="pinContainer">
+            <div className="wrapper" id="js-wrapper">
+              <div className="cube" id="sphere" onWheel={onWheel}>
+                <section className="section">
+                  <span className="logo">Ware.gg</span>
+                  <span className="ment" id="ment0">Scroll -></span>
+                  <span className="ment" id="ment1" ref={ment1}>나만의 암기법을 공유하세요!</span>
+                  <span className="ment" id="ment2">나만의 학습세트를 만들어보세요!</span>
+                  <span className="ment" id="ment3">외우려고 노력하지 않아도 암기를 도와드립니다!</span>
+                </section>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="Container">
-          <div className="FloatContainer"></div>
-          <div className="FloatForm">
-            <span className="Formment">지금 바로 회원가입 하세요!</span>
-            <span className="Formment">Ware.gg를 사용하는 학생의 90%가 높은 점수를 받았다고 합니다.</span>
-            <form className={classes.root} noValidate autoComplete="off">
-              <TextField id="standard-basic" label="이메일" variant="outlined"/>
-              <TextField id="standard-basic" label="전화번호" variant="outlined"/>
-              <Button variant="contained" color="primary" className={classes.button}>시작하기</Button>
-            </form>
+          <div className="Container">
+            <div className="FloatContainer">
+              <div className="floatitem">gd</div>->
+              <div className="floatitem">gd</div>->
+              <div className="floatitem">gd</div>
+            </div>
+            <FloatForm MainstartBtn={MainstartBtn} />
           </div>
         </div>
       </div>
-      <div id="content">
-        <div className="trigger0"></div>
-      </div>
-    </div>
-  );
+    );
+  }else{
+    return(
+      <div>로딩중...</div>
+    )
+  }
 };
 
-
-  
-  export default Main;
+export default Main;

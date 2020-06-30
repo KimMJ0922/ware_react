@@ -1,13 +1,31 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import './SignUp.css';
-const Signup=()=>{
+const Signup=(props)=>{
     const [userInfo, setUserInfo] = useState({
         email : '',
         name : '',
         password : '',
         birth : ''
     })
+    useEffect(()=>{
+        if(props.sname!=='' && props.semail!==''){
+            setUserInfo({
+                email : props.semail,
+                name : props.sname,
+                password : '',
+                birth : ''
+            })
+            setCheck({
+                email : true,
+                password : false,
+                name : true,
+                birth : false
+            });
+        }
+    },[props.sname,props.semail])
+    
+
     const [eff, setEff] = useState({
         emailEff : '이메일',
         passEff : '비밀번호',
@@ -287,7 +305,7 @@ const Signup=()=>{
             <form onSubmit={formSubmit}>
                 <div className="signUp_label_box">
                     <label for="email" className="signup_label">{eff.emailEff}</label><br/>
-                    <input type="text" className="signup_input" id="email" name="email" onChange={updateValue} placeholder="email@domain.com"/>
+                    <input value={userInfo.email} type="text" className="signup_input" id="email" name="email" onChange={updateValue} placeholder="email@domain.com"/>
                 </div>
                 <div className="signUp_label_box">
                     <label for="password" className="signup_label">{eff.passEff}</label><br/>
@@ -295,7 +313,7 @@ const Signup=()=>{
                 </div>
                 <div className="signUp_label_box">
                     <label for="name" className="signup_label">{eff.nameEff}</label><br/>
-                    <input type="text" className="signup_input" id="name" name="name" onChange={updateValue} placeholder="이름1234"/>
+                    <input value={userInfo.name} type="text" className="signup_input" id="name" name="name" onChange={updateValue} placeholder="이름1234"/>
                 </div>
                 <div className="signUp_label_box">
                     <label for="birth" className="signup_label">{eff.birthEff}</label><br/>
