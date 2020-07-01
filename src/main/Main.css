@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
-html::-webkit-scrollbar {
-  /*display: none;*/
-}
+/* html::-webkit-scrollbar {
+  display: none;
+} */
 
 .cube{
   position: relative;
@@ -144,13 +144,6 @@ footer {
   justify-content: center;
   font-size: 50pt;
   font-weight: bold;
-}
-
-.trigger0{
-  width: 50vh;
-  height: 35vh;
-  background-image: url(../image/1.JPG);
-  background-repeat: no-repeat;
 }
 
 .introimg{
