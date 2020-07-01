@@ -284,10 +284,11 @@
     }
     .searchMoreBtn{
         border: 0;
-        height: 100%;
+        height: 70px;
         color: #fff;
         background-color: #232f46;
         width: 100%;
+        border-radius: 16px;
     }
     .searchMoreForm{
         text-align: center;

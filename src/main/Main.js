@@ -8,7 +8,7 @@ import img2 from '../image/cloude.png';
 import img3 from '../image/firebase.png';
 import img4 from '../image/goolge.png';
 import img5 from '../image/Iot.png';
-import img6 from '../image/it.png';
+import img6 from '../image/mysql.png';
 import img7 from '../image/oracle.png';
 import img8 from '../image/qnet.png';
 
