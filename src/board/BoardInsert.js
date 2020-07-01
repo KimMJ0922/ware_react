@@ -242,7 +242,7 @@ const BoardInsert = () => {
                 point
             }
         ).then((res)=>{
-            history.replace("/home/board?page=1");
+            //history.replace("/home/board?page=1");
         }).catch((error)=>{
             console.log("error"+error);
         });

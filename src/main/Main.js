@@ -13,6 +13,8 @@ import img7 from '../image/oracle.png';
 import img8 from '../image/qnet.png';
 
 import img9 from '../image/9.png';
+import img10 from '../image/10.png';
+import img11 from '../image/11.png';
 
 import './Main.css';
 
