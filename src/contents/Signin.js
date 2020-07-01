@@ -187,7 +187,7 @@ const Signin=()=>{
                 <div className="login_top">Login</div>
                 <input type="text" className="login_input margin_b_30" name="email" onChange={changeLoginInfo} value={loginInfo.email} placeholder='이메일'/><br/>
                 <input type="password" className="login_input" name="password" onChange={changeLoginInfo} placeholder="비밀번호"/><br/>
-                <p className="login_sup_sch_box"><Link to="signup"><span className="text_left">회원가입 </span></Link><Link to="forgotten"><span>비밀번호 찾기</span></Link><br/></p>
+                <p className="login_sup_sch_box"><Link to="forgotten"><span>비밀번호 찾기</span></Link><br/></p>
                 <p className="login_check_box"> <span>자동로그인</span>  <input type="checkbox" name="autoLogin" onChange={changeLoginOption}/></p>
                 <p className="login_check_box"><span>아이디 저장</span> <input type="checkbox" name="saveEmail" onChange={changeLoginOption} checked={loginOption.saveEmail} /></p>
                 
