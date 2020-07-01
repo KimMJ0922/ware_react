@@ -296,7 +296,16 @@ const Subjective = () => {
                                 if(i === random){
                                     return (
                                         <>
-                                            <p className="sbjc_mun_font">{item.question}</p>
+                               
+                                                {
+                            item.question.length < 10 ? <p className="sbjc_mun_font f9">{item.question}</p> :
+                            item.question.length >= 150 ? <p className="sbjc_mun_font f150">{item.question}</p> : 
+                            item.question.length >= 50 ? <p className="sbjc_mun_font f50">{item.question}</p> :
+                            item.question.length >= 25 ? <p className="sbjc_mun_font f25">{item.question}</p> :
+                            item.question.length >= 10 ? <p className="sbjc_mun_font f10">{item.question}</p> : 
+                                                        <p className="sbjc_mun_font f9">{item.question}</p>
+                          }
+                                            
                                             <p className="sbjc_mun_img"><img src={item.imgSrc} alt=""/></p>
                                             <input type="text" onChange={textChange} onKeyPress={keyEnter} value={inputText} autoFocus="true"/><button type="button" onClick={btnClick}><CheckIcon/></button>
                                         </>

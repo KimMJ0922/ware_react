@@ -83,6 +83,7 @@
         margin-left: 50px;
         font-size: 1.2rem;
         margin-top: 50px;
+        background:#f9f9f9;
     }
 
     .sbjc_content>button{
@@ -208,6 +209,7 @@
         margin-left: 50px;
         font-size: 1rem;
         margin-top: 50px;
+        background:#f9f9f9;
     }
 
     .sbjc_content>button{
@@ -265,12 +267,12 @@
 
     .sbjc_menu_box{
         width: 100%;
+        height: auto;
     }
 
     .sbjc_mun_font{
         height: 30px;
         width: 100%;
-        font-size: 1.5rem;
     }
     .sbjc_mun_img{
         width: 150px;
@@ -315,7 +317,7 @@
 
     .sbjc_content_box{
         width: unset;
-        height: 400px;
+        height: auto;
     }
 
     .sbjc_content{
@@ -338,7 +340,8 @@
         border-bottom: 1px solid gray;
         margin-left: 50px;
         font-size: 1rem;
-        margin-top: 30px;
+        margin-top: 20px;
+        background:#f9f9f9;
     }
 
     .sbjc_content>button{

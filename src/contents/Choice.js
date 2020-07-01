@@ -237,7 +237,14 @@ const Choice = () => {
                             <>
                             <Grid item xs={12} md={8}>
                                 <div className="ch_mun_box">
-                                <p className="ch_mun_qus_box">{item.question}</p>
+                                {
+                            item.question.length < 10 ? <p className="f9"><span>{item.question}</span></p> :
+                            item.question.length >= 150 ? <p className="f150"><span>{item.question}</span></p> : 
+                            item.question.length >= 50 ? <p className="f50"><span>{item.question}</span></p> :
+                            item.question.length >= 25 ? <p className="f25"><span>{item.question}</span></p> :
+                            item.question.length >= 10 ? <p className="f10"><span>{item.question}</span></p> : 
+                                                        <p className="f9"><span>{item.question}</span></p>
+                          }
                                 <p className="ch_mun_img_box"><img src={item.imgSrc} alt=""/></p>
                                 {
                                     choiceList.map((item,i) => {

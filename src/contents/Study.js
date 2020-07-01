@@ -316,15 +316,40 @@ const Study=({location})=>{
                       {/* 이미지가 있으면 화면에 출력 */}
                       {/* cardState가 false면 문제를 보여주고, cardState가 true면 답을 보여준다. */}
                       {/* 길이 20자 이상 */}
-                      <p style={{fontSize:'0.9rem'}}>
-                       <span>
                       {
-                        
-                        cardState === false ? item.question : item.answer
+
+                      }
+                 
+                       
+                         {/* cardState === false && item.question.length >=? item.question : item.answer */}
+                      {
+                        cardState === false ?
+                        <>
+                          {
+                            item.question.length < 10 ? <p className="f9"><span>{item.question}</span></p> :
+                            item.question.length >= 150 ? <p className="f150"><span>{item.question}</span></p> : 
+                            item.question.length >= 50 ? <p className="f50"><span>{item.question}</span></p> :
+                            item.question.length >= 25 ? <p className="f25"><span>{item.question}</span></p> :
+                            item.question.length >= 10 ? <p className="f10"><span>{item.question}</span></p> : 
+                                                        <p className="f9"><span>{item.question}</span></p>
+                          }
+                        </>
+
+                        :
+
+                        <>
+                          {
+                                item.answer.length < 10 ? <p className="f9"><span>{item.answer}</span></p> :
+                                item.answer.length >= 150 ? <p className="f150"><span>{item.answer}</span></p> : 
+                                item.answer.length >= 50 ? <p className="f50"><span>{item.answer}</span></p> :
+                                item.answer.length >= 25 ? <p className="f25"><span>{item.answer}</span></p> :
+                                item.answer.length >= 10 ? <p className="f10"><span>{item.answer}</span></p> : 
+                                                            <p className="f9"><span>{item.answer}</span></p>
+                          }
+                        </>
                        
                       }
-                     </span>
-                      </p>
+                     
                      
                       {
                         item.imgSrc !== "" && cardState === false && <img src={item.imgSrc} className="std_content_img" alt=""/>

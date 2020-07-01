@@ -415,7 +415,15 @@ const Test = (props) => {
                                 <>
                                 <Paper className="test_ch_box">
                                     <div key={i}>                                
-                                        <p className="test_ch_title_font">{item.question}</p>
+                                     
+                                        {
+                            item.question.length < 10 ? <p className="test_ch_title_font f9">{item.question}</p> :
+                            item.question.length >= 150 ? <p className="test_ch_title_font f150">{item.question}</p> : 
+                            item.question.length >= 50 ? <p className="test_ch_title_font f50">{item.question}</p> :
+                            item.question.length >= 25 ? <p className="test_ch_title_font f25">{item.question}</p> :
+                            item.question.length >= 10 ? <p className="test_ch_title_font f10">{item.question}</p> : 
+                                                        <p className="test_ch_title_font f9">{item.question}</p>
+                          }
                                     </div>
                                     <br/>
                                     {/* 객관식 문항 */}
@@ -455,7 +463,14 @@ const Test = (props) => {
                             return(
                                 <>         
                                         
-                                        <p>{item.question}</p>
+                                        {
+                            item.question.length < 10 ? <p className="f9"><span>{item.question}</span></p> :
+                            item.question.length >= 150 ? <p className="f150"><span>{item.question}</span></p> : 
+                            item.question.length >= 50 ? <p className="f50"><span>{item.question}</span></p> :
+                            item.question.length >= 25 ? <p className="f25"><span>{item.question}</span></p> :
+                            item.question.length >= 10 ? <p className="f10"><span>{item.question}</span></p> : 
+                                                        <p className="f9"><span>{item.question}</span></p>
+                          }
                                         <p><img src={item.imgSrc} alt=""/></p>                                                                 
                                     <input type="text" key={i} name={item.question_no} onChange={subjectiveTextChange} placeholder='답을 입력하시오'/>
                                   

@@ -123,7 +123,6 @@
     .std_content>p>span{
         display: table-cell;
         vertical-align: bottom;
-
     }
 
     .std_content_img{
@@ -199,6 +198,23 @@
          cursor: context-menu;
     }
 
+    /* 폰트사이즈 */
+    .f9{
+        font-size: 2rem;
+    }
+    .f50{
+        font-size: 0.8rem;
+    }
+    .f25{
+        font-size: 1rem;
+    }
+    .f10{
+        font-size: 1.2rem;
+    }
+    .f150{
+        font-size: 0.8rem;
+    }
+
 }
 
 /* 학습하기 웹 최소 사이즈  */
@@ -265,9 +281,6 @@
         color:#294174;
     }
 
-
-    
-
     /* 문제푸는 화면 */
 
     .std_content_box{
@@ -305,12 +318,10 @@
         border:none;
         border-radius: 5px;
         width: 450px;
-        height: 300px;
+        height: 400px;
         text-align: center;
         margin-left: 18px;
         color:black;
-        font-size: 1.6rem;
-        padding-top: 100px;
         box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 2px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
     }
 
@@ -389,6 +400,36 @@
         cursor: context-menu;
         font-size: 0.4rem;
    }
+
+   .std_content>p{
+    width: 380px;
+    margin-left: 30px;
+    text-align: center;
+    line-height: 1.5;
+    height: 200px;
+    display: table;
+    }
+
+    .std_content>p>span{
+        display: table-cell;
+        vertical-align: bottom;
+    }
+
+    .f9{
+        font-size: 2rem;
+    }
+    .f50{
+        font-size: 0.8rem;
+    }
+    .f25{
+        font-size: 1rem;
+    }
+    .f10{
+        font-size: 1.2rem;
+    }
+    .f150{
+        font-size: 0.6rem;
+    }
 }
 
 @media(max-width:375px){
@@ -462,8 +503,10 @@
     /* 문제푸는 화면 */
 
     .std_content_box{
-        width: 375px;
-        height: 300px;
+        width:380px;
+        height: auto;
+        min-height: 280px;
+        max-height: 100%;
         position: relative;
 
     }
@@ -480,12 +523,12 @@
         border:none;
         border-radius: 5px;
         width: 330px;
-        height: 200px;
+        min-height: 300px;
         text-align: center;
         margin-left: 22px;
         color:black;
         font-size: 1.2rem;
-        padding-top: 100px;
+
         box-shadow: 1px 1px 1px -1px rgba(0,0,0,0.2), -1px 1px 1px 2px rgba(0,0,0,0.14), 1px 1px 1px 1px rgba(0,0,0,0.12);
         transition:all 1.5s;
     }
@@ -502,6 +545,8 @@
 
     .std_content_cnt{
         font-size: 0.8rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
         float: right;
     }
 
@@ -564,4 +609,35 @@
         cursor: context-menu;
         font-size: 0.4rem;
    }
+
+   .std_content>p{
+    width: 250px;
+    margin-left: 30px;
+    text-align: center;
+    line-height: 1.5;
+    height: 150px;
+    max-height: 100%;
+    display: table;
+    }
+
+    .std_content>p>span{
+        display: table-cell;
+        vertical-align: bottom;
+    }
+
+    .f9{
+        font-size: 2rem;
+    }
+    .f50{
+        font-size: 0.8rem;
+    }
+    .f25{
+        font-size: 1rem;
+    }
+    .f10{
+        font-size: 1.2rem;
+    }
+    .f150{
+        font-size: 1px;
+    }
 }
