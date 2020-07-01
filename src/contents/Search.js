@@ -171,7 +171,7 @@ const Search=()=>{
                 </Grid>
                 {
                     searchList.map((item, idx) => {
-                        if(idx < start-1){
+                        if(idx < start){
                             return (
                                 <>
                                     <Grid xs={12} sm={6} md={4} lg={4} xl={4} className='searchSelectList' onClick={(e) => goStudy(item.no, item.open_scopre, 'cardset')}>
@@ -212,7 +212,7 @@ const Search=()=>{
                     })
                 }
                 {
-                    searchList.length >= start && <button type="button" onClick={moreBtnClick}>더보기</button>
+                    searchList.length > start && <button type="button" onClick={moreBtnClick}>더보기</button>
                 }
                 
             </Grid>

@@ -2,11 +2,12 @@ import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import './MenuDtail.css';
-import { Paper } from '@material-ui/core';
+import { Paper,Radio } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import FolderDetail from './FolderDetail';
+
 // 아이콘
 import FolderIcon from '@material-ui/icons/FolderOpenSharp';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -14,6 +15,7 @@ import AddIcon from '@material-ui/icons/AddCircle';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import CreateIcon from '@material-ui/icons/Create';
 import StorefrontIcon from '@material-ui/icons/Storefront';
+
 
 const Folder=()=>{
     const [open, setOpen] = useState(false);
@@ -334,6 +336,7 @@ const Folder=()=>{
 
         setList([...list]);
     }
+    
     return(
         <div className="fdr_body">
              <Grid container> 
@@ -371,13 +374,13 @@ const Folder=()=>{
                         folder.length !== 0 && 
                         <>  
                         <div className="fdr_sort_box">
-                            <input type="radio" name="sort" value="최신순" onClick={sortRadioClick} 
+                            <Radio name="sort" value="최신순" onClick={sortRadioClick} 
                                 checked={sort === '최신순' ? 'checked' : ''}/>최신순
-                            <input type="radio" name="sort" value="오래된순" onClick={sortRadioClick} 
+                            <Radio name="sort" value="오래된순" onClick={sortRadioClick} 
                                 checked={sort === '오래된순' ? 'checked' : ''}/>오래된순
-                            <input type="radio" name="sort" value="폴더명 오름차순" onClick={sortRadioClick}
+                            <Radio name="sort" value="폴더명 오름차순" onClick={sortRadioClick}
                                 checked={sort === '폴더명 오름차순' ? 'checked' : ''}/>폴더명 오름차순
-                            <input type="radio" name="sort" value="폴더명 내림차순" onClick={sortRadioClick}
+                            <Radio name="sort" value="폴더명 내림차순" onClick={sortRadioClick}
                                 checked={sort === '폴더명 내림차순' ? 'checked' : ''}/>폴더명 내림차순
                                 <button type="button" onClick={handleOpen} className="fdr_add_btn">폴더 만들기</button>
                         </div>
@@ -493,7 +496,7 @@ const Folder=()=>{
                     }}>
                 <MenuItem onClick={folderModify}><CreateIcon/>수정</MenuItem>
                 <MenuItem onClick={deleteFolder}><DeleteIcon/>삭제</MenuItem>
-            </Menu>        
+            </Menu>
         </div>
     )
 }

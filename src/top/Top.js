@@ -6,7 +6,7 @@ import { Grid, Hidden } from '@material-ui/core';
 import { Search,Create,Menu, Face} from '@material-ui/icons';
 import Signin from '../contents/Signin';
 import Signup from '../contents/Signup';
-
+import ChangePassword from '../contents/ChangePassword';
 // 프로필 예시 사진
 import img2 from './iu.jpg';
 
@@ -17,7 +17,7 @@ const Top = (props) =>{
         profile : window.sessionStorage.getItem('profile')
     });
     const [cnt, setCnt] = useState(0);
-
+    
 
     const logout = () => {
         //회원 탈퇴에 쓸 예정
@@ -42,6 +42,7 @@ const Top = (props) =>{
     
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
+    const [open3, setOpen3] = React.useState(false);
     const LoginModalOpen = () => {
         setOpen(true);
       };
@@ -58,6 +59,13 @@ const Top = (props) =>{
         setOpen2(false);
       };
 
+      const PassChangeOpen = () => {
+        setOpen3(true);
+      };
+    
+      const PassChangeClose = () => {
+        setOpen3(false);
+      };
       const mobileDisplayOn=()=>{
         if(props.mobileDisplay.display==='none'){
             props.setMobileDisplay({display:'block'})
@@ -114,7 +122,7 @@ const Top = (props) =>{
             >
              
                  <div className="Login_modal_div">
-                  <Signin />
+                  <Signin open1={setOpen} open3={setOpen3}/>
                  </div>      
             </Modal> 
 
@@ -125,8 +133,20 @@ const Top = (props) =>{
             aria-describedby="simple-modal-description"
             >
                  <div className="Login_modal_div">
-                  <Signup sname={props.sname} semail={props.semail}/>
+                  <Signup sname={props.sname} semail={props.semail} open2={setOpen2}/>
                  </div>      
+            </Modal>  
+            
+
+            <Modal
+            open={open3}
+            onClose={PassChangeClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            >
+                <div className="Login_modal_div">
+                    <ChangePassword sname={props.sname} semail={props.semail} open2={setOpen2}/>
+                </div>      
             </Modal>  
             </div>
         )
@@ -174,7 +194,7 @@ const Top = (props) =>{
                                                 || window.sessionStorage.getItem('provider') === 'google' && 
                                                     <img src="/profile/google.png" alt="" style={{width:'20px', height:'20px'}}/>
                                                 ||  window.sessionStorage.getItem('provider') === 'default' && 
-                                                    <img src="/profile/ware.png" alt="" style={{width:'20px', height:'20px'}}/>
+                                                    <img src="/profile/ware_top.png" alt="" style={{width:'20px', height:'20px'}}/>
                                             }
                                             {props.name}
                                         </span>

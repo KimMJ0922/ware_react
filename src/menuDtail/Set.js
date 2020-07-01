@@ -7,12 +7,15 @@ import {useHistory} from 'react-router'
 import ProfileView from './ProfileView';
 import { Link } from 'react-router-dom';
 import './Set.css';
+import { Modal } from '@material-ui/core';
 
 const Set=()=>{
   var history = useHistory();
   const [cardSet, setCardSet] = useState([]);
   const [totalCnt, setTotalCnt] = useState(0);
   const [start, setStart] = useState(0);
+  const [no, setNo] = useState(0);
+  const [pass, setPass] = useState('');
   useEffect(()=>{
     const getList = async() => {
       let url = "http://localhost:9000/getcardsetlist"
@@ -59,11 +62,8 @@ const Set=()=>{
     history.push("/create");
   }
   
-  const checkPass = (e) => {
-    e.preventDefault();
-    let pass = window.prompt("비밀번호를 입력하세요");
+  const checkPass = () => {
     let url = "http://localhost:9000/cardsetpasscheck";
-    let no = e.target.id
     axios.post(url,{
       no,
       open_password : pass
@@ -85,9 +85,7 @@ const Set=()=>{
   //페이지 이동 할 때 window.location.href, replace로 가면 새로고침 되어
   //useState값이 초기화 됨
   //그러기 때문에 router에 있는 useHistory로 이동해야 유지됨.
-  const linkClick = (e) => {
-    e.preventDefault();
-    let id = e.target.id;
+  const linkClick = (id) => {
     setTimeout(() => {
       window.sessionStorage.setItem('cardset_no',id);
       window.sessionStorage.setItem('study','cardset');
@@ -111,6 +109,16 @@ const Set=()=>{
       console.log(err);
     })
   }
+
+  const [open4,setOpen5] = React.useState(false);
+  const Open222 = (no) => {
+      setNo(no);
+      setOpen5(true);
+    };
+  
+    const Close222 = () => {
+      setOpen5(false);
+    };
 
   //더보기 버튼
   const moreCardSetList = () => {
@@ -141,6 +149,11 @@ const Set=()=>{
     }).catch((err) => {
       console.log(err);
     });
+  }
+
+  //비밀번호 입력시
+  const changePassword = (e) => {
+    setPass(e.target.value);
   }
   var date = "";
   var count = 0;
@@ -194,10 +207,10 @@ const Set=()=>{
                         {
                           text
                         }
-                        <Link to="" onClick={item.open_scope === "public" ? linkClick : item.open_scope === "private" ? linkClick : checkPass}>                       
+                        <div onClick={(e) => item.open_scope === "public" ? linkClick(item.no) : item.open_scope === "private" ? linkClick(item.no) : Open222(item.no)}>                       
                           <div className="sq_on_cnt" style={{backgroundColor:'white', 
                               boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>
-                            <span className="sq_on_txt_cnt" id={item.no}>{item.cnt} 단어</span>
+                            <span className="sq_on_txt_cnt" id={item.no}>{item.cnt} 단어</span> 
 
                             <div className="sq_on_title_box" id={item.no} style={{backgroundColor:'white'}}>
                             <sapn className="sq_on_txt2" id={item.no}>{item.title}</sapn>
@@ -215,7 +228,7 @@ const Set=()=>{
                             <sapn className="sq_on_txt1" id={item.no}>{item.comment}</sapn>
                             </div>         
                           </div>
-                        </Link>
+                        </div>
                       </div>
                     )
                   })
@@ -225,6 +238,19 @@ const Set=()=>{
             </Paper>
           </Grid>
         </Grid> 
+
+        <Modal
+          open={open4}
+          onClose={Close222}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          >
+                <div className="set_pass_box">
+                  <p>세트 접근 권한</p>
+                  <input type="password" name="pass" placeholder="비밀번호를 입력하세요" onChange={changePassword}/><br/>
+                  <button type="button" onClick={checkPass}>전송</button>
+                </div>      
+          </Modal>
       </div>
   )
 }
