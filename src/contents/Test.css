@@ -38,6 +38,7 @@
         border:none;
         border-bottom: 1px solid gray;
         width:50px;
+        background: #f9f9f9;
     }
 
     .test_sbjt_cnt>input{
@@ -45,6 +46,7 @@
         border:none;
         border-bottom: 1px solid gray;
         width:50px;
+        background: #f9f9f9;
     }
 
     .test_time_cnt>input{
@@ -52,6 +54,7 @@
         text-align: center;
         width:30px;
         border-bottom: 1px solid gray;
+        background: #f9f9f9;
     }
 
     .test_select_box>p>.MuiSvgIcon-root{
@@ -226,6 +229,7 @@
         border:none;
         border-bottom: 1px solid gray;
         width:50px;
+        background: #f9f9f9;
     }
 
     .test_sbjt_cnt>input{
@@ -233,6 +237,7 @@
         border:none;
         border-bottom: 1px solid gray;
         width:50px;
+        background: #f9f9f9;
     }
 
     .test_time_cnt>input{
@@ -240,6 +245,7 @@
         text-align: center;
         width:30px;
         border-bottom: 1px solid gray;
+        background: #f9f9f9;
     }
 
     .test_select_box>p>.MuiSvgIcon-root{
@@ -421,6 +427,7 @@
         border:none;
         border-bottom: 1px solid gray;
         width:50px;
+        background: #f9f9f9;
     }
 
     .test_sbjt_cnt>input{
@@ -428,6 +435,7 @@
         border:none;
         border-bottom: 1px solid gray;
         width:50px;
+        background: #f9f9f9;
     }
 
     .test_time_cnt>input{
@@ -435,6 +443,7 @@
         text-align: center;
         width:30px;
         border-bottom: 1px solid gray;
+        background: #f9f9f9;
     }
 
     .test_select_box>p>.MuiSvgIcon-root{
@@ -457,7 +466,7 @@
     /* 문제풀기 */
 
     .test_ch_title_font{
-        height: 40px;
+        height: 100%;
         font-size: 1.5rem;
         margin:0;
         padding:0;
@@ -470,7 +479,7 @@
     .test_ch_box{
         width:70%;
         margin-left: 20px;
-        height:250px;
+        height: auto;
         margin-bottom: 15px;
     }
 
