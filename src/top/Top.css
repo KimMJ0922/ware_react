@@ -203,7 +203,7 @@
       
     }
     .topMenu> .topMenuList>span{
-        color: #2d3639;
+        color: #fff;
         display: inline-block;
         /* padding: .625rem .75rem; */
         font-weight: 600;
@@ -297,7 +297,7 @@
         text-decoration: none;
     }  
     .topMenu> .topMenuList>span{
-        color: #2d3639;
+        color: #fff;
         display: inline-block;
         /* padding: .625rem .75rem; */
         font-weight: 600;
