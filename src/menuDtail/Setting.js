@@ -263,7 +263,6 @@ const Setting = (props) => {
     //회원탈퇴
     const signOut = () => {
         let text = outText;
-
         if(text === "회원탈퇴"){
             let check = window.confirm("회원탈퇴를 하시겠습니까?");
             if(check){
@@ -271,11 +270,12 @@ const Setting = (props) => {
                 axios.post(url,{
                     no : window.sessionStorage.getItem('no')
                 }).then((res) => {
-                   window.sessionStorage.clear();
-                   rou.replace('/');
+                    window.sessionStorage.clear();
+                    rou.replace('/');
                 }).catch((err) => {
 
                 });
+                
             }else{
                 return false;
             }

@@ -1,11 +1,12 @@
 import React,{useState,useEffect} from 'react';
+import {useHistory} from 'react-router'
 import axios from 'axios';
 import {NavLink} from 'react-router-dom';
 import {Home, Dashboard, Storefront, Settings, AllInbox, Folder,NoEncryption} from '@material-ui/icons'
 import './menu.css';
 import { Grid, Hidden } from '@material-ui/core';
 const Menu=(props)=>{
-    
+    let history = useHistory();
     const[setCnt, setSetCnt] = useState(0);
     useEffect(() => {
         const getSetCount = async() => {
@@ -19,19 +20,15 @@ const Menu=(props)=>{
         }
         getSetCount();
     },[])
-    // const menuClick = () => {
-    //     if(props.mobileDisplay === 'none'){
-    //         props.setMobileDisplay({display : 'block'});
-    //         props.setMobileDisplayMenu({display : 'none'});
-    //     }else {
-    //         // if(props.mobileDisplay === 'block')
-    //         props.setMobileDisplay({display : 'none'});
-    //         props.setMobileDisplayMenu({display : 'block'});
-    //     }
-        
-    // }
+
     const menuClickAction=()=>{
         props.menuClick();
+    }
+
+    const logout = () => {
+        window.sessionStorage.clear();
+        localStorage.removeItem('autoLogin');
+        history.replace('/');
     }
     return (
             <div className='mainMenuList' onClick={menuClickAction}>
@@ -84,14 +81,14 @@ const Menu=(props)=>{
                         </span>
                     </NavLink>
                 </div>
-                <Hidden only={'md','lg','xl'}>
+                <Hidden only={['md','lg','xl']}>
                     <div>
-                        <NavLink exact to="/home/folder" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                        <div onClick={logout} className='mainMenuListItem' activeClassName='mainMenuListActive'>
                             <span>
                                 <NoEncryption className='MenuMainIcon'/>
                                 <div>로그아웃</div>
                             </span>
-                        </NavLink>
+                        </div>
                     </div>
                  </Hidden>
             </div>
