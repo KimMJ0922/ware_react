@@ -3,14 +3,14 @@ import { TimelineMax, Linear, TimelineLite } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
 
-import img1 from '../image/java.png';
-import img2 from '../image/cloude.png';
-import img3 from '../image/firebase.png';
-import img4 from '../image/goolge.png';
-import img5 from '../image/Iot.png';
-import img6 from '../image/it.png';
-import img7 from '../image/oracle.png';
-import img8 from '../image/qnet.png';
+import img1 from '../image/1.jpg';
+import img2 from '../image/2.jpg';
+import img3 from '../image/3.jpg';
+import img4 from '../image/4.jpg';
+import img5 from '../image/5.jpg';
+import img6 from '../image/6.png';
+import img7 from '../image/7.jpg';
+import img8 from '../image/8.jpg';
 
 import img9 from '../image/9.png';
 import img10 from '../image/10.png';
@@ -297,11 +297,6 @@ const Main = (props) => {
     });
     sc.setPin("#pinMaster").setTween(tl).addTo(controller);
 
-    let t2 =  new TimelineLite();
-
-    t2
-    .fromTo(".trigger0", 1, {  }, { ease: Linear.easeOut },"+=1");
-
     window.addEventListener('resize', onResize);
 
     // clean up function
@@ -351,7 +346,7 @@ const Main = (props) => {
             <div className="FloatContainer">
               <div className="floatitem" id="floatitem1">
                 <img src={img9} className="introimg" alt=''></img>
-                <span>나만의 학습세트를 만들어 학습하세요!</span>
+                <br /><span>나만의 학습세트를 만들어 학습하세요!</span>
               </div>
               <div className="floatitem" id="floatitem2">
                 <img src={img10} className="introimg" alt=''></img>

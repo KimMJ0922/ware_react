@@ -96,7 +96,7 @@ const Top = (props) =>{
                 <Grid container spacing={0}>
                     <Grid item xs={3} md={2}>
                         <div className='topMenuFirst'>
-                            <Link exact to={userInfo.email === null ? "/" : "/home/default"} className=' topMenuListLogo' >Ware.gg</Link>
+                            <Link exact to={userInfo.email === null ? "/" : "/home/default"} className='topMenuListLogo' style={{"color":"black"}} >Ware.gg</Link>
                         </div>
                     </Grid>
                     <Grid item xs={4} md={8}>
