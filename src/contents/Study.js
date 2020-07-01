@@ -370,7 +370,7 @@ const Study=({location})=>{
               cardList.length >=4 && <button on type="button" onClick={Choice}><MouseIcon/>객관식</button>
             }
             <button type="button" onClick={Subjective}><KeyboardIcon/>주관식</button>
-            <button type="button"><TestIcon/>테스트</button>
+            <button type="button" onClick={goTest}><TestIcon/>테스트</button>
             {
               window.sessionStorage.getItem('study') === 'cardset' &&
               <>

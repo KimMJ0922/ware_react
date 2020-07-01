@@ -336,6 +336,7 @@ const Folder=()=>{
 
         setList([...list]);
     }
+    
     return(
         <div className="fdr_body">
              <Grid container> 
@@ -495,7 +496,7 @@ const Folder=()=>{
                     }}>
                 <MenuItem onClick={folderModify}><CreateIcon/>수정</MenuItem>
                 <MenuItem onClick={deleteFolder}><DeleteIcon/>삭제</MenuItem>
-            </Menu>        
+            </Menu>
         </div>
     )
 }

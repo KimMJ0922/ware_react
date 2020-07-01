@@ -4,6 +4,8 @@ import {useHistory} from 'react-router';
 import { Grid, Hidden } from '@material-ui/core';
 import {Add } from '@material-ui/icons';
 import './MenuDtail.css';
+import Modal from '@material-ui/core/Modal';
+
 const Diagram=()=>{
     let history = useHistory();
     const [row, setRows ]= useState([]);
@@ -42,23 +44,24 @@ const Diagram=()=>{
         console.log(cardset_no, open_scope, category);
         if(category === 'cardset'){
             if(open_scope === 'member'){
-                let pass = window.prompt("비밀번호를 입력하세요");
-                passCheck(cardset_no,pass);
+                Open222(cardset_no);
             }else{
                 window.sessionStorage.setItem('cardset_no',cardset_no);
                 window.sessionStorage.setItem('study','cardset');
                 setStudy();
+                history.push('/study');
             }
         }else{
             window.sessionStorage.setItem('cardset_no',cardset_no);
             window.sessionStorage.setItem('study','board');
             setStudy();
+            history.push('/study');
         }
 
-        history.push('/study');
+        
     }
 
-    const passCheck = (no,pass) => {
+    const passCheck = () => {
         let url = "http://localhost:9000/cardsetpasscheck";
         axios.post(url,{
             no,
@@ -89,6 +92,23 @@ const Diagram=()=>{
         }).catch((err) => {
             console.log(err);
         })
+    }
+
+    const [open4,setOpen5] = React.useState(false);
+    const [no,setNo] = useState(0);
+    const [pass, setPass] = useState('');
+    const Open222 = (no) => {
+      setNo(no);
+      setOpen5(true);
+    };
+  
+    const Close222 = () => {
+      setOpen5(false);
+    };
+
+    //비밀번호 입력시
+    const changePassword = (e) => {
+        setPass(e.target.value);
     }
     return(
         <>
@@ -151,6 +171,19 @@ const Diagram=()=>{
                     </Grid>
                     </Hidden>
             </Grid>
+
+            <Modal
+                open={open4}
+                onClose={Close222}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                >
+                        <div className="set_pass_box">
+                        <p>세트 접근 권한</p>
+                        <input type="password" name="pass" placeholder="비밀번호를 입력하세요" onChange={changePassword}/><br/>
+                        <button type="button" onClick={passCheck}>전송</button>
+                        </div>      
+            </Modal>
         </>
     )
 }
