@@ -81,7 +81,7 @@ const Menu=(props)=>{
                         </span>
                     </NavLink>
                 </div>
-                <Hidden only={'md','lg','xl'}>
+                <Hidden only={['md','lg','xl']}>
                     <div>
                         <div onClick={logout} className='mainMenuListItem' activeClassName='mainMenuListActive'>
                             <span>
