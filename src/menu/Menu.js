@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import {NavLink} from 'react-router-dom';
-import {Home, Dashboard, Storefront, Settings, AllInbox, Folder} from '@material-ui/icons'
+import {Home, Dashboard, Storefront, Settings, AllInbox, Folder,NoEncryption} from '@material-ui/icons'
 import './menu.css';
 import { Grid, Hidden } from '@material-ui/core';
 const Menu=(props)=>{
@@ -84,7 +84,18 @@ const Menu=(props)=>{
                         </span>
                     </NavLink>
                 </div>
+                <Hidden only={'md','lg','xl'}>
+                    <div>
+                        <NavLink exact to="/home/folder" className='mainMenuListItem' activeClassName='mainMenuListActive'>
+                            <span>
+                                <NoEncryption className='MenuMainIcon'/>
+                                <div>로그아웃</div>
+                            </span>
+                        </NavLink>
+                    </div>
+                 </Hidden>
             </div>
+            
             
     )
 }

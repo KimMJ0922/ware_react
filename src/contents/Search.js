@@ -130,7 +130,7 @@ const Search=()=>{
         window.sessionStorage.setItem('searchText',searchText);
     }
     return(
-        <div style={{width: '1100px',margin: '0 auto'}} >
+        <div className='searchViewBox'>
             <Grid container className='searchView'> 
                <Grid xs={12} md={12} className='searchViewForm' >
                     <p>
@@ -150,16 +150,12 @@ const Search=()=>{
                         <li className='searchViewRemoconLi'> 
                             <Radio value="만든이" name="division" onChange={selectChange} checked={division === '제목' ? '' : 'checked'}/><p>만든이</p>
                         </li>
-                    </ul><br/>
-                    <ul className='searchViewRemoconUl'>
                         <li className='searchViewRemoconLi'>
                             <Radio value="최신순" name="sort" onChange={selectChange} checked={sort === '최신순' ? 'checked' : ''}/><p>최신순</p>
                         </li>
                         <li className='searchViewRemoconLi'> 
                             <Radio value="오래된순" name="sort" onChange={selectChange} checked={sort === '오래된순' ? 'checked' : ''}/><p>오래된순</p>
                         </li>
-                    </ul><br/>
-                    <ul className='searchViewRemoconUl'>
                         <li className='searchViewRemoconLi'>
                             <Radio value="검색단어" name="include" onChange={selectChange} checked={include === '검색단어' ? 'checked' : ''}/><p>검색 단어</p>
                         </li>
@@ -212,7 +208,10 @@ const Search=()=>{
                     })
                 }
                 {
-                    searchList.length > start && <button type="button" onClick={moreBtnClick}>더보기</button>
+                    searchList.length >= start && 
+                        <Grid xs={12} sm={12} md={12}  className='searchMoreForm'>
+                        <button type="button" className='searchMoreBtn' onClick={moreBtnClick}>더보기</button>
+                        </Grid>
                 }
                 
             </Grid>

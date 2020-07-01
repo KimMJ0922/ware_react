@@ -207,6 +207,10 @@
 }
 /* search 웹 페이지 */
 @media(min-width: 551px){
+    .searchViewBox{
+        width: 1100px;
+        margin: 0 auto;
+    }
     .searchView{
         padding: 1rem;
         margin: 0 auto;
@@ -225,6 +229,12 @@
     .searchViewRemoconUl>.searchViewRemoconLi{
         text-align: left;
         list-style: none;
+    }
+    .searchViewRemoconLi:nth-child(3){
+        margin-top: 20px;
+    }
+    .searchViewRemoconLi:nth-child(5){
+        margin-top: 20px;
     }
     .searchViewRemoconUl>.searchViewRemoconLi>p{
         margin: 0;
@@ -272,14 +282,21 @@
         margin-bottom: 3rem;
         text-align: center;
     }
+    .searchMoreBtn{
+        border: 0;
+        height: 100%;
+        color: #fff;
+        background-color: #232f46;
+        width: 100%;
+    }
+    .searchMoreForm{
+        text-align: center;
+    }
 }
 /* search 웹 최소 페이지 */
 @media(max-width: 550px){
     .searchView{
         background-color:  #f3f3f3;
-    }
-    .searchViewForm {
-
     }
     .searchViewRemoconUl{
         padding: 0;
@@ -341,14 +358,32 @@
     .searchViewForm >p{
         text-align: center;
     }
+    .searchMoreBtn{
+        border: 0;
+        height: 100%;
+        color: #fff;
+        background-color: #232f46;
+        width: 100%;
+    }
+    .searchMoreForm{
+        height: 50px;
+    }
+    .searchViewRemoconLi:nth-child(2){
+        margin-right: 10px;
+        border-right: 1px solid #a8a8a8;
+    }
+    .searchViewRemoconLi:nth-child(4){
+        margin-right: 10px;
+        border-right: 1px solid #a8a8a8;
+    }
+    .searchViewRemoconLi:nth-last-child(1){
+        border-right: 1px solid #a8a8a8;
+    }
 }
 /* search 모바일 페이지 */
 @media(max-width: 375px){
     .searchView{
         background-color:  #f3f3f3;
-    }
-    .searchViewForm {
-
     }
     .searchViewRemoconUl{
         padding: 0;
@@ -406,4 +441,26 @@
         padding-left: 10px;
         padding-top: 0.5rem;
     }
+    .searchMoreBtn{
+        border: 0;
+        height: 100%;
+        color: #fff;
+        background-color: #232f46;
+        width: 100%;
+    }
+    .searchMoreForm{
+        height: 50px;
+    }
+    .searchViewRemoconLi:nth-child(2){
+        margin-right: 10px;
+        border-right: 1px solid #a8a8a8;
+    }
+    .searchViewRemoconLi:nth-child(4){
+        margin-right: 10px;
+        border-right: 1px solid #a8a8a8;
+    }
+    .searchViewRemoconLi:nth-last-child(1){
+        border-right: 1px solid #a8a8a8;
+    }
+    
 }
