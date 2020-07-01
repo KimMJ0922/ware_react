@@ -130,8 +130,8 @@ const Search=()=>{
         window.sessionStorage.setItem('searchText',searchText);
     }
     return(
-        <div>
-            <Grid className='searchView'> 
+        <div style={{width: '1100px',margin: '0 auto'}} >
+            <Grid container className='searchView'> 
                <Grid xs={12} md={12} className='searchViewForm' >
                     <p>
                         <input type='text' className='searchBar' onChange={changeSearchText} value={searchText}/>
@@ -174,7 +174,7 @@ const Search=()=>{
                         if(idx < start-1){
                             return (
                                 <>
-                                    <Grid xs={12} sm={6} md={4}  className='searchSelectList' onClick={(e) => goStudy(item.no, item.open_scopre, 'cardset')}>
+                                    <Grid xs={12} sm={6} md={4} lg={4} xl={4} className='searchSelectList' onClick={(e) => goStudy(item.no, item.open_scopre, 'cardset')}>
                                         <div className='mycardList'>
                                             <div className='mycardSubject'>
                                                 {item.title}
