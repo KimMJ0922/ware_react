@@ -11,6 +11,7 @@ import ChangePassword from '../contents/ChangePassword';
 import img2 from './iu.jpg';
 
 const Top = (props) =>{
+    let history = useHistory();
     const [userInfo, setUserInfo] = useState({
         email : window.sessionStorage.getItem('email'),
         name : window.sessionStorage.getItem('name'),
@@ -20,24 +21,9 @@ const Top = (props) =>{
     
 
     const logout = () => {
-        //회원 탈퇴에 쓸 예정
-        // window.Kakao.API.request({
-        //     url: '/v1/user/unlink',
-        //     success: function(response) {
-        //         console.log(response);
-        //     },
-        //     fail: function(error) {
-        //         console.log(error);
-        //     },
-        // });
-
-        // window.Kakao.Auth.logout(() => {
-        //     console.log(window.Kakao.Auth.getAccessToken());
-        // });
-        
         window.sessionStorage.clear();
         localStorage.removeItem('autoLogin');
-        window.location.replace('/');
+        history.replace('/');
     }
     
     const [open, setOpen] = React.useState(false);
