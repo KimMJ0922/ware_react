@@ -4,9 +4,6 @@ import Menu  from '../menu/Menu'
 import './content.css'
 import {Grid, Hidden} from '@material-ui/core'
  const Home=(props)=>{
-     useEffect(()=>{
-        console.log('홈 : '+props.no);
-     },[props.no])
      
     const menuClick = () => {
         if(props.mobileDisplay === 'none'){
@@ -20,13 +17,6 @@ import {Grid, Hidden} from '@material-ui/core'
         
     }
    
-    useEffect(() => {
-        if(props.mobileDisplay.display === 'none'){
-            //props.setMobileDisplayMenu({display : 'block'});
-            //props.setMobileDisplayMenu({display:'block'})
-        }
-        
-    },[props.mobileDisplay])
     return(
         <Grid  spacing={0} className='mainView'>
             {/* 웹 */}

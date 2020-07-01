@@ -5,7 +5,7 @@ import {GoogleLogin} from'react-google-login';
 import axios from 'axios';
 import './Login.css';
 import Kakao from './img/kakao_login.png';
-const Signin=()=>{
+const Signin=(props)=>{
     const history = useHistory();
     const [loginInfo, setLoginInfo] = useState({
         email : '',
@@ -181,13 +181,22 @@ const Signin=()=>{
         });
     }
     
+    const passChangeOpen = () => {
+        props.open1(false);
+        props.open3(true);
+    }
     return(
         <div>
             <form onSubmit={login}>
                 <div className="login_top">Login</div>
                 <input type="text" className="login_input margin_b_30" name="email" onChange={changeLoginInfo} value={loginInfo.email} placeholder='이메일'/><br/>
                 <input type="password" className="login_input" name="password" onChange={changeLoginInfo} placeholder="비밀번호"/><br/>
-                <p className="login_sup_sch_box"><Link to="forgotten"><span>비밀번호 찾기</span></Link><br/></p>
+                <p className="login_sup_sch_box">
+                    <button type="button" onClick={passChangeOpen} style={{background:'none', border:'none'}}>
+                        <span>비밀번호 찾기</span>
+                    </button>
+                    <br/>
+                </p>
                 <p className="login_check_box"> <span>자동로그인</span>  <input type="checkbox" name="autoLogin" onChange={changeLoginOption}/></p>
                 <p className="login_check_box"><span>아이디 저장</span> <input type="checkbox" name="saveEmail" onChange={changeLoginOption} checked={loginOption.saveEmail} /></p>
                 

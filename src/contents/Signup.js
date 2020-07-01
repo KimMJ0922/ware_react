@@ -63,14 +63,16 @@ const Signup=(props)=>{
             return false;
         }
         setAlert('');
+        props.open2(false);
+        window.alert('회원가입이 완료 되었습니다. 메일 인증 후 이용이 가능합니다.');
         let url = "http://localhost:9000/signup";
         axios.post(url,{
             userInfo
         }).then((res) => {
-            alert("회원가입이 완료 되었습니다. 메일 인증을 하면 서비스를 이용할 수 있습니다.");
         }).catch((err) => { 
             console.log(err);
         })
+        
     }
     //input 값 변경했을 때
     const updateValue = (e) => {
