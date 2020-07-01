@@ -200,7 +200,7 @@ const Subjective = () => {
 
         axios.post(url,{
             member_no : window.sessionStorage.getItem('no'),
-            category : 'cardset',
+            category : window.sessionStorage.getItem('study'),
             cardset_no : window.sessionStorage.getItem('cardset_no'),
             rightcnt : rightAnswer,
             wrongcnt : wrongAnswer,

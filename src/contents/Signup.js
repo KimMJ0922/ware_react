@@ -16,13 +16,23 @@ const Signup=(props)=>{
                 password : '',
                 birth : ''
             })
-            setCheck({
-                email : true,
-                password : false,
-                name : true,
-                birth : false
-            });
         }
+        setTimeout(()=>{
+            if(props.sname!=='' && props.semail!==''){
+                setUserInfo({
+                    email : props.semail,
+                    name : props.sname,
+                    password : '',
+                    birth : ''
+                });
+                setCheck({
+                    email : true,
+                    password : false,
+                    name : true,
+                    birth : false
+                })
+            }
+        },1000)
     },[props.sname,props.semail])
     
 
