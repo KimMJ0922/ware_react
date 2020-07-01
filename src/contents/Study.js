@@ -315,9 +315,17 @@ const Study=({location})=>{
                     <div className="std_content " onClick={settingCheck === false ? cardClick : null}>
                       {/* 이미지가 있으면 화면에 출력 */}
                       {/* cardState가 false면 문제를 보여주고, cardState가 true면 답을 보여준다. */}
+                      {/* 길이 20자 이상 */}
+                      <p style={{fontSize:'0.9rem'}}>
+                       <span>
                       {
+                        
                         cardState === false ? item.question : item.answer
+                       
                       }
+                     </span>
+                      </p>
+                     
                       {
                         item.imgSrc !== "" && cardState === false && <img src={item.imgSrc} className="std_content_img" alt=""/>
                       }               
