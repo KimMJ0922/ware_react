@@ -995,7 +995,7 @@ a{
         box-shadow: 0px 0px 8px 1px #bdbdbd;  
     }
     .BoardStoreBtn{
-        border-radius: 50px 0 0 50px;
+        border-radius: 0 50px 50px 0;
         border: 0;
         color: #fff;
         height: 100%;
@@ -1037,9 +1037,8 @@ a{
         position: fixed;
         display: flex;
         flex-direction: column;
-        left: 25.75rem;
-        top: 26rem;
-        z-index: 10;
+        right: 12.2rem;
+        top: 10rem;
     }
 }
 /* boardItem 웹 최소 사이즈 */
