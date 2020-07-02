@@ -3,7 +3,7 @@ import { TimelineMax, Linear, TimelineLite } from "gsap/all";
 import ScrollMagic from "./ScrollMagic"
 import * as THREE from "three";
 
-import img1 from '../image/1.jpg';
+import img1 from '../image/1.JPG';
 import img2 from '../image/2.jpg';
 import img3 from '../image/3.jpg';
 import img4 from '../image/4.jpg';
