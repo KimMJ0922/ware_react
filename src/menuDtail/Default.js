@@ -40,11 +40,19 @@ const Diagram=()=>{
         console.log(start);
     }
 
-    const goStudy = (cardset_no, open_scope, category) => {
+    const goStudy = (cardset_no, open_scope, category, member_no) => {
         console.log(cardset_no, open_scope, category);
         if(category === 'cardset'){
             if(open_scope === 'member'){
-                Open222(cardset_no);
+                if(parseInt(window.sessionStorage.getItem('no')) === parseInt(member_no)){
+                    window.sessionStorage.setItem('cardset_no',cardset_no);
+                    window.sessionStorage.setItem('study','cardset');
+                    setStudy();
+                    history.push('/study');
+                }else{
+                    Open222(cardset_no);
+                }
+                
             }else{
                 window.sessionStorage.setItem('cardset_no',cardset_no);
                 window.sessionStorage.setItem('study','cardset');
@@ -117,29 +125,29 @@ const Diagram=()=>{
                 {
                     row.map((row,i)=>{
                         return(
-                            <Grid xs={12} sm={6} md={4} onClick={(e) => goStudy(row.cardset_no,row.open_scope,row.category)} name={row.cardset_no} style={{cursor:'pointer'}}>
-                                    <div className='mycardList'>
-                                        <div className='mycardSubject'>
-                                            {row.title}
-                                        </div>
-                                        <div className='mycardCount'>
-                                            {row.cnt}문제
-                                        </div>
-                                        <div className='mycardCardId'>
-                                            <p>
-                                                <img src={row.profile} alt="" className='cardProfileImg'/>
-                                                <span className='mycardCardConnect'>
-                                                    {
-                                                        row.provider === 'kakao' ? <img src="/profile/kakao.png" alt="" style={{width:'30px', height:'30px'}}/> :
-                                                        row.provider === 'google' ? <img src="/profile/google.png" alt="" style={{width:'30px', height:'30px'}}/> : 
-                                                        <img src="/profile/ware.png" alt="" style={{width:'30px', height:'30px'}}/>
-                                                    }
-                                                </span>
-                                                <span className='mycardCardName'>{row.name}</span>
-                                                <span className='mycardCardWriteDay'>{row.studyday}</span>
-                                            </p>
-                                        </div>
+                            <Grid xs={12} sm={6} md={4} onClick={(e) => goStudy(row.cardset_no,row.open_scope,row.category,row.member_no)} name={row.cardset_no} style={{cursor:'pointer'}}>
+                                <div className='mycardList'>
+                                    <div className='mycardSubject'>
+                                        {row.title}
                                     </div>
+                                    <div className='mycardCount'>
+                                        {row.cnt}문제
+                                    </div>
+                                    <div className='mycardCardId'>
+                                        <p>
+                                            <img src={row.profile} alt="" className='cardProfileImg'/>
+                                            <span className='mycardCardConnect'>
+                                                {
+                                                    row.provider === 'kakao' ? <img src="/profile/kakao.png" alt="" style={{width:'30px', height:'30px'}}/> :
+                                                    row.provider === 'google' ? <img src="/profile/google.png" alt="" style={{width:'30px', height:'30px'}}/> : 
+                                                    <img src="/profile/ware.png" alt="" style={{width:'30px', height:'30px'}}/>
+                                                }
+                                            </span>
+                                            <span className='mycardCardName'>{row.name}</span>
+                                            <span className='mycardCardWriteDay'>{row.studyday}</span>
+                                        </p>
+                                    </div>
+                                </div>
                             </Grid>
                         )})
                 }

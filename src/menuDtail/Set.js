@@ -16,6 +16,7 @@ const Set=()=>{
   const [start, setStart] = useState(0);
   const [no, setNo] = useState(0);
   const [pass, setPass] = useState('');
+  const [memberNo, setMemberNo] = useState(0);
   useEffect(()=>{
     const getList = async() => {
       let url = "http://localhost:9000/getcardsetlist"
@@ -33,6 +34,7 @@ const Set=()=>{
             open_scope : item.open_scope,
             update_scope : item.update_scope,
             createday : item.createday,
+            member_no : item.member_no,
             cnt : item.cnt,
           });
         });
@@ -111,9 +113,16 @@ const Set=()=>{
   }
 
   const [open4,setOpen5] = React.useState(false);
-  const Open222 = (no) => {
+  const Open222 = (no,memNo) => {
+    
       setNo(no);
-      setOpen5(true);
+      setMemberNo(memNo);
+      console.log(no, memberNo)
+      if(parseInt(memNo) === parseInt(window.sessionStorage.getItem('no'))){
+        linkClick(no);
+      }else{
+        setOpen5(true);
+      }
     };
   
     const Close222 = () => {
@@ -140,6 +149,7 @@ const Set=()=>{
           comment : item.comment,
           open_scope : item.open_scope,
           update_scope : item.update_scope,
+          member_no : item.member_no,
           createday : item.createday,
           cnt : item.cnt,
         });
@@ -183,6 +193,7 @@ const Set=()=>{
                 {
                   cardSet.length !== 0 &&
                   cardSet.map((item,idx) =>{
+                    
                     //같은 날짜 묶기
                     //처음 실행하면 출력
                     if(idx === 0){
@@ -207,7 +218,7 @@ const Set=()=>{
                         {
                           text
                         }
-                        <div onClick={(e) => item.open_scope === "public" ? linkClick(item.no) : item.open_scope === "private" ? linkClick(item.no) : Open222(item.no)}>                       
+                        <div onClick={(e) => item.open_scope === "public" ? linkClick(item.no) : item.open_scope === "private" ? linkClick(item.no) : Open222(item.no,item.member_no)}>                       
                           <div className="sq_on_cnt" style={{backgroundColor:'white', 
                               boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'}} id={item.no}>
                             <span className="sq_on_txt_cnt" id={item.no}>{item.cnt} 단어</span> 

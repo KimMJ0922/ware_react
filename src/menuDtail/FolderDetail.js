@@ -6,13 +6,14 @@ import Modal from '@material-ui/core/Modal';
 
 const FolderDetail=(props)=>{
     let history = useHistory();
-    let card = props.card;
-    let folder_no = props.no;
-    let study = props.study;
+    const [card, setCard] = useState(props.card);
+    const [folder_no, setFolder_no] = useState(props.no);
+    const [study, setStudyList] = useState(props.study);
 
     const [open4,setOpen5] = React.useState(false);
     const [no,setNo] = useState(0);
     const [pass, setPass] = useState('');
+
     const Open222 = (no) => {
       setNo(no);
       setOpen5(true);
@@ -27,7 +28,6 @@ const FolderDetail=(props)=>{
         if(category === 'cardset'){
             if(open_scope === 'member'){
                 Open222(cardset_no);
-                //passCheck(cardset_no,pass);
             }else{
                 window.sessionStorage.setItem('cardset_no',cardset_no);
                 window.sessionStorage.setItem('study','cardset');
@@ -91,10 +91,10 @@ const FolderDetail=(props)=>{
                                         if(studyItem.cardset_no === item.cardset_no && studyItem.category === item.category){
                                             return(
                                                 <>
-                                                    
                                                     <div className="fdr_set_box"
                                                          onClick={(e) => goStudy(studyItem.cardset_no,studyItem.open_scope,studyItem.category)}
                                                          style={{ boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)', cursor:'pointer'}}>
+                                                        {item.open_scope}
                                                         <p className="fdr_set_box_subject">
                                                             {studyItem.title}
                                                             {

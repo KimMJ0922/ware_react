@@ -513,7 +513,7 @@ const Test = (props) => {
                     <p className="text_result_return_box">
                     <button type="button" onClick={answerShow} name="right">정답</button>
                     <button type="button" onClick={answerShow} name="wrong">오답</button>
-                    <button type="button">다시 풀기</button>
+                    <button type="button" onClick={goTest}>다시 풀기</button>
                     </p>
                     <p className="text_result_check_box">
                        <CheckIcon style={{color:'#bfff00'}}/> 정답: {rightCnt}
